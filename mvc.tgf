@@ -1,0 +1,12 @@
+1 Servlet per richiamare la pagina jsp che fa la ricerca qui quindi dovremmo creare il bean formattato e  validato da dare alla jsp per tirare fuori la lista
+2 Mvc Per La RIcerca
+3 ricerca_risoranti.jsp
+4 database
+5 header.jsp
+6 serverlet per  verificare il log in se l'utente vuole fare un login
+7 7
+#
+1 3
+3 4
+4 3
+5 6
