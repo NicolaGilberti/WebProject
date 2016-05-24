@@ -130,3 +130,9 @@ PRIMARY KEY(id_user,id_restaurant),
 FOREIGN KEY (id_user) REFERENCES users (id),
 FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
 );
+
+
+-- aggiunte 
+ALTER TABLE restaurant ADD COLUMN cap VARCHAR(5);
+ALTER TABLE restaurant ADD COLUMN citta VARCHAR(25);
+ALTER TABLE restaurant ADD COLUMN stato VARCHAR(255);
