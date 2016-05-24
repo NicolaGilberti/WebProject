@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author nicola
  */
 public class ManagerDB {
-    Connection c = null;
+    private Connection c = null;
     /***
      * Costruttore per instaurare la connessione al database
      * @throws Exception 
@@ -30,5 +30,12 @@ public class ManagerDB {
             System.exit(0);*/
             //gestire errore in caso di errore driver e/o errore connessione al database
         }
+   }
+    /**
+     * metodo get 
+     * @return l'attributo per eseguire query sul database
+     */
+   public Connection getConnection(){
+       return this.c;
    }
 }
