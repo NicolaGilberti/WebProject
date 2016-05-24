@@ -136,3 +136,5 @@ FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
 ALTER TABLE restaurant ADD COLUMN cap VARCHAR(5);
 ALTER TABLE restaurant ADD COLUMN citta VARCHAR(25);
 ALTER TABLE restaurant ADD COLUMN stato VARCHAR(255);
+ALTER TABLE request_delete_photo ADD COLUMN accepted boolean;
+ALTER TABLE request_change_owner ADD COLUMN accepted boolean;
