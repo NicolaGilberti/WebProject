@@ -5,22 +5,38 @@
  */
 
 
-$(document).ready(function() {
-    $(function() {
-        $("#country").autocomplete({
-            source: function(request, response) {
+$(document).ready(function () {
+    $(function () {
+        $("#cittaSearchInput").autocomplete({
+            source: function (request, response) {
                 $.ajax({
-                    url: "AutoCompleteServlet",
+                    url: "AutoCompleteCitta",
                     type: "POST",
-                    data: { term: request.term },
-
+                    data: {term: request.term},
                     dataType: "json",
-
-                    success: function(data) {
+                    success: function (data) {
                         response(data);
                     }
-               });              
-            }   
+                });
+            }
         });
     });
+
+$(function () {
+        $("#cosaSearchInput").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "AutoCompleteCosa",
+                    type: "POST",
+                    data: {term: request.term},
+                    dataType: "json",
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            }
+        });
+    });
+
+
 });
