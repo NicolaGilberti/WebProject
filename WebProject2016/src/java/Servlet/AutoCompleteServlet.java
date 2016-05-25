@@ -13,9 +13,12 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -76,10 +79,9 @@ public class AutoCompleteServlet extends HttpServlet {
 
             }
         }
-        catch
-                {
-                    
-                }
+      catch (SQLException ex) {
+            Logger.getLogger(getData.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         
