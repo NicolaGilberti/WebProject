@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MirkoPortatile
  */
-public class searchServlet extends HttpServlet {
+public class SearchServlet extends HttpServlet {
 
    
     @Override
