@@ -1,23 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-"http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
-<head>
-    <link rel="stylesheet" type="text/css" href="css/jquery.autocomplete.css" />
-    <script type="text/javascript"
-            src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-    <script src="js/jquery.autocomplete.js"></script>  
-    <style>
-        input {
-            font-size: 120%;
-        }
-    </style>
-</head>
-<body>
-    <h3>Country</h3>
-    <input type="text" id="country" name="country"/>
-     
-    <script>
-        $("#country").autocomplete("getData");
-    </script>
-</body>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"> </script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+        <script type="text/javascript" src="js/autoComplete.js"> </script>
+    </head>
+
+    <body>
+        <form>
+            <div class="ui-widget">
+                <label for="country">Country: </label>
+                <input id="country" />
+            </div>
+        </form>
+    </body>
 </html>
