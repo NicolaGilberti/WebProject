@@ -6,8 +6,13 @@
 package Servlet;
 
 import com.google.gson.Gson;
+import database.ManagerDB;
+import info.debatty.java.stringsimilarity.NGram;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -44,6 +49,41 @@ public class AutoCompleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
+         String cittaInserita = request.getParameter("q");
+        NGram twogram = new NGram(2);
+        //  List<String> countries=new List<String>();
+        PrintWriter out = response.getWriter();
+        double test;
+
+        //Instauriamo connessione
+        ManagerDB manager = new ManagerDB();
+        Connection connection = manager.getConnection();
+
+        //Otteniamo tutte le citta salvate
+        String sql = "SELECT DISTINCT citta FROM restaurant";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet results = ps.executeQuery();
+
+            //Per tutti i risultati
+            while (results.next()) {
+                //Prendiamo una citta
+                String temp = results.getString("citta");
+                test = twogram.distance(temp.toLowerCase(), cittaInserita);
+
+                out.println(temp);
+
+            }
+        }
+        catch
+                {
+                    
+                }
+        
+        
+        
+        
         final List<String> countryList = new ArrayList<String>();
         countryList.add("USA");
         countryList.add("Pakistan");
@@ -56,6 +96,11 @@ public class AutoCompleteServlet extends HttpServlet {
         countryList.add("United Arab Emirates");
         Collections.sort(countryList);
 
+        
+        
+        
+        
+        
         // Map real data into JSON
         response.setContentType("application/json");
 
