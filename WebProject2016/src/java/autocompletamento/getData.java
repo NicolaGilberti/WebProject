@@ -10,12 +10,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import info.debatty.java.stringsimilarity.JaroWinkler;
+import info.debatty.java.stringsimilarity.NGram;
 /**
  *
  * @author MirkoPortatile
@@ -28,32 +34,50 @@ public class getData extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String cittaInserita = request.getParameter("q");
+         NGram twogram = new NGram(2);
+      //  List<String> countries=new List<String>();
+      PrintWriter out=response.getWriter();
+      double test;
+      
+        //Instauriamo connessione
        ManagerDB manager=new ManagerDB();
  Connection connection=manager.getConnection();
-       //PreparedStatement ps=connection.prepareStatement(sql);
-       String sql = "SELECT restaurant set age=? WHERE id=?";
-      stmt = conn.prepareStatement(sql);
+       
+        //Otteniamo tutte le citta salvate
+       String sql = "SELECT DISTINCT citta FROM restaurant";
+        try {
+            PreparedStatement ps=connection.prepareStatement(sql);
+            ResultSet results= ps.executeQuery();
+       
+            //Per tutti i risultati
+            while(results.next())
+            {
+                //Prendiamo una citta
+                String temp=results.getString("citta");
+               test=twogram.distance(temp.toLowerCase(), cittaInserita);
+
+                     out.println(temp);
+
+
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(getData.class.getName()).log(Level.SEVERE, null, ex);
+        }
       
-      //Bind values into the parameters.
-      stmt.setInt(1, 35);  // This would set age
-      stmt.setInt(2, 102); // This would set ID
+    
       
       
       
-    String query = request.getParameter("q");
+    
      
     
     
   //  List<String> countries = db.getData(query);
  
-    Iterator<String> iterator = countries.iterator();
-    while(iterator.hasNext()) {
-        String country = (String)iterator.next();
-        out.println(country);
-    }
-        
-        
         
         
     }

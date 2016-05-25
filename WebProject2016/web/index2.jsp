@@ -17,7 +17,7 @@
     <input type="text" id="country" name="country"/>
      
     <script>
-        $("#country").autocomplete("getdata.jsp");
+        $("#country").autocomplete("getData");
     </script>
 </body>
 </html>
