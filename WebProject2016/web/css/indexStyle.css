@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-mag-2016, 15.13.58
+    Author     : MirkoPortatile
+*/
+
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+.full {
+  background: url(../img/index/ibackground.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.container
+{
+     background: rgb(10,10,10); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(255,255,255, 0.4);
+padding-bottom: 50px;
+}
+
