@@ -60,8 +60,13 @@ public class confirmAccount extends HttpServlet {
                 email = results.getString("email");
                 md.update(email.getBytes());
                 md.update(results.getString("password").getBytes());
-
+                //Se è già stato confermato reindirizziamo TODO
+                if(results.getInt("type")!=-1)
+                {
+                    response.sendRedirect("index.html");
+                }
             }
+            
             byte[] digest = md.digest();
             StringBuffer sb = new StringBuffer();
             for (byte b : digest) {
@@ -79,7 +84,7 @@ public class confirmAccount extends HttpServlet {
 
                 }
                 //Abbiamo aggiornato l'account dell'utente. Ora potrà fare l'accesso.   
-                //Spediamo email
+                //Spediamo email TODO migliorare
                 EmailSender sender = new EmailSender();
                 sender.send(email, "Email di notifica", "Hai confermato il tuo account! Ora puoi loggare.");
                 response.sendRedirect("accountregistrato.html");
