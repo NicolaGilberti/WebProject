@@ -141,7 +141,7 @@ FK<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.3800799440968305" offsetX="4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="257.4765625" modelName="custom" textColor="#000000" visible="true" width="101.8662109375" x="25.580742844012548" y="39.18345024648852">id
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="275.58203125" modelName="custom" textColor="#000000" visible="true" width="101.8662109375" x="25.580742844012548" y="40.274366856831875">id
 name
 description
 web_site_url
@@ -154,11 +154,12 @@ longitude
 address
 cap
 citta
-stato<y:LabelModel>
+stato
+QRcode<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.39804159418424057" nodeRatioY="2.220446049250313E-16" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.39804159418424057" nodeRatioY="0.03020350878634126" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="123.44695378151255" y="165.9217314964883">
@@ -169,7 +170,7 @@ stato<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="257.4765625" modelName="custom" textColor="#000000" visible="true" width="121.12158203125" x="131.43915223314275" y="40.274366856831875">INTEGER
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="275.58203125" modelName="custom" textColor="#000000" visible="true" width="121.12158203125" x="131.43915223314275" y="40.274366856831875">INTEGER
 VARCHAR(25)
 VARCHAR(32000)
 VARCHAR(255)
@@ -182,11 +183,12 @@ DOUBLE
 VARCHAR(255)
 VARCHAR(5)
 VARCHAR(25)
+VARCHAR(255)
 VARCHAR(255)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.48623840051116896" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.003248288951708589" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.48623840051116896" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.03020350878634126" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:StyleProperties>
