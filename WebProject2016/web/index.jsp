@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 19-set-2016, 18.11.07
+    Author     : MirkoPortatile
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="full" lang="en">
 <!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
@@ -24,14 +31,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"> </script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <script type="text/javascript" src="js/autoComplete.js"> </script>
-</head>
 
-<body>
-
+<jsp:include page="header.jsp" />
 
 
     <!-- Page Content -->
