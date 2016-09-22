@@ -117,7 +117,7 @@ INTEGER<y:LabelModel>
           <y:Geometry height="335.84346299297647" width="250.8939075630251" x="-1669.2229578354777" y="-1070.515425686488"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="71.91015625" x="89.49187565651255" y="4.0">restaurant</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="78.6044921875" x="86.14470768776255" y="4.0">restaurants</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="2.0" y="30.701171875"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="123.44695378151255" y="165.9217314964883">
             <y:LabelModel>
@@ -153,8 +153,8 @@ latitude
 longitude
 address
 cap
-citta
-stato<y:LabelModel>
+city
+country<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -280,7 +280,7 @@ TIME<y:LabelModel>
           <y:Geometry height="286.3739870340356" width="305.3140841425709" x="-1817.1321050032589" y="-698.973676734071"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="47.2275390625" x="129.04327254003556" y="4.0">review</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.921875" x="125.69610457128556" y="4.0">reviews</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="221.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="42.41060739035288">PK
 
 
@@ -403,7 +403,7 @@ TIMESTAMP<y:LabelModel>
           <y:Geometry height="170.05919670947776" width="288.6250000000002" x="-1480.8957519531245" y="-596.837888679803"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="36.490234375" x="126.0673828125" y="4.0">reply</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="47.037109375" x="120.7939453125" y="4.0">replies</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="130.73828125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="35.32091545947776">PK
 
 
@@ -455,7 +455,7 @@ INTEGER<y:LabelModel>
           <y:Geometry height="170.05919670947776" width="264.1329011345217" x="-1395.5207519531245" y="-961.0036881065294"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="41.96142578125" x="111.08573767663574" y="4.0">photo</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="48.65576171875" x="107.73856970788574" y="4.0">photos</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="112.6328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="32.00767982553248">PK
 
 
@@ -506,7 +506,7 @@ TIMESTAMP<y:LabelModel>
           <y:Geometry height="115.84725664982352" width="245.3728991596638" x="-2095.158237822675" y="-681.2459619852866"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="114.185546875" x="65.59367614233179" y="4.0">user_review_like</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="120.8798828125" x="62.24650817358179" y="4.0">user_review_likes</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="40.2109375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="29.561887076453672">PK
 PK<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -600,7 +600,7 @@ INTEGER<y:LabelModel>
           <y:Geometry height="98.05147058823525" width="230.88774341912472" x="-1454.7834953722495" y="-718.4587259263642"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="148.32373046875" x="41.282006475187245" y="4.0">request_delete_photo</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="155.01806640625" x="37.934838506437245" y="4.0">request_delete_photos</y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="113.44387170956225" y="47.02573529411757">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -655,7 +655,7 @@ BOOLEAN<y:LabelModel>
           <y:Geometry height="98.05147058823513" width="230.88774341912472" x="-1100.8773820686022" y="-718.4587259263641"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="158.59228515625" x="36.14772913143747" y="4.0">request_change_owner</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="165.28662109375" x="32.80056116268747" y="4.0">request_changes_owner</y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="113.44387170956236" y="47.02573529411757">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
