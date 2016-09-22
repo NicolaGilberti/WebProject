@@ -1,5 +1,4 @@
 -- il database lo ho chiamato WebProjectDB io se date altro nome c'è dda stare attenti durante la gestione delal connessione
-
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -17,7 +16,7 @@ min_value DOUBLE PRECISION NOT NULL,
 max_value DOUBLE PRECISION NOT NULL
 );
 
-CREATE TABLE restaurant(
+CREATE TABLE restaurants(
 id SERIAL PRIMARY KEY,
 name VARCHAR(25) NOT NULL,
 description VARCHAR(32000),
@@ -51,15 +50,15 @@ id_range INTEGER,
 id_restaurant INTEGER,
 PRIMARY KEY(id_range,id_restaurant),
 FOREIGN KEY (id_range) REFERENCES opening_hours_range (id),
-FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
+FOREIGN KEY (id_restaurant) REFERENCES restaurants (id)
 );
 
-CREATE TABLE restaurant_cuisine(
+CREATE TABLE restaurants_cuisine(
 id_cuisine INTEGER,
 id_restaurant INTEGER,
 PRIMARY KEY(id_cuisine,id_restaurant),
 FOREIGN KEY (id_cuisine) REFERENCES cuisine (id),
-FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
+FOREIGN KEY (id_restaurant) REFERENCES restaurants (id)
 );
 
 CREATE TABLE photos(
@@ -70,7 +69,7 @@ path VARCHAR(255),
 id_restaurant INTEGER NOT NULL,
 id_user INTEGER NOT NULL,
 data_creation TIMESTAMP NOT NULL,
-FOREIGN KEY (id_restaurant) REFERENCES restaurant (id),
+FOREIGN KEY (id_restaurant) REFERENCES restaurants (id),
 FOREIGN KEY (id_user) REFERENCES users (id)
 );
 
@@ -87,7 +86,7 @@ data_creation TIMESTAMP NOT NULL,
 id_restaurant INTEGER NOT NULL,
 id_creator INTEGER NOT NULL,
 id_photo INTEGER NOT NULL,
-FOREIGN KEY (id_restaurant) REFERENCES restaurant (id),
+FOREIGN KEY (id_restaurant) REFERENCES restaurants (id),
 FOREIGN KEY (id_creator) REFERENCES users (id),
 FOREIGN KEY (id_photo) REFERENCES photos (id)
 );
@@ -115,7 +114,7 @@ FOREIGN KEY (id_owner) REFERENCES users (id),
 FOREIGN KEY (id_review) REFERENCES reviews (id)
 );
 
-CREATE TABLE request_delete_photo (
+CREATE TABLE request_delete_photos (
 id_user INTEGER,
 id_photo INTEGER,
 PRIMARY KEY(id_user,id_photo),
@@ -123,19 +122,19 @@ FOREIGN KEY (id_user) REFERENCES users (id),
 FOREIGN KEY (id_photo) REFERENCES photos (id)
 );
 
-CREATE TABLE request_change_owner (
+CREATE TABLE request_changes_owner (
 id_user INTEGER,
 id_restaurant INTEGER,
 PRIMARY KEY(id_user,id_restaurant),
 FOREIGN KEY (id_user) REFERENCES users (id),
-FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
+FOREIGN KEY (id_restaurant) REFERENCES restaurants (id)
 );
 
 
 -- aggiunte 
-ALTER TABLE restaurant ADD COLUMN cap VARCHAR(5);
-ALTER TABLE restaurant ADD COLUMN citta VARCHAR(25);
-ALTER TABLE restaurant ADD COLUMN stato VARCHAR(255);
-ALTER TABLE request_delete_photo ADD COLUMN accepted boolean;
-ALTER TABLE request_change_owner ADD COLUMN accepted boolean;
-ALTER TABLE restaurant ADD COLUMN QRcode VARCHAR(255);
+ALTER TABLE restaurants ADD COLUMN cap VARCHAR(5);
+ALTER TABLE restaurants ADD COLUMN city VARCHAR(25);
+ALTER TABLE restaurants ADD COLUMN country VARCHAR(255);
+ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
+ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
+ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
