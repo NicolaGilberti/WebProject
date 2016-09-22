@@ -1,5 +1,4 @@
 -- il database lo ho chiamato WebProjectDB io se date altro nome c'è dda stare attenti durante la gestione delal connessione
-
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -54,7 +53,7 @@ FOREIGN KEY (id_range) REFERENCES opening_hours_range (id),
 FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
 );
 
-CREATE TABLE restaurant_cuisine(
+CREATE TABLE restaurants_cuisine(
 id_cuisine INTEGER,
 id_restaurant INTEGER,
 PRIMARY KEY(id_cuisine,id_restaurant),
@@ -115,7 +114,7 @@ FOREIGN KEY (id_owner) REFERENCES users (id),
 FOREIGN KEY (id_review) REFERENCES reviews (id)
 );
 
-CREATE TABLE request_delete_photo (
+CREATE TABLE request_delete_photos (
 id_user INTEGER,
 id_photo INTEGER,
 PRIMARY KEY(id_user,id_photo),
@@ -123,7 +122,7 @@ FOREIGN KEY (id_user) REFERENCES users (id),
 FOREIGN KEY (id_photo) REFERENCES photos (id)
 );
 
-CREATE TABLE request_change_owner (
+CREATE TABLE request_changes_owner (
 id_user INTEGER,
 id_restaurant INTEGER,
 PRIMARY KEY(id_user,id_restaurant),
@@ -136,6 +135,6 @@ FOREIGN KEY (id_restaurant) REFERENCES restaurant (id)
 ALTER TABLE restaurant ADD COLUMN cap VARCHAR(5);
 ALTER TABLE restaurant ADD COLUMN citta VARCHAR(25);
 ALTER TABLE restaurant ADD COLUMN stato VARCHAR(255);
-ALTER TABLE request_delete_photo ADD COLUMN accepted boolean;
-ALTER TABLE request_change_owner ADD COLUMN accepted boolean;
-ALTER TABLE restaurant ADD COLUMN QRcode VARCHAR(255);
+ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
+ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
+ALTER TABLE restaurant ALTER COLUMN name TYPE VARCHAR(50);
