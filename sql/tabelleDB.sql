@@ -132,9 +132,18 @@ FOREIGN KEY (id_restaurant) REFERENCES restaurants (id)
 
 
 -- aggiunte 
+<<<<<<< HEAD:sql/tabelleDB.sql
 ALTER TABLE restaurants ADD COLUMN cap VARCHAR(5);
 ALTER TABLE restaurants ADD COLUMN city VARCHAR(25);
 ALTER TABLE restaurants ADD COLUMN country VARCHAR(255);
 ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
 ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
 ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
+=======
+ALTER TABLE restaurant ADD COLUMN cap VARCHAR(5);
+ALTER TABLE restaurant ADD COLUMN citta VARCHAR(25);
+ALTER TABLE restaurant ADD COLUMN stato VARCHAR(255);
+ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
+ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
+ALTER TABLE restaurant ALTER COLUMN name TYPE VARCHAR(50);
+>>>>>>> refs/remotes/origin/master:tabelleDB.sql
