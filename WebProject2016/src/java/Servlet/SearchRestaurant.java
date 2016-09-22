@@ -35,6 +35,8 @@ public class SearchRestaurant extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        String valoreInserito = request.getParameter("searchinput");
+       valoreInserito=valoreInserito.replaceAll("'","''");
+       
        String[] valoriInseriti= valoreInserito.split("\\s+");
        
         List<RestaurantSearch> restaurantsList=new ArrayList<RestaurantSearch>();
