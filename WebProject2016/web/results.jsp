@@ -112,7 +112,7 @@
                         <div class="row row-centered">
 
                             <c:forEach items="${restaurants}" var="restaurant">
-                                <div class="col-sm-6 col-md-4 col-centered">
+                                <div class="col-sm-6 col-xs-12 col-md-4 col-centered">
                                     <div class="thumbnail">
                                         <img src="..." alt="Nessuna immagine disponibile">
                                         <div class="caption">
@@ -140,7 +140,7 @@
                     <!--footer-->
                     <footer>
                         <hr>
-                        <p>&copy; Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
+                        <p><span class="glyphicon glyphicon-heart-empty"></span> Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
                     </footer>
                     <!--/container-->
                 </div>
