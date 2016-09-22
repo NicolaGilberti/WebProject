@@ -7,10 +7,11 @@
 
 $(document).ready(function () {
     $(function () {
-        $("#cittaSearchInput").autocomplete({
+        $("#searchInput").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "AutoCompleteCitta",
+                    url: "SearchRestaurantAutocomplete",
+                    minLength: 4,
                     type: "POST",
                     data: {term: request.term},
                     dataType: "json",
@@ -21,22 +22,5 @@ $(document).ready(function () {
             }
         });
     });
-
-$(function () {
-        $("#cosaSearchInput").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    url: "AutoCompleteCosa",
-                    type: "POST",
-                    data: {term: request.term},
-                    dataType: "json",
-                    success: function (data) {
-                        response(data);
-                    }
-                });
-            }
-        });
-    });
-
 
 });

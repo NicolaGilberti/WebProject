@@ -1,0 +1,95 @@
+.row-titolo {
+    padding-bottom: 3em;
+}
+
+#titolo {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 6em;
+    color: white;
+}
+
+@media (max-width: 767px) {
+    #titolo {
+        font-size: 4em;
+    }
+}
+
+#btn-sinistro {
+    margin-right: 10px;
+}
+
+.btn-custom {
+    text-transform: capitalize;
+    font-family: 'Lato', sans-serif;
+    background: none;
+    padding: 8px 22px;
+    border: 2px solid #ff6666;
+    color: #ff6666;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    /*css for full size background image*/
+    background: url(../img/index/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    background-color: #060;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+input.transparent-input {
+    border: none !important;
+    outline: none !important;
+}
+
+.transparent-input {
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    box-shadow: none;
+    color: white;
+    font-size: 2em;
+}
+
+.transparent-input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.ui-menu {
+    background: rgb(34, 34, 34);
+    /* for IE */
+    background: rgba(34, 34, 34, 0.75);
+    color: white;
+}
+
+.ui-menu-item {
+    background: rgb(34, 34, 34);
+    /* for IE */
+    background: rgba(34, 34, 34, 0.75);
+}
+
+.ui-menu .ui-menu-item a {
+    color: #ffffff;
+    border-radius: 0px;
+}
+
+.ui-menu .ui-menu-item a:hover {
+    color: #ff6666;
+    background: #656565;
+    border-radius: 0px;
+}
+
+.glass {
+    padding: 1em;
+    margin-top: 2em;
+    background-color: rgba(34, 34, 34, 0.75);
+    border-radius: 5px;
+}

@@ -30,8 +30,8 @@ import utils.AutoCompleteData;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "AutoCompleteCosa", urlPatterns = {"/AutoCompleteCosa"})
-public class AutoCompleteCosa extends HttpServlet {
+@WebServlet(name = "SearchRestaurantAutocomplete", urlPatterns = {"/SearchRestaurantAutocomplete"})
+public class SearchRestaurantAutocomplete extends HttpServlet {
 
 
     @Override
@@ -44,17 +44,29 @@ public class AutoCompleteCosa extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String cosaInserita = request.getParameter("term");
-        NGram twogram = new NGram(2);
-        List<String> cose = new ArrayList<String>();
-        double test;
+        String valoreInserito = request.getParameter("term");
+       String[] valoriInseriti= valoreInserito.split("\\s+");
+        
+        
+
+        List<String> valori = new ArrayList<String>();
 
         //Instauriamo connessione
         ManagerDB manager = new ManagerDB();
         Connection connection = manager.getConnection();
 
         //Otteniamo tutte le citta salvate
-        String sql = "SELECT DISTINCT name FROM restaurant";
+        String sql = "select t " +
+"from (select (name ||' , '|| address ||' , '||city) as t" +
+" from restaurants) as a " +
+"where t @@ '";
+        for(int i=0;i<valoriInseriti.length;i++)
+        {
+            sql+=valoriInseriti[i];
+            sql+=" && ";
+        }
+        sql+="'";
+        
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet results = ps.executeQuery();
@@ -62,22 +74,20 @@ public class AutoCompleteCosa extends HttpServlet {
             //Per tutti i risultati
             while (results.next()) {
                 //Prendiamo una citta
-                String temp = results.getString("name");
-                test = twogram.distance(temp.toLowerCase(), cosaInserita);
-                if (test > 0.3) {
-                    cose.add(temp);
-                }
+                String temp = results.getString("t");
+                    valori.add(temp);
+              
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AutoCompleteCosa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Map real data into JSON
         response.setContentType("application/json");
 
         final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
-        for (final String cosa : cose) {
-            result.add(new AutoCompleteData(cosa, cosa));
+        for (final String country : valori) {
+            result.add(new AutoCompleteData(country, country));
         }
         response.getWriter().write(new Gson().toJson(result));
     }
