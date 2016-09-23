@@ -1,78 +1,121 @@
-<!DOCTYPE html>
-<html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
 
 <head>
-
+    <!--meta-->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TuttoBistro</title>
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--/meta-->
 
-    <title>The Big Picture - Start Bootstrap Template</title>
+    <!--scripts-->
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/autoComplete.js"></script>
+    <script src="js/vendor/bootstrap.min.js "></script>
+    <script src="js/locationSearch.js"></script>
+    <!-- /scripts-->
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
 
-    <!-- Custom CSS -->
-    <link href="css/indexStyle.css" rel="stylesheet">
+    </style>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"> </script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <script type="text/javascript" src="js/autoComplete.js"> </script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="css/indexStyleNuovo.css">
+    <!--/css-->
+
 </head>
 
 <body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
+    <!-- pannello di ricerca avanzata modal-->
+    <div id="advSearchBox" class="modal fade" data-backdrop="false">
+        <div class="modal-dialog modal-sm">
+            <!-- Modal content-->
+            <div class="modal-content">
 
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <p>Ricerca avanzata:</p>
+                    <form>
+                        <div class="form-group">
+                            <p>Stato:</p>
+                            <input type="text" id="country" class="input-text">
+                        </div>
+                        <div class="form-group">
+                            <p>Citta:</p>
+                            <input type="text" id="city" class="input-text">
+                        </div>
+                        <div class="form-group">
+                            <p>Tipologia di cucina:</p>
+                            <input type="text" id="cuisine" class="input-text">
+                        </div>
+                        <button type=" button" class="btn-custom "><span class="glyphicon glyphicon-search"></span>Ricerca Avanzata</button>
+                    </form>
+                </div>
 
-    <!-- Page Content -->
-    <div class="container ">
-        <div class="row ">
-            <div class="col-md-6 col-sm-12 ">
-                <h1>TuttoBistro</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iusto, unde, sunt incidunt id sapiente rerum soluta voluptate harum veniam fuga odit ea pariatur vel eaque sint sequi tenetur eligendi.</p>
             </div>
         </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12 ">
+
+        <!--fine modale -->
+    </div>
 
 
-                <form class="form-inline" role="form" method="get" action="/searchServlet">
-                    <div class="row">
-                        <div class="form-group col-sm-3">
-                            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
 
-                                <input type="text" class="form-control" placeholder="Dove?" id="cittaSearchInput"/>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-3">
-                            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+    <!-- container-->
+    <div class="container">
 
-                                <input type="text" class="form-control" placeholder="Cosa?" id="cosaSearchInput"/>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-default">Ricerca</button>
-                    </div>
+        <!-- Titolo -->
+        <div class="row-titolo">
+            <p class="h1" id="titolo">TuttoBistrò</p>
+        </div>
+
+        <!-- barra di ricerca e form annesso-->
+        <div class="row row-search">
+            <div class="form-group">
+                <form method="get" action="SearchRestaurant">
+                    <input name="searchinput" id="searchInput" class="form-control transparent-input" type='text' placeholder="Digita ciò che vuoi cercare." required>
+                    <input type="submit" style="display: none" />
                 </form>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+            </div>
+            <div class="">
+                <button type="button" class="btn-custom" id="btn-sinistro" href="#advSearchBox" data-toggle="modal"><span class="glyphicon glyphicon-briefcase"></span>Ricerca Avanzata</button>
+                <button type=" button " onclick="geoFindMe()" class=" btn-custom"><span class="glyphicon glyphicon-globe"></span>Vicino a me</button>
+            </div>
+        </div>
 
-    
 
-    <!-- /.container -->
 
-   
+        <div class="navbar">
+            <!--footer-->
+            <footer>
+                <hr>
+                <p>Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
+            </footer>
+        </div>
+    </div>
+    <!-- /container -->
+
+
+
 
 </body>
 

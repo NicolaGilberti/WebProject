@@ -6,8 +6,8 @@
 package Servlet;
 
 import com.google.gson.Gson;
+import com.sun.xml.internal.ws.util.StringUtils;
 import database.ManagerDB;
-import info.debatty.java.stringsimilarity.NGram;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -15,7 +15,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,56 +29,63 @@ import utils.AutoCompleteData;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "AutoCompleteCitta", urlPatterns = {"/AutoCompleteCitta"})
-public class AutoCompleteCitta extends HttpServlet {
+@WebServlet(name = "SearchAdvancedAutocomplete", urlPatterns = {"/SearchAdvancedAutocomplete"})
+public class SearchAdvancedAutocomplete extends HttpServlet {
 
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
+ 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String cittaInserita = request.getParameter("term");
-        NGram twogram = new NGram(2);
-        List<String> countries = new ArrayList<String>();
-        double test;
+        
+        String city = request.getParameter("city");
+        String country = request.getParameter("country");
+        String cuisine = request.getParameter("cuisine");
+        
+          List<String> valori = new ArrayList<String>();
 
         //Instauriamo connessione
         ManagerDB manager = new ManagerDB();
         Connection connection = manager.getConnection();
-
-        //Otteniamo tutte le citta salvate
-        String sql = "SELECT DISTINCT citta FROM restaurant";
-        try {
+        
+        String sql="";
+        if(city != null)
+        {
+            sql="SELECT DISTINCT city as a from restaurants WHERE LOWER(city) like '%"+city.toLowerCase()+"%'";
+        }
+        else if(country != null)
+        {
+            sql="SELECT DISTINCT country as a from restaurants WHERE LOWER(country) like '%"+country.toLowerCase()+"%'";
+        }
+        else if(cuisine!=null)
+        {
+            sql="SELECT DISTINCT name as a from cuisine WHERE LOWER(name) like '%"+cuisine.toLowerCase()+"%'";
+        }
+          try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet results = ps.executeQuery();
 
             //Per tutti i risultati
             while (results.next()) {
                 //Prendiamo una citta
-                String temp = results.getString("citta");
-                test = twogram.distance(temp.toLowerCase(), cittaInserita);
-                if (test > 0.3) {
-                    countries.add(temp);
-                }
+                String temp = StringUtils.capitalize(results.getString("a"));
+                    valori.add(temp);
+              
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AutoCompleteCitta.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Map real data into JSON
         response.setContentType("application/json");
 
         final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
-        for (final String country : countries) {
-            result.add(new AutoCompleteData(country, country));
+        for (final String s : valori) {
+            result.add(new AutoCompleteData(s, s));
         }
         response.getWriter().write(new Gson().toJson(result));
+        
     }
+
+    
 
 }

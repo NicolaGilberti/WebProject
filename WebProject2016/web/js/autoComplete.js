@@ -6,13 +6,17 @@
 
 
 $(document).ready(function () {
+
     $(function () {
-        $("#cittaSearchInput").autocomplete({
+        $("#searchInput").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "AutoCompleteCitta",
+                    url: "SearchRestaurantAutocomplete",
+                    minLength: 4,
                     type: "POST",
-                    data: {term: request.term},
+                    data: {
+                        term: request.term
+                    },
                     dataType: "json",
                     success: function (data) {
                         response(data);
@@ -22,13 +26,16 @@ $(document).ready(function () {
         });
     });
 
-$(function () {
-        $("#cosaSearchInput").autocomplete({
+    $(function () {
+        $("#city").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: "AutoCompleteCosa",
+                    url: "SearchAdvancedAutocomplete",
+                    minLength: 4,
                     type: "POST",
-                    data: {term: request.term},
+                    data: {
+                        city: request.term
+                    },
                     dataType: "json",
                     success: function (data) {
                         response(data);
@@ -39,4 +46,43 @@ $(function () {
     });
 
 
+    $(function () {
+        $("#country").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "SearchAdvancedAutocomplete",
+                    minLength: 4,
+                    type: "POST",
+                    data: {
+                        country: request.term
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            }
+        });
+    });
+
+    $(function () {
+        $("#cuisine").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "SearchAdvancedAutocomplete",
+                    minLength: 4,
+                    type: "POST",
+                    data: {
+                        cuisine: request.term
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            }
+        });
+    });
+
+    //fine jquery doc
 });
