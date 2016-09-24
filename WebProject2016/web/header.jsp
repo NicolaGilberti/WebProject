@@ -7,7 +7,8 @@
 
 
 
-
+<%@page import="beans.User" %>
+<%@page import="java.net.*" %>
 <!--Autosearch for autosearch-->
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -37,7 +38,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="loginoreg.html">Login <span class="sr-only">(current)</span></a></li>
+        <% HttpSession ses = request.getSession();
+           Object utente = ( ses.getAttribute("utente"));
+           if (utente==null) {
+         %>
+        <li class="active"><a href="login.html">Login <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="registrazione.html">Registrazione <span class="sr-only">(current)</span></a></li>
+        <% }
+        %>
+       
+        
         <li><a href="#">Link</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
