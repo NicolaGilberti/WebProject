@@ -1,0 +1,44 @@
+.glyphicon-map-marker {
+    color: #fd746c;
+}
+
+.thumbnail-container {
+    padding-top: 1.5em;
+}
+
+.thumbnail {
+    font-family: 'Lato', sans-serif;
+    color: #333333;
+    height: 28em;
+    overflow: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.thumbnail:hover {
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    transition: 0.5s;
+}
+
+.searchbar {
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    box-shadow: none;
+    color: white;
+    outline: 0;
+    border-bottom: 2px solid white;
+    outline: none !important;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.searchbar-input:focus,
+.searchbar-input:active {
+    border: none;
+    box-shadow: none;
+}
