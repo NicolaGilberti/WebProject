@@ -1,5 +1,5 @@
 body {
-    background-color: #e1e9b7;
+    background-color: #e1e3e4;
 }
 
 
@@ -101,16 +101,6 @@ body {
     }
 }
 
-.thumbnail-container {
-    padding-top: 1.5em;
-}
-
-.thumbnail {
-    height: 20em;
-    overflow: auto;
-    background-color: #d0b783;
-}
-
 .col-centered {
     display: inline-block;
     float: none;
@@ -139,4 +129,26 @@ hr {
 
 footer {
     text-align: center;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('fonts/glyphicons-halflings-regular.eot');
+    src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size {
+    font-size: 87px;
 }

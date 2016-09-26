@@ -39,7 +39,9 @@
                 <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato" rel="stylesheet">
                 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
                 <link rel="stylesheet" href="css/generic.css">
+                <link rel="stylesheet" href="css/results.css">
                 <!--/css-->
+
             </head>
 
             <body>
@@ -78,23 +80,53 @@
                             </ul>
                             <form class="navbar-form navbar-left">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="searchbar form-control" placeholder="Search">
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </form>
+
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">Link</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <strong>Account</strong>
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
+                                        <li>
+                                            <div class="navbar-login">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <p class="text-center">
+                                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <p class="text-left"><strong>Nome Cognome</strong></p>
+                                                        <p class="text-left small">email@email.com</p>
+                                                        <p class="text-left">
+                                                            <a href="#" class="btn btn-primary btn-block btn-sm">Impostazioni</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <div class="navbar-login navbar-login-session">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <p>
+                                                            <a href="#" class="btn btn-danger btn-block">Disconnettiti</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
+
                         </div>
                         <!-- /.navbar-collapse -->
                     </div>
@@ -112,15 +144,16 @@
                         <div class="row row-centered">
 
                             <c:forEach items="${restaurants}" var="restaurant">
-                                <div class="col-sm-6 col-md-4 col-centered">
+                                <div class="col-sm-6 col-xs-12 col-md-6 col-centered">
                                     <div class="thumbnail">
-                                        <img src="..." alt="Nessuna immagine disponibile">
+                                        <img class="img-responsive" src="img/ristoTest.jpg" alt="Nessuna immagine disponibile">
                                         <div class="caption">
                                             <h3>
                                                 <c:out value="${restaurant.name}" />
                                             </h3>
-                                            <p>
-                                                <c:out value="${restaurant.address}" />
+                                            <p> <a href="http://maps.google.com/?q=<c:out value=" ${restaurant.address} ${restaurant.city} " />"><span class="glyphicon glyphicon-map-marker"></span></a>
+                                                <c:out value="${restaurant.address}" />,
+                                                <c:out value="${restaurant.city}" />
                                             </p>
                                             <p>
                                                 <c:out value="${restaurant.description}" />
@@ -140,7 +173,7 @@
                     <!--footer-->
                     <footer>
                         <hr>
-                        <p>&copy; Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
+                        <p><span class="glyphicon glyphicon-heart-empty"></span> Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
                     </footer>
                     <!--/container-->
                 </div>

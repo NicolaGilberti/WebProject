@@ -6,6 +6,7 @@
 
 
 $(document).ready(function () {
+
     $(function () {
         $("#searchInput").autocomplete({
             source: function (request, response) {
@@ -13,7 +14,9 @@ $(document).ready(function () {
                     url: "SearchRestaurantAutocomplete",
                     minLength: 4,
                     type: "POST",
-                    data: {term: request.term},
+                    data: {
+                        term: request.term
+                    },
                     dataType: "json",
                     success: function (data) {
                         response(data);
@@ -23,4 +26,63 @@ $(document).ready(function () {
         });
     });
 
+    $(function () {
+        $("#city").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "SearchAdvancedAutocomplete",
+                    minLength: 4,
+                    type: "POST",
+                    data: {
+                        city: request.term
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            }
+        });
+    });
+
+
+    $(function () {
+        $("#country").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "SearchAdvancedAutocomplete",
+                    minLength: 4,
+                    type: "POST",
+                    data: {
+                        country: request.term
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            }
+        });
+    });
+
+    $(function () {
+        $("#cuisine").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "SearchAdvancedAutocomplete",
+                    minLength: 4,
+                    type: "POST",
+                    data: {
+                        cuisine: request.term
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            }
+        });
+    });
+
+    //fine jquery doc
 });
