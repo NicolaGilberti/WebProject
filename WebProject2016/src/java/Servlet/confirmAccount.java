@@ -59,7 +59,6 @@ public class confirmAccount extends HttpServlet {
                 md.update(results.getString("nickname").getBytes());
                 email = results.getString("email");
                 md.update(email.getBytes());
-                md.update(results.getString("password").getBytes());
                 //Se è già stato confermato reindirizziamo TODO
                 if(results.getInt("type")!=-1)
                 {

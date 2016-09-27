@@ -21,13 +21,12 @@ public class User {
     String nickname;
     String email;
     String password;
+    int id;
     int type;
     int last_log;
 
     public User() {
     }
-
-    
 
     public void setName(String name) {
         this.name = name;
@@ -35,6 +34,10 @@ public class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     public void setNickname(String nickname) {
@@ -68,6 +71,10 @@ public class User {
     public String getNickname() {
         return nickname;
     }
+    
+     public int getId(){
+        return id;
+   }
 
     public String getEmail() {
         return email;
