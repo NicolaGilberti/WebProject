@@ -4,9 +4,17 @@
         <servlet-name>searchServlet</servlet-name>
         <servlet-class>Servlet.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgottenPassword</servlet-name>
+        <servlet-class>Servlet.ForgottenPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>searchServlet</servlet-name>
         <url-pattern>/searchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgottenPassword</servlet-name>
+        <url-pattern>/ForgottenPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
