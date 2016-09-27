@@ -65,7 +65,6 @@ CREATE TABLE photos(
 id SERIAL PRIMARY KEY,
 name VARCHAR(25) NOT NULL,
 description VARCHAR(32000),
-path VARCHAR(255),
 id_restaurant INTEGER NOT NULL,
 id_user INTEGER NOT NULL,
 data_creation TIMESTAMP NOT NULL,
@@ -132,27 +131,20 @@ FOREIGN KEY (id_restaurant) REFERENCES restaurants (id)
 
 
 -- aggiunte 
-<<<<<<< HEAD:sql/tabelleDB.sql
-<<<<<<< HEAD:sql/tabelleDB.sql
 ALTER TABLE restaurants ADD COLUMN cap VARCHAR(5);
 ALTER TABLE restaurants ADD COLUMN city VARCHAR(25);
-ALTER TABLE restaurants ADD COLUMN country VARCHAR(255);
+ALTER TABLE restaurants ADD COLUMN country INTEGER;
 ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
 ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
 ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
-=======
-ALTER TABLE restaurant ADD COLUMN cap VARCHAR(5);
-ALTER TABLE restaurant ADD COLUMN citta VARCHAR(25);
-ALTER TABLE restaurant ADD COLUMN stato VARCHAR(255);
-ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
-ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
-ALTER TABLE restaurant ALTER COLUMN name TYPE VARCHAR(50);
->>>>>>> refs/remotes/origin/master:tabelleDB.sql
-=======
-ALTER TABLE restaurants ADD COLUMN cap VARCHAR(5);
-ALTER TABLE restaurants ADD COLUMN city VARCHAR(25);
-ALTER TABLE restaurants ADD COLUMN country VARCHAR(255);
-ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
-ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
-ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
->>>>>>> master:tabelleDB.sql
+ALTER TABLE restaurants ADD COLUMN telephone VARCHAR(10);
+ALTER TABLE restaurants ADD COLUMN e_mail VARCHAR(50);
+-- nuova tabella richiestissima
+CREATE TABLE states(
+id SERIAL PRIMARY KEY,
+name VARCHAR(50),
+abbr VARCHAR(3)
+);
+-- non so cosa sia il primo states ma funziona
+ALTER TABLE restaurants ADD CONSTRAINT states FOREIGN KEY (country) REFERENCES states (id) MATCH FULL;
+ALTER TABLE photos ALTER COLUMN name TYPE VARCHAR(100);
