@@ -54,13 +54,14 @@ public class Registrazione extends HttpServlet {
             String nickname = request.getParameter("nickname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-
-            //Inizio generazione MD5
+password= org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);   
+            //Inizio generazione MD5 per link
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(name.getBytes());
             md.update(surname.getBytes());
             md.update(nickname.getBytes());
             md.update(email.getBytes());
+             md.update(password.getBytes());
             byte[] digest = md.digest();
             StringBuffer sb = new StringBuffer();
             for (byte b : digest) {
@@ -68,17 +69,7 @@ public class Registrazione extends HttpServlet {
             }
             //Fine generazione MD5
 
-            //Inizio SHA256
-            MessageDigest pwdigest = MessageDigest.getInstance("SHA-256");
-            pwdigest.update(password.getBytes(StandardCharsets.UTF_8));
-            byte[] pwsha = pwdigest.digest();
-            StringBuffer buf = new StringBuffer();
-            for (byte y : pwsha) {
-                buf.append(String.format("%02x", y & 0xff));
-            }
-            String passwordcrypted = buf.toString();
-            // Fine SHA256
-
+           
             //Preparzione query
             ManagerDB db = new ManagerDB();
             Connection con = db.getConnection();
@@ -88,7 +79,7 @@ public class Registrazione extends HttpServlet {
             ps.setString(2, surname);
             ps.setString(3, nickname);
             ps.setString(4, email);
-            ps.setString(5, passwordcrypted);
+            ps.setString(5, password);
 
             int affectedRows = ps.executeUpdate();
             int userID; //Id dell'utente appena inserito
