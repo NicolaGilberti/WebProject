@@ -27,18 +27,16 @@ public class User implements java.io.Serializable{
     public User() {
     }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-         this.id = id;
-    }
     public void setName(String name) {
         this.name = name;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     public void setNickname(String nickname) {
@@ -72,6 +70,10 @@ public class User implements java.io.Serializable{
     public String getNickname() {
         return nickname;
     }
+    
+     public int getId(){
+        return id;
+   }
 
     public String getEmail() {
         return email;
