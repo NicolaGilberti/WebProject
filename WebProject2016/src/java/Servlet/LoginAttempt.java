@@ -29,9 +29,8 @@ import javax.servlet.annotation.WebServlet;
  *
  * @author David
  */
-
-@WebServlet(name = "Autenticazione", urlPatterns = {"/Autenticazione"})
-public class Autenticazione extends HttpServlet {
+@WebServlet(name = "LoginAttempt", urlPatterns = {"/LoginAttempt"})
+public class LoginAttempt extends HttpServlet {
 
     ManagerDB db = new ManagerDB();
     Connection con = db.getConnection();
@@ -47,45 +46,34 @@ public class Autenticazione extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+ PrintWriter out = response.getWriter();
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        //Converto la password inserita dall'utente in sha256
+        password= org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);   
 
-            out.print("<HTML><head></head><body>");
-            
-            User user;
-            user = authenticate(email, password);
+        User user;
+        user = authenticate(email, password);
+      
+        String exit = null;
+        // se non esiste, ridirigo verso pagina di login con messaggio di errore
+        if (user == null) {
+            // metto il messaggio di errore come attributo di Request, così nel JSP si vede il messaggio
+            //inserire qui il comportamento se la password e' sbagliata
+            out.println(0);
+        } else {
 
-            String exit = null;
-            // se non esiste, ridirigo verso pagina di login con messaggio di errore
-            if (user == null) {
-                // metto il messaggio di errore come attributo di Request, così nel JSP si vede il messaggio
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
 
-                //inserire qui il comportamento se la password e' sbagliata
-                response.sendRedirect(request.getContextPath() + "/header.jsp");
-            } else {
-
-                HttpSession session = request.getSession();
-                session.setAttribute("utente",user.getClass());
-
-                Integer autenticato = (Integer) session.getAttribute("accessCount");
-                if (autenticato == null) {
-                    autenticato = 0;
-                    //inserire qui il comportamento se la password e' giusta 
-                    response.sendRedirect(request.getContextPath() + "/header.jsp");
-
-                }
-                session.setAttribute("accessCount", autenticato);
-            }
-            response.setContentType("text/html;charset=UTF-8");
-
+             out.println(1);
         }
+       
 
     }
 
     public User authenticate(String email, String password) throws SQLException {
-       PreparedStatement stm = con.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
+        PreparedStatement stm = con.prepareStatement("SELECT * FROM users WHERE email = ? AND password = ?");
 
         try {
             stm.setString(1, email);
@@ -97,8 +85,12 @@ public class Autenticazione extends HttpServlet {
                 if (rs.next()) {
                     User user = new User();
                     user.setEmail(rs.getString("email"));
-                    user.setPassword(rs.getString("password"));
-
+                    user.setName(rs.getString("name"));
+                    user.setSurname(rs.getString("surname"));
+                    user.setNickname(rs.getString("nickname"));
+                    user.setId(rs.getInt("id"));
+                    //   user.setLast_log("last_log");
+                    user.setType(Integer.valueOf(rs.getString("type")));
                     return user;
                 } else {
                     return null;
@@ -124,11 +116,7 @@ public class Autenticazione extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Autenticazione.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
     /**
@@ -145,7 +133,7 @@ public class Autenticazione extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Autenticazione.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginAttempt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

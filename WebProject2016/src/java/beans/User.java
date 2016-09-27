@@ -14,21 +14,25 @@ package beans;
 /* Bella ragazzi, per utilizzare questa classe come bean usate questo tag nel JSP/HTML/dove vi pare <jsp:useBean id="userBean" class="utils.User"/>
 
 */
-public class User {
-
-    String name;
-    String surname;
-    String nickname;
-    String email;
-    String password;
-    int type;
-    int last_log;
+public class User implements java.io.Serializable{
+   private int id;
+   private String name;
+   private String surname;
+   private String nickname;
+   private String email;
+   private String password;
+   private int type;
+   private String last_log;
 
     public User() {
     }
 
-    
-
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+         this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -53,7 +57,7 @@ public class User {
         this.type = type;
     }
 
-    public void setLast_log(int last_log) {
+    public void setLast_log(String last_log) {
         this.last_log = last_log;
     }
 
@@ -81,7 +85,7 @@ public class User {
         return type;
     }
 
-    public int getLast_log() {
+    public String getLast_log() {
         return last_log;
     }
 

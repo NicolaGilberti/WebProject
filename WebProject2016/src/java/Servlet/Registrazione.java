@@ -49,8 +49,8 @@ public class Registrazione extends HttpServlet {
             String nickname = request.getParameter("nickname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-
-            //Inizio generazione MD5
+password= org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);   
+            //Inizio generazione MD5 per link
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(name.getBytes());
             md.update(surname.getBytes());
