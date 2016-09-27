@@ -1,0 +1,23 @@
+<%-- 
+    Document   : test
+    Created on : 27-set-2016, 14.30.52
+    Author     : RiccardoUni
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script type="text/javascript" src="MapLib.js"></script>
+        
+    </head>
+    <body>
+        <form>
+            <input type="text" id="address" />
+            <button type="button" onclick="getPositionFromAddress('address')">Invia</button>
+        </form>
+    </body>
+</html>
