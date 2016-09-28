@@ -88,7 +88,7 @@ $(document).ready(function () {
                 return el
             });
             visualizzaTabella();
-            $("#nresults").append("<p>Risultati trovati: " + data.length + "</p>");
+            $("#nresults").append('<p id="nresP">Risultati trovati: ' + data.length + "</p>");
         }
     });
 
@@ -101,5 +101,33 @@ $(document).ready(function () {
     $("#btnVal").click(function () {
         sortData("val");
     });
+
+
+    $("#searchForm").submit(function (event) {
+        event.preventDefault();
+        $(".row").empty();
+        $("#nresults").empty();
+
+        $.ajax({
+            type: 'GET',
+            url: 'SearchRestaurant',
+            data: {
+                searchinput: $('#searchInput').val()
+            },
+            success: function (response) {
+                //   var jsonstring= JSON.stringify(response);
+                //   console.log(JSON.stringify(jsonstring));
+                //
+                //now json variable contains data in json format
+                //let's display a few items
+                data = $.map(response, function (el) {
+                    return el
+                });
+                visualizzaTabella();
+                $("#nresults").append('<p id="nresP">Risultati trovati: ' + data.length + "</p>");
+            }
+        });
+    });
+
 
 });

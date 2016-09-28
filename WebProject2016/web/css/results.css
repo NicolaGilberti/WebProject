@@ -1,9 +1,25 @@
+p {
+    font-family: 'Lato', sans-serif;
+}
+
+#nresults {
+    padding-left: 0px;
+}
+
+.btn-toolbar {
+    margin-left: 0px;
+}
+
+#nresP {
+    font-size: 2em;
+}
+
 .glyphicon-map-marker {
     color: #fd746c;
 }
 
-.glyphicon-star{
-    color:yellow;
+.glyphicon-star {
+    color: yellow;
 }
 
 .thumbnail-container {

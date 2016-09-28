@@ -55,11 +55,33 @@
                 <!--main container-->
                 <div class="container">
 
-                    <div id="nresults"></div>
-                    <p>Ordina per:</p>
-                    <button class="btn btn-success" id="btnMinPrice">Prezzo Minimo</button>
-                    <button class="btn btn-success" id="btnName">Nome</button>
-                    <button class="btn btn-success" id="btnVal">Valutazione</button>
+                    <div class="col-md-12">
+                        <h2>Ricerca</h2>
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <form id="searchForm">
+                                    <input id="searchInput" type="text" class="form-control input-lg" placeholder="Inserisci cosa cercare" />
+                                    <span class="input-group-btn">
+                        <input type="submit" class="btn btn-info btn-lg" type="button"/>
+                            <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div id="nresults"></div>
+
+                        <div class="btn-toolbar demoPadder" role="toolbar" aria-label="Toolbar with button groups">
+                            <span class="inline pull-left">Ordina per: </span>
+                            <div class="btn-group" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-default" id="btnName">Nome</button>
+                                <button type="button" class="btn btn-default" id="btnVal">Valutazione</button>
+                                <button type="button" class="btn btn-default" id="btnMinPrice">Fascia di Prezzo</button>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     <!--thumbinail-container-->
                     <div class="thumbnail-container">
