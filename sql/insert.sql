@@ -1,4 +1,4 @@
--- users
+﻿-- users
 -- type: 2-> administrator 1-> ristoratore 0-> utente normale
 
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','6e1571e0492cf7bb96ad11402430699e1b7629dc11f647f7929d3b7ed6c7483d',2); -- password : sha256(nicolag)

@@ -54,7 +54,7 @@ public class SearchAdvancedAutocomplete extends HttpServlet {
         }
         else if(country != null)
         {
-            sql="SELECT DISTINCT country as a from restaurants WHERE LOWER(country) like '%"+country.toLowerCase()+"%'";
+            sql="SELECT DISTINCT name as a from states WHERE LOWER(name) like '%"+country.toLowerCase()+"%'";
         }
         else if(cuisine!=null)
         {

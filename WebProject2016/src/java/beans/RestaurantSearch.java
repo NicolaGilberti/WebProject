@@ -5,18 +5,40 @@
  */
 package beans;
 
+import java.util.Comparator;
+
 /**
  *
  * @author MirkoPortatile
  */
 public class RestaurantSearch implements java.io.Serializable {
-     // Properties.
+    // Properties.
+
     private String name;
     private String description;
     private String address;
     private String city;
+    private double minPrice;
+    private double maxPrice;
+
     private int id;
-    private String score;
+    private int score;
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    public double getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(double maxPrice) {
+        this.maxPrice = maxPrice;
+    }
 
     public String getName() {
         return name;
@@ -38,7 +60,7 @@ public class RestaurantSearch implements java.io.Serializable {
         return id;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
@@ -62,10 +84,15 @@ public class RestaurantSearch implements java.io.Serializable {
         this.id = id;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
-    
-    
-    
+
 }
+
+
+
+
+
+
+
