@@ -51,10 +51,11 @@
 
                         <%-- //Se l'utente esiste nella sessionScope vuol dire che e' loggato e non ha bisogno di vedere il tasto login --%>
                         <c:if test="${sessionScope.user == null}">
-                            <li class=""><a href="#" data-toggle="modal" data-target="#login-modal">Login<span class="sr-only">(current)</span></a></li>
-                            </c:if>
+                            <li class=""><a href="#" data-toggle="modal" data-target="#login-modal">Accedi<span class="sr-only">(current)</span></a></li>
+                        <li><a href="registrazione.html">Registrati</a></li>   
+                        </c:if>
 
-                        <li><a href="#">Link</a></li>
+                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">

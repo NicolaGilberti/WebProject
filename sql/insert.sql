@@ -1,12 +1,12 @@
--- users
+﻿-- users
 -- type: 2-> administrator 1-> ristoratore 0-> utente normale
 
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','f2968eaaf566c02af66ad16da3d89f71',2); -- password : md5(nicolag)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('David','Marinangeli','David M.','david.marinangeli@studenti.unitn.it','172522ec1028ab781d9dfd17eaca4427',2); -- password : md5(david)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mirko','Pani','Mirko P.','mirko.pani@studenti.unitn.it','13592f2caf86af30572a825229a2a8dc',2); -- password : md5(mirko)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Marco','Roberti','Marco R.','marco.roberti@studenti.unitn.it','f5888d0bb58d611107e11f7cbc41c97a',2); -- password : nicolag
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Riccardo','Grigoletto','Riccardo G.','riccardo.grigoletto@studenti.unitn.it','9667aacee4c11ab5cb1aee39cb183599',2); -- password : md5(riccardo)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Schiavon','Nicola S.','nicola.schiavon@studenti.unitn.it','deb97a759ee7b8ba42e02dddf2b412fe',2); -- password : md5(nicolas)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','6e1571e0492cf7bb96ad11402430699e1b7629dc11f647f7929d3b7ed6c7483d',2); -- password : sha256(nicolag)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('David','Marinangeli','David M.','david.marinangeli@studenti.unitn.it','07d046d5fac12b3f82daf5035b9aae86db5adc8275ebfbf05ec83005a4a8ba3e',2); -- password : sha256(david)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mirko','Pani','Mirko P.','mirko.pani@studenti.unitn.it','fe3ff87be21485302c816942c3d4e81702c472d7c3c0028cefd3c10fa5e17a11',2); -- password : sha256(mirko)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Marco','Roberti','Marco R.','marco.roberti@studenti.unitn.it','7c8ccc86c11654af029457d90fdd9d013ce6fb011ee8fdb1374832268cc8d967',2); -- password : sha256(marco)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Riccardo','Grigoletto','Riccardo G.','riccardo.grigoletto@studenti.unitn.it','30392496896dd377fd7885d6a65b279f3d37b28eadff543685e3790d58a9fbdb',2); -- password : sha256(riccardo)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Schiavon','Nicola S.','nicola.schiavon@studenti.unitn.it','807a09440428c0a8aef58bd3ece32938b0d76e638119e47619756f5c2c20ff3a',2); -- password : sha256(nicolas)
 
 -- opening_hours_range
 

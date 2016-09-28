@@ -6,6 +6,9 @@
 package Servlet;
 
 import beans.RestaurantSearch;
+import com.google.gson.Gson;
+import comparators.RestaurantSearchNameComparator;
+import comparators.RestaurantSearchValueComparator;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,13 +44,13 @@ public class SearchRestaurant extends HttpServlet {
         List<RestaurantSearch> restaurantsList = new ArrayList<RestaurantSearch>();
 
         //Se e' stata fatta la ricerca normale generiamo la query giusta
-        if (request.getParameter("searchinput") != null) {
+        if (request.getParameter("searchinput") != "") {
             String valoreInserito = request.getParameter("searchinput");
             valoreInserito = valoreInserito.replaceAll("'", "''");
             String[] valoriInseriti = valoreInserito.split("\\s+");
-            sql = "select id,name,description,address,city "
-                    + "from (select id,name,description,address,city,(name ||' , '|| address ||' , '||city) as t"
-                    + " from restaurants) as a "
+            sql = "select id,name,description,address,city,global_value,min_value,max_value "
+                    + "from (select restaurants.id,name,description,address,city,global_value,min_value,max_value,(name ||' , '|| address ||' , '||city) as t"
+                    + " from restaurants join price_range on restaurants.id_price_range=price_range.id) as a "
                     + "where t @@ '";
             for (int i = 0; i < valoriInseriti.length; i++) {
                 sql += valoriInseriti[i];
@@ -54,6 +58,15 @@ public class SearchRestaurant extends HttpServlet {
             }
             sql += "'";
         } //Altrimenti e' stata fatta la ricerca avanzata
+        
+        else if(request.getParameter("lat") != "")
+        {
+            String lat=request.getParameter("lat");
+        String longi=request.getParameter("long");
+            sql="select restaurants.id,name,description,address,city,global_value,min_value,max_value from restaurants join price_range on restaurants.id_price_range=price_range.id WHERE abs(latitude-"+lat
+                + ")<0.25 AND abs(longitude-"+longi+") <0.25";
+        
+        }    
         else {
             String city = request.getParameter("city");
             String country = request.getParameter("country");
@@ -63,19 +76,19 @@ public class SearchRestaurant extends HttpServlet {
                 if (!"".equals(sql)) {
                     sql += " INTERSECT ";
                 }
-                sql += "SELECT id,name,description,address,city FROM restaurants WHERE LOWER(city)='" + city.toLowerCase() + "'";
+                sql += "SELECT restaurants.id,name,description,address,city,global_value,min_value,max_value FROM restaurants join price_range on restaurants.id_price_range=price_range.id WHERE LOWER(city)='" + city.toLowerCase() + "'";
             }
             if (!"".equals(country)) {
                 if (!"".equals(sql)) {
                     sql += " INTERSECT ";
                 }
-                sql += "SELECT id,name,description,address,city  from restaurants WHERE LOWER(country) ='" + country.toLowerCase() + "'";
+                sql += "SELECT restaurants.id,name,description,address,city,global_value,min_value,max_value from restaurants join price_range on restaurants.id_price_range=price_range.id WHERE country=(select id from states where LOWER(name) ='" + country.toLowerCase() + "')";
             }
             if (!"".equals(cuisine)) {
                 if (!"".equals(sql)) {
                     sql += " INTERSECT ";
                 }
-                sql += "SELECT id,name,description,address,city from restaurants join restaurants_cuisine on restaurants.id=restaurants_cuisine.id_restaurant join (select id as a from cuisine where LOWER(name)='" + cuisine.toLowerCase() + "') as t on t.a=restaurants_cuisine.id_cuisine";
+                sql += "SELECT restaurants.id,name,description,address,city,global_value,min_value,max_value from restaurants join price_range on restaurants.id_price_range=price_range.id join restaurants_cuisine on restaurants.id=restaurants_cuisine.id_restaurant join (select id as a from cuisine where LOWER(name)='" + cuisine.toLowerCase() + "') as t on t.a=restaurants_cuisine.id_cuisine";
             }
         }
 
@@ -92,16 +105,21 @@ public class SearchRestaurant extends HttpServlet {
                 risto.setDescription(results.getString("description"));
                 risto.setAddress(results.getString("address"));
                 risto.setCity(results.getString("city"));
+                risto.setScore(results.getInt("global_value"));
+                risto.setMinPrice(results.getDouble("min_value"));
+                risto.setMaxPrice(results.getDouble("max_value"));
                 restaurantsList.add(risto);
             }
 
+            Collections.sort(restaurantsList, new RestaurantSearchNameComparator());
         } catch (SQLException ex) {
             Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        request.setAttribute("restaurants", restaurantsList); // Will be available as ${restaurants} in JSP
-        request.getRequestDispatcher("results.jsp").forward(request, response);
-
+     //   request.setAttribute("restaurants", restaurantsList); // Will be available as ${restaurants} in JSP
+     //   request.getRequestDispatcher("results.jsp").forward(request, response);
+ response.setContentType("application/json");
+ response.getWriter().write(new Gson().toJson(restaurantsList));
     }
 
     @Override

@@ -2,6 +2,10 @@
     color: #fd746c;
 }
 
+.glyphicon-star{
+    color:yellow;
+}
+
 .thumbnail-container {
     padding-top: 1.5em;
 }
@@ -9,7 +13,7 @@
 .thumbnail {
     font-family: 'Lato', sans-serif;
     color: #333333;
-    height: 28em;
+    height: 35em;
     overflow: auto;
     background-color: white;
     border-radius: 5px;
