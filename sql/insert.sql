@@ -3,7 +3,7 @@
 
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','6e1571e0492cf7bb96ad11402430699e1b7629dc11f647f7929d3b7ed6c7483d',2); -- password : sha256(nicolag)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('David','Marinangeli','David M.','david.marinangeli@studenti.unitn.it','07d046d5fac12b3f82daf5035b9aae86db5adc8275ebfbf05ec83005a4a8ba3e',2); -- password : sha256(david)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mirko','Pani','Mirko P.','mirko.pani@studenti.unitn.it','fe3ff87be21485302c816942c3d4e81702c472d7c3c0028cefd3c10fa5e17a11',2); -- password : sha256(mirko)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mirko','Pani','Mirko P.','mirko.pani@studenti.unitn.it','6eb44ff6ac59c9b9d39e7ac203910f0384e4c2d3a59c8bfd7fecb7a5f6de1e10',2); -- password : sha256(mirko)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Marco','Roberti','Marco R.','marco.roberti@studenti.unitn.it','7c8ccc86c11654af029457d90fdd9d013ce6fb011ee8fdb1374832268cc8d967',2); -- password : sha256(marco)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Riccardo','Grigoletto','Riccardo G.','riccardo.grigoletto@studenti.unitn.it','30392496896dd377fd7885d6a65b279f3d37b28eadff543685e3790d58a9fbdb',2); -- password : sha256(riccardo)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Schiavon','Nicola S.','nicola.schiavon@studenti.unitn.it','807a09440428c0a8aef58bd3ece32938b0d76e638119e47619756f5c2c20ff3a',2); -- password : sha256(nicolas)
@@ -512,4 +512,3 @@ INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES 
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('prova.jpg','Esterno Dal Pescatore',1,3,'2016-09-24 09:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante.jpg','Interni Uva e Menta',4,4,'2016-09-24 10:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante-bar-pizzeria-due-giganti-20110209-132031.jpg','Esterno Due Giganti',8,5,'2016-09-24 11:00:00');
-

@@ -712,7 +712,6 @@ BOOLEAN<y:LabelModel>
       </data>
     </node>
     <node id="n13">
-      <data key="d5"/>
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="90.0" width="150.21456134453774" x="-1294.7183246050404" y="-1101.7194768941606"/>
@@ -737,7 +736,7 @@ abbr<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.33054860722459745" nodeRatioY="0.08167317708333333" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.015625" x="62.19893634453774" y="28.298828125">INTEGER
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.015625" x="62.19893634453774" y="28.298828125">INTEGER
 VARCHAR(50)
 VARCHAR(3)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -985,7 +984,6 @@ VARCHAR(3)<y:LabelModel>
       </data>
     </edge>
     <edge id="e21" source="n2" target="n13">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="93.96770153295734" sy="-111.89877555789917" tx="0.0" ty="0.0">
