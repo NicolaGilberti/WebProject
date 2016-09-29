@@ -1,5 +1,25 @@
+p {
+    font-family: 'Lato', sans-serif;
+}
+
+#nresults {
+    padding-left: 0px;
+}
+
+.btn-toolbar {
+    margin-left: 0px;
+}
+
+#nresP {
+    font-size: 2em;
+}
+
 .glyphicon-map-marker {
     color: #fd746c;
+}
+
+.glyphicon-star {
+    color: yellow;
 }
 
 .thumbnail-container {
@@ -9,7 +29,7 @@
 .thumbnail {
     font-family: 'Lato', sans-serif;
     color: #333333;
-    height: 28em;
+    height: 35em;
     overflow: auto;
     background-color: white;
     border-radius: 5px;

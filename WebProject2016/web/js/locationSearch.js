@@ -9,7 +9,7 @@ function geoFindMe() {
     function success(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        var url = 'SearchByLocation?lat=' + latitude + '&long=' + longitude;
+        var url = 'results.jsp?lat=' + latitude + '&long=' + longitude;
         window.location.href = url;
     };
 
