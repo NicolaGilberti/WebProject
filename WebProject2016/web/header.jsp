@@ -25,7 +25,7 @@
                     </form>
 
                     <div class="login-help">
-                        <a href="registrazione.html">Registrati</a> - <a href="#">Password dimenticata?</a>
+                        <a href="registrazione.html">Registrati</a> - <a href="maildimodifica.html">Password dimenticata?</a>
                     </div>
                 </div>
             </div>
