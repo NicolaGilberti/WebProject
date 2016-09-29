@@ -4,6 +4,7 @@
     Author     : nicol
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,11 +29,37 @@
                 background: none;
             }
             .iconInfo {
-                padding-left: 50px;
+                padding-left: 55px;
                 padding-top: 2px;
             }
             .pUser {
                 /*margin-bottom: 5px;*/
+            }
+
+            @media screen and (max-width: 991px) {
+                .iconInfo {
+                    padding-left: 75px;
+                }
+            }
+
+            @media screen and (max-width: 626px) {
+                .iconInfo {
+                    padding-left: 25px;
+                    float: right;
+                }
+                .col-xs-center {
+                    float: none;
+                    display: block;
+                    margin: 0 auto;
+                }
+                h1.col-xs-center, h2.col-xs-center {
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+                .col-xs-6 > .pUser {
+                    text-align: center;
+                }
             }
         </style>
     </head>
@@ -109,13 +136,10 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="userImage col-sm-4">
-                    <img src="img/user.jpg" />
-                </div>
-                <div class="userName col-sm-8" >
-                    <div class="row">
-                        <h1 class="col-sm-6">
+            <div class="user-info">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="col-xs-center">
                             <%--<c:out value="${user.name + ' ' + user.surname}" /> --%>Nicola Schiavon
                         </h1>
                         <!--
@@ -123,79 +147,99 @@
                                                     <button type="submit" class="nameModifyButton iconButton"><span class="glyphicon glyphicon-edit"></span></button>
                                                 </form> -->
                     </div>
-                    <br>
+                </div>
+                <br>
 
-                    <div class="row">
+                <div class="row">
 
-                        <span class="iconInfo col-sm-1 glyphicon glyphicon-user"></span>
-                        <p class="col-sm-4 pUser">
+                    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                        <span class="iconInfo glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                        <p class="pUser">
                             <%--<c:out value="${user.nickname}" /> --%>nicolaburetta
                         </p>
-                        <div class="col-sm-7">
-                            <button type="button" class="iconButton" data-toggle="modal" data-target="#changeNickname"><span class="glyphicon glyphicon-pencil"></span></button>
-                        </div>
-
                     </div>
-                    <div class="row">
-                        <span class="iconInfo col-sm-1 glyphicon glyphicon-envelope"></span>
-                        <p class="col-sm-11 pUser">
+                    <div class="col-xs-3 col-sm-6 col-md-8 col-lg-8">
+                        <button type="button" class="iconButton" data-toggle="modal" data-target="#changeNickname"><span class="glyphicon glyphicon-pencil"></span></button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                        <span class="iconInfo glyphicon glyphicon-envelope"></span>
+                    </div>
+                    <div class="col-xs-6 col-sm-10 col-md-11 col-lg-11">
+                        <p class="pUser">
                             <%--<c:out value="${user.mail}" /> --%>nicolaburetta@gmail.com
                         </p>
                     </div>
-                    <div class="row">
-                        <span class="iconInfo col-sm-1 glyphicon glyphicon-time"></span>
-                        <p class="pUser col-sm-11">
+                    <div class="col-xs-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+                        <span class="iconInfo glyphicon glyphicon-time"></span>
+                    </div>
+                    <div class="col-xs-6 col-sm-10 col-md-11 col-lg-11">
+                        <p class="pUser">
                             <%--<c:out value="${user.last_log}" /> --%>ultimo accesso 12:34
                         </p>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-11">
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#changePassword">Modifica password</button>
-                        </div>
-                    </div>
-
+                    <div class="col-xs-3"></div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+                    <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+
+                        <button type="button" class="btn btn-default col-xs-center" data-toggle="modal" data-target="#changePassword">Modifica password</button>
+
+                    </div>
+                </div>
+
             </div>
 
-            <%--<c:if test="${user.type == RISTORATORE}">--%>
+
+            <%-- I MIEI RISTORANTI --%>
+
+            <%--<c:if test="${fn:length(restaurants) > 0}">--%>
+
+            <hr>
 
             <div class="row">
-                <div class="col-sm-12">
-                    <h2>I miei ristoranti</h2>
+                <div class="col-xs-12 col-md-12">
+                    <h2 class="col-xs-center">I miei ristoranti</h2>
                 </div>
 
-                <!-- Avvia servlet per ricerca miei ristoranti -->
-                <!--thumbinail-container-->
-                <div class="thumbnail-container">
-                    <div class="row row-centered">
+            </div>
 
-                        <c:forEach items="${restaurants}" var="restaurant">
-                            <div class="col-sm-6 col-xs-12 col-md-4 col-centered">
-                                <div class="thumbnail">
-                                    <img src="..." alt="Nessuna immagine disponibile">
-                                    <div class="caption">
-                                        <h3>
-                                            <c:out value="${restaurant.name}" />
-                                        </h3>
-                                        <p>
+            <!-- Avvia servlet per ricerca miei ristoranti -->
+            <!--thumbinail-container-->
+            <div class="thumbnail-container">
+                <div class="row row-centered">
+
+                    <c:forEach items="${restaurants}" var="restaurant">
+                        <div class="col-sm-6 col-xs-12 col-md-4 col-centered">
+                            <div class="thumbnail">
+                                <img src="..." alt="Nessuna immagine disponibile">
+                                <div class="caption">
+                                    <h3>
+                                        <c:out value="${restaurant.name}" />
+                                    </h3>
+                                    <p>
                                         <c:out value="${restaurant.address}" />
-                                        </p>
-                                        <p>
+                                    </p>
+                                    <p>
                                         <c:out value="${restaurant.description}" />
-                                        </p>
+                                    </p>
 
-                                    </div>
                                 </div>
                             </div>
-                        </c:forEach>
+                        </div>
+                    </c:forEach>
 
-                        <!--/row-->
-                    </div>
-                    <!--/thumbnail-container-->
+                    <!--/row-->
                 </div>
-                <!-- -->
-
+                <!--/thumbnail-container-->
             </div>
 
             <div class="row">
@@ -207,9 +251,16 @@
                 </div>
             </div>
 
-            <hr>
+            <%--</c:if> --%>
 
-            <%--</c:if>--%>
+            <%-- fine ristoranti --%>
+
+
+            <%-- LE MIE ULTIME RECENSIONI --%>
+
+            <%--<c:if test=${fn:length(reviews) > 0}>--%>
+
+            <hr>
 
             <div class="row">
                 <div class="col-sm-12">
@@ -217,6 +268,46 @@
                 </div>
             </div>
 
+            <c:forEach items="${reviews}" var="r">
+                <div class="review">
+                    <div class="row">
+                        <div class="col-sm-2 stars">
+                            <c:forEach var="i" begin="1" end="${r.getGlobalValue()}">
+                                <h4>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </h4>
+                            </c:forEach>
+                            <c:forEach var="i" begin="${r.getGlobalValue() + 1}" end="5">
+                                <h4>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </h4>
+                            </c:forEach>
+                        </div>
+                        <div class="col-sm-7">
+                            <h3>
+                                <c:out value="${r.getRestaurantName()}"></c:out>
+                                </h3>
+                            </div>
+                            <div class="col-sm-3">
+                                <h4>(<c:out value="${r.getRestaurantCity}"></c:out>)</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h5>
+                                <c:out value="${r.getDataCreation()}"></c:out>
+                                </h5>
+                            </div>
+                            <div class="col-sm-10">
+                            <c:out value="${r.getDescription()}"></c:out>
+                            </div>
+                        </div>
+                    </div>
+            </c:forEach>
+
+            <%-- fine recensioni --%>
+
+
             <div class="row">
                 <div class="col-sm-2">
                     <h3>
@@ -224,7 +315,7 @@
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
                     </h3>
                 </div>
                 <div class="col-sm-6">
@@ -301,11 +392,12 @@
                     </p>
                 </div>
             </div>
+
+
+            <%--</c:if>--%>
 
 
         </div>
-
-        <%--</c:if>--%>
 
     </body>
 </html>
