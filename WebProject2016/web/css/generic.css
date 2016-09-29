@@ -2,105 +2,6 @@ body {
     background-color: rgb(232, 232, 232);
 }
 
-
-/* navbar */
-
-.navbar-default {
-    background: #fd746c;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #fd746c, #ff9068);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #fd746c, #ff9068);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border: none;
-}
-
-
-/* title */
-
-.navbar-default .navbar-brand {
-    font-family: 'Indie Flower', cursive;
-    color: white;
-}
-
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
-}
-
-
-/* link */
-
-.navbar-default .navbar-nav>li>a {
-    color: white;
-}
-
-.navbar-default .navbar-nav>li>a:hover,
-.navbar-default .navbar-nav>li>a:focus {
-    color: #333;
-}
-
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:hover,
-.navbar-default .navbar-nav>.active>a:focus {
-    color: #555;
-    background-color: #E7E7E7;
-}
-
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:hover,
-.navbar-default .navbar-nav>.open>a:focus {
-    color: #555;
-    background-color: #D5D5D5;
-}
-
-
-/* caret */
-
-.navbar-default .navbar-nav>.dropdown>a .caret {
-    border-top-color: #777;
-    border-bottom-color: #777;
-}
-
-.navbar-default .navbar-nav>.dropdown>a:hover .caret,
-.navbar-default .navbar-nav>.dropdown>a:focus .caret {
-    border-top-color: #333;
-    border-bottom-color: #333;
-}
-
-.navbar-default .navbar-nav>.open>a .caret,
-.navbar-default .navbar-nav>.open>a:hover .caret,
-.navbar-default .navbar-nav>.open>a:focus .caret {
-    border-top-color: #555;
-    border-bottom-color: #555;
-}
-
-
-/* mobile version */
-
-.navbar-default .navbar-toggle {
-    border-color: #DDD;
-}
-
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #DDD;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #CCC;
-}
-
-@media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-        color: #777;
-    }
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
-        color: #333;
-    }
-}
-
 .col-centered {
     display: inline-block;
     float: none;
@@ -135,18 +36,6 @@ footer {
     font-family: 'Glyphicons Halflings';
     src: url('fonts/glyphicons-halflings-regular.eot');
     src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
-}
-
-.navbar-login {
-    width: 305px;
-    padding: 10px;
-    padding-bottom: 0px;
-}
-
-.navbar-login-session {
-    padding: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
 }
 
 .icon-size {

@@ -148,3 +148,5 @@ abbr VARCHAR(3)
 -- non so cosa sia il primo states ma funziona
 ALTER TABLE restaurants ADD CONSTRAINT states FOREIGN KEY (country) REFERENCES states (id) MATCH FULL;
 ALTER TABLE photos ALTER COLUMN name TYPE VARCHAR(100);
+ALTER TABLE restaurants ADD CONSTRAINT email UNIQUE (email);
+ALTER TABLE reviews ALTER COLUMN name TYPE VARCHAR(100);
