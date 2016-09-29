@@ -138,7 +138,7 @@ ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
 ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
 ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
 ALTER TABLE restaurants ADD COLUMN telephone VARCHAR(10);
-ALTER TABLE restaurants ADD COLUMN e_mail VARCHAR(50);
+ALTER TABLE restaurants ADD COLUMN email VARCHAR(50);
 -- nuova tabella richiestissima
 CREATE TABLE states(
 id SERIAL PRIMARY KEY,
