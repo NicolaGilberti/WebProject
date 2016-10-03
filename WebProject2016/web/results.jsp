@@ -85,7 +85,7 @@
                     <hr>
                     <!--thumbinail-container-->
                     <div class="thumbnail-container">
-                        <div class="row row-centered">
+                        <div class="row row-thumbnail row-centered">
 
                             <!--/row-->
                         </div>

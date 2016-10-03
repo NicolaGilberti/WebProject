@@ -34,7 +34,7 @@ function visualizzaTabella() {
             ' <p><span class="glyphicon glyphicon-tag"> </span> Fascia di prezzo: ' + restaurant.minPrice + ' - ' + restaurant.maxPrice + ' </p> <p>' + restaurant.description + '' +
             '   </p> </div></div>  </div>';
 
-        $(".row").append(html);
+        $(".row-thumbnail").append(html);
 
         //    console.log('<a href="' + restaurant.description + '">');
     });
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     $("#searchForm").submit(function (event) {
         event.preventDefault();
-        $(".row").empty();
+        $(".row-thumbnail").empty();
         $("#nresults").empty();
 
         $.ajax({

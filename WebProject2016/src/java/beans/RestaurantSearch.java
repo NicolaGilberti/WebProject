@@ -5,7 +5,9 @@
  */
 package beans;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  *
@@ -15,14 +17,31 @@ public class RestaurantSearch implements java.io.Serializable {
     // Properties.
 
     private String name;
-    private String description;
+    //private String description;
     private String address;
     private String city;
     private double minPrice;
     private double maxPrice;
-
+    private int numReviews;
     private int id;
     private int score;
+    private List<String> cuisineTypes=new ArrayList<>();
+
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(int numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    public List<String> getCuisineTypes() {
+        return cuisineTypes;
+    }
+
+    public void setCuisineTypes(List<String> cuisineTypes) {
+        this.cuisineTypes = cuisineTypes;
+    }
 
     public double getMinPrice() {
         return minPrice;
@@ -44,10 +63,6 @@ public class RestaurantSearch implements java.io.Serializable {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -66,10 +81,6 @@ public class RestaurantSearch implements java.io.Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setAddress(String address) {

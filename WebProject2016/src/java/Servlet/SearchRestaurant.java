@@ -102,16 +102,29 @@ public class SearchRestaurant extends HttpServlet {
                 RestaurantSearch risto = new RestaurantSearch();
                 risto.setId(results.getInt("id"));
                 risto.setName(results.getString("name"));
-                risto.setDescription(results.getString("description"));
+               // risto.setDescription(results.getString("description"));
                 risto.setAddress(results.getString("address"));
                 risto.setCity(results.getString("city"));
                 risto.setScore(results.getInt("global_value"));
                 risto.setMinPrice(results.getDouble("min_value"));
                 risto.setMaxPrice(results.getDouble("max_value"));
                 restaurantsList.add(risto);
+            
+            //Ora devo ottenere il numero di recensioni che ha quel ristorante
+           int nReviews=0;
+           String sqlReview="select * from cuisine join restaurants_cuisine on cuisine.id = restaurants_cuisine.id_cuisine where"; //TODO QUERY
+           
+            PreparedStatement psReviews = connection.prepareStatement(sqlReview);
+            ResultSet resultsReviews = ps.executeQuery();
+            while(resultsReviews.next())
+            {
+                nReviews=resultsReviews.getInt("nReviews");
+            }
+            risto.setNumReviews(nReviews);
+            
             }
 
-            Collections.sort(restaurantsList, new RestaurantSearchNameComparator());
+        //    Collections.sort(restaurantsList, new RestaurantSearchNameComparator());
         } catch (SQLException ex) {
             Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
