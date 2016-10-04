@@ -67,7 +67,7 @@ public class UserRestaurants extends HttpServlet {
         String sql_rest = "SELECT id,name,description,address,city FROM restaurants WHERE id_owner=" + id;
         String sql_comm = "SELECT r.id,r.global_value,r.food,r.service,r.value_for_money,r.atmosphere,r.name,r.description,r.data_creation,"
                 + "r.id_restaurant,r.id_creator,r.id_photo,rest.name,"
-                + "rest.city FROM reviews r JOIN restaurants rest WHERE id_creator=" + id;
+                + "rest.city FROM reviews r JOIN restaurants rest ON (rest.id = r.id_restaurant) WHERE r.id_creator=" + id;
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql_rest);
@@ -111,7 +111,7 @@ public class UserRestaurants extends HttpServlet {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserRestaurants.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         request.setAttribute("restaurants", restaurantsList); // Will be available as ${restaurants} in JSP
@@ -120,4 +120,9 @@ public class UserRestaurants extends HttpServlet {
 
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
