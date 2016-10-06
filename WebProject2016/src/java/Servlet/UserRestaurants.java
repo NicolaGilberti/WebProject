@@ -65,9 +65,20 @@ public class UserRestaurants extends HttpServlet {
         ManagerDB manager = new ManagerDB();
         Connection connection = manager.getConnection();
         String sql_rest = "SELECT id,name,description,address,city FROM restaurants WHERE id_owner=" + id;
-        String sql_comm = "SELECT r.id,r.global_value,r.food,r.service,r.value_for_money,r.atmosphere,r.name,r.description,r.data_creation,"
-                + "r.id_restaurant,r.id_creator,r.id_photo,rest.name,"
-                + "rest.city FROM reviews r JOIN restaurants rest ON (rest.id = r.id_restaurant) WHERE r.id_creator=" + id;
+        String sql_comm = "SELECT r.id AS id_review,"
+                + "r.global_value AS global_value,"
+                + "r.food AS food, r.service AS service,"
+                + "r.value_for_money AS value_for_money,"
+                + "r.atmosphere AS atmosphere,"
+                + "r.name AS name_review,"
+                + "r.description AS description,"
+                + "r.data_creation AS data_creation,"
+                + "r.id_restaurant AS id_restaurant,"
+                + "r.id_photo AS id_photo,"
+                + "rest.name AS name_restaurant,"
+                + "rest.city AS city_restaurant "
+                + "FROM reviews r JOIN restaurants rest ON (rest.id = id_restaurant) "
+                + "WHERE r.id_creator=" + id;
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql_rest);
@@ -93,30 +104,45 @@ public class UserRestaurants extends HttpServlet {
             //Per tutti i risultati
             while (results.next()) {
                 Review r = new Review();
-                r.setAtmosphere(results.getInt("r.atmosphere"));
-                r.setDataCreation(results.getString("r.data_creation"));
-                r.setDescription(results.getString("r.description"));
-                r.setFood(results.getInt("r.food"));
-                r.setGlobalValue(results.getInt("r.global_value"));
-                r.setId(results.getInt("r.id"));
+                r.setAtmosphere(results.getInt("atmosphere"));
+                r.setData_creation(results.getString("data_creation"));
+                r.setDescription(results.getString("description"));
+                r.setFood(results.getInt("food"));
+                r.setGlobal_value(results.getInt("global_value"));
+                r.setId(results.getInt("id_review"));
                 //r.setId_creator(results.getInt("id_creator"));
-                r.setId_photo(results.getInt("r.id_photo"));
-                r.setId_restaurant(results.getInt("r.id_restaurant"));
-                r.setName(results.getString("r.name"));
-                r.setService(results.getInt("r.service"));
-                r.setValueForMoney(results.getInt("r.value_for_money"));
-                r.setRestaurantName(results.getString("rest.name"));
-                r.setRestaurantCity(results.getString("rest.city"));
+                //r.setId_photo(results.getInt("id_photo"));
+                int id_photo = results.getInt("id_photo");
+                if (id_photo != 0) {
+                    String photoName_query = "SELECT name FROM photos WHERE id=" + id_photo;
+                    
+                    ps = connection.prepareStatement(photoName_query);
+                    ResultSet res1 = ps.executeQuery();
+                    
+                    if (res1.next()) {
+                        r.setPhoto_name(res1.getString("name"));
+                    }
+                }
+                else {
+                    r.setPhoto_name("no");
+                }
+                r.setId_restaurant(results.getInt("id_restaurant"));
+                r.setName(results.getString("name_review"));
+                r.setService(results.getInt("service"));
+                r.setValue_for_money(results.getInt("value_for_money"));
+                r.setRestaurant_name(results.getString("name_restaurant"));
+                r.setRestaurant_city(results.getString("city_restaurant"));
                 reviewsList.add(r);
             }
+
+            request.setAttribute("restaurants", restaurantsList); // Will be available as ${restaurants} in JSP
+            request.setAttribute("reviews", reviewsList); // Will be available as ${reviews} in JSP
+            //request.setAttribute("sql", id);
+            request.getRequestDispatcher("currentUser.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(UserRestaurants.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        request.setAttribute("restaurants", restaurantsList); // Will be available as ${restaurants} in JSP
-        request.setAttribute("reviews", reviewsList); // Will be available as ${reviews} in JSP
-        request.getRequestDispatcher("currentUser.jsp").forward(request, response);
 
     }
 
