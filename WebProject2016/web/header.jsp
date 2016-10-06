@@ -32,7 +32,7 @@
         </div>
 <!--fine modal login -->
 <!--inizio header -->
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-static-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -42,7 +42,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">TuttoBistro</a>
+                    <a class="navbar-brand" href="index.html">TuttoBistro</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,7 +58,7 @@
                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" >
                                 <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
@@ -77,26 +77,22 @@
                     </form>
                     <c:if test="${sessionScope.user != null}">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
+                            <li class="dropdown" >
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="glyphicon glyphicon-user"></span>
                                     <strong> <c:out value="${user.nickname}" /></strong>
                                     <span class="glyphicon glyphicon-chevron-down"></span>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" id="dropdown">
                                     <li>
                                         <div class="navbar-login">
                                             <div class="row">
-                                                <div class="col-lg-4">
-                                                    <p class="text-center">
-                                                        <span class="glyphicon glyphicon-user icon-size"></span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-lg-8">
+                                             
+                                                <div class="col-sm-12">
                                                     <p class="text-left"><strong><c:out value="${user.name}" /> <c:out value="${user.surname}" /></strong></p>
                                                     <p class="text-left small"><c:out value="${user.email}" /></p>
                                                     <p class="text-left">
-                                                        <a href="UserRestaurants" class="btn btn-primary btn-block btn-sm">Impostazioni</a>
+                                                        <a href="currentUser.jsp" class="btn btn-primary btn-block btn-sm">Impostazioni</a>
                                                     </p>
                                                 </div>
                                             </div>
