@@ -54,14 +54,14 @@ public class Registrazione extends HttpServlet {
             String nickname = request.getParameter("nickname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-password= org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);   
+            password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
             //Inizio generazione MD5 per link
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(name.getBytes());
             md.update(surname.getBytes());
             md.update(nickname.getBytes());
             md.update(email.getBytes());
-             md.update(password.getBytes());
+            md.update(password.getBytes());
             byte[] digest = md.digest();
             StringBuffer sb = new StringBuffer();
             for (byte b : digest) {
@@ -69,7 +69,6 @@ password= org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
             }
             //Fine generazione MD5
 
-           
             //Preparzione query
             ManagerDB db = new ManagerDB();
             Connection con = db.getConnection();

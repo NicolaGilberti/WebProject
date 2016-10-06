@@ -114,12 +114,12 @@ INTEGER<y:LabelModel>
     <node id="n2">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="335.84346299297647" width="250.8939075630251" x="-1669.2229578354777" y="-1070.515425686488"/>
+          <y:Geometry height="367.04751420064906" width="250.8939075630251" x="-1669.2229578354777" y="-1101.7194768941606"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="78.6044921875" x="86.14470768776255" y="4.0">restaurants</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="2.0" y="30.701171875"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="123.44695378151255" y="165.9217314964883">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="123.44695378151255" y="181.52375710032447">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -127,7 +127,7 @@ INTEGER<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="257.4765625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="39.18345024648852">PK
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="257.4765625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="41.290544383656425">PK
 
 
 
@@ -144,10 +144,10 @@ FK<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="2.220446049250313E-16" offsetX="4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="-0.03676617043996927" offsetX="4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="293.6875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.8662109375" x="25.580742844012548" y="39.18345024648852">id
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="311.79296875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="101.8662109375" x="25.580742844012548" y="41.290544383656425">id
 name
 description
 web_site_url
@@ -162,14 +162,15 @@ cap
 city
 country
 telephone
-e_mail<y:LabelModel>
+email
+n_visits<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.39804159418424057" nodeRatioY="0.05391043966926612" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.39804159418424057" nodeRatioY="0.03722480368267189" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="123.44695378151255" y="165.9217314964883">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="123.44695378151255" y="181.52375710032447">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -177,7 +178,7 @@ e_mail<y:LabelModel>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="293.6875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="121.12158203125" x="125.7723255317751" y="39.18345024648852">INTEGER
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="311.79296875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="121.12158203125" x="125.7723255317751" y="41.290544383656425">INTEGER
 VARCHAR(50)
 VARCHAR(32000)
 VARCHAR(255)
@@ -192,11 +193,12 @@ VARCHAR(5)
 VARCHAR(25)
 INTEGER
 VARCHAR(10)
-VARCHAR(50)<y:LabelModel>
+VARCHAR(50)
+INTEGER<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.05391043966926612" offsetX="-4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.5" labelRatioY="0.0" nodeRatioX="0.5" nodeRatioY="0.03722480368267189" offsetX="-4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:StyleProperties>
@@ -333,7 +335,7 @@ INTEGER
 INTEGER
 INTEGER
 INTEGER
-VARCHAR(25)
+VARCHAR(100)
 VARCHAR(32000)
 TIMESTAMP
 INTEGER
@@ -357,7 +359,7 @@ INTEGER<y:LabelModel>
           <y:Geometry height="195.9713938411669" width="288.6250000000002" x="-2138.4103386630113" y="-462.5726715994401"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="32.359375" x="128.1328125" y="4.0">user</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="39.0537109375" x="124.78564453125" y="4.0">users</y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="34.29706445296506">PK<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -714,7 +716,7 @@ BOOLEAN<y:LabelModel>
     <node id="n13">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="150.21456134453774" x="-1294.7183246050404" y="-1101.7194768941606"/>
+          <y:Geometry height="90.0" width="150.21456134453774" x="-1294.7183246050404" y="-1135.3572782238493"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="36.015625" x="57.09946817226887" y="4.0">states</y:NodeLabel>
@@ -764,7 +766,7 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e1" source="n1" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="-90.36094894441385" ty="-71.67441940309368"/>
+          <y:Path sx="0.0" sy="0.0" tx="-86.62420603006831" ty="-56.07239379925727"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -774,7 +776,7 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e2" source="n2" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-105.45333144036204" sy="113.82478662697463" tx="2.483987247242567" ty="-29.61371413799884"/>
+          <y:Path sx="-106.96244132418587" sy="129.42681223081104" tx="2.483987247242567" ty="-29.61371413799884"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -784,7 +786,7 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e3" source="n5" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="24.320907617503963" sy="-119.38025357387062" tx="-96.37815126050418" ty="-17.72437161327596"/>
+          <y:Path sx="24.320907617503963" sy="-119.38025357387062" tx="-96.37815126050418" ty="-19.37118705078843"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -794,7 +796,7 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e4" source="n8" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="2.543362137942018" sy="-8.877676846190584" tx="5.224140196590952" ty="17.74192759201867"/>
+          <y:Path sx="2.543362137942018" sy="-8.877676846190584" tx="5.224140196590952" ty="19.39037419916834"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -893,8 +895,8 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e13" source="n2" target="n6">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="45.47049351911937" sy="-68.94071757470579" tx="118.98114498391897" ty="19.668011956003966">
-            <y:Point x="-1118.5046105937238" y="-971.5344117647055"/>
+          <y:Path sx="45.47049351911937" sy="-75.34617106283815" tx="118.98114498391897" ty="19.668011956003966">
+            <y:Point x="-1118.5046105937238" y="-993.5418908566743"/>
             <y:Point x="-1118.5046105937238" y="-344.9189627228527"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -906,8 +908,8 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e14" source="n2" target="n6">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="55.532081849751194" sy="-82.45979041291764" tx="-19.453842374264923" ty="34.36215933699265">
-            <y:Point x="-1111.5369354065504" y="-985.0534846029174"/>
+          <y:Path sx="55.532081849751194" sy="-90.12133457306835" tx="-19.453842374264923" ty="34.36215933699265">
+            <y:Point x="-1111.5369354065504" y="-1008.3170543669045"/>
             <y:Point x="-1111.5369354065504" y="-330.22481534186403"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
@@ -929,7 +931,7 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e16" source="n10" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="-85.33015477909794" ty="45.5524713532086"/>
+          <y:Path sx="0.0" sy="0.0" tx="-83.71874384519447" ty="61.15449695704501"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -962,8 +964,8 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e19" source="n12" target="n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="105.84002350291166" ty="-98.05136253609373">
-            <y:Point x="-985.4335103590398" y="-1000.6450567260935"/>
+          <y:Path sx="0.0" sy="0.0" tx="105.84002350291166" ty="-107.16155843001329">
+            <y:Point x="-985.4335103590398" y="-1025.3572782238493"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -986,10 +988,7 @@ VARCHAR(3)<y:LabelModel>
     <edge id="e21" source="n2" target="n13">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="93.96770153295734" sy="-111.89877555789917" tx="0.0" ty="0.0">
-            <y:Point x="-1358.7673882352935" y="-1014.4924697478989"/>
-            <y:Point x="-1358.7673882352935" y="-1056.7194768941606"/>
-          </y:Path>
+          <y:Path sx="86.25079396993169" sy="-172.1615584300132" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
