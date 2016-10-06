@@ -355,7 +355,7 @@
 
             <%-- I MIEI RISTORANTI --%>
 
-            <c:if test="${fn:length(restaurants) gt 0}">
+            <c:if test="${user.type == 1}">
 
                 <hr class="user-hr">
 
