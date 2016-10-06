@@ -1,108 +1,116 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-            <!doctype html>
-            <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-            <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-            <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-            <!--[if gt IE 8]><!-->
-            <html class="no-js" lang="">
-            <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en">
 
-            <head>
-                <!--meta-->
-                <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-                <title>TuttoBistro</title>
-                <meta name="description" content="">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <!--/meta-->
-
-                <!--scripts-->
-                <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-                <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-                <script type="text/javascript" src="js/autoComplete.js"></script>
-                <script src="js/vendor/bootstrap.min.js "></script>
-                <script src="js/login.js"></script>
-                <script src="js/results.js"></script>
-                <!-- /scripts-->
-
-                <!--css-->
-                <link rel="stylesheet" href="css/bootstrap.min.css">
-                <style>
-                    body {
-                        padding-top: 50px;
-                        padding-bottom: 20px;
-                    }
-
-                </style>
-
-                <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato" rel="stylesheet">
-                <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-                <link rel="stylesheet" href="css/generic.css">
-                <link rel="stylesheet" href="css/header.css">
-                <link rel="stylesheet" href="css/results.css">
+<head>
+    <!--css-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/resultsStyle.css" rel="stylesheet">
 
 
-                <!--/css-->
+</head>
 
-            </head>
+<body>
 
-            <body>
-                <jsp:include page="header.jsp" />
 
-                <!--main container-->
-                <div class="container">
+    <!-- header -->
+    <jsp:include page="header.jsp" />
 
-                    <div class="col-md-12">
-                        <h2>Ricerca</h2>
-                        <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <form id="searchForm">
-                                    <input id="searchInput" type="text" class="form-control input-lg" placeholder="Inserisci cosa cercare" />
-                                    <span class="input-group-btn">
-                        <input type="submit" class="btn btn-info btn-lg" type="button"/>
-                            <i class="glyphicon glyphicon-search"></i>
-                    </span>
-                                </form>
-                            </div>
+
+
+    <!--Container generale -->
+    <div class="container-fluid">
+
+        <!--row generale -->
+        <div class="row">
+
+
+            <!--Barra sinistra -->
+            <div class="col-sm-3">
+                <a href="#"><strong class="bartitle"><i class="glyphicon glyphicon-wrench"></i> Strumenti</strong></a>
+
+                <hr>
+
+                <form id="searchForm">
+                    <div class="input-group stylish-input-group">
+
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search">
+                        <span class="input-group-addon">
+                                <button id="searchButton">
+                                    <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+
+                    </div>
+
+                    <div class="filters">
+                        <a href="#"><strong class="bartitle">Ordina per:</strong></a>
+                        <div class="list-group">
+                            <button type="button" class="list-group-item" id="btnName">Alfabetico</button>
+                            <button type="button" class="list-group-item" id="btnMinPrice">Fascia di Prezzo</button>
+                            <button type="button" class="list-group-item" id="btnVal">Valutazione</button>
                         </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <div id="nresults"></div>
-
-                        <div class="btn-toolbar demoPadder" role="toolbar" aria-label="Toolbar with button groups">
-                            <span class="inline pull-left">Ordina per: </span>
-                            <div class="btn-group" role="group" aria-label="First group">
-                                <button type="button" class="btn btn-default" id="btnName">Nome</button>
-                                <button type="button" class="btn btn-default" id="btnVal">Valutazione</button>
-                                <button type="button" class="btn btn-default" id="btnMinPrice">Fascia di Prezzo</button>
-                            </div>
+                    <a href="#" data-toggle="collapse" data-target="#collapsediv"><strong class="bartitle">Opzioni Filtro <i id="glyphicollapse" class="glyphicon glyphicon-chevron-down"></i></strong></a>
+                    <div id="collapsediv" class="collapse">
+                        <div class="radio">
+                            <label><input type="radio" name="priceradio" checked value="all">Tutti</label>
                         </div>
-                    </div>
-                    <hr>
-                    <!--thumbinail-container-->
-                    <div class="thumbnail-container">
-                        <div class="row row-thumbnail row-centered">
-
-                            <!--/row-->
+                        <div class="radio">
+                            <label><input type="radio" name="priceradio" value="less15">&#60; 15 euro</label>
                         </div>
-                        <!--/thumbnail-container-->
-                    </div>
+                        <div class="radio">
+                            <label><input type="radio" name="priceradio" value="between1535">Tra 15 e 35 euro </label>
+                        </div>
+
+                        <div class="radio">
+                            <label><input type="radio" name="priceradio" value="more35">&#62; 35 euro</label>
+                        </div>
+                   
+
+                    
+                        <button type="button" id="filterbtn">Filtra</button>
+                        <button type="button" id="decheckallbtn">Deseleziona tutti</button>
+                        <button type="button" id="checkallbtn">Seleziona tutti</button>
+                        <div id="cuisineChecks">
+
+                        </div>
+                   </div> <!--fine collapsediv-->
+                     <hr>
+</form>
+                
+            </div>
+            <!--/barra sinistra-->
 
 
-                    <!--footer-->
-                    <footer>
-                        <hr>
-                        <p><span class="glyphicon glyphicon-heart-empty"></span> Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
-                    </footer>
-                    <!--/container-->
+            <!--sezione destra -->
+            <div class="col-sm-9">
+                <strong class="bartitle"> <a href="#" ><i class="glyphicon glyphicon-search"></i> Risultati trovati: <span id="trovatiLabel"></span></a></strong>
+                <hr>
+                <div class="row" id="row-thumbnail">
+
                 </div>
+                <!--row-->
 
+            </div>
+            <!--/sezione destra-->
 
+        </div>
+        <!--/row generale -->
 
-            </body>
+    </div>
+    <!--/Container generale -->
 
-            </html>
+    <!--script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/results.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/autoComplete.js"></script>
+</body>
+
+</html>
