@@ -1,4 +1,4 @@
--- users
+﻿-- users
 -- type: 2-> administrator 1-> ristoratore 0-> utente normale
 
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','6e1571e0492cf7bb96ad11402430699e1b7629dc11f647f7929d3b7ed6c7483d',2); -- password : sha256(nicolag)
@@ -551,6 +551,7 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,3,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-19 12:00:00',10,12);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',11,2);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,7);
+<<<<<<< HEAD
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,3);
 
 -- replies con conferma di admin[1,6]
@@ -583,3 +584,6 @@ INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono C
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',23,1);-- 8
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',27,2);-- 10
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',29,3);-- 11
+
+INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,3);
+
