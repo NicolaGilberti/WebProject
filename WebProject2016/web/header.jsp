@@ -92,7 +92,7 @@
                                                     <p class="text-left"><strong><c:out value="${user.name}" /> <c:out value="${user.surname}" /></strong></p>
                                                     <p class="text-left small"><c:out value="${user.email}" /></p>
                                                     <p class="text-left">
-                                                        <a href="currentUser.jsp" class="btn btn-primary btn-block btn-sm">Impostazioni</a>
+                                                        <a href="UserRestaurants" class="btn btn-primary btn-block btn-sm">Impostazioni</a>
                                                     </p>
                                                 </div>
                                             </div>
