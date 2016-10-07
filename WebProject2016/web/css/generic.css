@@ -18,6 +18,12 @@ body {
     text-align: center;
 }
 
+.row{
+    
+    padding-bottom: 90px;
+    
+}
+
 #nresults {
     padding-top: 1em;
     padding-left: 4px;

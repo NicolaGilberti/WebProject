@@ -61,7 +61,6 @@ public class Registrazione extends HttpServlet {
             md.update(surname.getBytes());
             md.update(nickname.getBytes());
             md.update(email.getBytes());
-            md.update(password.getBytes());
             byte[] digest = md.digest();
             StringBuffer sb = new StringBuffer();
             for (byte b : digest) {
