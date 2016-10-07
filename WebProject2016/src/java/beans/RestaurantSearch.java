@@ -17,7 +17,7 @@ public class RestaurantSearch implements java.io.Serializable {
     // Properties.
 
     private String name;
-    //private String description;
+    private String description;
     private String address;
     private String city;
     private double minPrice;
@@ -83,6 +83,14 @@ public class RestaurantSearch implements java.io.Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getScore() {
