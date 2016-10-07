@@ -5,7 +5,9 @@
  */
 package beans;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  *
@@ -20,9 +22,36 @@ public class RestaurantSearch implements java.io.Serializable {
     private String city;
     private double minPrice;
     private double maxPrice;
-
+    private int numReviews;
     private int id;
     private int score;
+    private String imgPath;
+ private List<Cuisine> cuisineTypes=new ArrayList<>();
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+   
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(int numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    public List<Cuisine> getCuisineTypes() {
+        return cuisineTypes;
+    }
+
+    public void setCuisineTypes(List<Cuisine> cuisineTypes) {
+        this.cuisineTypes = cuisineTypes;
+        
+    }
 
     public double getMinPrice() {
         return minPrice;
@@ -44,10 +73,6 @@ public class RestaurantSearch implements java.io.Serializable {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -60,16 +85,20 @@ public class RestaurantSearch implements java.io.Serializable {
         return id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public int getScore() {
         return score;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setAddress(String address) {

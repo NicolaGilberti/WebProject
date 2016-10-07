@@ -1,4 +1,4 @@
--- il database lo ho chiamato WebProjectDB io se date altro nome c'è dda stare attenti durante la gestione delal connessione
+﻿-- il database lo ho chiamato WebProjectDB io se date altro nome c'è dda stare attenti durante la gestione delal connessione
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -84,7 +84,7 @@ description VARCHAR(32000),
 data_creation TIMESTAMP NOT NULL,
 id_restaurant INTEGER NOT NULL,
 id_creator INTEGER NOT NULL,
-id_photo INTEGER NOT NULL,
+id_photo INTEGER,
 FOREIGN KEY (id_restaurant) REFERENCES restaurants (id),
 FOREIGN KEY (id_creator) REFERENCES users (id),
 FOREIGN KEY (id_photo) REFERENCES photos (id)
@@ -106,8 +106,8 @@ description VARCHAR(32000) NOT NULL,
 data_creation TIMESTAMP NOT NULL,
 id_review INTEGER NOT NULL,
 id_owner INTEGER NOT NULL,
-date_validation TIMESTAMP NOT NULL,
-id_validator INTEGER NOT NULL,
+date_validation TIMESTAMP,
+id_validator INTEGER,
 FOREIGN KEY (id_validator) REFERENCES users (id),
 FOREIGN KEY (id_owner) REFERENCES users (id),
 FOREIGN KEY (id_review) REFERENCES reviews (id)
@@ -149,4 +149,6 @@ abbr VARCHAR(3)
 ALTER TABLE restaurants ADD CONSTRAINT states FOREIGN KEY (country) REFERENCES states (id) MATCH FULL;
 ALTER TABLE photos ALTER COLUMN name TYPE VARCHAR(100);
 ALTER TABLE restaurants ADD CONSTRAINT email UNIQUE (email);
+
 ALTER TABLE reviews ALTER COLUMN name TYPE VARCHAR(100);
+ALTER TABLE restaurants ADD COLUMN n_visits INTEGER;

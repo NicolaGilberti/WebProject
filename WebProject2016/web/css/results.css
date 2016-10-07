@@ -63,3 +63,10 @@ p {
     border: none;
     box-shadow: none;
 }
+.checkspan{
+    display:block;
+    
+}
+.checkspan  label {
+    text-transform: capitalize;
+}
