@@ -74,7 +74,7 @@ public class confirmAccount extends HttpServlet {
 
             //Il codice corrisponde. Confermiamo account
             if (sb.toString().equals(md5)) {
-                query = "UPDATE users SET type=1 WHERE id=?";
+                query = "UPDATE users SET type=0 WHERE id=?";
                 ps = con.prepareStatement(query);
                 ps.setInt(1, Integer.valueOf(id));
                 int affected = ps.executeUpdate();
