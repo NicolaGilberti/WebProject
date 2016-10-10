@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -45,3 +46,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+=======
+/WebProject2016/nbproject/private/
+/WebProject2016/build/
+/WebProject2016/dist/
+>>>>>>> 25234f7fbc6ac6787148d1d354ceee69bb96c8b8

@@ -1,0 +1,155 @@
+.row-titolo {
+    padding-bottom: 3em;
+}
+
+#titolo {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    font-size: 6em;
+    color: white;
+}
+
+.transparent-input {
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    box-shadow: none;
+    color: white;
+    font-size: 2em;
+}
+
+@media (max-width: 767px) {
+    #titolo {
+        font-size: 4em;
+    }
+    .transparent-input {
+        font-size: 1em;
+    }
+}
+
+#btn-sinistro {
+    margin-right: 10px;
+}
+
+.btn-custom {
+    text-transform: capitalize;
+    font-family: 'Lato', sans-serif;
+    background: none;
+    padding: 8px 22px;
+    border: 2px solid #ff6666;
+    color: #ff6666;
+    border-radius: 5px;
+}
+
+.btn-custom:hover {
+    color: white;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    /*css for full size background image*/
+    background: url(../img/index/background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    background-color: #060;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+input.transparent-input {
+    border: none !important;
+    outline: none !important;
+}
+
+.transparent-input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.ui-menu {
+    background: rgb(34, 34, 34);
+    /* for IE */
+    background: rgba(34, 34, 34, 0.75);
+    color: white;
+}
+
+.ui-menu-item {
+    background: rgb(34, 34, 34);
+    /* for IE */
+    background: rgba(34, 34, 34, 0.75);
+}
+
+.ui-menu .ui-menu-item a {
+    color: #ffffff;
+    border-radius: 0px;
+}
+
+.ui-menu .ui-menu-item a:hover {
+    color: #ff6666;
+    background: #656565;
+    border-radius: 0px;
+}
+
+.glass {
+    background-color: rgba(34, 34, 34, 0.75);
+    border-radius: 5px;
+}
+
+.insidecollapse {}
+
+.glyphicon-search,
+.glyphicon-globe,
+.glyphicon-briefcase {
+    padding-right: 1em;
+}
+
+.row-search {
+    height: 10em;
+}
+
+hr {
+    width: 15em;
+    /* This leaves 10px margin on left and right. If only right margin is needed try margin-right: 10px; */
+}
+
+.input-text {
+    color: black;
+    font-family: 'Lato', sans-serif;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+}
+
+body.modal-open .container {
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.9);
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-body p {
+    color: white;
+}
+
+.modal .close {
+    color: #ff6666;
+    text-shadow: none;
+    opacity: 1;
+}
+
+.ui-autocomplete {
+    z-index: 2147483647;
+}
