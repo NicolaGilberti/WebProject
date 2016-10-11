@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Registrazione</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="Registrazione" method="POST" >
+            <table>
+                <tr>
+                    <td>Nome: </td>
+                    <td><input required type="text" name="name" maxlength="255"></td>
+                </tr>
+                <tr>
+                    <td>Cognome: </td>
+                    <td><input required type="text" name="surname" maxlength="255"></td>
+                </tr>
+                <tr>
+                    <td>Nickname:</td>
+                    <td><input required type="text" name="nickname" maxlength="25"></td>
+                </tr>
+                <tr>
+                    <td>Mail: </td>
+                    <td><input required type="email" name="email" maxlength="255"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input required type="password" name="password" maxlength="255" pattern= "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ></td>
+                </tr>
+                <td>
+                    <input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+
+        </form> 
+    </body>
+</html>
