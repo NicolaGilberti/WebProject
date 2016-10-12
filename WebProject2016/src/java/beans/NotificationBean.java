@@ -15,14 +15,16 @@ import utils.NotificationReplies;
  * @author Marco
  */
 public class NotificationBean implements java.io.Serializable {
-   private  ArrayList replies;
-   private ArrayList chowner;
-   private ArrayList delphotos;
+   private ArrayList replies = new ArrayList();
+   private ArrayList chowner = new ArrayList();;
+   private ArrayList delphotos = new ArrayList();
+   
+   
    
    public NotificationBean(){
-       replies = new ArrayList();
-       chowner = new ArrayList();
-       delphotos = new ArrayList();
+      // replies = new ArrayList();
+       //chowner = new ArrayList();
+       //delphotos = new ArrayList();
    }
    
    public void addReplies(NotificationReplies rep){
@@ -34,7 +36,50 @@ public class NotificationBean implements java.io.Serializable {
     public void addDelPhotos(DeletePhotoNotification rep){
        replies.add(rep);
    }
-         
-    
-    
-}
+
+    public ArrayList getReplies() {
+        return replies;
+    }
+
+    public ArrayList getChowner() {
+        return chowner;
+    }
+
+    public ArrayList getDelphotos() {
+        return delphotos;
+    }
+        
+   public NotificationReplies getReplies(int i){
+       return (NotificationReplies)replies.get(i);
+   }
+   
+   public ChangeOwnerNotification getChOwner(int i){
+       return (ChangeOwnerNotification)chowner.get(i);
+   }
+   
+   public DeletePhotoNotification getDeletePhoto(int i){
+       return (DeletePhotoNotification)delphotos.get(i);
+   }
+   
+   public int getRepliesSize(){
+       return replies.size();
+   }
+   public int getChOwnerSize(){
+       return chowner.size();
+   }
+   public int getDeletePhotoSize(){
+       return delphotos.size();
+   }
+
+    public void setReplies(ArrayList replies) {
+        this.replies = replies;
+    }
+
+    public void setChowner(ArrayList chowner) {
+        this.chowner = chowner;
+    }
+
+    public void setDelphotos(ArrayList delphotos) {
+        this.delphotos = delphotos;
+    }
+}   

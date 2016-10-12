@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import utils.ChangeOwnerNotification;
 import utils.DeletePhotoNotification;
 import utils.NotificationReplies;
@@ -32,17 +31,17 @@ public class GetNotification {
         NotificationBean notification = new NotificationBean();
         //mi creo un array con le replies
         //mi serve commento user 
-        PreparedStatement replies = con.prepareStatement("SELECT t1.id AS idrep, t1.data_creation AS datarep,t2.data_creation AS revdata, t1.description AS repdes, t2.description AS rewdes, users.nickname AS customer,t4.nickname AS ristoratore,users.id FROM (replies AS t1 INNER JOIN reviews AS t2 ON (t1.id_review = t2.id)) INNER JOIN users ON (t2.id_creator = users.id) JOIN users AS t4 ON ( t1.id_owner = t4.id) WHERE t1.id_validator IS NULL");
+        PreparedStatement replies = con.prepareStatement("SELECT t1.id AS idrep, t1.data_creation AS datarep,t2.data_creation AS revdata, t1.description AS repdes, t2.description AS rewdes, users.nickname AS customer,t4.nickname AS ristoratore FROM (replies AS t1 INNER JOIN reviews AS t2 ON (t1.id_review = t2.id)) INNER JOIN users ON (t2.id_creator = users.id) JOIN users AS t4 ON ( t1.id_owner = t4.id) WHERE t1.id_validator IS NULL");
         ResultSet rs = replies.executeQuery();
         while(rs.next()){
             NotificationReplies t1 = new NotificationReplies();
-            t1.setIdrep(rs.getInt("id"));
+            t1.setIdrep(rs.getInt("idrep"));
             t1.setCustomer(rs.getString("customer"));
             t1.setDatarep(rs.getDate("datarep"));
-            t1.setDatarew(rs.getDate("rew"));
+            t1.setDatarew(rs.getDate("revdata"));
             t1.setReplydescription(rs.getString("repdes"));
-            t1.setReviewdescription("rewdes");
-            t1.setRistoratore("ristoratore");
+            t1.setReviewdescription(rs.getString("rewdes"));
+            t1.setRistoratore(rs.getString("ristoratore"));
             notification.addReplies(t1);
         }
         
@@ -71,8 +70,6 @@ public class GetNotification {
             t1.setUsrid(rs.getInt("usrid"));
             notification.addDelPhotos(t1);
         }
-        
-
         return notification;
     }
     
