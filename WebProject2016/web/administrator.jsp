@@ -5,7 +5,6 @@
 --%>
 <%@page import="beans.NotificationBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@include file="header.jsp" %>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,24 +17,40 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>JSP Page</title>     
+        <script type="text/javascript">
+           
+            var url = 'serevlet/SearchNotification.java';
+
+            $(document).ready(function() {
+
+            $.ajaxSetup({ cache: true }); 
+            
+            setInterval(function() {
+                $("#displayarea").load("SearchNotification")}, 60000);
+            });
+ 
+        </script>
     </head>
     <body>
-        <div class="container-fluid">
+        <div id="displayarea">
+        <jsp:include page="header.jsp"/>
+        <div class="container-fluid" >
            <div class="panel panel-default">
                 <div class="panel-body">
                     <h2> Benvenuto <strong> Nome Cognome Admin Tacchino</strong>
-                   <button type="button" class="btn btn-lg" aria-label="Left Align" style="float:right ">
-                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                  </button></h2>
+                        <form method="POST" action ="SearchNotification">
+                             <button class="btn btn-lg" type="submit" style="float:right" ><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+                        </form>
+                    </h2>
                 </div>
               </div>
-             <ul class="nav nav-tabs">
-                 <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong></h3></a></li>
-                  <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request</strong></h3></a></li>
-                  <li><a data-toggle="tab" href="#menu2"><h3><strong>Delete Photo Request</strong></h3></a></li>
+            <ul class="nav nav-tabs" style="display: inline">
+                 <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
+                  <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
+                  <li><a data-toggle="tab" href="#menu2"><h3><strong>Delete Photo Request </strong><span class="badge">${fn:length(noty.delphotos)}</span></h3></a></li>
              </ul>
-              <div class="tab-content">
+            <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <p>
                         <c:if test="${fn:length(noty.replies) gt 0}">
@@ -73,8 +88,8 @@
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <p>
-                        <c:if test="${fn:length(noty.chowner) gt 0}">
-                          <c:forEach var="notbean" items="${noty.replies}">
+                        <c:if test="${fn:length(noty.delphotos) gt 0}">
+                          <c:forEach var="notbean" items="${noty.delphotos}">
                                 <div class="list-group">
                                  <a href="#" class="list-group-item">
                                        <strong><c:out value="${notbean.ristoratore}"/></strong>
@@ -83,7 +98,7 @@
                                </div>
                           </c:forEach>
                          </c:if>
-                         <c:if test="${empty noty.chowner}">
+                         <c:if test="${empty noty.delphotos}">
                              <h1> Per ora non ci sono notifiche, torna più tardi</h1>
                          </c:if>
                     <p>
@@ -96,6 +111,7 @@
                     <p>Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
                 </footer>
             </div>
+        </div>
         </div>
     </body>
 </html>

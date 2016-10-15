@@ -37,7 +37,8 @@ public class SearchNotification extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, Throwable {
+        //response.setHeader("Cache-Control","no-cache");
         response.setContentType("text/html;charset=UTF-8");
         NotificationBean notbean = new NotificationBean();
         GetNotification notify = new GetNotification();
@@ -71,6 +72,8 @@ public class SearchNotification extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
            // Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Throwable ex) {
+            Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,6 +92,8 @@ public class SearchNotification extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
           //  Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Throwable ex) {
+            Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

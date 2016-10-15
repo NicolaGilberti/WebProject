@@ -27,7 +27,7 @@ public class GetNotification {
         con = db.getConnection();
     }
     
-    public NotificationBean getAllNotification() throws SQLException{
+    public NotificationBean getAllNotification() throws SQLException, Throwable{
         NotificationBean notification = new NotificationBean();
         //mi creo un array con le replies
         //mi serve commento user 
@@ -70,7 +70,19 @@ public class GetNotification {
             t1.setUsrid(rs.getInt("usrid"));
             notification.addDelPhotos(t1);
         }
+        
+        this.finalize();
         return notification;
     }
+    
+    @Override
+    protected void finalize() throws Throwable  
+{  
+    try { con.close(); } 
+    catch (SQLException e) { 
+        e.printStackTrace();
+    }
+    super.finalize();  
+}  
     
 }
