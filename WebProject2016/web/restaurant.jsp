@@ -46,28 +46,7 @@
             }
         </style>
         <!--css-->
-        <script type="text/javascript">
-            function createMap(lat, long, htmlID) {
-                var myCenter = new google.maps.LatLng(lat, long);
-
-                function initialize() {
-                    var mapProp = {
-                        center: myCenter,
-                        zoom: 14,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-
-                    var marker = new google.maps.Marker({
-                        position: myCenter
-                    });
-
-                    var map = new google.maps.Map(document.getElementById(htmlID), mapProp);
-                    marker.setMap(map);
-                }
-
-                google.maps.event.addDomListener(window, 'load', initialize);
-            }
-        </script>
+    
 
         <title>JSP Page</title>
     </head>
@@ -188,6 +167,5 @@
         <!-- map -->
         <button onclick="createMap(1.1, 1.1, 'map');">click for map</button>
         <div id="map" style="width: 300px; height: 200px;"></div>
-
     </body>
 </html>

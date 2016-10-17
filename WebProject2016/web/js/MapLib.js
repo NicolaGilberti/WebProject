@@ -11,7 +11,7 @@ In HTML:
 	function createMap(lat, long, htmlID) {
 		var myCenter = new google.maps.LatLng(lat, long);
 
-		function initialize() {
+		
 			var mapProp = {
 				center:myCenter,
 				zoom:14,
@@ -27,7 +27,7 @@ In HTML:
 		}
 
 		google.maps.event.addDomListener(window, 'load', initialize);
-	}
+	
 
 	/* 
 	list:
