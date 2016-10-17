@@ -3,6 +3,7 @@
     Created on : 11-ott-2016, 11.12.58
     Author     : Marco
 --%>
+<%@page import="utils.NotificationReplies"%>
 <%@page import="beans.NotificationBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
@@ -56,7 +57,7 @@
                         <c:if test="${fn:length(noty.replies) gt 0}">
                             <c:forEach var="notbean" items="${noty.replies}">
                                    <div class="list-group">
-                                    <a href="#" class="list-group-item">
+                                       <a href="showreplyconfirm.jsp?notbean=${notbean.idrep}" class="list-group-item">
                                           <strong><c:out value="${notbean.ristoratore}"/></strong>
                                           Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
                                     </a>
@@ -113,5 +114,6 @@
             </div>
         </div>
         </div>
+         
     </body>
 </html>
