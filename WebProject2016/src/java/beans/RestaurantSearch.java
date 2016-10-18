@@ -26,7 +26,16 @@ public class RestaurantSearch implements java.io.Serializable {
     private int id;
     private int score;
     private String imgPath;
- private List<Cuisine> cuisineTypes=new ArrayList<>();
+    private int globalValue;
+    private List<Cuisine> cuisineTypes = new ArrayList<>();
+
+    public int getGlobalValue() {
+        return globalValue;
+    }
+
+    public void setGlobalValue(int globalValue) {
+        this.globalValue = globalValue;
+    }
 
     public String getImgPath() {
         return imgPath;
@@ -35,7 +44,7 @@ public class RestaurantSearch implements java.io.Serializable {
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
     }
-   
+
     public int getNumReviews() {
         return numReviews;
     }
@@ -50,7 +59,7 @@ public class RestaurantSearch implements java.io.Serializable {
 
     public void setCuisineTypes(List<Cuisine> cuisineTypes) {
         this.cuisineTypes = cuisineTypes;
-        
+
     }
 
     public double getMinPrice() {
@@ -118,10 +127,3 @@ public class RestaurantSearch implements java.io.Serializable {
     }
 
 }
-
-
-
-
-
-
-
