@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--css-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Lato" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <link href="css/header.css" rel="stylesheet">
     <link href="css/resultsStyle.css" rel="stylesheet">
