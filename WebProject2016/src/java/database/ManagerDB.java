@@ -38,4 +38,5 @@ public class ManagerDB {
    public Connection getConnection(){
        return this.c;
    }
+   
 }
