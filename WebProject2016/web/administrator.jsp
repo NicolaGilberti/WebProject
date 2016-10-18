@@ -39,11 +39,7 @@
         <div class="container-fluid" >
            <div class="panel panel-default">
                 <div class="panel-body">
-                    <h2> Benvenuto <strong> Nome Cognome Admin Tacchino</strong>
-                        <form method="POST" action ="SearchNotification">
-                             <button class="btn btn-lg" type="submit" style="float:right" ><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
-                        </form>
-                    </h2>
+                    <h2> Benvenuto <strong><c:out value="${user.nickname}"></c:out></strong> </h2>
                 </div>
               </div>
             <ul class="nav nav-tabs" style="display: inline">
