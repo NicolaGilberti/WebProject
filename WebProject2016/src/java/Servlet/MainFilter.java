@@ -15,12 +15,15 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author David
  */
-public class AuthFilter implements Filter {
+public class MainFilter implements Filter {
     
     private static final boolean debug = true;
 
@@ -29,14 +32,26 @@ public class AuthFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public AuthFilter() {
+    public MainFilter() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("AuthFilter:DoBeforeProcessing");
+            log("MainFilter:DoBeforeProcessing");
         }
+        
+        HttpServletResponse resp = (HttpServletResponse)response;
+        HttpServletRequest req = (HttpServletRequest)request;
+        
+        
+        if(req.getSession().getAttribute("user") == null){
+        JOptionPane.showMessageDialog(null,"Porcodido");
+        resp.sendRedirect("nonautorizzatonfo.html");
+        
+        }
+        
+       
 
         // Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
@@ -63,7 +78,7 @@ public class AuthFilter implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("AuthFilter:DoAfterProcessing");
+            log("MainFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -99,9 +114,10 @@ public class AuthFilter implements Filter {
             throws IOException, ServletException {
         
         if (debug) {
-            log("AuthFilter:doFilter()");
+            log("MainFilter:doFilter()");
         }
         
+        //JOptionPane.showMessageDialog(null,"Porcodido 2");
         doBeforeProcessing(request, response);
         
         Throwable problem = null;
@@ -159,7 +175,7 @@ public class AuthFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {                
-                log("AuthFilter:Initializing filter");
+                log("MainFilter:Initializing filter");
             }
         }
     }
@@ -170,9 +186,9 @@ public class AuthFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("AuthFilter()");
+            return ("MainFilter()");
         }
-        StringBuffer sb = new StringBuffer("AuthFilter(");
+        StringBuffer sb = new StringBuffer("MainFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
