@@ -519,7 +519,9 @@ INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES 
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('prova.jpg','Esterno Dal Pescatore',1,3,'2016-09-24 09:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante.jpg','Interni Uva e Menta',4,4,'2016-09-24 10:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante-bar-pizzeria-due-giganti-20110209-132031.jpg','Esterno Due Giganti',8,5,'2016-09-24 11:00:00');
-
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('RISTORANTE 2010 (25).JPG','Animali Dal Pescatore',1,3,'2016-10-08T09:46:48+00:00');
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('DAL PESCATORE (5).jpg','Interni Dal Pescatore',1,2,'2016-10-06T09:46:48+00:00');
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('Dal Pescatore 271.jpg','Cantone Dal Pescatore',1,5,'2016-10-02T09:46:48+00:00');
 -- reviews (utenti registrati id [7,12])
 
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',1,7);
