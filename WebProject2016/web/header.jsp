@@ -1,8 +1,9 @@
 <!--file da includere per usare header -->
 <!-- <script src="js/login.js"></script> -->
-<!-- <link rel="stylesheet" href="css/header.css"> -->
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <link rel="stylesheet" href="css/header.css"> 
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!-- modal per login -->
