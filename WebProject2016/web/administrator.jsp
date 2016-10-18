@@ -39,17 +39,13 @@
         <div class="container-fluid" >
            <div class="panel panel-default">
                 <div class="panel-body">
-                    <h2> Benvenuto <strong> Nome Cognome Admin Tacchino</strong>
-                        <form method="POST" action ="SearchNotification">
-                             <button class="btn btn-lg" type="submit" style="float:right" ><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
-                        </form>
-                    </h2>
+                    <h2 style="display:inline"> Benvenuto <strong><c:out value="${user.nickname}"></c:out></strong></h2>
                 </div>
               </div>
             <ul class="nav nav-tabs" style="display: inline">
-                 <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
-                  <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
-                  <li><a data-toggle="tab" href="#menu2"><h3><strong>Delete Photo Request </strong><span class="badge">${fn:length(noty.delphotos)}</span></h3></a></li>
+                 <li class="active"><a data-toggle="tab" href="#home"><h5><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h5></a></li>
+                  <li><a data-toggle="tab" href="#menu1"><h5><strong>Change owner Request </strong><span class="badge">${fn:length(noty.chowner)}</span></h5></a></li>
+                  <li><a data-toggle="tab" href="#menu2"><h5><strong>Delete Photo Request </strong><span class="badge">${fn:length(noty.delphotos)}</span></h5></a></li>
              </ul>
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
