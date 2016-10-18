@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import beans.Cuisine;
 import beans.RestaurantSearch;
 import beans.Review;
 import beans.User;
@@ -64,7 +65,12 @@ public class UserRestaurants extends HttpServlet {
         //Instauriamo connessione
         ManagerDB manager = new ManagerDB();
         Connection connection = manager.getConnection();
-        String sql_rest = "SELECT id,name,description,address,city FROM restaurants WHERE id_owner=" + id;
+        String sql_rest = "SELECT r.id,r.name,r.description,r.address,r.city,r.global_value,"
+                + "(SELECT p1.name FROM photos p1 WHERE p1.id_restaurant = r.id LIMIT 1) AS photo_name, "
+                + "(SELECT COUNT(*) FROM reviews re WHERE re.id_restaurant = r.id) AS n_reviews, "
+                + "c.name AS cuisine_name "
+                + "FROM restaurants r JOIN photos p ON (r.id = p.id_restaurant) JOIN restaurants_cuisine rc ON (rc.id_restaurant = r.id) JOIN cuisine c ON (c.id = rc.id_cuisine) "
+                + "WHERE id_owner=" + id;
         String sql_comm = "SELECT r.id AS id_review,"
                 + "r.global_value AS global_value,"
                 + "r.food AS food, r.service AS service,"
@@ -85,15 +91,33 @@ public class UserRestaurants extends HttpServlet {
             ResultSet results = ps.executeQuery();
 
             //Per tutti i risultati
+            RestaurantSearch risto = new RestaurantSearch();
+            ArrayList<Cuisine> cList;
             while (results.next()) {
 
-                RestaurantSearch risto = new RestaurantSearch();
-                risto.setId(results.getInt("id"));
-                risto.setName(results.getString("name"));
-                risto.setDescription(results.getString("description"));
-                risto.setAddress(results.getString("address"));
-                risto.setCity(results.getString("city"));
-                restaurantsList.add(risto);
+                if (results.isFirst() || results.getInt("id") != risto.getId()) {
+                    Cuisine c = new Cuisine();
+                    c.setName(results.getString("cuisine_name"));
+                    
+                    risto = new RestaurantSearch();
+                    cList = new ArrayList<Cuisine>();
+                    cList.add(c);
+                    
+                    risto.setId(results.getInt("id"));
+                    risto.setName(results.getString("name"));
+                    risto.setDescription(results.getString("description"));
+                    risto.setAddress(results.getString("address"));
+                    risto.setCity(results.getString("city"));
+                    risto.setGlobalValue(results.getInt("global_value"));
+                    risto.setImgPath(results.getString("photo_name"));
+                    risto.setNumReviews(results.getInt("n_reviews"));
+                    risto.setCuisineTypes(cList);
+                    restaurantsList.add(risto);
+                } else if (results.getInt("id") == risto.getId()) {
+                    Cuisine c = new Cuisine();
+                    c.setName(results.getString("cuisine_name"));
+                    risto.getCuisineTypes().add(c);
+                }
             }
             ps = null;
             results = null;
@@ -115,15 +139,14 @@ public class UserRestaurants extends HttpServlet {
                 int id_photo = results.getInt("id_photo");
                 if (id_photo != 0) {
                     String photoName_query = "SELECT name FROM photos WHERE id=" + id_photo;
-                    
+
                     ps = connection.prepareStatement(photoName_query);
                     ResultSet res1 = ps.executeQuery();
-                    
+
                     if (res1.next()) {
                         r.setPhoto_name(res1.getString("name"));
                     }
-                }
-                else {
+                } else {
                     r.setPhoto_name("no");
                 }
                 r.setId_restaurant(results.getInt("id_restaurant"));
