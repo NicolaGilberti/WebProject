@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>MainFilter</filter-name>
-        <filter-class>Servlet.MainFilter</filter-class>
+        <filter-class>filters.MainFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
@@ -28,38 +28,87 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    <servlet>
-        <servlet-name>searchServlet</servlet-name>
-        <servlet-class>Servlet.SearchServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ForgottenPassword</servlet-name>
-        <servlet-class>Servlet.ForgottenPassword</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ChangePassword</servlet-name>
-        <servlet-class>Servlet.ChangePassword</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ChangePasswordQuery</servlet-name>
-        <servlet-class>Servlet.ChangePasswordQuery</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>searchServlet</servlet-name>
-        <url-pattern>/searchServlet</url-pattern>
+   
+     <servlet-mapping>
+        <servlet-name>UserRestaurants</servlet-name>
+        <url-pattern>/UserRestaurants</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>SearchRestaurantAutocomplete</servlet-name>
+        <url-pattern>/SearchRestaurantAutocomplete</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>SearchRestaurant</servlet-name>
+        <url-pattern>/SearchRestaurant</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>SearchNotification</servlet-name>
+        <url-pattern>/SearchNotification</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>SearchAdvancedAutocomplete</servlet-name>
+        <url-pattern>/SearchAdvancedAutocomplete</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>RestaurantRequest</servlet-name>
+        <url-pattern>/RestaurantRequest</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/Registration</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>QrGenerator</servlet-name>
+        <url-pattern>/QrGenerator</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>NewRestaurant</servlet-name>
+        <url-pattern>/NewRestaurant</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
+        <servlet-name>LogoutAttempt</servlet-name>
+        <url-pattern>/LogoutAttempt</url-pattern>
+    </servlet-mapping>
+    
+      <servlet-mapping>
+        <servlet-name>LoginAttempt</servlet-name>
+        <url-pattern>/LoginAttempt</url-pattern>
+    </servlet-mapping>
+    
+      <servlet-mapping>
+        <servlet-name>GetCuisine</servlet-name>
+        <url-pattern>/GetCuisine</url-pattern>
+    </servlet-mapping>
+      <servlet-mapping>
         <servlet-name>ForgottenPassword</servlet-name>
         <url-pattern>/ForgottenPassword</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ChangePassword</servlet-name>
-        <url-pattern>/ChangePassword</url-pattern>
+    
+      <servlet-mapping>
+        <servlet-name>ConfirmAccount</servlet-name>
+        <url-pattern>/ConfirmAccount</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+    
+      <servlet-mapping>
+        <servlet-name>ChangeUserPassword</servlet-name>
+        <url-pattern>/ChangeUserPassword</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ChangeUserNickname</servlet-name>
+        <url-pattern>/ChangeUserNickname</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
         <servlet-name>ChangePasswordQuery</servlet-name>
         <url-pattern>/ChangePasswordQuery</url-pattern>
     </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    
     <session-config>
         <session-timeout>
             30
