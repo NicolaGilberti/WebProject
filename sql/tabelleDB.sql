@@ -152,3 +152,4 @@ ALTER TABLE restaurants ADD CONSTRAINT email UNIQUE (email);
 
 ALTER TABLE reviews ALTER COLUMN name TYPE VARCHAR(100);
 ALTER TABLE restaurants ADD COLUMN n_visits INTEGER;
+ALTER TABLE replies ADD COLUMN accepted boolean;
