@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author nicol
  */
-@WebServlet(name = "ChangeUserNickname", urlPatterns = {"/ChangeUserNickname"})
+
 public class ChangeUserNickname extends HttpServlet {
 
     /**

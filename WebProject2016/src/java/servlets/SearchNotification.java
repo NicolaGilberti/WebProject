@@ -24,7 +24,7 @@ import sun.rmi.server.Dispatcher;
  *
  * @author Marco
  */
-@WebServlet(name = "SearchNotification", urlPatterns = {"/SearchNotification"})
+
 public class SearchNotification extends HttpServlet {
 
     /**

@@ -28,7 +28,7 @@ import utils.EmailSender;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "confirmAccount", urlPatterns = {"/confirmAccount"})
+
 public class ConfirmAccount extends HttpServlet {
 
     @Override

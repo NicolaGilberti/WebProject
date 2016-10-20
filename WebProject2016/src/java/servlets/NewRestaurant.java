@@ -45,7 +45,7 @@ import static java.lang.Integer.parseInt;
  *
  * @author riccardo
  */
-@WebServlet(name = "NewRestaurant", urlPatterns = {"/NewRestaurant"})
+
 public class NewRestaurant extends HttpServlet {
 
     /**

@@ -29,7 +29,7 @@ import utils.AutoCompleteData;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "SearchRestaurantAutocomplete", urlPatterns = {"/SearchRestaurantAutocomplete"})
+
 public class SearchRestaurantAutocomplete extends HttpServlet {
 
 

@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "getCuisine", urlPatterns = {"/getCuisine"})
+
 public class GetCuisine extends HttpServlet {
 
     
