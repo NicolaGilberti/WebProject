@@ -105,10 +105,6 @@
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
-    
-    
-    
-    
     <session-config>
         <session-timeout>
             30

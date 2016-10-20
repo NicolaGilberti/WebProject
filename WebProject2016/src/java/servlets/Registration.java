@@ -8,34 +8,21 @@ package servlets;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.*;
-import static java.util.Objects.hash;
-import javax.mail.*;
-import javax.activation.*;
-import javax.mail.internet.*;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-import static sun.text.normalizer.Utility.hex;
 import utils.EmailSender;
-import static sun.text.normalizer.Utility.hex;
-import static sun.text.normalizer.Utility.hex;
-import static sun.text.normalizer.Utility.hex;
 
 /**
  *
