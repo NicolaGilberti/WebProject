@@ -6,7 +6,6 @@
 package servlets;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.ws.util.StringUtils;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,7 +28,7 @@ import utils.AutoCompleteData;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "SearchAdvancedAutocomplete", urlPatterns = {"/SearchAdvancedAutocomplete"})
+
 public class SearchAdvancedAutocomplete extends HttpServlet {
 
  
@@ -67,8 +66,8 @@ public class SearchAdvancedAutocomplete extends HttpServlet {
             //Per tutti i risultati
             while (results.next()) {
                 //Prendiamo una citta
-                String temp = StringUtils.capitalize(results.getString("a"));
-                    valori.add(temp);
+              //  String temp = StringUtils.capitalize(results.getString("a"));
+                    valori.add(results.getString("a"));
               
             }
         } catch (SQLException ex) {

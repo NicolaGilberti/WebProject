@@ -30,7 +30,7 @@ import utils.EmailSender;
  *
  * @author David
  */
-@WebServlet(name = "ForgottenPassword", urlPatterns = {"/ForgottenPassword"})
+
 public class ForgottenPassword extends HttpServlet {
 
     ManagerDB db = new ManagerDB();

@@ -28,7 +28,7 @@ import utils.EmailSender;
  *
  * @author David
  */
-@WebServlet(name = "Registration", urlPatterns = {"/Registration"})
+
 public class Registration extends HttpServlet {
 
     @Override
