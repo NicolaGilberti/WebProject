@@ -22,6 +22,37 @@
         <title>TuttoBistrò - User</title>
 
         <style>
+            .user-new-restaurant-btn {
+                display: none;
+            }
+            .user-restaurants {
+                margin-top: 10px;
+                display: inline-block;
+            }
+            .add-rest-button {
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                margin: 10px;
+            }
+            .add-rest-button > .button-circle {
+                width: 100%;
+                height: 100%;
+                border: 1px solid #fff;
+                background-color: #ff5733;
+                border-radius: 20px;
+                padding: 6px;
+            }
+            .add-rest-button > .button-circle > .button-text {
+                width: 100%;
+                height: 100%;
+                background: none;
+                border: none;
+                font-size: 30px;
+                display: inline-block;
+                line-height: 100%;
+                color: #fff;
+            }
             .panel-outer {
                 display: block;
                 position: relative;
@@ -264,6 +295,12 @@
                 }
                 .col-xs-12.review-wrap-left, .col-xs-12.review-wrap-right {
                     padding: 7px 0;
+                }
+                .add-rest-button {
+                    display: none;
+                }
+                .user-new-restaurant-btn {
+                    display: block;
                 }
                 .user-new-restaurant-btn > button {
                     margin-top: 0;
@@ -512,8 +549,13 @@
                 <hr class="user-hr">
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                    <div class="user-restaurants-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h2 class="user-restaurants user-title col-xs-center">I miei ristoranti</h2>
+                        <div class="add-rest-button">
+                            <button type="button" class="button-circle">
+                                <div class="button-text">+</div>
+                            </button>
+                        </div>
                     </div>
                     <div class="user-new-restaurant-btn col-xs-12 col-sm-8 col-md-9 col-lg-9">
                         <button type="button" class="btn btn-default col-xs-center">Aggiungi nuovo</button>

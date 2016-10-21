@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "SearchRestaurant", urlPatterns = {"/SearchRestaurant"})
+
 public class SearchRestaurant extends HttpServlet {
 
     @Override

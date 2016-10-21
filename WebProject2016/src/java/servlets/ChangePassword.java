@@ -29,7 +29,7 @@ import utils.EmailSender;
  *
  * @author David
  */
-@WebServlet(name = "ChangePassword", urlPatterns = {"/ChangePassword"})
+
 public class ChangePassword extends HttpServlet {
 
     @Override

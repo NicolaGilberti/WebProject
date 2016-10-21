@@ -37,7 +37,7 @@ import net.glxn.qrgen.image.ImageType;
  *
  * @author RiccardoUni
  */
-@WebServlet(name = "RestaurantRequest", urlPatterns = {"/RestaurantRequest"})
+
 public class RestaurantRequest extends HttpServlet {
     private String restImagesPath = "/img/restImgs/";
     /**

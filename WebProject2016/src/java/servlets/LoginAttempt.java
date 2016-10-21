@@ -25,7 +25,7 @@ import dao.LoginDAO;
  *
  * @author David
  */
-@WebServlet(name = "LoginAttempt", urlPatterns = {"/LoginAttempt"})
+
 public class LoginAttempt extends HttpServlet {
     
     UserBean user;

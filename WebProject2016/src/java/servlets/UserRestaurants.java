@@ -31,7 +31,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author MirkoPortatile
  */
-@WebServlet(name = "UserRestaurants", urlPatterns = {"/UserRestaurants"})
+
 public class UserRestaurants extends HttpServlet {
 
     /**

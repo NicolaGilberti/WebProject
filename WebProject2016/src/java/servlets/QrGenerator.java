@@ -21,7 +21,7 @@ import net.glxn.qrgen.image.ImageType;
  *
  * @author RiccardoUni
  */
-@WebServlet(name = "QrGenerator", urlPatterns = {"/qrGenerator"})
+
 public class QrGenerator extends HttpServlet {
 
     /**
