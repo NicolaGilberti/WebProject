@@ -46,8 +46,7 @@ public class MainFilter implements Filter {
         
         
         if(req.getSession().getAttribute("user") == null){
-        JOptionPane.showMessageDialog(null,"Porcodido");
-        resp.sendRedirect("nonautorizzatonfo.html");
+        resp.sendRedirect("nonautorizzatoinfo.html");
         
         }
         
