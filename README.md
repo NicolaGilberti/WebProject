@@ -6,5 +6,4 @@ University of Trento <br />
 This is a project for didactic purpose.  <br />
 The project is about develop a restaurant-reviews web software like TripAdvisor. <br />
 project Link (in Italian language): <br />
-https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx3ZWJwcm9nMjAxNnxneDo2MWFiMjQ3Njg5OWI2Nzk1 <br />
-
+https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx3ZWJwcm9nMjAxNnxneDo3YjllOTcyMGY2MDkwY2U0
