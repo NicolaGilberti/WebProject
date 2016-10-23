@@ -94,6 +94,8 @@
         </div>
         <!-- /.container -->
 
+        
+    <script src="js/login.js"></script>
 
     </body>
 
