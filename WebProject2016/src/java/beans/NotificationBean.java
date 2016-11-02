@@ -8,7 +8,6 @@ package beans;
 import java.util.ArrayList;
 import utils.ChangeOwnerNotification;
 import utils.DeletePhotoNotification;
-import utils.NotificationReplies;
 
 /**
  *
@@ -27,7 +26,7 @@ public class NotificationBean implements java.io.Serializable {
        //delphotos = new ArrayList();
    }
    
-   public void addReplies(NotificationReplies rep){
+   public void addReplies(NotificationRepliesBean rep){
        replies.add(rep);
    }
    public void addChowner(ChangeOwnerNotification rep){
@@ -49,8 +48,8 @@ public class NotificationBean implements java.io.Serializable {
         return delphotos;
     }
         
-   public NotificationReplies getReplies(int i){
-       return (NotificationReplies)replies.get(i);
+   public NotificationRepliesBean getReplies(int i){
+       return (NotificationRepliesBean)replies.get(i);
    }
    
    public ChangeOwnerNotification getChOwner(int i){

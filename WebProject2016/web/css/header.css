@@ -1,28 +1,47 @@
 /* navbar */
 
 .navbar-default {
-    background: #c70039;
-    /* fallb backgroundack for old browsers */
+    background: #581845;
+    /* fallb backgroundack for old browsers  #c70039;*/
     /* background: -webkit-linear-gradient(to left, #fd746c, #ff9068);*/
     /* Chrome 10-25, Safari 5.1-6 */
     /* background: linear-gradient(to left, #fd746c, #ff9068);*/
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: none;
+      font-family: 'Lato', sans-serif;
 }
 
 
 /* title */
 
 .navbar-default .navbar-brand {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
     color: white;
+    -webkit-transition:all 0.5s ease-out;
+  -moz-transition:all 0.5s ease-out;
+  -ms-transition:all 0.5s ease-out;
+  -o-transition:all 0.5s ease-out;
+  transition:all 0.5s ease-out;
 }
 
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
+.bistro{
+     font-family: 'Pacifico', cursive;
+     
+    color:#ffc300;
 }
 
+.navbar-brand:hover{
+     -webkit-transform:scale(1.05);
+  -moz-transform:scale(1.05);
+  -ms-transform:scale(1.05);
+  -o-transform:scale(1.05);
+  transform:scale(1.05);
+  
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+    color:white;
+}
 
 /* link */
 
@@ -209,4 +228,22 @@ input[type=password]:hover {
 
 #dropdown{
     background-color:white;
+}
+.headerUsername{
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.btn-yellow{
+    background-color:#ffc300;
+    color:black;
+}
+.btn-purple{
+     background-color:#581845;
+    color:white;
+     font-family: 'Lato', sans-serif;
+}
+.btn-purple:hover, .btn-purple:focus{
+color:white;
+ font-family: 'Lato', sans-serif;
 }
