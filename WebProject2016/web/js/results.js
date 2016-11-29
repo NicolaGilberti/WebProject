@@ -132,9 +132,6 @@ $(document).ready(function () {
         url: 'SearchRestaurant',
         data: {
             searchinput: getParameterByName('searchinput'),
-            country: getParameterByName('country'),
-            city: getParameterByName('city'),
-            cuisine: getParameterByName('cuisine'),
             lat: getParameterByName('lat'),
             long: getParameterByName('long')
         },
@@ -155,7 +152,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'getCuisine',
+        url: 'GetCuisine',
         data: {},
         success: function (response) {
             cuisineList = $.map(response, function (el) {
@@ -183,40 +180,40 @@ $(document).ready(function () {
     $("#btnVal").click(function () {
         sortData("val");
     });
-$("#checkallbtn").click(function () {
+    $("#checkallbtn").click(function () {
         $('input[name="cuisinecheck"]').prop('checked', true);
     });
-$("#decheckallbtn").click(function () {
-       $('input[name="cuisinecheck"]').prop('checked', false);
+    $("#decheckallbtn").click(function () {
+        $('input[name="cuisinecheck"]').prop('checked', false);
     });
 
-$('#collapsediv').on('hidden.bs.collapse', function () {
-   $("#glyphicollapse").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
-});
+    $('#collapsediv').on('hidden.bs.collapse', function () {
+        $("#glyphicollapse").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
+    });
 
-$('#collapsediv').on('shown.bs.collapse', function () {
-   $("#glyphicollapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
-});
+    $('#collapsediv').on('shown.bs.collapse', function () {
+        $("#glyphicollapse").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
+    });
 
     $("#filterbtn").click(function () {
         //
         filter = $('input[name=priceradio]:checked', '#searchForm').val();
         //console.log("Valore filtro:" + filter);
-        var checkSelected=[];
+        var checkSelected = [];
         $('input[name="cuisinecheck"]:checked').each(function () {
-           checkSelected.push($(this).val());
+            checkSelected.push($(this).val());
         });
-       // console.log(checkSelected);
-        
-        
+        // console.log(checkSelected);
+
+
         dataFiltered = $.grep(data, function (element, index) {
 
 //            var val = $(this).val();
-         //   console.log("Valore checkbox:" + val);
+            //   console.log("Valore checkbox:" + val);
             //return element.cuisineTypes.includes();
-         //   console.log("Element di data: " + element.id);
+            //   console.log("Element di data: " + element.id);
             for (var i in element.cuisineTypes) {
-         //       console.log("element.cuisineTypes[i].id: "+element.cuisineTypes[i].id);
+                //       console.log("element.cuisineTypes[i].id: "+element.cuisineTypes[i].id);
                 if (checkSelected.includes(String(element.cuisineTypes[i].id))) {
                     return true;
                 }
@@ -224,7 +221,7 @@ $('#collapsediv').on('shown.bs.collapse', function () {
             return false;
         });
 
-      //  console.log("Datafiltered prima di filtro prezzo:" + dataFiltered);
+        //  console.log("Datafiltered prima di filtro prezzo:" + dataFiltered);
 
         switch (filter) {
             case "all":
@@ -242,16 +239,16 @@ $('#collapsediv').on('shown.bs.collapse', function () {
             default:
                 dataFiltered = data;
         }
-      //  console.log("Datafiltered dopo filtri prezzo:" + dataFiltered);
+        //  console.log("Datafiltered dopo filtri prezzo:" + dataFiltered);
 
         visualizzaTabella();
-        
+
     });
 
 
 
-   $("#searchButton").click(function (event) {
-     //   event.preventDefault();
+    $("#searchButton").click(function (event) {
+        event.preventDefault();
         $("#row-thumbnail").empty();
         //   $("#trovatiLabel").empty();
 
@@ -259,7 +256,7 @@ $('#collapsediv').on('shown.bs.collapse', function () {
             type: 'GET',
             url: 'SearchRestaurant',
             data: {
-                searchinput: $('#searchInput').val()
+                searchinput: $('#searchInput').val() || "pizzeria"
             },
             success: function (response) {
                 //   var jsonstring= JSON.stringify(response);
@@ -271,7 +268,7 @@ $('#collapsediv').on('shown.bs.collapse', function () {
                 data = $.map(response, function (el) {
                     return el
                 });
-                dataFiltered=data;
+                dataFiltered = data;
                 visualizzaTabella();
                 //      $("#trovatiLabel").append(data.length);
             }
