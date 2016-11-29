@@ -66,7 +66,7 @@
                 <ul class="nav navbar-nav navbar-right">
   
                     <c:if test="${sessionScope.user.type >= 1}">
-                          <li><a href="/">I miei ristoranti</a></li>
+                          <li><a href="UserRestaurants">I miei ristoranti</a></li>
                     </c:if>
                     <li><a href="newRestaurantForm.jsp">Aggiungi Ristorante</a>
                 </li>
