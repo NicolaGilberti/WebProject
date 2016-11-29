@@ -59,7 +59,7 @@
         <url-pattern>/SearchRestaurant</url-pattern>
     </servlet-mapping>
     
-      <servlet>
+    <servlet>
         <servlet-name>SearchNotification</servlet-name>
         <servlet-class>servlets.SearchNotification</servlet-class>
     </servlet>
@@ -68,6 +68,7 @@
         <servlet-name>SearchNotification</servlet-name>
         <url-pattern>/SearchNotification</url-pattern>
     </servlet-mapping>
+    
     
      <servlet>
         <servlet-name>SearchAdvancedAutocomplete</servlet-name>
