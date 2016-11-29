@@ -5,17 +5,12 @@
  */
 package servlets;
 
+import beans.AlertBean;
 import beans.UserBean;
-import database.ManagerDB;
+import dao.ChangeUserNickDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -75,56 +70,15 @@ public class ChangeUserNickname extends HttpServlet {
         
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("user");
-        int id = user.getId();
-
+        
         String pwd = request.getParameter("nicknamePwd");
-        pwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(pwd);
         String nickname = request.getParameter("newNickname");
-
-        ManagerDB manager = new ManagerDB();
-        Connection connection = manager.getConnection();
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("UserRestaurants");
-
-        try {
-            String pwd_query = "SELECT password FROM users WHERE id=" + id;
-            PreparedStatement ps = connection.prepareStatement(pwd_query);
-            ResultSet results = ps.executeQuery();
-
-            if (results.next()) {
-
-                String db_pwd = results.getString("password");
-
-                if (pwd.equals(db_pwd)) {
-
-                    String nick_query = "UPDATE users SET nickname='" + nickname + "' WHERE id=" + id;
-
-                    ps = connection.prepareStatement(nick_query);
-                    ps.executeUpdate();
-                    
-                    user.setNickname(nickname);
-
-                    request.setAttribute("alert", 0);
-                    request.setAttribute("alert_title", "Nickname modificato con successo in ");
-                    request.setAttribute("alert_text", nickname);
-                    dispatcher.forward(request, response);
-                } else {
-
-                    request.setAttribute("alert", 1);
-                    request.setAttribute("alert_title", "Errore!");
-                    request.setAttribute("alert_text", "Password non valida. Riprovare");
-                    dispatcher.forward(request, response);
-                }
-            } else {
-
-                request.setAttribute("alert", 1);
-                request.setAttribute("alert_title", "Errore!");
-                request.setAttribute("alert_text", "Si è verificato un errore nel sistema. Riprovare più tardi");
-                dispatcher.forward(request, response);
-            }
-        } catch (Exception ex) {
-            System.out.println("changeUserPwd "+ex.toString());
-        }
+        
+        ChangeUserNickDAO DAO = new ChangeUserNickDAO(user);
+        AlertBean alert = DAO.changeNickname(nickname, pwd);
+        
+        request.setAttribute("alert", alert);
+        request.getRequestDispatcher("UserRestaurants").forward(request, response);
     }
 
     /**
