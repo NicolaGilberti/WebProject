@@ -12,364 +12,18 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Pacifico|Lato" rel="stylesheet">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/header.css" rel="stylesheet">
+        <jsp:include page="header/headerFiles.jsp" />
+        <link href="css/userpage.css" rel="stylesheet">
         <link href="css/resultsStyle.css" rel="stylesheet">
-        <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/checkNewPwd.js"></script>
 
         <title>TuttoBistrò - User</title>
 
-        <style>
-            .photo-modal-content {
-                background-color: white;
-                border: 5px solid #ddd;
-            }
-            .photo-modal-content > img {
-                border-radius: 2px;
-            }
-            .review-photo {
-                width: 80px;
-                height: 80px;
-                display: block;
-                border: 1px solid #ddd;
-                border-radius: 2px;
-            }
-            .review-photo > a {
-                width: 100%;
-                height: 100%;
-            }
-            .review-photo > a > img {
-                height: 100%;
-                width: auto;
-                border: 5px solid white;
-                border-radius: 2px;
-            }
-            .user-new-restaurant-btn {
-                display: none;
-            }
-            .user-restaurants {
-                margin-top: 10px;
-                display: inline-block;
-            }
-            .add-rest-button {
-                width: 40px;
-                height: 40px;
-                display: inline-block;
-                margin: 10px;
-            }
-            .add-rest-button > .button-circle {
-                width: 100%;
-                height: 100%;
-                border: 1px solid #fff;
-                background-color: #ff5733;
-                border-radius: 20px;
-                padding: 6px;
-            }
-            .add-rest-button > .button-circle > .button-text {
-                width: 100%;
-                height: 100%;
-                background: none;
-                border: none;
-                font-size: 30px;
-                display: inline-block;
-                line-height: 100%;
-                color: #fff;
-                margin-left: 0.35px;
-                margin-top: -0.52px;
-            }
-            .panel-outer {
-                display: block;
-                position: relative;
-            }
-            .panel-heading-inner {
-                background: linear-gradient( to bottom, rgba(51, 51, 51, 0.1), rgba(255, 255, 255, 1));
-                height: 100%;
-                width: 100%;
-                top: 0;
-                left: 0;
-                position: absolute;
-                padding: 0;
-                border-radius: 4px;
-            }
-            .panel-footer-inner {
-                /*background: linear-gradient( to bottom, rgba(255, 255, 255, 1), rgba(51, 51, 51, 0.1));*/
-                height: 100%;
-                width: 100%;
-                top: 0;
-                left: 0;
-                position: absolute;
-                padding: 0;
-            }
-            .panel-title > h3 {
-                margin-top: 0;
-                margin-bottom: 5px;
-            }
-            .review-rest > h4 {
-                margin: 0;
-            }
-            .review-xs-date {
-                display: none;
-            }
-            .review-sm-date {
-                display: inline;
-            }
-            .panel-review {
-                /*border-color: #581845;*/
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
-                margin: 15px 0 !important;
-            }
-            .col-stars {
-                margin: 3px 0 7px 0;
-                color: #ffc300;
-            }
-            .valutations {
-                margin: 0 0 7px 0;
-            }
-            .label-review {
-                display: inline-block;
-                font-size: 82%;
-                margin-bottom: 3px;
-                padding: 0.3em .4em .1em .4em;
-                background-color: #900c3f;
-            }
-            .badge-review {
-                margin-bottom: 1px;
-            }
-            .prova {
-                position: relative;
-            }
-            .prova > .col-md-2 {
-                display: inline-block;
-            }
-            img {
-                max-width: 100%;
-            }
-            .user-info {
-                margin-bottom: 40px;
-            }
-            .iconButton {
-                border: none;
-                background: none;
-            }
-            .iconInfo {
-                padding-left: 55px;
-                padding-top: 2px;
-            }
-            .pUser {
-                /*margin-bottom: 5px;*/
-            }
-            .user-hr {
-                margin-bottom: 0;
-            }
-            .row.reviews {
-                margin: 0;
-            }
-            .review-wrap-left {
-                padding: 10px 10px 10px 0;
-            }
-            .review-wrap-right {
-                padding: 10px 0 10px 10px;
-            }
-            .review {
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                padding: 4px;
-                float: left;
-
-            }
-            .review-content {
-                padding: 9px 9px 0 9px;
-            }
-            .user-review-name {
-                margin-top: 0;
-            }
-            .user-review-rest-city > h3 {
-                margin-top: 0px;
-            }
-            .blockquote.user-review-description {
-                display: inline-block;
-                margin-bottom: 0;
-            }
-            .user-review-description-xs {
-                display: none;
-            }
-            .review-description {
-                padding-bottom: 9px;
-            }
-            h4.user-review-rest-name {
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-            .user-review-image {
-                float: right;
-                padding: 0;
-            }
-            .user-alert-box > .alert {
-                margin-bottom: 0;
-                margin-top: 0;
-            }
-            .col-sm-6.review-value-for-money > h5, .col-md-7.review-value-for-money > h5,
-            .col-lg-6.review-value-for-money > h5, .col-sm-6.review-service > h5,
-            .col-md-5.review-service > h5, .col-lg-6.review-service > h5 {
-                margin-top: 0;
-                margin-bottom: 20px;
-            }
-            .col-md-5.col-md-5-stars {
-                padding-left: 5px;
-            }
-            .user-new-restaurant-btn > button {
-                margin-top: 20px;
-            }
-
-            @media screen and (max-width: 991px) {
-                .iconInfo {
-                    padding-left: 75px;
-                }
-                .col-sm-12.review-wrap-left, .col-sm-12.review-wrap-right {
-                    padding: 7px 0;
-                }
-            }
-
-            @media screen and (max-width: 767px) {
-                .iconInfo {
-                    padding-left: 25px;
-                    float: right;
-                }
-                .col-xs-center {
-                    float: none;
-                    display: block;
-                    margin: 0 auto;
-                }
-                h1.col-xs-center, h2.col-xs-center {
-                    margin-top: 20px;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-                .col-xs-6 > .pUser {
-                    text-align: center;
-                }
-                .review {
-                    padding: 4px;
-                }
-
-                /*
-                user-review-name-8 = review con foto
-                user-review-name-12 = review senza foto
-                */
-                .user-review-name {
-                    text-align: center;
-                }
-                h3.user-review-name-8 {
-                    margin: -75px 0 0 0;
-                    color: white;
-                }
-                .user-review-name > .user-review-rest-city {
-                    display: none;
-                }
-                .overlay {
-                    background: linear-gradient( to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
-                    bottom: 0;
-                    left: 0;
-                    opacity: 1;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    z-index: 1;
-                }
-                .col-xs-12.user-review-rest-city {
-                    display: block;
-                    text-align: center;
-                }
-                .col-xs-12.user-review-rest-city-xs > h3 {
-                    margin-top: 0;
-                }
-                h4.user-review-rest-name {
-                    text-align: center;
-                }
-                h4.user-review-rest-name-8 {
-                    margin-top: -45px;
-                    color: white;
-                }
-                h4.col-stars {
-                    margin: 0 auto;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-                .blockquote.user-review-description {
-                    display: none;
-                }
-                .user-review-description-xs {
-                    display: block;
-                    text-align: center;
-                    margin: 0 auto;
-                }
-                .user-review-image {
-                    float: left;
-                }
-                .col-xs-12.review-food > h5, .col-xs-12.review-service > h5,
-                .col-xs-12.review-atmosphere > h5, .col-xs-12.review-value-for-money > h5 {
-                    text-align: center;
-                }
-                .col-xs-12.review-value-for-money > h5 {
-                    margin-bottom: 15px;
-                }
-                .col-xs-12.review-value-for-money > h5, .col-xs-12.review-service > h5,
-                .col-xs-12.review-food > h5, .col-xs-12.review-atmosphere > h5 {
-                    margin: 0 0 10px 0;
-                }
-                .col-xs-12.review-wrap-left, .col-xs-12.review-wrap-right {
-                    padding: 7px 0;
-                }
-                .add-rest-button {
-                    display: none;
-                }
-                .user-new-restaurant-btn {
-                    display: block;
-                }
-                .user-new-restaurant-btn > button {
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                }
-                .col-xs-12.col-md-5-stars {
-                    padding-left: 15px;
-                }
-                .col-stars > span {
-                    float: left !important;
-                }
-                .col-stars {
-                    margin: 0 0 10px 0;
-                }
-                .review-rest > h4 {
-                    margin-bottom: 5px;
-                }
-                .review-xs-date {
-                    display: inline;
-                    margin-bottom: 0;
-                }
-                .review-sm-date {
-                    display: none;
-                }
-                .valutations {
-                    margin: 0 0 5px 0;
-                }
-
-            }
-
-            @media screen and (max-width: 370px) {
-                .user-restaurants.user-title, .user-reviews.user-title {
-                    font-size: 26px;
-                }
-            }
-        </style>
     </head>
     <body>
 
         <!-- header -->
-        <jsp:include page="header.jsp" />
+        <jsp:include page="header/header.jsp" />
 
         <%--<c:if test="${sessionScope.user != null}">--%>
 
@@ -588,13 +242,8 @@
                 <hr class="user-hr">
 
                 <div class="row">
-                    <div class="user-restaurants-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="user-restaurants-title col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <h2 class="user-restaurants user-title col-xs-center">I miei ristoranti</h2>
-                        <div class="add-rest-button">
-                            <button type="button" class="button-circle">
-                                <div class="button-text">+</div>
-                            </button>
-                        </div>
                     </div>
                     <div class="user-new-restaurant-btn col-xs-12 col-sm-8 col-md-9 col-lg-9">
                         <button type="button" class="btn btn-default col-xs-center">Aggiungi nuovo</button>
@@ -757,7 +406,7 @@
                                 <div class="panel-footer panel-outer">
                                     <div class="photos-container">
                                         <div class="review-photo">
-                                            <a data-toggle="modal" data-target="photo-modal" onclick="setModalImage('<c:out value='${r.photo_name}' />')">
+                                            <a data-toggle="modal" data-target="#photo-modal" onclick="setModalImage('<c:out value='${r.photo_name}' />')">
                                                 <img src="
                                                      <c:out value='${r.photo_name}' />
                                                      " >
@@ -883,7 +532,9 @@
 
         <script>
             function setModalImage(photoname) {
-                document.getElementById("photo-modal-img").src = photoname;
+                path = photoname.replace("\r", "\\r");
+                path = path.replace("Imgs", "Imgs\\");
+                document.getElementById("photo-modal-img").src = path;
             }
         </script>
     </body>
