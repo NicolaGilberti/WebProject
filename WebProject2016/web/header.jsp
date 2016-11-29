@@ -25,7 +25,7 @@
             </form>
 
             <div class="login-help">
-                <a href="newreg.html">Registrati</a> - <a href="maildimodifica.html">Password dimenticata?</a>
+                <a href="registration.jsp">Registrati</a> - <a href="maildimodifica.html">Password dimenticata?</a>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                 <%-- //Se l'utente esiste nella sessionScope vuol dire che e' loggato e non ha bisogno di vedere il tasto login --%>
                 <c:if test="${sessionScope.user == null}">
                     <li class=""><a href="#" data-toggle="modal" data-target="#login-modal">Accedi<span class="sr-only">(current)</span></a></li>
-                    <li><a href="newreg.html">Registrati</a></li>   
+                    <li><a href="registration.jsp">Registrati</a></li>   
                     </c:if>
 
 

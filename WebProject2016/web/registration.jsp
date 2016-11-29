@@ -6,32 +6,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
-        <script src="js/passwordstrength.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/scripts.js"></script>
 
-
-        <title>TuttoBistrÃ² Registrazione</title>
+        <title>TuttoBistrò Registrazione</title>
 
         <!-- CSS -->
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
         <link rel="stylesheet" href="css/bootstrap.min.css">
-
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" href="css/form-elements.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/form-elements.css">
         <link rel="stylesheet" href="css/passwordstrength.css">
-        
+
+        <!-- scripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/passwordstrength.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/login.js"></script>
+
+        <!--/scripts-->
+
+        <link rel="stylesheet" href="css/header.css">
     </head>
 
     <body>
-
+        <jsp:include page="header.jsp" />
         <!-- Top content -->
         <div class="top-content">
-            
-            <h1> <strong>TuttoBistrÃ²</strong> | <a href="http://localhost:8084/WebProject2016/">Home </a></h1>
+
+            <h1> <strong>TuttoBistrò</strong> | <a href="http://localhost:8084/WebProject2016/">Home </a></h1>
 
             <div class="inner-bg">
                 <div class="container">
@@ -98,11 +103,6 @@
             </div>
 
         </div>
-        <!-- Javascript -->
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.backstretch.min.js"></script>
-        <script src="js/scripts.js"></script>
 
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>

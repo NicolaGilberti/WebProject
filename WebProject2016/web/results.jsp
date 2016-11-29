@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
     <link href="css/header.css" rel="stylesheet">
     <link href="css/resultsStyle.css" rel="stylesheet">
+    
+    <!--script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/results.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/autoComplete.js"></script>
+    <!--/scripts-->
 
+    <title>Risultati Ristorante</title>
 
 </head>
 
@@ -105,13 +115,7 @@
     </div>
     <!--/Container generale -->
 
-    <!--script-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/results.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/autoComplete.js"></script>
+    
 </body>
 
 </html>
