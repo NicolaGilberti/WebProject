@@ -3,7 +3,7 @@
     Created on : 11-ott-2016, 11.12.58
     Author     : Marco
 --%>
-<%@page import="utils.NotificationReplies"%>
+<%@page import="beans.NotificationRepliesBean"%>
 <%@page import="beans.NotificationBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>

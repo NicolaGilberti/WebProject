@@ -68,9 +68,9 @@
                     <c:if test="${sessionScope.user.type >= 1}">
                           <li><a href="/">I miei ristoranti</a></li>
                     </c:if>
-                    <li><a href="/">Aggiungi Ristorante</a>
+                    <li><a href="newRestaurantForm.jsp">Aggiungi Ristorante</a>
                 </li>
-                    <li><a href="/">Notifiche</a>
+                    <li><a href="SearchNotification">Notifiche</a>
                     </li>
 
                     <li class="dropdown" >
