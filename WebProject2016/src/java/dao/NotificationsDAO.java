@@ -76,6 +76,7 @@ public class NotificationsDAO {
         return notification;
     }
     
+    //finalize per chiudere la connessione quando ho finito con la ricerca all'interno del database
     @Override
     protected void finalize() throws Throwable  
 {  

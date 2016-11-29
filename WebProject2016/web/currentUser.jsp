@@ -13,8 +13,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Lato" rel="stylesheet">
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/header.css" rel="stylesheet">
         <link href="css/resultsStyle.css" rel="stylesheet">
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/checkNewPwd.js"></script>
@@ -22,6 +24,30 @@
         <title>TuttoBistrò - User</title>
 
         <style>
+            .photo-modal-content {
+                background-color: white;
+                border: 5px solid #ddd;
+            }
+            .photo-modal-content > img {
+                border-radius: 2px;
+            }
+            .review-photo {
+                width: 80px;
+                height: 80px;
+                display: block;
+                border: 1px solid #ddd;
+                border-radius: 2px;
+            }
+            .review-photo > a {
+                width: 100%;
+                height: 100%;
+            }
+            .review-photo > a > img {
+                height: 100%;
+                width: auto;
+                border: 5px solid white;
+                border-radius: 2px;
+            }
             .user-new-restaurant-btn {
                 display: none;
             }
@@ -52,6 +78,8 @@
                 display: inline-block;
                 line-height: 100%;
                 color: #fff;
+                margin-left: 0.35px;
+                margin-top: -0.52px;
             }
             .panel-outer {
                 display: block;
@@ -345,6 +373,17 @@
 
         <%--<c:if test="${sessionScope.user != null}">--%>
 
+        <div id="photo-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content photo-modal-content">
+                    <img id="photo-modal-img" src="" >
+                </div>
+
+            </div>
+        </div>
+
         <!-- Modal -->
         <div id="changeNickname" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -414,25 +453,25 @@
         </div>
 
         <div class="container">
-            <c:if test="${alert gt -1}">
+            <c:if test="${alert.type gt -1}">
                 <div class="user-alert-box">
                     <c:choose>
-                        <c:when test="${alert == 0}">
+                        <c:when test="${alert.type == 0}">
                             <div class="alert alert-success fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>
-                                    <c:out value="${alert_title}" />
+                                    <c:out value="${alert.title}" />
                                 </strong>
-                                <c:out value="${alert_text}" />
+                                <c:out value="${alert.description}" />
                             </div>
                         </c:when>
-                        <c:when test="${alert == 1}">
+                        <c:when test="${alert.type == 1}">
                             <div class="alert alert-danger fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>
-                                    <c:out value="${alert_title}" />
+                                    <c:out value="${alert.title}" />
                                 </strong>
-                                <c:out value="${alert_text}" />
+                                <c:out value="${alert.description}" />
                             </div>
                         </c:when>
                     </c:choose>
@@ -714,10 +753,19 @@
                             <div class="panel-body">
                                 <c:out value="${r.description}" />
                             </div>
-                            <div class="panel-footer panel-outer">
-                                <div class="panel-footer-inner"></div>
-                                Foto del commento
-                            </div>
+                            <c:if test="${r.photo_name != ''}">
+                                <div class="panel-footer panel-outer">
+                                    <div class="photos-container">
+                                        <div class="review-photo">
+                                            <a data-toggle="modal" data-target="photo-modal" onclick="setModalImage('<c:out value='${r.photo_name}' />')">
+                                                <img src="
+                                                     <c:out value='${r.photo_name}' />
+                                                     " >
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
                         </div>
                     </c:forEach>
                 </div>
@@ -832,9 +880,11 @@
 
         </div>
 
+
+        <script>
+            function setModalImage(photoname) {
+                document.getElementById("photo-modal-img").src = photoname;
+            }
+        </script>
     </body>
 </html>
-
-<script>
-
-</script>
