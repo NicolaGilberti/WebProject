@@ -21,7 +21,7 @@
         <script type="text/javascript" src="js/autoComplete.js"></script>
         <script src="js/vendor/bootstrap.min.js "></script>
         <script src="js/locationSearch.js"></script>
-
+        <script src="js/login.js"></script>
         <!-- /scripts-->
 
         <!--css-->
@@ -94,6 +94,8 @@
         </div>
         <!-- /.container -->
 
+        
+    <script src="js/login.js"></script>
 
     </body>
 

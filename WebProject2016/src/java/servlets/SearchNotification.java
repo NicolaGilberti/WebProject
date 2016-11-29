@@ -50,7 +50,7 @@ public class SearchNotification extends HttpServlet {
             System.err.print(e);
         }
         
-        request.setAttribute("noty",notbean);
+        request.setAttribute("noty",notify);
         
         RequestDispatcher ds = request.getRequestDispatcher("administrator.jsp");
         ds.forward(request, response);
