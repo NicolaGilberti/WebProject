@@ -37,9 +37,10 @@ import net.glxn.qrgen.image.ImageType;
  *
  * @author RiccardoUni
  */
-
 public class RestaurantRequest extends HttpServlet {
+
     private String restImagesPath = "/img/restImgs/";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -65,28 +66,43 @@ public class RestaurantRequest extends HttpServlet {
         ArrayList<String> photos = rq.getPhotos(id);
         request.setAttribute("photos", photos);
         request.setAttribute("numberOfPhotos", photos.size());
-        
+
         //get price range
         ArrayList<Integer> price = rq.getPriceRange(r.getId_price_range());
-        String tmp = price.get(0).toString(); 
+        String tmp = price.get(0).toString();
         request.setAttribute("minPrice", price.get(0).toString());
         request.setAttribute("maxPrice", price.get(1).toString());
-        
+
         //get cuisine
         ArrayList<CuisineBean> cuisines = rq.getCuisines(r.getId());
         request.setAttribute("cuisines", cuisines);
-        
+
         //reviews
         ArrayList<ReviewBean> reviews = rq.getReviews(r.getId());
         ArrayList<String> userNamesOfReviews = new ArrayList<String>();
-        for(ReviewBean current:reviews) {
+        for (ReviewBean current : reviews) {
             String currName = rq.getUserName(current.getId_creator());
             userNamesOfReviews.add(currName);
         }
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNameOfReviews", userNamesOfReviews);
-        
+
+        //QR code
+        ByteArrayOutputStream out = QRCode.from("Hello World").to(ImageType.JPG).stream();
+        FileOutputStream fout = null;
+        try {
+            fout = new FileOutputStream(new File(
+                    "Desktop/QR_Code.JPG"));
+            fout.write(out.toByteArray());
+            fout.flush();
+            fout.close();
+        } catch (Exception e) {
+            System.out.println("QrGenerator.java exception: " + e.getMessage());
+        }
+
+        request.setAttribute("qrcode", fout);
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
+
         rd.forward(request, response);
 
     }

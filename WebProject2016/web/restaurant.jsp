@@ -10,8 +10,7 @@
 <%@page import="net.glxn.qrgen.QRCode"%>
 <%@page import="net.glxn.qrgen.QRCode"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
-<%@page import="beans.Restaurant"%>
-<%@page import="Servlet.qrGenerator" %>
+<%@page import="beans.RestaurantBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -46,7 +45,7 @@
             }
         </style>
         <!--css-->
-    
+
 
         <title>JSP Page</title>
     </head>
@@ -56,51 +55,85 @@
 
 
             <!-- carousel -->
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                <c:forEach var="i" begin="0" end="${numberOfPhotos-1}">
-                    <c:if test="${i==0}">
-                        <li data-target="#myCarousel" data-slide-to="i" class="active tales"></li>
-                        </c:if>
-                        <c:if test="${i>0}">
-                        <li data-target="#myCarousel" data-slide-to="i"></li>
-                        </c:if>
-                    </c:forEach>
-            </ol>
-            <!-- Wrapper for slides -->
 
-            <div class="carousel-inner" role="listbox">
-                <c:set value="0" var="i"></c:set>
-                <c:forEach  items="${photos}" var="current">
-                    <c:if test="${i==0}" >
-                        <div class="item active">   
-                        </c:if>
-                        <c:if test="${i>0}" >  
-                            <div class="item">
+            <div class="container">
+                <div id="myCarousel" class="col-md-12 carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                    <c:forEach var="i" begin="0" end="${numberOfPhotos-1}">
+                        <c:if test="${i==0}">
+                            <li data-target="#myCarousel" data-slide-to="i" class="active tales"></li>
                             </c:if>
-                            <img src="${current}" class="img-rounded" alt="${current}">
-                        </div>
-                        <c:set value="1" var="i"></c:set>    
-                    </c:forEach>
-                </div>
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-        <!-- restaurant name -->
-        <div class="container">
-            <h2><c:out value="${r.name}"></c:out></h2>
+                            <c:if test="${i>0}">
+                            <li data-target="#myCarousel" data-slide-to="i"></li>
+                            </c:if>
+                        </c:forEach>
+                </ol>
+                <!-- Wrapper for slides -->
 
-                <!-- stars -->
-                <div>
+                <div class="carousel-inner" role="listbox">
+                    <c:set value="0" var="i"></c:set>
+                    <c:forEach  items="${photos}" var="current">
+                        <c:if test="${i==0}" >
+                            <div class="item active">   
+                            </c:if>
+                            <c:if test="${i>0}" >  
+                                <div class="item">
+                                </c:if>
+                                <img src="${current}" class="img-rounded" alt="${current}">
+                            </div>
+                            <c:set value="1" var="i"></c:set>    
+                        </c:forEach>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <!--------------------------------------------->
+            <!-- restaurant name -->
+
+            
+            
+            <script type="text/javascript" src="davidshimjs-qrcodejs-04f46c6/qrcode.min.js"></script>
+            
+            <script>
+                var qr = new QrCode();
+
+                qr.callback = function (result, err) {
+                    if (result)
+                        console.log(result)
+                } // RESULT IN CONSOLE (WEB CONSOLE) https://developer.chrome.com/devtools 
+
+                qr.decode('cia-GRIGO'); // USES "ciao-GRIGO.png" image (look left)
+            </script>
+
+            <div id="qrcode"></div>
+            <script type="text/javascript">
+                var QRString = asdas; // CREATE A QR FROM A STRING
+                new QRCode(document.getElementById("qrcode"), QRString); // TO SEE THE RESULT https://grigo-qr-lelle.c9users.io/
+                // THEN SAVE THE IMAGE AND UPLOAD THE IMAGE HERE "File>Upload..." and put his name qr.decode('nameimage.extension');
+            </script>
+            
+            
+            
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12"><h2><c:out value="${r.name}"></c:out></h2></div>
+                    <c:forEach begin="1" end="${r.global_value}">
+                <span class="glyphicon glyphicon-star"/>
+            </c:forEach>
+            <c:forEach begin="${r.global_value+1}" end="5">
+                <span class="glyphicon glyphicon-star-empty"/>
+            </c:forEach>
+            <p></p>
+            <p> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
+            <!-- stars -->
+            <div>
                 <c:forEach begin="1" end="${r.global_value}">
                     <span class="glyphicon glyphicon-star"></span>
                 </c:forEach>
@@ -116,7 +149,6 @@
                 </span>
                 $ <c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out>
                 </div>
-
                 <!-- cuisine types -->
                 <p></p>
                 <div class="cuisine-labels"> 
@@ -126,10 +158,8 @@
                         </span>
                 </c:forEach>
             </div>
-        </div>
 
-        <!-- description -->
-        <div class="container">
+            <!-- description -->
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <h3> Descrizione </h3>
@@ -142,10 +172,8 @@
                     </blockquote>
                 </div>
             </div>
-        </div>
 
-        <!-- recensioni -->
-        <div class="container">
+            <!-- recensioni -->
             <h3> Recensioni </h3>
             <c:set value="0" var="i"></c:set>
             <c:forEach items="${reviews}" var="current">
@@ -164,6 +192,7 @@
                 <c:set value="${i+1}" var="i"></c:set>
             </c:forEach>
         </div>
+        <c:out value="${qrcode}"/>
         <!-- map -->
         <button onclick="createMap(1.1, 1.1, 'map');">click for map</button>
         <div id="map" style="width: 300px; height: 200px;"></div>
