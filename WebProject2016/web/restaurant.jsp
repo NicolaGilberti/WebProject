@@ -51,7 +51,7 @@
     </head>
     <body onload="createMap(1.1, 1.1, 'map');">
         <!-- header -->
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="header/header.jsp"></jsp:include>
 
 
             <!-- carousel -->
@@ -101,7 +101,7 @@
 
             
             
-            <script type="text/javascript" src="davidshimjs-qrcodejs-04f46c6/qrcode.min.js"></script>
+            <!--script type="text/javascript" src="davidshimjs-qrcodejs-04f46c6/qrcode.min.js"></script>
             
             <script>
                 var qr = new QrCode();
@@ -119,21 +119,18 @@
                 var QRString = asdas; // CREATE A QR FROM A STRING
                 new QRCode(document.getElementById("qrcode"), QRString); // TO SEE THE RESULT https://grigo-qr-lelle.c9users.io/
                 // THEN SAVE THE IMAGE AND UPLOAD THE IMAGE HERE "File>Upload..." and put his name qr.decode('nameimage.extension');
-            </script>
+            </script-->
             
             
             
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12"><h2><c:out value="${r.name}"></c:out></h2></div>
-                    <c:forEach begin="1" end="${r.global_value}">
-                <span class="glyphicon glyphicon-star"/>
-            </c:forEach>
-            <c:forEach begin="${r.global_value+1}" end="5">
-                <span class="glyphicon glyphicon-star-empty"/>
-            </c:forEach>
+            
+            <div class=" container">
+                <h2><c:out value="${r.name}"></c:out></h2>
+            
             <p></p>
             <p> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
             <!-- stars -->
-            <div>
+            <div c>
                 <c:forEach begin="1" end="${r.global_value}">
                     <span class="glyphicon glyphicon-star"></span>
                 </c:forEach>
@@ -193,8 +190,11 @@
             </c:forEach>
         </div>
         <c:out value="${qrcode}"/>
+        
         <!-- map -->
-        <button onclick="createMap(1.1, 1.1, 'map');">click for map</button>
-        <div id="map" style="width: 300px; height: 200px;"></div>
+        <!--button onclick="createMap(1.1, 1.1, 'map');">click for map</button>
+        <div id="map" style="width: 300px; height: 200px;"></div-->
+            
+        </div>
     </body>
 </html>
