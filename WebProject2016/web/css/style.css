@@ -5,7 +5,7 @@ body {
     font-weight: 300;
     color: #888;
     text-align: center;
-    background: url(../img/background/pexels-photo-29346.jpg) no-repeat center center fixed;
+    background: url(../img/background/background.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -15,6 +15,11 @@ body {
     color: #fff;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+    
+}
+
+html{
+    height: 100%
 }
 
 #pswd_info {
@@ -31,7 +36,7 @@ body {
 strong { font-weight: 700; }
 
 a, a:hover, a:focus {
-    color: #19b9e7;
+    color: #900c3f;
     text-decoration: none;
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
@@ -75,10 +80,6 @@ img { max-width: 100%; }
 }
 .btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active { outline: 0; opacity: 0.6; color: #fff; }
 
-.btn-link-1.btn-link-1-facebook { background: #4862a3; }
-.btn-link-1.btn-link-1-twitter { background: #55acee; }
-.btn-link-1.btn-link-1-google-plus { background: #dd4b39; }
-
 .btn-link-1 i {
     padding-right: 5px;
     vertical-align: middle;
@@ -113,8 +114,8 @@ img { max-width: 100%; }
 /***** Top content *****/
 
 .inner-bg {
-    padding: 60px 0 60px 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.65) 100%);
+    padding: 10px 0 10px 0;
+   
 }
 
 .top-content .text {
@@ -136,13 +137,13 @@ img { max-width: 100%; }
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
-    margin-top: 70px;
+    margin-top: 40px;
 
 }
 .form-top {
     overflow: hidden;
     padding: 0 25px 15px 25px;
-    background: #444;
+    background: #581845;
     background: rgba(0, 0, 0, 0.55);
     -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
     text-align: left;
@@ -196,34 +197,10 @@ img { max-width: 100%; }
 }
 
 .row{
-    padding-bottom: 90px;
+    padding-bottom: 20px;
     
     
 }
-
-
-/***** Footer 
-
-footer {
-        padding-bottom: 70px;
-        color: #fff;
-}
-
-footer .footer-border {
-        width: 200px;
-        margin: 0 auto;
-        padding-bottom: 30px;
-        border-top: 1px solid #fff;
-        border-top: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-footer p { opacity: 0.8; }
-
-footer a {
-        color: #fff;
-}
-footer a:hover, footer a:focus { color: #fff; border-bottom: 1px dotted #fff; }
-*****/
 
 /***** Media queries *****/
 

@@ -12,191 +12,31 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="js/vendor/bootstrap.min.js"></script>
+        <jsp:include page="header/headerFiles.jsp" />
+        <link href="css/userpage.css" rel="stylesheet">
+        <link href="css/resultsStyle.css" rel="stylesheet">
         <script src="js/checkNewPwd.js"></script>
 
         <title>TuttoBistrò - User</title>
 
-        <style>
-            img {
-                max-width: 100%;
-            }
-            .user-info {
-                margin-bottom: 40px;
-            }
-            .iconButton {
-                border: none;
-                background: none;
-            }
-            .iconInfo {
-                padding-left: 55px;
-                padding-top: 2px;
-            }
-            .pUser {
-                /*margin-bottom: 5px;*/
-            }
-            .user-hr {
-                margin-bottom: 0;
-            }
-            .row.reviews {
-                margin: 0;
-            }
-            .review-wrap-left {
-                padding: 10px 10px 10px 0;
-            }
-            .review-wrap-right {
-                padding: 10px 0 10px 10px;
-            }
-            .review {
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                padding: 4px;
-                float: left;
-
-            }
-            .review-content {
-                padding: 9px 9px 0 9px;
-            }
-            .user-review-name {
-                margin-top: 0;
-            }
-            .col-stars {
-                margin-top: 5px;
-            }
-            .user-review-rest-city > h3 {
-                margin-top: 0px;
-            }
-            .blockquote.user-review-description {
-                display: inline-block;
-                margin-bottom: 0;
-            }
-            .user-review-description-xs {
-                display: none;
-            }
-            .review-description {
-                padding-bottom: 9px;
-            }
-            h4.user-review-rest-name {
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-            .user-review-image {
-                float: right;
-                padding: 0;
-            }
-            .user-alert-box > .alert {
-                margin-bottom: 0;
-                margin-top: 20px;
-            }
-            .col-sm-6.review-value-for-money > h5, .col-md-7.review-value-for-money > h5,
-            .col-lg-6.review-value-for-money > h5, .col-sm-6.review-service > h5,
-            .col-md-5.review-service > h5, .col-lg-6.review-service > h5 {
-                margin-top: 0;
-                margin-bottom: 20px;
-            }
-            .col-md-5.col-md-5-stars {
-                padding-left: 5px;
-            }
-            .user-new-restaurant-btn > button {
-                margin-top: 20px;
-            }
-
-            @media screen and (max-width: 991px) {
-                .iconInfo {
-                    padding-left: 75px;
-                }
-                .col-sm-12.review-wrap-left, .col-sm-12.review-wrap-right {
-                    padding: 7px 0;
-                }
-            }
-
-            @media screen and (max-width: 767px) {
-                .iconInfo {
-                    padding-left: 25px;
-                    float: right;
-                }
-                .col-xs-center {
-                    float: none;
-                    display: block;
-                    margin: 0 auto;
-                }
-                h1.col-xs-center, h2.col-xs-center {
-                    margin-top: 20px;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-                .col-xs-6 > .pUser {
-                    text-align: center;
-                }
-                .review {
-                    padding: 4px;
-                }
-                .user-review-name {
-                    margin: 20px 0 10px 0;
-                    text-align: center;
-                }
-                .user-review-name > .user-review-rest-city {
-                    display: none;
-                }
-                .col-xs-12.user-review-rest-city {
-                    display: block;
-                    text-align: center;
-                }
-                .col-xs-12.user-review-rest-city-xs > h3 {
-                    margin-top: 0;
-                }
-                h4.user-review-rest-name {
-                    text-align: center;
-                }
-                h4.col-stars {
-                    margin: 0 auto;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-                .blockquote.user-review-description {
-                    display: none;
-                }
-                .user-review-description-xs {
-                    display: block;
-                    text-align: center;
-                    margin: 0 auto;
-                }
-                .user-review-image {
-                    float: left;
-                }
-                .col-xs-12.review-food > h5, .col-xs-12.review-service > h5,
-                .col-xs-12.review-atmosphere > h5, .col-xs-12.review-value-for-money > h5 {
-                    text-align: center;
-                }
-                .col-xs-12.review-value-for-money > h5 {
-                    margin-bottom: 15px;
-                }
-                .col-xs-12.review-value-for-money > h5, .col-xs-12.review-service > h5,
-                .col-xs-12.review-food > h5, .col-xs-12.review-atmosphere > h5 {
-                    margin: 0 0 10px 0;
-                }
-                .col-xs-12.review-wrap-left, .col-xs-12.review-wrap-right {
-                    padding: 7px 0;
-                }
-                .user-new-restaurant-btn > button {
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                }
-            }
-
-            @media screen and (max-width: 370px) {
-                .user-restaurants.user-title, .user-reviews.user-title {
-                    font-size: 26px;
-                }
-            }
-        </style>
     </head>
     <body>
 
+        <!-- header -->
+        <jsp:include page="header/header.jsp" />
+
         <%--<c:if test="${sessionScope.user != null}">--%>
+
+        <div id="photo-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content photo-modal-content">
+                    <img id="photo-modal-img" src="" >
+                </div>
+
+            </div>
+        </div>
 
         <!-- Modal -->
         <div id="changeNickname" class="modal fade" role="dialog">
@@ -267,30 +107,72 @@
         </div>
 
         <div class="container">
-            <c:if test="${alert gt -1}">
+            <c:if test="${alert.type gt -1}">
                 <div class="user-alert-box">
                     <c:choose>
-                        <c:when test="${alert == 0}">
+                        <c:when test="${alert.type == 0}">
                             <div class="alert alert-success fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>
-                                    <c:out value="${alert_title}" />
+                                    <c:out value="${alert.title}" />
                                 </strong>
-                                <c:out value="${alert_text}" />
+                                <c:out value="${alert.description}" />
                             </div>
                         </c:when>
-                        <c:when test="${alert == 1}">
+                        <c:when test="${alert.type == 1}">
                             <div class="alert alert-danger fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>
-                                    <c:out value="${alert_title}" />
+                                    <c:out value="${alert.title}" />
                                 </strong>
-                                <c:out value="${alert_text}" />
+                                <c:out value="${alert.description}" />
                             </div>
                         </c:when>
                     </c:choose>
                 </div>
             </c:if>
+
+            <!--
+            <div class="prova row">
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+                <div class="col-md-2">
+                    <img src="img/reviewsImgs/cbk.jpg" />
+                </div>
+            </div>
+            -->
+
             <div class="user-info">
                 <div class="row">
                     <div class="col-md-12">
@@ -355,12 +237,12 @@
 
             <%-- I MIEI RISTORANTI --%>
 
-            <c:if test="${user.type == 1}">
+            <c:if test="${user.type gt 0 && fn:length(restaurants) gt 0}">
 
                 <hr class="user-hr">
 
                 <div class="row">
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                    <div class="user-restaurants-title col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <h2 class="user-restaurants user-title col-xs-center">I miei ristoranti</h2>
                     </div>
                     <div class="user-new-restaurant-btn col-xs-12 col-sm-8 col-md-9 col-lg-9">
@@ -369,33 +251,62 @@
                 </div>
 
                 <!-- Avvia servlet per ricerca miei ristoranti -->
-                <!--thumbinail-container-->
-                <div class="thumbnail-container">
-                    <div class="row row-centered">
+                <div class="row" id="row-thumbnail">
 
-                        <c:forEach items="${restaurants}" var="restaurant">
-                            <div class="col-sm-6 col-xs-12 col-md-4 col-centered">
-                                <div class="thumbnail">
-                                    <img src="..." alt="Nessuna immagine disponibile">
-                                    <div class="caption">
-                                        <h3>
+                    <c:forEach items="${restaurants}" var="restaurant">
+                        <div class="col-sm-6 col-xs-12 col-md-4 col-centered">
+                            <div class="thumbnail">
+                                <div class="module">
+                                    <img class="module img-responsive" src="img/restImgs/<c:out value='${restaurant.imgPath}' />" alt="Nessuna immagine disponibile">
+                                    <div class="overlay"></div>
+                                    <header>
+                                        <h1>
                                             <c:out value="${restaurant.name}" />
-                                        </h3>
-                                        <p>
-                                            <c:out value="${restaurant.address}" />
+                                        </h1>
+                                        <div>
+                                            <c:forEach var="j" begin="${restaurant.globalValue + 1}" end="5">
+                                                <span class="pull-right glyphicon glyphicon-star-empty val"></span>
+                                            </c:forEach>
+                                            <c:forEach var="i" begin="1" end="${restaurant.globalValue}">
+                                                <span class="pull-right glyphicon glyphicon-star val"></span>
+                                            </c:forEach>
+                                        </div>
+                                    </header>
+                                </div>
+                                <div class="caption">
+                                    <div class="cuisine-labels">
+                                        <c:forEach var="cuisine" items="${restaurant.cuisineTypes}">
+                                            <span class="label label-info">
+                                                <c:out value="${cuisine.name}" />
+                                            </span>
+                                        </c:forEach>
+                                        <p class="pull-right">
+                                            <c:out value="${restaurant.numReviews}" />
+                                            <c:choose>
+                                                <c:when test="${restaurant.numReviews eq 1}">
+                                                    Recensione
+                                                </c:when>
+                                                <c:otherwise>
+                                                    Recensioni
+                                                </c:otherwise>
+                                            </c:choose>
                                         </p>
-                                        <p>
-                                            <c:out value="${restaurant.description}" />
-                                        </p>
-
                                     </div>
+                                    <p>
+                                        <span class="glyphicon glyphicon-globe"></span>
+                                        <c:out value="${restaurant.address}" />
+                                    </p>
+                                    <%--
+                                    <p>
+                                        <c:out value="${restaurant.description}" />
+                                    </p>
+                                    --%>
                                 </div>
                             </div>
-                        </c:forEach>
+                        </div>
+                    </c:forEach>
 
-                        <!--/row-->
-                    </div>
-                    <!--/thumbnail-container-->
+                    <!--/row-->
                 </div>
 
                 <!--
@@ -426,7 +337,89 @@
                     </div>
                 </div>
 
+                <div class="panel-group">
+                    <c:forEach var="r" items="${reviews}">
+                        <div class="panel panel-default panel-review">
+                            <div class="panel-heading panel-outer">
+                                <div class="panel-heading-inner"></div>
+                                <div class="row">
+                                    <div class="panel-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h3>
+                                            <c:out value="${r.name}" />
+                                        </h3>
+                                    </div>
+                                    <div class="col-stars col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <%-- stelle piene --%>
+                                        <c:forEach var="i" begin="1" end="${r.global_value}">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        </c:forEach>
+                                        <%-- stelle vuote --%>
+                                        <c:forEach var="i" begin="${r.global_value + 1}" end="5">
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </c:forEach>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="valutations">
+                                            <span class="label label-warning label-review">CIBO: 
+                                                <span class="badge badge-review">
+                                                    <c:out value="${r.food}" />
+                                                </span>
+                                            </span>
+                                            <span class="label label-warning label-review">QUALITA'/PREZZO: 
+                                                <span class="badge badge-review">
+                                                    <c:out value="${r.value_for_money}" />
+                                                </span>
+                                            </span>
+                                            <span class="label label-warning label-review">ATMOSFERA: 
+                                                <span class="badge badge-review">
+                                                    <c:out value="${r.atmosphere}" />
+                                                </span>
+                                            </span>
+                                            <span class="label label-warning label-review">SERVIZIO: 
+                                                <span class="badge badge-review">
+                                                    <c:out value="${r.service}" />
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="review-rest col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h4>
+                                            <c:out value="${r.restaurant_name}" />
+                                            <small class=" review-sm-date text-muted">
+                                                <c:out value="${r.restaurant_city} - ${fn:split(r.data_creation, ' ')[0]}" />
+                                            </small>
+                                        </h4>
+                                        <h4 class="review-xs-date">
+                                            <small class="text-muted">
+                                                <c:out value="${r.restaurant_city} - ${fn:split(r.data_creation, ' ')[0]}" />
+                                            </small>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <c:out value="${r.description}" />
+                            </div>
+                            <c:if test="${r.photo_name != ''}">
+                                <div class="panel-footer panel-outer">
+                                    <div class="photos-container">
+                                        <div class="review-photo">
+                                            <a data-toggle="modal" data-target="#photo-modal" onclick="setModalImage('<c:out value='${r.photo_name}' />')">
+                                                <img src="
+                                                     <c:out value='${r.photo_name}' />
+                                                     " >
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+                        </div>
+                    </c:forEach>
+                </div>
 
+                <%--
                 <div class="row reviews">
                     <c:set var="index" value="${1}" />
                     <c:forEach items="${reviews}" var="r">
@@ -445,6 +438,7 @@
                                     <c:when test="${r.photo_name != ''}">
                                         <div class="user-review-image col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <img src="<c:out value='${r.photo_name}' />" alt="Nessuna immagine disponibile" >
+                                            <div class="overlay"></div>
                                         </div>
                                         <c:set var="photo" value="8" />
                                     </c:when>
@@ -457,12 +451,12 @@
                                      ">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h3 class="user-review-name">
+                                            <h3 class="user-review-name user-review-name-<c:out value='${photo}' /> ">
                                                 <c:out value="${r.name}" />
                                             </h3>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h4 class="user-review-rest-name">
+                                            <h4 class="user-review-rest-name user-review-rest-name-<c:out value='${photo}' /> ">
                                                 <c:out value="${r.restaurant_name}" />
                                             </h4>
                                         </div>
@@ -475,54 +469,55 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 col-md-5-stars">
                                             <h4 class="col-stars">
-                                                <%-- stelle piene --%>
-                                                <c:forEach var="i" begin="1" end="${r.global_value}">
-                                                    <span class="glyphicon glyphicon-star"></span>
-                                                </c:forEach>
-                                                <%-- stelle vuote --%>
-                                                <c:forEach var="i" begin="${r.global_value + 1}" end="5">
-                                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                                </c:forEach>
-                                            </h4>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 review-food">
-                                            <h5>
-                                                <c:out value="CIBO: ${r.food}/5" />
-                                            </h5>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 review-atmosphere">
-                                            <h5>
-                                                <c:out value="ATMOSFERA: ${r.atmosphere}/5" />
-                                            </h5>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 review-service">
-                                            <h5>
-                                                <c:out value="SERVIZIO: ${r.service}/5" />
-                                            </h5>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 review-value-for-money">
-                                            <h5>
-                                                <c:out value="QUALITÀ/PREZZO: ${r.value_for_money}/5" />
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-description col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <blockquote class="blockquote user-review-description">
-                                        <p class="m-b-0">
-                                            <c:out value="${r.description}" />
-                                        </p>
-                                    </blockquote>
-                                    <p class="user-review-description-xs">
-                                        <c:out value="${r.description}" />
-                                    </p>
-                                </div>
+                <%-- stelle piene -->
+                <c:forEach var="i" begin="1" end="${r.global_value}">
+                    <span class="glyphicon glyphicon-star"></span>
+                </c:forEach>
+                <%-- stelle vuote -->
+                <c:forEach var="i" begin="${r.global_value + 1}" end="5">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </c:forEach>
+            </h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 review-food">
+            <h5>
+                <c:out value="CIBO: ${r.food}/5" />
+            </h5>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 review-atmosphere">
+            <h5>
+                <c:out value="ATMOSFERA: ${r.atmosphere}/5" />
+            </h5>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 review-service">
+            <h5>
+                <c:out value="SERVIZIO: ${r.service}/5" />
+            </h5>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 review-value-for-money">
+            <h5>
+                <c:out value="QUALITÀ/PREZZO: ${r.value_for_money}/5" />
+            </h5>
+        </div>
+    </div>
+</div>
+<div class="review-description col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <blockquote class="blockquote user-review-description">
+        <p class="m-b-0">
+            <c:out value="${r.description}" />
+        </p>
+    </blockquote>
+    <p class="user-review-description-xs">
+        <c:out value="${r.description}" />
+    </p>
+</div>
 
-                            </div>
-                        </div>
-                        <c:set var="index" value="${index + 1}" />
-                    </c:forEach>
-                </div>
+</div>
+</div>
+<c:set var="index" value="${index + 1}" />
+</c:forEach>
+</div>
+                --%>
 
             </c:if>
 
@@ -534,9 +529,13 @@
 
         </div>
 
+
+        <script>
+            function setModalImage(photoname) {
+                path = photoname.replace("\r", "\\r");
+                path = path.replace("Imgs", "Imgs\\");
+                document.getElementById("photo-modal-img").src = path;
+            }
+        </script>
     </body>
 </html>
-
-<script>
-
-</script>

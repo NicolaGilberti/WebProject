@@ -1,4 +1,4 @@
-﻿-- users
+-- users
 -- type: 2-> administrator 1-> ristoratore 0-> utente normale
 
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','6e1571e0492cf7bb96ad11402430699e1b7629dc11f647f7929d3b7ed6c7483d',2); -- password : sha256(nicolag)
@@ -34,61 +34,60 @@ INSERT INTO opening_hours_range(day_of_the_week,start_hour,end_hour) VALUES (7,'
 
 -- cuisine
 
-INSERT INTO cuisine(name) VALUES('afgana'); -- 1
+INSERT INTO cuisine(name) VALUES('Afgana'); -- 1
 INSERT INTO cuisine(name) VALUES('Africana'); -- 2 
 INSERT INTO cuisine(name) VALUES('Americana'); -- 3
-INSERT INTO cuisine(name) VALUES('argentina'); -- 4
+INSERT INTO cuisine(name) VALUES('Argentina'); -- 4
 INSERT INTO cuisine(name) VALUES('Asiatica');-- 5
-INSERT INTO cuisine(name) VALUES('austriaca');-- 6
-INSERT INTO cuisine(name) VALUES('bar');-- 7
-INSERT INTO cuisine(name) VALUES('barbecue');-- 8
-INSERT INTO cuisine(name) VALUES('Barbecue');-- 9
-INSERT INTO cuisine(name) VALUES('birreria');-- 10
-INSERT INTO cuisine(name) VALUES('Brasiliana'); -- 11
-INSERT INTO cuisine(name) VALUES('Caffè'); -- 12
-INSERT INTO cuisine(name) VALUES('centro americana'); -- 13
-INSERT INTO cuisine(name) VALUES('centro europea'); -- 14
-INSERT INTO cuisine(name) VALUES('Cibo di strada'); -- 15
-INSERT INTO cuisine(name) VALUES('Cinese'); -- 16
-INSERT INTO cuisine(name) VALUES('contemporanea'); -- 17
-INSERT INTO cuisine(name) VALUES('coreana'); -- 18
-INSERT INTO cuisine(name) VALUES('Texas'); -- 19
-INSERT INTO cuisine(name) VALUES('Esteuropea'); -- 20
-INSERT INTO cuisine(name) VALUES('Europea'); -- 21
-INSERT INTO cuisine(name) VALUES('fast food'); -- 22
-INSERT INTO cuisine(name) VALUES('Francese'); -- 23
-INSERT INTO cuisine(name) VALUES('fusion'); -- 24
-INSERT INTO cuisine(name) VALUES('Gastronomia'); -- 25
-INSERT INTO cuisine(name) VALUES('Giapponese'); -- 26
-INSERT INTO cuisine(name) VALUES('Greca'); -- 27
-INSERT INTO cuisine(name) VALUES('halal'); -- 28
-INSERT INTO cuisine(name) VALUES('Indiana'); -- 29
-INSERT INTO cuisine(name) VALUES('internazionale'); -- 30
-INSERT INTO cuisine(name) VALUES('Italiana'); -- 31
-INSERT INTO cuisine(name) VALUES('locanda balti'); -- 32
-INSERT INTO cuisine(name) VALUES('marocchina'); -- 33
-INSERT INTO cuisine(name) VALUES('Mediorientale'); -- 34
-INSERT INTO cuisine(name) VALUES('Mediterranea'); -- 35
-INSERT INTO cuisine(name) VALUES('Messicana'); -- 36
-INSERT INTO cuisine(name) VALUES('mongola'); -- 37
-INSERT INTO cuisine(name) VALUES('senza glutine'); -- 38
-INSERT INTO cuisine(name) VALUES('Opzioni vegane'); -- 39
-INSERT INTO cuisine(name) VALUES('Per vegetariani'); -- 40
-INSERT INTO cuisine(name) VALUES('Pesce'); -- 41
-INSERT INTO cuisine(name) VALUES('Pizza'); -- 42
-INSERT INTO cuisine(name) VALUES('Pub'); -- 43
-INSERT INTO cuisine(name) VALUES('americano anni 50'); -- 44
-INSERT INTO cuisine(name) VALUES('salutistica'); -- 45
-INSERT INTO cuisine(name) VALUES('Spagnola'); -- 46
-INSERT INTO cuisine(name) VALUES('Steakhouse'); -- 47
-INSERT INTO cuisine(name) VALUES('Sudamericana'); -- 48
-INSERT INTO cuisine(name) VALUES('Sushi'); -- 49
-INSERT INTO cuisine(name) VALUES('Tailandese'); -- 50
-INSERT INTO cuisine(name) VALUES('Tedesca'); -- 51
-INSERT INTO cuisine(name) VALUES('turca'); -- 52
-INSERT INTO cuisine(name) VALUES('venezuelana'); -- 53
-INSERT INTO cuisine(name) VALUES('Wine Bar'); -- 54
-INSERT INTO cuisine(name) VALUES('Zuppe'); -- 55
+INSERT INTO cuisine(name) VALUES('Austriaca');-- 6
+INSERT INTO cuisine(name) VALUES('Bar');-- 7
+INSERT INTO cuisine(name) VALUES('Barbecue');-- 9-1
+INSERT INTO cuisine(name) VALUES('Birreria');-- 10-1
+INSERT INTO cuisine(name) VALUES('Brasiliana'); -- 11-1
+INSERT INTO cuisine(name) VALUES('Caffè'); -- 12-1
+INSERT INTO cuisine(name) VALUES('Centro americana'); -- 13-1
+INSERT INTO cuisine(name) VALUES('Centro europea'); -- 14-1
+INSERT INTO cuisine(name) VALUES('Cibo di strada'); -- 15-1
+INSERT INTO cuisine(name) VALUES('Cinese'); -- 16-1
+INSERT INTO cuisine(name) VALUES('Contemporanea'); -- 17-1
+INSERT INTO cuisine(name) VALUES('Coreana'); -- 18-1
+INSERT INTO cuisine(name) VALUES('Texas'); -- 19-1
+INSERT INTO cuisine(name) VALUES('Esteuropea'); -- 20-1
+INSERT INTO cuisine(name) VALUES('Europea'); -- 21-1
+INSERT INTO cuisine(name) VALUES('Fast food'); -- 22-1
+INSERT INTO cuisine(name) VALUES('Francese'); -- 23-1
+INSERT INTO cuisine(name) VALUES('Fusion'); -- 24-1
+INSERT INTO cuisine(name) VALUES('Gastronomia'); -- 25-1
+INSERT INTO cuisine(name) VALUES('Giapponese'); -- 26-1
+INSERT INTO cuisine(name) VALUES('Greca'); -- 27-1
+INSERT INTO cuisine(name) VALUES('Halal'); -- 28-1
+INSERT INTO cuisine(name) VALUES('Indiana'); -- 29-1
+INSERT INTO cuisine(name) VALUES('Internazionale'); -- 30-1
+INSERT INTO cuisine(name) VALUES('Italiana'); -- 31-1
+INSERT INTO cuisine(name) VALUES('Locanda balti'); -- 32-1
+INSERT INTO cuisine(name) VALUES('Marocchina'); -- 33-1
+INSERT INTO cuisine(name) VALUES('Mediorientale'); -- 34-1
+INSERT INTO cuisine(name) VALUES('Mediterranea'); -- 35-1
+INSERT INTO cuisine(name) VALUES('Messicana'); -- 36-1
+INSERT INTO cuisine(name) VALUES('Mongola'); -- 37-1
+INSERT INTO cuisine(name) VALUES('Senza glutine'); -- 38-1
+INSERT INTO cuisine(name) VALUES('Opzioni vegane'); -- 39-1
+INSERT INTO cuisine(name) VALUES('Per vegetariani'); -- 40-1
+INSERT INTO cuisine(name) VALUES('Pesce'); -- 41-1
+INSERT INTO cuisine(name) VALUES('Pizza'); -- 42-1
+INSERT INTO cuisine(name) VALUES('Pub'); -- 43-1
+INSERT INTO cuisine(name) VALUES('Americano anni 50'); -- 44-1
+INSERT INTO cuisine(name) VALUES('Salutistica'); -- 45-1
+INSERT INTO cuisine(name) VALUES('Spagnola'); -- 46-1
+INSERT INTO cuisine(name) VALUES('Steakhouse'); -- 47-1
+INSERT INTO cuisine(name) VALUES('Sudamericana'); -- 48-1
+INSERT INTO cuisine(name) VALUES('Sushi'); -- 49-1
+INSERT INTO cuisine(name) VALUES('Tailandese'); -- 50-1
+INSERT INTO cuisine(name) VALUES('Tedesca'); -- 51-1
+INSERT INTO cuisine(name) VALUES('Turca'); -- 52-1
+INSERT INTO cuisine(name) VALUES('Venezuelana'); -- 53-1
+INSERT INTO cuisine(name) VALUES('Wine Bar'); -- 54-1
+INSERT INTO cuisine(name) VALUES('Zuppe'); -- 55-1
 
 -- price_ranges
 
@@ -361,45 +360,45 @@ INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_c
 
 -- restaurant_cuisine
 
-INSERT INTO restaurants_cuisine VALUES (31,1);
-INSERT INTO restaurants_cuisine VALUES (35,1);
-INSERT INTO restaurants_cuisine VALUES (21,1);
-INSERT INTO restaurants_cuisine VALUES (31,2);
+INSERT INTO restaurants_cuisine VALUES (30,1);
+INSERT INTO restaurants_cuisine VALUES (34,1);
+INSERT INTO restaurants_cuisine VALUES (20,1);
+INSERT INTO restaurants_cuisine VALUES (30,2);
 INSERT INTO restaurants_cuisine VALUES (6,2);
-INSERT INTO restaurants_cuisine VALUES (21,2);
-INSERT INTO restaurants_cuisine VALUES (38,2);
-INSERT INTO restaurants_cuisine VALUES (42,3);
-INSERT INTO restaurants_cuisine VALUES (31,3);
-INSERT INTO restaurants_cuisine VALUES (42,4);
-INSERT INTO restaurants_cuisine VALUES (31,4);
-INSERT INTO restaurants_cuisine VALUES (35,4);
-INSERT INTO restaurants_cuisine VALUES (38,4);
-INSERT INTO restaurants_cuisine VALUES (51,5);
-INSERT INTO restaurants_cuisine VALUES (31,5);
-INSERT INTO restaurants_cuisine VALUES (42,5);
-INSERT INTO restaurants_cuisine VALUES (21,5);
-INSERT INTO restaurants_cuisine VALUES (35,5);
-INSERT INTO restaurants_cuisine VALUES (55,5);
-INSERT INTO restaurants_cuisine VALUES (31,6);
-INSERT INTO restaurants_cuisine VALUES (42,6);
-INSERT INTO restaurants_cuisine VALUES (35,6);
-INSERT INTO restaurants_cuisine VALUES (21,7);
-INSERT INTO restaurants_cuisine VALUES (31,7);
-INSERT INTO restaurants_cuisine VALUES (42,8);
-INSERT INTO restaurants_cuisine VALUES (31,8);
-INSERT INTO restaurants_cuisine VALUES (31,9);
+INSERT INTO restaurants_cuisine VALUES (20,2);
+INSERT INTO restaurants_cuisine VALUES (37,2);
+INSERT INTO restaurants_cuisine VALUES (41,3);
+INSERT INTO restaurants_cuisine VALUES (30,3);
+INSERT INTO restaurants_cuisine VALUES (41,4);
+INSERT INTO restaurants_cuisine VALUES (30,4);
+INSERT INTO restaurants_cuisine VALUES (34,4);
+INSERT INTO restaurants_cuisine VALUES (37,4);
+INSERT INTO restaurants_cuisine VALUES (50,5);
+INSERT INTO restaurants_cuisine VALUES (30,5);
+INSERT INTO restaurants_cuisine VALUES (41,5);
+INSERT INTO restaurants_cuisine VALUES (20,5);
+INSERT INTO restaurants_cuisine VALUES (34,5);
+INSERT INTO restaurants_cuisine VALUES (54,5);
+INSERT INTO restaurants_cuisine VALUES (30,6);
+INSERT INTO restaurants_cuisine VALUES (41,6);
+INSERT INTO restaurants_cuisine VALUES (34,6);
+INSERT INTO restaurants_cuisine VALUES (20,7);
+INSERT INTO restaurants_cuisine VALUES (30,7);
+INSERT INTO restaurants_cuisine VALUES (41,8);
+INSERT INTO restaurants_cuisine VALUES (30,8);
+INSERT INTO restaurants_cuisine VALUES (30,9);
 INSERT INTO restaurants_cuisine VALUES (3,9);
 INSERT INTO restaurants_cuisine VALUES (7,9);
-INSERT INTO restaurants_cuisine VALUES (9,9);
-INSERT INTO restaurants_cuisine VALUES (21,9);
-INSERT INTO restaurants_cuisine VALUES (43,9);
-INSERT INTO restaurants_cuisine VALUES (31,10);
-INSERT INTO restaurants_cuisine VALUES (35,10);
-INSERT INTO restaurants_cuisine VALUES (21,10);
-INSERT INTO restaurants_cuisine VALUES (31,11);
-INSERT INTO restaurants_cuisine VALUES (35,11);
-INSERT INTO restaurants_cuisine VALUES (42,11);
-INSERT INTO restaurants_cuisine VALUES (40,11);
+INSERT INTO restaurants_cuisine VALUES (8,9);
+INSERT INTO restaurants_cuisine VALUES (20,9);
+INSERT INTO restaurants_cuisine VALUES (42,9);
+INSERT INTO restaurants_cuisine VALUES (30,10);
+INSERT INTO restaurants_cuisine VALUES (34,10);
+INSERT INTO restaurants_cuisine VALUES (20,10);
+INSERT INTO restaurants_cuisine VALUES (30,11);
+INSERT INTO restaurants_cuisine VALUES (34,11);
+INSERT INTO restaurants_cuisine VALUES (41,11);
+INSERT INTO restaurants_cuisine VALUES (39,11);
 
 -- opening_hours_range_restaurnat
 
@@ -519,6 +518,9 @@ INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES 
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('prova.jpg','Esterno Dal Pescatore',1,3,'2016-09-24 09:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante.jpg','Interni Uva e Menta',4,4,'2016-09-24 10:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante-bar-pizzeria-due-giganti-20110209-132031.jpg','Esterno Due Giganti',8,5,'2016-09-24 11:00:00');
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('RISTORANTE 2010 (25).JPG','Animali Dal Pescatore',1,3,'2016-10-08T09:46:48+00:00');
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('DAL PESCATORE (5).jpg','Interni Dal Pescatore',1,2,'2016-10-06T09:46:48+00:00');
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('Dal Pescatore 271.jpg','Cantone Dal Pescatore',1,5,'2016-10-02T09:46:48+00:00');
 
 -- reviews (utenti registrati id [7,12])
 
@@ -539,7 +541,7 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(5,5,4,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-14 12:00:00',4,12);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(3,4,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-29 12:00:00',4,10);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,5,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',4,5);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',6,3);
+INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',6,3);-- 18
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(3,4,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-29 12:00:00',7,10);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,5,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',7,12);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',7,4);
@@ -551,8 +553,6 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,3,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-19 12:00:00',10,12);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',11,2);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,7);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,3);
-
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,3);
 
 -- replies con conferma di admin[1,6]
@@ -585,3 +585,26 @@ INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono C
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',23,1);-- 8
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',27,2);-- 10
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',29,3);-- 11
+
+-- user_review_likes [0,1] 1 -> +1 / 0 -> -1
+
+INSERT INTO user_review_likes VALUES(10,3,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(8,3,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(9,3,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,6,1,'2016-10-03 12:00:00');
+INSERT INTO user_review_likes VALUES(7,7,0,'2016-09-25 13:45:56');
+INSERT INTO user_review_likes VALUES(9,12,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,12,1,'2016-10-03 12:00:00');
+INSERT INTO user_review_likes VALUES(7,15,0,'2016-10-01 21:25:56');
+INSERT INTO user_review_likes VALUES(4,18,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,18,1,'2016-10-03 12:00:00');
+INSERT INTO user_review_likes VALUES(7,18,0,'2016-09-25 13:45:56');
+INSERT INTO user_review_likes VALUES(9,18,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(12,18,1,'2016-10-03 12:00:00');
+INSERT INTO user_review_likes VALUES(1,18,0,'2016-10-01 21:25:56');
+INSERT INTO user_review_likes VALUES(9,28,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(5,28,1,'2016-10-03 12:00:00');
+INSERT INTO user_review_likes VALUES(3,28,0,'2016-09-25 13:45:56');
+INSERT INTO user_review_likes VALUES(8,28,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,28,1,'2016-10-03 12:00:00');
+INSERT INTO user_review_likes VALUES(7,28,0,'2016-10-01 21:25:56');

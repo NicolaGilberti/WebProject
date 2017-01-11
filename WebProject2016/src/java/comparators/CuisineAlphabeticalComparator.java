@@ -5,16 +5,16 @@
  */
 package comparators;
 
-import beans.Cuisine;
+import beans.CuisineBean;
 import java.util.Comparator;
 
 /**
  *
  * @author MirkoPortatile
  */
-public class CuisineAlphabeticalComparator implements Comparator<Cuisine> {
+public class CuisineAlphabeticalComparator implements Comparator<CuisineBean> {
 
-    public int compare(Cuisine cuisine1, Cuisine cuisine2) {
+    public int compare(CuisineBean cuisine1, CuisineBean cuisine2) {
         return cuisine1.getName().compareTo(cuisine2.getName());
     }
 }
