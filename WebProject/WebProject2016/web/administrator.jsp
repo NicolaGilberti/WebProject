@@ -3,7 +3,10 @@
     Created on : 11-ott-2016, 11.12.58
     Author     : Marco
 --%>
-<%@page import="utils.NotificationReplies"%>
+<<<<<<< HEAD
+=======
+<%@page import="beans.NotificationRepliesBean"%>
+>>>>>>> notification
 <%@page import="beans.NotificationBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,11 +20,12 @@
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/header.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>     
         <script type="text/javascript">
            
-            var url = 'serevlet/SearchNotification.java';
+            var url = 'serevlets/SearchNotification.java';
 
             $(document).ready(function() {
 
