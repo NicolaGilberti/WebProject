@@ -3,7 +3,10 @@
     Created on : 11-ott-2016, 11.12.58
     Author     : Marco
 --%>
+<<<<<<< HEAD
+=======
 <%@page import="beans.NotificationRepliesBean"%>
+>>>>>>> notification
 <%@page import="beans.NotificationBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,7 +25,7 @@
         <title>JSP Page</title>     
         <script type="text/javascript">
            
-            var url = 'serevlet/SearchNotification.java';
+            var url = 'serevlets/SearchNotification.java';
 
             $(document).ready(function() {
 

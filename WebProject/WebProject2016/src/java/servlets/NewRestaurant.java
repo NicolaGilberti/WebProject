@@ -101,7 +101,7 @@ public class NewRestaurant extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.removeAttribute("formNotValid");
+        //request.removeAttribute("formNotValid");
 
         RestaurantBean rest = new RestaurantBean();
 

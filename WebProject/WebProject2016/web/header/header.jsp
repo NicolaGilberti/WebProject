@@ -25,7 +25,7 @@
             </form>
 
             <div class="login-help">
-                <a href="newreg.html">Registrati</a> - <a href="maildimodifica.html">Password dimenticata?</a>
+                <a href="registration.jsp">Registrati</a> - <a href="maildimodifica.html">Password dimenticata?</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Tutto<span class="bistro">Bistrò</span></a>
+            <a class="navbar-brand" href="index.jsp">Tutto<span class="bistro">Bistrò</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +51,7 @@
                 <%-- //Se l'utente esiste nella sessionScope vuol dire che e' loggato e non ha bisogno di vedere il tasto login --%>
                 <c:if test="${sessionScope.user == null}">
                     <li class=""><a href="#" data-toggle="modal" data-target="#login-modal">Accedi<span class="sr-only">(current)</span></a></li>
-                    <li><a href="newreg.html">Registrati</a></li>   
+                    <li><a href="registration.jsp">Registrati</a></li>   
                     </c:if>
 
 
@@ -66,11 +66,13 @@
                 <ul class="nav navbar-nav navbar-right">
   
                     <c:if test="${sessionScope.user.type >= 1}">
+
                           <li><a href="UserRestaurants">I miei ristoranti</a></li>
                     </c:if>
                     <li><a href="newRestaurantForm.jsp">Aggiungi Ristorante</a>
                 </li>
                     <li><a href="SearchNotification">Notifiche</a>
+
                     </li>
 
                     <li class="dropdown" >

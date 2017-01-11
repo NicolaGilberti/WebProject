@@ -4,12 +4,19 @@
 <head>
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!--css-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico|Lato" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-    <link href="css/header.css" rel="stylesheet">
+     <jsp:include page="header/headerFiles.jsp" />
     <link href="css/resultsStyle.css" rel="stylesheet">
+    
+    <!--script-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/results.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/autoComplete.js"></script>
+    <!--/scripts-->
 
+    <title>Risultati Ristorante</title>
 
 </head>
 
@@ -17,7 +24,7 @@
 
 
     <!-- header -->
-    <jsp:include page="header.jsp" />
+    <jsp:include page="header/header.jsp" />
 
 
 
@@ -37,10 +44,10 @@
                 <form id="searchForm">
                     <div class="input-group stylish-input-group">
 
-                        <input type="text" class="form-control" id="searchInput" placeholder="Search">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search" required>
                         <span class="input-group-addon">
-                                <button id="searchButton">
-                                    <span class="glyphicon glyphicon-search"></span>
+                        <button id="searchButton">
+                        <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
 
@@ -105,13 +112,13 @@
     </div>
     <!--/Container generale -->
 
+<<<<<<< HEAD
+    
+=======
     <!--script-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/results.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script type="text/javascript" src="js/autoComplete.js"></script>
+>>>>>>> f0dd3155cc39ca20f96fa837248d1cd2a84fca36
 </body>
 
 </html>
