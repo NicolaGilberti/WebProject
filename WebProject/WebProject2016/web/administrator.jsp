@@ -3,10 +3,7 @@
     Created on : 11-ott-2016, 11.12.58
     Author     : Marco
 --%>
-<<<<<<< HEAD
-=======
 <%@page import="beans.NotificationRepliesBean"%>
->>>>>>> notification
 <%@page import="beans.NotificationBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,6 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="header/headerFiles.jsp" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -38,8 +36,9 @@
         </script>
     </head>
     <body>
+        <!-- header -->
+    <jsp:include page="header/header.jsp" />
         <div id="displayarea">
-        <jsp:include page="header.jsp"/>
         <div class="container-fluid" >
            <div class="panel panel-default">
                 <div class="panel-body">
