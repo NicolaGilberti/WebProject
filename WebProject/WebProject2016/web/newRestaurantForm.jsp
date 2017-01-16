@@ -5,8 +5,8 @@
 --%>
 
 <%@page import="java.sql.ResultSet"%>
-<%@page import="database.StateQueries"%>
-<%@page import="beans.User"%>
+<%@page import="dao.StateDAO"%>
+<%@page import="beans.UserBean"%>
 <%@page import="java.net.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,44 +46,77 @@
         <div class="container">
             <h2>New Restaurant Form</h2>
             <form action="NewRestaurant" method="post">
+                <div class="row">
                 <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="nome" class="form-control" id="nome" placeholder="Inserisci un nome" required="true" maxlength="50">
+                    <div class="col-md-6">
+                        <label for="nome">Nome:</label>
+                        <input type="nome" class="form-control" id="nome" placeholder="Inserisci un nome" required="true" maxlength="50">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="descrizione">Descrizione:</label>
-                    <textarea type="descrizione" class="form-control" id="descrizione" 
-                           placeholder="Inserisci una descrizione" required="true" maxlength="32000"
-                           rows="5">
-                    </textarea>
                 </div>
+                <p></p>
+                <div class="row">
                 <div class="form-group">
+                    <div class="col-md-12">
+                        <label for="descrizione">Descrizione:</label>
+                        <textarea type="descrizione" class="form-control" id="descrizione" 
+                               placeholder="Inserisci una descrizione" required="true" maxlength="32000"
+                               rows="5">
+                        </textarea>
+                    </div>
+                </div>
+                </div>
+                <p></p>
+                <div class="row">
+                <div class="col form-group">
+                    <div class="col-md-6">
                     <label for="URL_sito">URL sito esterno:</label>
                     <input type="url" class="form-control" id="URL_sito" placeholder="">
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="col form-group">
+                    <div class="col-md-6">
                     <label for="telefono">Numero Telefonico:</label>
                     <input type="tel" pattern="\d*" class="form-control" id="telefono" placeholder="">
+                    </div>
                 </div>
-                <div class="form-group">
+                </div>
+                <p></p>
+                <div class="row">
+                <div class="col form-group">
+                    <div class="col-md-6">
                     <label for="email">e-mail:</label>
                     <input class="form-control" type="email" placeholder="indrizzo email" id="email" name="email">
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="col form-group">
+                    <div class="col-md-6">
                     <label for="indrizzo">Indrizzo:</label>
                     <input class="form-control" type="text" maxlength="255" placeholder="indrizzo" id="indrizzo" name="indrizzo">
+                    </div>
                 </div>
-                <div class="form-group">
+                </div>
+                <p></p>
+                <div class="row">
+                <div class="col form-group">
+                    <div class="col-md-2">
                     <label for="CAP">CAP:</label>
                     <input class="form-control" type="number" placeholder="CAP" id="cap" name="cap">
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="col form-group">
+                    <div class="col-md-6">
                     <label for="citta">città:</label>
                     <input class="form-control" type="text" maxlength="255" placeholder="città" id="citta" name="citta">
+                    </div>
                 </div>
+                </div>
+                <p>
+                <div class="row">
+                <div class="col-md-6">
                 <select>
                     <%
-                        StateQueries sq = new StateQueries();
+                        StateDAO sq = new StateDAO();
                         ResultSet rs = sq.states();
                         while (rs.next()) {
                     %>
@@ -92,8 +125,14 @@
                         }
                     %>
                 </select>
+                </div>
+                <hr>
+                </div>
+                <p></p>
+                <div class="row col-md-6">
                 <button type="submit" class="btn btn-default">Submit</button>
                 <button type="reset" class="btn btn-warning">Reset</button>
+                </div>
             </form>
         </div>
         <!--%

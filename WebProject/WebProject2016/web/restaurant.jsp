@@ -21,28 +21,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <!--meta-->
-
-
+        
+        <!--script-->
         <script type="text/javascript" src="js/login.js"></script> 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy1utuunJuJPAVmn-__YplB6DCwGhMidc"
-        async defer></script>
+        
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        
         <script src="js/kjua-0.1.1.min.js" type="text/javascript"></script>
+        
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="js/MapLib.js" type="text/javascript"></script>
+        
+        
+        
         <!--css-->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
-        <!--css-->
 
-
-        <title>JSP Page</title>
+        <title>${r.name} - tuttobistro</title>
     </head>
-    <body onload="createMap(1.1, 1.1, 'map');">
+    <body>
         <!-- header -->
         <jsp:include page="header/header.jsp"></jsp:include>
 
@@ -89,35 +89,9 @@
                         </a>
                     </div>
                 </div>
-            <!--------------------------------------------->
-            <!-- restaurant name -->
 
-
-
-            <!--script type="text/javascript" src="davidshimjs-qrcodejs-04f46c6/qrcode.min.js"></script>
-            
-            <script>
-                var qr = new QrCode();
-
-                qr.callback = function (result, err) {
-                    if (result)
-                        console.log(result)
-                } // RESULT IN CONSOLE (WEB CONSOLE) https://developer.chrome.com/devtools 
-
-                qr.decode('cia-GRIGO'); // USES "ciao-GRIGO.png" image (look left)
-            </script>
-
-            <div id="qrcode"></div>
-            <script type="text/javascript">
-                var QRString = asdas; // CREATE A QR FROM A STRING
-                new QRCode(document.getElementById("qrcode"), QRString); // TO SEE THE RESULT https://grigo-qr-lelle.c9users.io/
-                // THEN SAVE THE IMAGE AND UPLOAD THE IMAGE HERE "File>Upload..." and put his name qr.decode('nameimage.extension');
-            </script-->
-
-
-
-
-            <div class=" container">
+            <div class="container">
+                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
                 <h2><c:out value="${r.name}"></c:out></h2>
 
                     <p></p>
@@ -138,17 +112,60 @@
                     <span class="glyphicon glyphicon-tag">
                     </span>
                     $ <c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out>
-                    </div>
-                    <!-- cuisine types -->
-                    <p></p>
-                    <div class="cuisine-labels"> 
-                    <c:forEach items="${cuisines}" var="current">
-                        <span class="label label-info" style="font-size: 14px;">
-                            <c:out value="${current.name}"></c:out>
-                            </span>
-                    </c:forEach>
                 </div>
-
+                
+                <!-- opening hours -->
+                <p>
+                <div class="Row">
+                    orari di apertura:
+                </div>
+                
+                <div class="Row">
+                    <c:out value="${openingDates}"></c:out>
+                </div>
+                <!-- cuisine types -->
+                <p></p>
+                <div class="cuisine-labels"> 
+                <c:forEach items="${cuisines}" var="current">
+                    <span class="label label-info" style="font-size: 14px;">
+                        <c:out value="${current.name}"></c:out>
+                        </span>
+                </c:forEach>
+                </div>
+                </div>
+                    
+                <!--right-->
+                <!-- qrcode -->
+                <div class="Row">
+                    <p></p>
+                    <div class="Column" id="qrCode">
+                    </div>
+                    <!--map-->
+                    <p></p>
+                    <div class="Column">
+                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBJUV-VhfzHrLgEKIBkoNpMH5Un4uef5Pc'></script>
+                        <div style='overflow:hidden;height:200px;width:310px;'>
+                            <div id='gmap_canvas' style='height:200px;width:310px;'></div>
+                            <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+                        </div> 
+                        <a href='http://maps-generator.com/it'>maps generator</a>
+                        <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=9d55fbe0a8781beced2c83653978a9ae60980a2e'></script>
+                        <script type='text/javascript'>
+                            function init_map()
+                            {
+                                var myOptions = {zoom:12,center:new google.maps.LatLng(${r.latitude},${r.longitude}),mapTypeId: google.maps.MapTypeId.ROADMAP};
+                                map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                                marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(${r.latitude},${r.longitude})});
+                                infowindow = new google.maps.InfoWindow({content:'<strong></strong>${r.name}'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+                                infowindow.open(map,marker);
+                            }
+                            google.maps.event.addDomListener(window, 'load', init_map);
+                        </script>
+                    </div>
+                </div>
+            </div>
+                                
+            <div class="container">
                 <!-- description -->
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -207,19 +224,13 @@
                     <c:set value="${i+1}" var="i"></c:set>
                 </c:forEach>
             </div>
-                
-            <!-- qrcode -->
-            <div id="qrCode">
-            </div>
-
-            <!-- map -->
-            <button onclick="createMap(1.1, 1.1, 'map');">click for map</button>
-            <div class="item" id="map" style="width: 300px; height: 200px;"></div>
-
+            
         </div>
         <script>
-            var el = kjua({text: "${r.name} ${r.address}"});
+            var el = kjua({text: "${r.name} ${r.address} ${openingDates}", size: 100});
             document.querySelector('#qrCode').appendChild(el);
         </script>
+        
+        
     </body>
 </html>
