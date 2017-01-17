@@ -7,6 +7,7 @@ var data;
 var filter;
 var dataFiltered;
 var cuisineList;
+var redirectRestaurantRelativePath="../WebProject2016/RestaurantRequest?id=";
 
 function getParameterByName(name, url) {
     if (!url)
@@ -57,7 +58,7 @@ function visualizzaTabella() {
                 '                                <div class="overlay">' +
                 '                                </div>' +
                 '                                <header>' +
-                '                                    <h1>' + restaurant.name + '</h1>' +
+                '                                    <h1><a style="color: white; text-decoration: none;" href="' + redirectRestaurantRelativePath + restaurant.id + '">' + restaurant.name + '</a></h1>' +
                 '' +
                 '                                    <div>';
         var nStar = restaurant.score;

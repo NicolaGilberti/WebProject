@@ -90,78 +90,79 @@
                     </div>
                 </div>
 
+            <!--left-->
+            <!--name-->
             <div class="container">
                 <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
-                <h2><c:out value="${r.name}"></c:out></h2>
+                    <h2><c:out value="${r.name}"></c:out></h2>
 
+                        <p></p>
+                        <p> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
+                    <!-- stars -->
+                    <div c>
+                        <c:forEach begin="1" end="${r.global_value}">
+                            <span class="glyphicon glyphicon-star"></span>
+                        </c:forEach>
+                        <c:forEach begin="${r.global_value+1}" end="5">
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </c:forEach>
+                    </div>
                     <p></p>
-                    <p> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
-                <!-- stars -->
-                <div c>
-                    <c:forEach begin="1" end="${r.global_value}">
-                        <span class="glyphicon glyphicon-star"></span>
-                    </c:forEach>
-                    <c:forEach begin="${r.global_value+1}" end="5">
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </c:forEach>
-                </div>
-                <p></p>
 
-                <!-- price range -->
-                <div>
-                    <span class="glyphicon glyphicon-tag">
-                    </span>
-                    $ <c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out>
-                </div>
-                
-                <!-- opening hours -->
-                <p>
-                <div class="Row">
-                    orari di apertura:
-                </div>
-                
-                <div class="Row">
-                    <c:out value="${openingDates}"></c:out>
-                </div>
-                <!-- cuisine types -->
-                <p></p>
-                <div class="cuisine-labels"> 
-                <c:forEach items="${cuisines}" var="current">
-                    <span class="label label-info" style="font-size: 14px;">
-                        <c:out value="${current.name}"></c:out>
+                    <!-- price range -->
+                    <div>
+                        <span class="glyphicon glyphicon-tag">
                         </span>
-                </c:forEach>
-                </div>
+                        $ <c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out>
+                    </div>
+
+                    <!-- opening hours -->
+                    <p>
+                    <div class="Row">
+                        orari di apertura:
+                    </div>
+
+                    <div class="Row">
+                        <c:out value="${openingDates}"></c:out>
+                    </div>
+                    <!-- cuisine types -->
+                    <p></p>
+                    <div class="cuisine-labels"> 
+                    <c:forEach items="${cuisines}" var="current">
+                        <span class="label label-info" style="font-size: 14px;">
+                            <c:out value="${current.name}"></c:out>
+                            </span>
+                    </c:forEach>
+                    </div>
                 </div>
                     
                 <!--right-->
                 <!-- qrcode -->
-                <div class="Row">
-                    <p></p>
-                    <div class="Column" id="qrCode">
+                <p></p>
+                <div class="text-right">
+                    <div class="" id="qrCode">
                     </div>
                     <!--map-->
                     <p></p>
-                    <div class="Column">
-                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBJUV-VhfzHrLgEKIBkoNpMH5Un4uef5Pc'></script>
-                        <div style='overflow:hidden;height:200px;width:310px;'>
-                            <div id='gmap_canvas' style='height:200px;width:310px;'></div>
-                            <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-                        </div> 
-                        <a href='http://maps-generator.com/it'>maps generator</a>
-                        <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=9d55fbe0a8781beced2c83653978a9ae60980a2e'></script>
-                        <script type='text/javascript'>
-                            function init_map()
-                            {
-                                var myOptions = {zoom:12,center:new google.maps.LatLng(${r.latitude},${r.longitude}),mapTypeId: google.maps.MapTypeId.ROADMAP};
-                                map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                                marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(${r.latitude},${r.longitude})});
-                                infowindow = new google.maps.InfoWindow({content:'<strong></strong>${r.name}'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
-                                infowindow.open(map,marker);
-                            }
-                            google.maps.event.addDomListener(window, 'load', init_map);
-                        </script>
-                    </div>
+                    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBJUV-VhfzHrLgEKIBkoNpMH5Un4uef5Pc'></script>
+                    <div style='overflow:hidden;height:200px;width:310px;'>
+                        <div id='gmap_canvas' style='height:200px;width:310px;'></div>
+                        <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+                    </div> 
+                    <a href='http://maps-generator.com/it'>maps generator</a>
+                    <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=9d55fbe0a8781beced2c83653978a9ae60980a2e'></script>
+                    <script type='text/javascript'>
+                        function init_map()
+                        {
+                            var myOptions = {zoom:12,center:new google.maps.LatLng(${r.latitude},${r.longitude}),mapTypeId: google.maps.MapTypeId.ROADMAP};
+                            map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                            marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(${r.latitude},${r.longitude})});
+                            infowindow = new google.maps.InfoWindow({content:'<strong></strong>${r.name}'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+                            infowindow.open(map,marker);
+                        }
+                        google.maps.event.addDomListener(window, 'load', init_map);
+                    </script>
+                </div>       
                 </div>
             </div>
                                 

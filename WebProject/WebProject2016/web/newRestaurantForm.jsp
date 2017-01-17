@@ -40,9 +40,9 @@
 
     </head>
     <body>
-        <!--% HttpSession ses = request.getSession(false); 
-        User userId = (User) ses.getAttribute("utente");
-        if (userId!=null) {   %-->
+        <% HttpSession ses = request.getSession(false); 
+        UserBean userId = (UserBean) ses.getAttribute("user");
+        if (userId!=null) {   %>
         <div class="container">
             <h2>New Restaurant Form</h2>
             <form action="NewRestaurant" method="post">
@@ -135,13 +135,13 @@
                 </div>
             </form>
         </div>
-        <!--%
+        <%
         }
         else {
-        %-->
-        <!--jsp:forward page="UserNotAuthenticated.html" /-->
-        <!--% }
-        %-->
+        %>
+        <jsp:forward page="UserNotAuthenticated.html" />
+        <% }
+        %>
     </form>
 </body>
 </html>
