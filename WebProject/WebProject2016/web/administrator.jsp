@@ -13,7 +13,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="header/headerFiles.jsp" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,24 +20,11 @@
         <link rel="stylesheet" href="css/header.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>     
-        <script type="text/javascript">
-           
-            var url = 'serevlets/SearchNotification.java';
-
-            $(document).ready(function() {
-
-            $.ajaxSetup({ cache: true }); 
-            
-            setInterval(function() {
-                $("#displayarea").load("SearchNotification")}, 60000);
-            });
- 
-        </script>
     </head>
     <body>
-        <!-- header -->
-    <jsp:include page="header/header.jsp" />
         <div id="displayarea">
+        <jsp:include page = "header/header.jsp"/>
+        <!-- header -->
         <div class="container-fluid" >
            <div class="panel panel-default">
                 <div class="panel-body">
@@ -55,13 +41,16 @@
                     <p>
                         <c:if test="${fn:length(noty.replies) gt 0}">
                             <c:forEach var="notbean" items="${noty.replies}">
-                                   <div class="list-group">
-                                       <a href="showreplyconfirm.jsp?notbean=${notbean.idrep}" class="list-group-item">
-                                          <strong><c:out value="${notbean.ristoratore}"/></strong>
-                                          Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
-                                    </a>
-                                  </div>
-                             </c:forEach>
+                                <c:if test="${notbean.accepted == false}">
+                                    <c:out value="notbean.accepted"></c:out>
+                                    <div class="list-group">
+                                        <a href="showreplyconfirm.jsp?notbean=${notbean.idrep}" class="list-group-item">
+                                            <strong><c:out value="${notbean.ristoratore}"/></strong>
+                                            Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
+                                        </a>
+                                    </div>
+                                </c:if>
+                            </c:forEach>
                         </c:if>
                          <c:if test="${empty noty.replies}">
                             <h1> Per ora non ci sono notifiche, torna più tardi</h1>
@@ -112,6 +101,20 @@
                 </footer>
             </div>
         </div>
+             
+        <script type="text/javascript">
+           
+            var url = 'serevlets/SearchNotification.java';
+
+            $(document).ready(function() {
+
+            $.ajaxSetup({ cache: true }); 
+            
+            setInterval(function() {
+                $("#displayarea").load("SearchNotification")}, 10000);
+            });
+ 
+        </script>
         </div>
          
     </body>

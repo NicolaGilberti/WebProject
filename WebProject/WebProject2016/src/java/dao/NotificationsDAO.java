@@ -11,8 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import utils.ChangeOwnerNotification;
-import utils.DeletePhotoNotification;
+import beans.ChangeOwnerNotificationBean;
+import beans.DeletePhotoNotificationBean;
 import beans.NotificationRepliesBean;
 
 /**
@@ -32,7 +32,7 @@ public class NotificationsDAO {
         NotificationBean notification = new NotificationBean();
         //mi creo un array con le replies
         //mi serve commento user 
-        PreparedStatement replies = con.prepareStatement("SELECT t1.id AS idrep, t1.data_creation AS datarep,t2.data_creation AS revdata, t1.description AS repdes, t2.description AS rewdes, users.nickname AS customer,t4.nickname AS ristoratore FROM (replies AS t1 INNER JOIN reviews AS t2 ON (t1.id_review = t2.id)) INNER JOIN users ON (t2.id_creator = users.id) JOIN users AS t4 ON ( t1.id_owner = t4.id);");
+        PreparedStatement replies = con.prepareStatement("SELECT t1.accepted AS accepted, t1.id AS idrep, t1.data_creation AS datarep,t2.data_creation AS revdata, t1.description AS repdes, t2.description AS rewdes, users.nickname AS customer,t4.nickname AS ristoratore FROM (replies AS t1 INNER JOIN reviews AS t2 ON (t1.id_review = t2.id)) INNER JOIN users ON (t2.id_creator = users.id) JOIN users AS t4 ON ( t1.id_owner = t4.id);");
         ResultSet rs = replies.executeQuery();
         while(rs.next()){
             NotificationRepliesBean t1 = new NotificationRepliesBean();
@@ -43,13 +43,14 @@ public class NotificationsDAO {
             t1.setReplydescription(rs.getString("repdes"));
             t1.setReviewdescription(rs.getString("rewdes"));
             t1.setRistoratore(rs.getString("ristoratore"));
+            t1.setAccepted(rs.getBoolean("accepted"));
             notification.addReplies(t1);
         }
         
         PreparedStatement cown = con.prepareStatement("SELECT t2.id AS resid,t3.id AS usrid , t2.name AS resname,t3.name AS usrname,t3.surname,t3.nickname FROM (request_changes_owner AS t1 INNER JOIN restaurants AS t2 ON (t1.id_restaurant =t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id OR t2.id_owner = t3.id)");
         rs = cown.executeQuery();
         while(rs.next()){
-            ChangeOwnerNotification t1 = new ChangeOwnerNotification();
+            ChangeOwnerNotificationBean t1 = new ChangeOwnerNotificationBean();
             t1.setResid(rs.getInt("resid"));
             t1.setNickname(rs.getString("nickname"));
             t1.setSurname(rs.getString("surname"));
@@ -63,7 +64,7 @@ public class NotificationsDAO {
         rs = dphoto.executeQuery();
         
         while(rs.next()){
-            DeletePhotoNotification t1 = new DeletePhotoNotification();
+            DeletePhotoNotificationBean t1 = new DeletePhotoNotificationBean();
             t1.setIdphoto(rs.getInt("idphoto"));
             t1.setNickname(rs.getString("nickname"));
             t1.setPhotoname(rs.getString("photoname"));
@@ -73,6 +74,7 @@ public class NotificationsDAO {
         }
         
         this.finalize();
+        con.close();
         return notification;
     }
     

@@ -3,66 +3,58 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package beans;
 
 /**
  *
  * @author Marco
  */
-public class ChangeOwnerNotification {
-    private int resid;
+public class DeletePhotoNotificationBean {
     private int usrid;
+    private int idphoto;
     private String resname;
-    private String surname;
+    private String photoname;
     private String nickname;
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    private String username;
-
-    public int getResid() {
-        return resid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
 
     public int getUsrid() {
         return usrid;
     }
 
-    public void setResid(int resid) {
-        this.resid = resid;
-    }
-
-    public void setUsrid(int usrid) {
-        this.usrid = usrid;
-    }
-
-    public void setResname(String resname) {
-        this.resname = resname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public int getIdphoto() {
+        return idphoto;
     }
 
     public String getResname() {
         return resname;
     }
 
-    public String getSurname() {
-        return surname;
+    public void setUsrid(int usrid) {
+        this.usrid = usrid;
+    }
+
+    public void setIdphoto(int idphoto) {
+        this.idphoto = idphoto;
+    }
+
+    public void setResname(String resname) {
+        this.resname = resname;
+    }
+
+    public void setPhotoname(String photoname) {
+        this.photoname = photoname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getPhotoname() {
+        return photoname;
     }
 
     public String getNickname() {
         return nickname;
     }
+    
     
 }
