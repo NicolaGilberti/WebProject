@@ -11,9 +11,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import utils.OpeningHours;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -260,5 +262,23 @@ public class RestaurantDAO {
         ResultSet rs = pd.executeQuery();
         rs.next();
         return rs.getString("name");
+    }
+
+    public OpeningHours getOpeningHours(int id) throws SQLException {
+        OpeningHours oh = new OpeningHours();
+        PreparedStatement pd = con.prepareStatement(
+                "SELECT day_of_the_week,start_hour,end_hour "
+                        + "FROM opening_hours_range_restaurant "
+                        + "JOIN opening_hours_range ON id_range = id "
+                        + "WHERE id_restaurant = ?");
+        pd.setInt(1, id);
+        ResultSet rs = pd.executeQuery();
+        while (rs.next()) {
+            oh.setOpenDays(rs.getInt(1));
+            oh.setOpeningHour(Time.valueOf(rs.getTime(2).toString()));
+            oh.setClosingHour(Time.valueOf(rs.getTime(3).toString()));
+        }
+        
+        return oh;
     }
 }

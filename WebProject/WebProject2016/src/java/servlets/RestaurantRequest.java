@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
+import utils.OpeningHours;
 
 /**
  *
@@ -62,7 +63,8 @@ public class RestaurantRequest extends HttpServlet {
         //DAO and bean for the response object
         RestaurantDAO rq = new RestaurantDAO();
         RestaurantBean r = new RestaurantBean();
-
+        
+        
         r = rq.searchRestaurant(id);
 
         request.setAttribute("r", r);
@@ -74,7 +76,6 @@ public class RestaurantRequest extends HttpServlet {
 
         //get price range
         ArrayList<Integer> price = rq.getPriceRange(r.getId_price_range());
-        String tmp = price.get(0).toString();
         request.setAttribute("minPrice", price.get(0).toString());
         request.setAttribute("maxPrice", price.get(1).toString());
 
@@ -82,6 +83,11 @@ public class RestaurantRequest extends HttpServlet {
         ArrayList<CuisineBean> cuisines = rq.getCuisines(r.getId());
         request.setAttribute("cuisines", cuisines);
 
+        //opening hours
+        OpeningHours oh = rq.getOpeningHours(r.getId());
+        System.out.println("openingDates :" + oh.toString());
+        request.setAttribute("openingDates", oh.toString());
+        
         //reviews
         ArrayList<ReviewBean> reviews = rq.getReviews(r.getId());
         ArrayList<String> userNamesOfReviews = new ArrayList<String>();
@@ -92,20 +98,7 @@ public class RestaurantRequest extends HttpServlet {
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNameOfReviews", userNamesOfReviews);
 
-        //QR code
-        ByteArrayOutputStream out = QRCode.from("Hello World").to(ImageType.JPG).stream();
-        FileOutputStream fout = null;
-        try {
-            fout = new FileOutputStream(new File(
-                    "Desktop/QR_Code.JPG"));
-            fout.write(out.toByteArray());
-            fout.flush();
-            fout.close();
-        } catch (Exception e) {
-            System.out.println("QrGenerator.java exception: " + e.getMessage());
-        }
-
-        request.setAttribute("qrcode", fout);
+        
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
 
         rd.forward(request, response);

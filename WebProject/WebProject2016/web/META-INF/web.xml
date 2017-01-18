@@ -74,6 +74,15 @@
         <url-pattern>/SearchNotification</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>NotificationUpdateJsp</servlet-name>
+        <servlet-class>servlets.NotificationUpdateJsp</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>NotificationUpdateJsp</servlet-name>
+        <url-pattern>/NotificationUpdateJsp</url-pattern>
+    </servlet-mapping>
     
      <servlet>
         <servlet-name>SearchAdvancedAutocomplete</servlet-name>

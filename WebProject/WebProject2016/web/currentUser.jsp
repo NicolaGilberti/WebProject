@@ -246,7 +246,9 @@
                         <h2 class="user-restaurants user-title col-xs-center">I miei ristoranti</h2>
                     </div>
                     <div class="user-new-restaurant-btn col-xs-12 col-sm-8 col-md-9 col-lg-9">
-                        <button type="button" class="btn btn-default col-xs-center">Aggiungi nuovo</button>
+                        <form action="newRestaurantForm.jsp">
+                              <button type="submit" class="btn btn-default col-xs-center" >Aggiungi nuovo</button>
+                        </form>
                     </div>
                 </div>
 
