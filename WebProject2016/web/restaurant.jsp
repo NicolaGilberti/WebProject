@@ -38,6 +38,7 @@
         <!--css-->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/generic.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
 
@@ -131,7 +132,7 @@
                     <div class="cuisine-labels"> 
                     <c:forEach items="${cuisines}" var="current">
                         <span class="label label-info" style="font-size: 14px;">
-                            <c:out vamlue="${current.name}"></c:out>
+                            <c:out value="${current.name}"></c:out>
                             </span>
                     </c:forEach>
                     </div>

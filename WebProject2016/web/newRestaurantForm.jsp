@@ -38,6 +38,7 @@
         <!-- css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/generic.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
 
 
