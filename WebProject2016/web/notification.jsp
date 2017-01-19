@@ -45,7 +45,7 @@
                             <c:forEach var="notbean" items="${noty.replies}">
                                 <c:if test="${notbean.accepted == false}">
                                     <div class="list-group">
-                                        <a href="showreplyconfirm.jsp?notbean=${notbean.idrep}" class="list-group-item">
+                                        <a href="showreplyconfirm.jsp?notification=${notbean}" class="list-group-item">
                                             <strong><c:out value="${notbean.ristoratore}"/></strong>
                                             Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
                                         </a>
