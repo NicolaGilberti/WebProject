@@ -4,11 +4,14 @@
     Author     : riccardo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.StateDAO"%>
 <%@page import="beans.UserBean"%>
 <%@page import="java.net.*"%>
+<%@page import="servlets.prepareNewRestaurantForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,8 +33,12 @@
         </script>
         <!-- <script src="js/MapLib.js" type="text/javascript"></script-->
 
+        <jsp:include page="header/headerFiles.jsp" />
+
         <!-- css -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/search_restaurant.css">
 
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -43,6 +50,10 @@
         <% HttpSession ses = request.getSession(false); 
         UserBean userId = (UserBean) ses.getAttribute("user");
         if (userId!=null) {   %>
+        
+        <!-- header -->
+        <jsp:include page="header/header.jsp" />
+        
         <div class="container">
             <h2>New Restaurant Form</h2>
             <form action="NewRestaurant" method="post">
@@ -68,66 +79,55 @@
                 </div>
                 <p></p>
                 <div class="row">
-                <div class="col form-group">
-                    <div class="col-md-6">
+                <div class="col-md-6 form-group">
                     <label for="URL_sito">URL sito esterno:</label>
                     <input type="url" class="form-control" id="URL_sito" placeholder="">
-                    </div>
                 </div>
-                <div class="col form-group">
-                    <div class="col-md-6">
+                <div class="col-md-6 form-group">
                     <label for="telefono">Numero Telefonico:</label>
                     <input type="tel" pattern="\d*" class="form-control" id="telefono" placeholder="">
-                    </div>
                 </div>
                 </div>
                 <p></p>
                 <div class="row">
-                <div class="col form-group">
-                    <div class="col-md-6">
+                <div class="col-md-6 form-group">
                     <label for="email">e-mail:</label>
                     <input class="form-control" type="email" placeholder="indrizzo email" id="email" name="email">
-                    </div>
                 </div>
-                <div class="col form-group">
-                    <div class="col-md-6">
+                <div class="col-md-6 form-group">
                     <label for="indrizzo">Indrizzo:</label>
                     <input class="form-control" type="text" maxlength="255" placeholder="indrizzo" id="indrizzo" name="indrizzo">
-                    </div>
                 </div>
                 </div>
                 <p></p>
                 <div class="row">
-                <div class="col form-group">
-                    <div class="col-md-2">
+                <div class="col-md-2 form-group">
                     <label for="CAP">CAP:</label>
                     <input class="form-control" type="number" placeholder="CAP" id="cap" name="cap">
-                    </div>
                 </div>
-                <div class="col form-group">
-                    <div class="col-md-6">
+                <div class="col-md-6 form-group">
                     <label for="citta">città:</label>
                     <input class="form-control" type="text" maxlength="255" placeholder="città" id="citta" name="citta">
-                    </div>
                 </div>
                 </div>
                 <p>
                 <div class="row">
                 <div class="col-md-6">
-                <select>
-                    <%
-                        StateDAO sq = new StateDAO();
-                        ResultSet rs = sq.states();
-                        while (rs.next()) {
-                    %>
-                    <option><%=rs.getString(1)%></option>
-                    <%
-                        }
-                    %>
-                </select>
+                    <div class="form-group">
+                        <label for="sel1">state:</label>
+                        <select class="form-control" id="sel1">
+                        <c:forEach items="${states}" var="state">
+                                <option>
+                                    <c:out value="${state}">
+                                    </c:out>
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
                 </div>
+                </div>
+                <p></p>
                 <hr>
-                </div>
                 <p></p>
                 <div class="row col-md-6">
                 <button type="submit" class="btn btn-default">Submit</button>

@@ -34,6 +34,16 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
     
+    <servlet>
+        <servlet-name>prepareNewRestaurantForm</servlet-name>
+        <servlet-class>servlets.prepareNewRestaurantForm</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>prepareNewRestaurantForm</servlet-name>
+        <url-pattern>/prepareNewRestaurantForm</url-pattern>
+    </servlet-mapping>
+    
       <servlet>
         <servlet-name>UserRestaurants</servlet-name>
         <servlet-class>servlets.UserRestaurants</servlet-class>

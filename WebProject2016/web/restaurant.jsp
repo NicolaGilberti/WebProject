@@ -33,12 +33,13 @@
         
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
-        
+        <jsp:include page="header/headerFiles.jsp" />
         
         <!--css-->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
+        <link rel="stylesheet" href="css/restaurantPage.css">
 
         <title>${r.name} - tuttobistro</title>
     </head>
@@ -186,7 +187,7 @@
                 <h3> Recensioni </h3>
                 <c:set value="0" var="i"></c:set>
                 <c:forEach items="${reviews}" var="current">
-                    <div class="panel panel-default" style="border-color:#900c3f;">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 style="font: bold;"><c:out value="${current.name}"/> 
                                 <div>

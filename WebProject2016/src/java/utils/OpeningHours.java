@@ -26,7 +26,7 @@ public class OpeningHours {
     
     
     public OpeningHours() {
-        }
+    }
 
     @Override
     public String toString() {
@@ -35,7 +35,7 @@ public class OpeningHours {
             tmp = tmp.concat(
                     DAYS.get(openDays.get(i) -1 ) + 
                     " : " + openingHour.get(i).toString().substring(0, 5) + 
-                    " - " + closingHour.get(i).toString().substring(0, 5) +  " / ");
+                    " - " + closingHour.get(i).toString().substring(0, 5) +  " \n ");
         }
         return tmp;
     }
