@@ -8,8 +8,14 @@ and open the template in the editor.
     Author     : nicol
 */
 
+.user-restaurants-title > .user-title, .user-reviews.user-title {
+    color: #900c3f;
+    text-align: center;
+}
+
 .user-new-restaurant-btn {
-    margin: 18px 0 10px 0;
+    margin: 10px 0 25px 0;
+    text-align: center;
 }
 
 .photo-modal-content {
