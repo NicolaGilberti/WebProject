@@ -37,9 +37,24 @@ hr {
     height: 1px;
     border: 0;
     border-top: 1px solid #900c3f;
-    margin: 1em 0;
+    margin-bottom: 25px;
     padding: 0;
 }
+hr.style15 {
+	border-top: 4px double #900c3f;
+	text-align: center;
+}
+hr.style15:after {
+	content: '\002666';
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	padding: 0 10px;
+	background: #f0f0f0;
+	color: #900c3f;
+	font-size: 18px;
+}
+
 
 .thumbnail {
     font-family: 'Lato', sans-serif;

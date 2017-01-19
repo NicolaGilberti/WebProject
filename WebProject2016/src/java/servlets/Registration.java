@@ -73,7 +73,7 @@ public class Registration extends HttpServlet {
 
         } catch (SQLException ex) {
 
-            out.println("connessione non riuscita");
+            response.sendRedirect("sql_error_page.html");
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
         }

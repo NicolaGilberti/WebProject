@@ -84,7 +84,7 @@ function visualizzaTabella() {
                 '                                <p><span class="glyphicon glyphicon-tag"> </span>$' + restaurant.minPrice + '-' + restaurant.maxPrice + '</p>' +
                 '' +
                 '                                <div class="thumb-footer">' +
-                '                                    <a href="#" class="dettagli">DETTAGLI</a>' +
+                '                                    <a href="' + redirectRestaurantRelativePath + restaurant.id + '" class="dettagli">DETTAGLI</a>' +
                 '                                    <div class="pull-right">' +
                 '                                        <a href="http://maps.google.com/?q=' + restaurant.address + ',' + restaurant.city + '" target="new_blank"><span class="glyphicon glyphicon-map-marker"> </span> Mappa</a>' +
                 '                                    </div>' +
