@@ -11,6 +11,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <jsp:include page="header/headerFiles.jsp" />
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/generic.css">
@@ -31,7 +34,24 @@
 
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <h3><strong><c:out value="${repliestoconfirm.customer}"></c:out></strong></h3>
                     <c:out value="${repliestoconfirm.reviewdescription}"></c:out>
+                    <div style="padding-left:50px">
+                        <h3><strong><c:out value="${repliestoconfirm.ristoratore}"></c:out></strong></h3>
+                        <c:out value="${repliestoconfirm.replydescription}"></c:out>
+                        <div style="text-align:right">
+                            <div class="form-group">
+                                <!--Setting get parameter (id of reply) using jstl -->
+                                <c:url value="ConfirmRepliesServlet.java" var="repliesURL">
+                                    <c:param name="id" value="${repliestoconfirm.idrep}" />
+                                </c:url>
+                                <form action="${repliesURL}" method="GET">
+                                    <button id="submit" class="btn btn-danger ">Rifiuta(Rekt)</button>
+                                    <button type="submit" id="accept" class="btn btn-success">Accetta</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
               </div>
         
