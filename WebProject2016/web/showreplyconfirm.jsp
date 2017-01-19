@@ -11,20 +11,32 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="header/headerFiles.jsp" />
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/generic.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <c:set var="idrepl" value="${param.id}"></c:set>
+    <body> 
+        <jsp:include page = "header/header.jsp"/>
+        <div class="container-fluid">
+            <c:set var="idrepl" value="${param.id}"></c:set>
+
+            <!--Search that i used to find the reply that was clicked-->
+            <c:forEach var="notbean" items="${noty.replies}">
+                <c:if test="${notbean.idrep == idrepl}">
+                    <c:set var="repliestoconfirm" value="${notbean}"></c:set>
+                </c:if>
+            </c:forEach>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <c:out value="${repliestoconfirm.reviewdescription}"></c:out>
+                </div>
+              </div>
         
-        <!--Search that i used to find the reply that was clicked-->
-        <c:forEach var="notbean" items="${noty.replies}">
-            <c:if test="${notbean.idrep == idrepl}">
-                <c:set var="repliestoconfirm" value="${notbean}"></c:set>
-            </c:if>
-         </c:forEach>
         
         
-        
+        </div>
     </body>
 </html>
