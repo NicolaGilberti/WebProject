@@ -131,7 +131,7 @@
                     <div class="cuisine-labels"> 
                     <c:forEach items="${cuisines}" var="current">
                         <span class="label label-info" style="font-size: 14px;">
-                            <c:out value="${current.name}"></c:out>
+                            <c:out vamlue="${current.name}"></c:out>
                             </span>
                     </c:forEach>
                     </div>

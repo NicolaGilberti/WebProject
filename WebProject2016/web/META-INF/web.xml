@@ -31,10 +31,7 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-<<<<<<< HEAD
-=======
->>>>>>> 3e222b8568a1f0907cf11140295b96f66392b1d1
-        <servlet>
+    <servlet>
         <servlet-name>UserRestaurants</servlet-name>
         <servlet-class>servlets.UserRestaurants</servlet-class>
     </servlet>
@@ -185,6 +182,14 @@
     <servlet-mapping>
         <servlet-name>PrepareHome</servlet-name>
         <url-pattern>/PrepareHome</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>prepareNewRestaurantForm</servlet-name>
+        <servlet-class>servlets.prepareNewRestaurantForm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>prepareNewRestaurantForm</servlet-name>
+        <url-pattern>/prepareNewRestaurantForm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
