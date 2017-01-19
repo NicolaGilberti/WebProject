@@ -42,8 +42,8 @@ public class LogoutAttempt extends HttpServlet {
         HttpSession session = request.getSession();
        if (request.getParameter("logout") != null) {  
     session.invalidate();
-    response.sendRedirect("index.html");
-    return; // <--- Here.
+    response.sendRedirect("index.jsp");
+    return;
 }
     }
 

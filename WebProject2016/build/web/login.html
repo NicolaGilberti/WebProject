@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <!-- This meta tags makes sure accents and other special caracters are displayed correctly -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!-- 
+        We reference boostrap stylesheets. Notice that we reference the "online" version, the 
+        one in ther content distribution network. If you download bootstrap, then you shoul reference
+        the one in your local system
+        -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- 
+         You can also override some of the styles that come by default, or create new ones. These extensions
+         should go in a separate files to make sure we don't lose them if we update the boostrap version in the future.
+         Note: Boostrap also offers the "source code" in *less* to facilitate extensions, but that's outsite the 
+         scope of this course.
+        -->
+        <link href="style.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="container-fluid" >
+            <form action="Autenticazione" method = "POST" >
+            <input required type="text" class="form-control" name= "email" placeholder="Mail">
+            <input required type="password" class="form-control" name ="password" placeholder="Password">
+            <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
