@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author MirkoPortatile
  */
-public class UserRestaurants extends HttpServlet {
+public class UserAccountPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

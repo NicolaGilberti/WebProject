@@ -32,16 +32,16 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
     <servlet>
-        <servlet-name>UserRestaurants</servlet-name>
-        <servlet-class>servlets.UserRestaurants</servlet-class>
+        <servlet-name>UserAccountPage</servlet-name>
+        <servlet-class>servlets.UserAccountPage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PrepareHome</servlet-name>
         <servlet-class>servlets.PrepareHome</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UserRestaurants</servlet-name>
-        <url-pattern>/UserRestaurants</url-pattern>
+        <servlet-name>UserAccountPage</servlet-name>
+        <url-pattern>/UserAccountPage</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>SearchRestaurantAutocomplete</servlet-name>

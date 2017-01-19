@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import servlets.UserRestaurants;
+import servlets.UserAccountPage;
 
 /**
  *
@@ -90,7 +90,7 @@ public class UserPageDAO {
             return rest;
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserRestaurants.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserAccountPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return null;
@@ -157,7 +157,7 @@ public class UserPageDAO {
             
             return rev;
         } catch (SQLException ex) {
-            Logger.getLogger(UserRestaurants.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserAccountPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return null;

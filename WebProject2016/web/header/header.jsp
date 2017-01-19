@@ -64,11 +64,6 @@
                </form> -->
             <c:if test="${sessionScope.user != null}">
                 <ul class="nav navbar-nav navbar-right">
-  
-                    <c:if test="${sessionScope.user.type >= 1}">
-
-                          <li><a href="UserRestaurants">I miei ristoranti</a></li>
-                    </c:if>
                     <li><a href="prepareNewRestaurantForm">Aggiungi Ristorante</a>
                 </li>
                     <li><a href="SearchNotification">Notifiche</a>
@@ -90,7 +85,7 @@
                                             <p class="text-left"><strong><c:out value="${user.name}" /> <c:out value="${user.surname}" /></strong></p>
                                             <p class="text-left small"><c:out value="${user.email}" /></p>
                                             <p class="text-left">
-                                                <a href="UserRestaurants" class="btn btn-yellow btn-block ">Impostazioni</a>
+                                                <a href="UserAccountPage" class="btn btn-yellow btn-block ">Il mio Profilo</a>
                                             </p>
                                         </div>
                                     </div>
