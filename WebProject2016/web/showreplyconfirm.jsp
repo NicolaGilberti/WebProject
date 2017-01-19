@@ -15,7 +15,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <!-- Get data from the Url -->
-        <c:out value="${notbean.idrep}"></c:out>
+        <c:set var="idrepl" value="${param.id}"></c:set>
+        
+        <!--Search that i used to find the reply that was clicked-->
+        <c:forEach var="notbean" items="${noty.replies}">
+            <c:if test="${notbean.idrep == idrepl}">
+                <c:set var="repliestoconfirm" value="${notbean}"></c:set>
+            </c:if>
+         </c:forEach>
+        
+        
+        
     </body>
 </html>

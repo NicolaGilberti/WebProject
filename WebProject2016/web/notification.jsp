@@ -21,7 +21,6 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/generic.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
@@ -45,7 +44,10 @@
                             <c:forEach var="notbean" items="${noty.replies}">
                                 <c:if test="${notbean.accepted == false}">
                                     <div class="list-group">
-                                        <a href="showreplyconfirm.jsp?notification=${notbean}" class="list-group-item">
+                                        <c:url value="showreplyconfirm.jsp" var="repliesURL">
+                                             <c:param name="id" value="${notbean.idrep}" />
+                                        </c:url>
+                                        <a href="${repliesURL}" class="list-group-item">
                                             <strong><c:out value="${notbean.ristoratore}"/></strong>
                                             Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
                                         </a>
