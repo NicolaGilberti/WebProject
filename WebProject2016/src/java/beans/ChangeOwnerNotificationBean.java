@@ -3,18 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utils;
+package beans;
 
 /**
  *
  * @author Marco
  */
-public class ChangeOwnerNotification {
+public class ChangeOwnerNotificationBean {
     private int resid;
     private int usrid;
     private String resname;
     private String surname;
     private String nickname;
+    private boolean accepted;
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+    
 
     public void setUsername(String username) {
         this.username = username;

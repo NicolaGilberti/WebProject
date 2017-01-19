@@ -19,6 +19,12 @@ public class NotificationRepliesBean  {
    private String reviewdescription;
    private String customer;
    private String ristoratore;
+   private boolean accepted;
+
+    public boolean getAccepted() {
+        return accepted;
+    }
+   
 
     public void setIdrep(int idrep) {
         this.idrep = idrep;
@@ -26,6 +32,10 @@ public class NotificationRepliesBean  {
 
     public void setDatarep(Date datarep) {
         this.datarep = datarep;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
     }
 
     public int getIdrep() {
