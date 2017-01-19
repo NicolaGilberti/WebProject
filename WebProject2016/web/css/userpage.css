@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : nicol
 */
 
+.user-new-restaurant-btn {
+    margin: 18px 0 10px 0;
+}
+
 .photo-modal-content {
     background-color: white;
     border: 5px solid #ddd;
@@ -208,6 +212,11 @@ h4.user-review-rest-name {
 }
 
 @media screen and (max-width: 767px) {
+    
+    .user-new-restaurant-btn {
+        margin: 10px 0 18px 0;
+    }
+    
     .iconInfo {
         padding-left: 25px;
         float: right;

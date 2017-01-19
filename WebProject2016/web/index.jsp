@@ -76,7 +76,7 @@
                             <div class="overlay">
                             </div>
                             <header>
-                                <h1>${rest.name}</h1>
+                               <h1><a style="color: white; text-decoration: none;" href="RestaurantRequest?id=${rest.id}">${rest.name}</a></h1>
                                 <div>
                                     <c:forEach var="i" begin="1" end="${rest.score}">
                                         <span class="pull-right glyphicon glyphicon-star val"></span>
@@ -94,7 +94,7 @@
                             <p> <span class="glyphicon glyphicon-globe"></span>${rest.address}, ${rest.city}</p>
                             <p><span class="glyphicon glyphicon-tag"> </span>$ ${rest.minPrice} - ${rest.maxPrice}</p>
                             <div class="thumb-footer">
-                                <a href="#" class="dettagli">DETTAGLI</a>
+                                <a href="RestaurantRequest?id=${rest.id}" class="dettagli">DETTAGLI</a>
                                 <div class="pull-right">
                                     <a href="http://maps.google.com/?q=${rest.address},${rest.city}" target="new_blank"><span class="glyphicon glyphicon-map-marker"> </span> Mappa</a>
                                 </div>

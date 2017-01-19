@@ -132,47 +132,6 @@
                 </div>
             </c:if>
 
-            <!--
-            <div class="prova row">
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-                <div class="col-md-2">
-                    <img src="img/reviewsImgs/cbk.jpg" />
-                </div>
-            </div>
-            -->
-
             <div class="user-info">
                 <div class="row">
                     <div class="col-md-12">
