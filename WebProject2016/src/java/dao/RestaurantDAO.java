@@ -2,7 +2,7 @@ package dao;
 
 import beans.CuisineBean;
 import beans.RestaurantBean;
-import beans.RestaurantSearchBean;
+import beans.RestaurantBean;
 import beans.ReviewBean;
 import comparators.CuisineAlphabeticalComparator;
 import database.ManagerDB;
@@ -155,9 +155,9 @@ public class RestaurantDAO {
         return nReviews;
     }
 
-    public ArrayList<RestaurantSearchBean> getRestaurantsbySearch(String searchInput) throws SQLException {
+    public ArrayList<RestaurantBean> getRestaurantsbySearch(String searchInput) throws SQLException {
 
-        ArrayList<RestaurantSearchBean> restaurantsList = new ArrayList<RestaurantSearchBean>();
+        ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
         searchInput = searchInput.replaceAll("'", "''");
         String[] valoriInseriti = searchInput.split("\\s+");
         PreparedStatement sqlStatement = null;
@@ -179,7 +179,7 @@ public class RestaurantDAO {
 
         while (results.next()) {
 
-            RestaurantSearchBean risto = new RestaurantSearchBean();
+            RestaurantBean risto = new RestaurantBean();
             risto.setId(results.getInt("id"));
             risto.setName(results.getString("name"));
             risto.setAddress(results.getString("address"));
@@ -210,8 +210,8 @@ public class RestaurantDAO {
 
     }
 
-    public ArrayList<RestaurantSearchBean> getRestaurantsbyLocation(float lat, float longi) throws SQLException {
-        ArrayList<RestaurantSearchBean> restaurantsList = new ArrayList<RestaurantSearchBean>();
+    public ArrayList<RestaurantBean> getRestaurantsbyLocation(float lat, float longi) throws SQLException {
+        ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
         PreparedStatement sqlStatement = null;
 
@@ -225,7 +225,7 @@ public class RestaurantDAO {
 
         while (results.next()) {
 
-            RestaurantSearchBean risto = new RestaurantSearchBean();
+            RestaurantBean risto = new RestaurantBean();
             risto.setId(results.getInt("id"));
             risto.setName(results.getString("name"));
             risto.setAddress(results.getString("address"));
@@ -282,8 +282,8 @@ public class RestaurantDAO {
         return oh;
     }
     
-    public ArrayList<RestaurantSearchBean> getRestaurantsbyPopularity() throws SQLException {
-        ArrayList<RestaurantSearchBean> restaurantsList = new ArrayList<RestaurantSearchBean>();
+    public ArrayList<RestaurantBean> getRestaurantsbyPopularity() throws SQLException {
+        ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
         PreparedStatement sqlStatement = null;
 
@@ -295,7 +295,7 @@ public class RestaurantDAO {
 
         while (results.next()) {
 
-            RestaurantSearchBean risto = new RestaurantSearchBean();
+            RestaurantBean risto = new RestaurantBean();
             risto.setId(results.getInt("id"));
             risto.setName(results.getString("name"));
             risto.setAddress(results.getString("address"));

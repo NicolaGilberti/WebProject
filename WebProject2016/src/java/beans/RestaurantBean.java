@@ -5,6 +5,9 @@
  */
 package beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author RiccardoUni
@@ -25,6 +28,69 @@ public class RestaurantBean {
     private String city;
     private String country;
     private String telephone;
+    private int score;
+    private String imgPath;
+    private double minPrice;
+    private double maxPrice;
+    private int numReviews;
+    private int n_visits;
+    private List<CuisineBean> cuisineTypes = new ArrayList<>();
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    public double getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(double maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+    public int getNumReviews() {
+        return numReviews;
+    }
+
+    public void setNumReviews(int numReviews) {
+        this.numReviews = numReviews;
+    }
+
+    public int getN_visits() {
+        return n_visits;
+    }
+
+    public void setN_visits(int n_visits) {
+        this.n_visits = n_visits;
+    }
+
+    public List<CuisineBean> getCuisineTypes() {
+        return cuisineTypes;
+    }
+
+    public void setCuisineTypes(List<CuisineBean> cuisineTypes) {
+        this.cuisineTypes = cuisineTypes;
+    }
 
     public String getE_mail() {
         return e_mail;

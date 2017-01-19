@@ -6,7 +6,7 @@
 package servlets;
 
 import beans.CuisineBean;
-import beans.RestaurantSearchBean;
+import beans.RestaurantBean;
 import beans.UserBean;
 import com.google.gson.Gson;
 import database.ManagerDB;

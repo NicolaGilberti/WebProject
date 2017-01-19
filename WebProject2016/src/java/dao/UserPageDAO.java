@@ -6,7 +6,7 @@
 package dao;
 
 import beans.CuisineBean;
-import beans.RestaurantSearchBean;
+import beans.RestaurantBean;
 import beans.ReviewBean;
 import beans.UserBean;
 import database.ManagerDB;
@@ -39,8 +39,8 @@ public class UserPageDAO {
         this.user = user;
     }
 
-    public ArrayList<RestaurantSearchBean> getRestaurants() {
-        ArrayList<RestaurantSearchBean> rest = new ArrayList<RestaurantSearchBean>();
+    public ArrayList<RestaurantBean> getRestaurants() {
+        ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
 
         //Instauriamo connessione
         ManagerDB manager = new ManagerDB();
@@ -58,7 +58,7 @@ public class UserPageDAO {
             ResultSet results = ps.executeQuery();
 
             //Per tutti i risultati
-            RestaurantSearchBean risto = new RestaurantSearchBean();
+            RestaurantBean risto = new RestaurantBean();
             ArrayList<CuisineBean> cList;
             while (results.next()) {
 
@@ -66,7 +66,7 @@ public class UserPageDAO {
                     CuisineBean c = new CuisineBean();
                     c.setName(results.getString("cuisine_name"));
 
-                    risto = new RestaurantSearchBean();
+                    risto = new RestaurantBean();
                     cList = new ArrayList<CuisineBean>();
                     cList.add(c);
 
@@ -75,7 +75,7 @@ public class UserPageDAO {
                     risto.setDescription(results.getString("description"));
                     risto.setAddress(results.getString("address"));
                     risto.setCity(results.getString("city"));
-                    risto.setGlobalValue(results.getInt("global_value"));
+                    risto.setGlobal_value(results.getInt("global_value"));
                     risto.setImgPath(results.getString("photo_name"));
                     risto.setNumReviews(results.getInt("n_reviews"));
                     risto.setCuisineTypes(cList);
