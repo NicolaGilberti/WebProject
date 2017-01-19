@@ -281,4 +281,51 @@ public class RestaurantDAO {
         
         return oh;
     }
+    
+    public ArrayList<RestaurantSearchBean> getRestaurantsbyPopularity() throws SQLException {
+        ArrayList<RestaurantSearchBean> restaurantsList = new ArrayList<RestaurantSearchBean>();
+
+        PreparedStatement sqlStatement = null;
+
+        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value,n_visits from restaurants join price_range on restaurants.id_price_range=price_range.id ORDER BY n_visits LIMIT 4";
+
+        sqlStatement = con.prepareStatement(sql);
+
+        ResultSet results = sqlStatement.executeQuery();
+
+        while (results.next()) {
+
+            RestaurantSearchBean risto = new RestaurantSearchBean();
+            risto.setId(results.getInt("id"));
+            risto.setName(results.getString("name"));
+            risto.setAddress(results.getString("address"));
+            risto.setCity(results.getString("city"));
+            risto.setScore(results.getInt("global_value"));
+            risto.setMinPrice(results.getDouble("min_value"));
+            risto.setMaxPrice(results.getDouble("max_value"));
+            risto.setN_visits(results.getInt("n_visits"));
+            
+            //Ora devo ottenere il numero di recensioni che ha quel ristorante
+            int nReviews = this.getNumOfReviews(risto.getId());
+            risto.setNumReviews(nReviews);
+
+            //Ora ottengo i tipi di cucina
+            List<CuisineBean> cuisineTypes = new ArrayList<>();
+            cuisineTypes = this.getCuisines(risto.getId());
+
+            Collections.sort(cuisineTypes, new CuisineAlphabeticalComparator());
+
+            risto.setCuisineTypes(cuisineTypes);
+
+            //Ora ottengo le foto
+            risto.setImgPath(this.getThumbnailPath(risto.getId()));
+
+            //E infine aggiungo il ristorante alla lista
+            restaurantsList.add(risto);
+        }
+        return restaurantsList;
+    }
+
+    
+    
 }

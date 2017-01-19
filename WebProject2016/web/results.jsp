@@ -8,12 +8,9 @@
     <link href="css/resultsStyle.css" rel="stylesheet">
     
     <!--script-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
-    <script src="js/results.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/autoComplete.js"></script>
+
     <!--/scripts-->
 
     <title>Risultati Ristorante</title>
@@ -112,13 +109,10 @@
     </div>
     <!--/Container generale -->
 
-<<<<<<< HEAD
-    
-=======
     <!--script-->
     <script src="js/results.js"></script>
     <script type="text/javascript" src="js/autoComplete.js"></script>
->>>>>>> f0dd3155cc39ca20f96fa837248d1cd2a84fca36
+
 </body>
 
 </html>
