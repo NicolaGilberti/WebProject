@@ -1,0 +1,45 @@
+body {
+    background-color: rgb(232, 232, 232);
+}
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+}
+
+
+/* centered columns styles */
+
+.row-centered {
+    text-align: center;
+}
+
+.row{
+    
+    padding-bottom: 90px;
+    
+}
+
+#nresults {
+    padding-top: 1em;
+    padding-left: 4px;
+}
+
+hr {
+    border-color: #d0b783;
+    color: #d0b783;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('fonts/glyphicons-halflings-regular.eot');
+    src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.icon-size {
+    font-size: 87px;
+}
