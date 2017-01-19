@@ -5,16 +5,16 @@
  */
 package comparators;
 
-import beans.RestaurantSearchBean;
+import beans.RestaurantBean;
 import java.util.Comparator;
 
 /**
  *
  * @author MirkoPortatile
  */
-public class RestaurantSearchMaxPriceComparator implements Comparator<RestaurantSearchBean> {
+public class RestaurantSearchMaxPriceComparator implements Comparator<RestaurantBean> {
 
-    public int compare(RestaurantSearchBean rest1, RestaurantSearchBean rest2) {
+    public int compare(RestaurantBean rest1, RestaurantBean rest2) {
         return (int) (rest1.getMaxPrice() - rest2.getMaxPrice());
     }
 

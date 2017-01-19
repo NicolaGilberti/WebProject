@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import beans.RestaurantSearchBean;
+import beans.RestaurantBean;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,7 +34,7 @@ public class PrepareHome extends HttpServlet {
         RestaurantDAO dao = new RestaurantDAO();
         //Otteniamo i ristoranti più popolari
         try {
-            List<RestaurantSearchBean> restaurantsList = dao.getRestaurantsbyPopularity();
+            List<RestaurantBean> restaurantsList = dao.getRestaurantsbyPopularity();
               Logger.getLogger(PrepareHome.class.getName()).log(Level.INFO, "Passati di qui: "+restaurantsList.size());
             response.setContentType("text/html");
             request.setAttribute("PopularRestaurants", restaurantsList);

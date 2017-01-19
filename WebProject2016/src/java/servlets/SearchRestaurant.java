@@ -6,7 +6,7 @@
 package servlets;
 
 import beans.CuisineBean;
-import beans.RestaurantSearchBean;
+import beans.RestaurantBean;
 import com.google.gson.Gson;
 import comparators.CuisineAlphabeticalComparator;
 import comparators.RestaurantSearchNameComparator;
@@ -42,7 +42,7 @@ public class SearchRestaurant extends HttpServlet {
             throws ServletException, IOException {
 
         RestaurantDAO dao = new RestaurantDAO();
-        List<RestaurantSearchBean> restaurantsList = new ArrayList<RestaurantSearchBean>();
+        List<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
         //Se e' stata fatta la ricerca normale
         if (request.getParameter("searchinput") != "") {
