@@ -26,7 +26,7 @@ public class OpeningHours {
     
     
     public OpeningHours() {
-        }
+    }
 
     @Override
     public String toString() {

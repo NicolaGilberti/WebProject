@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,17 +18,27 @@ import java.util.List;
  * @author RiccardoUni
  */
 public class StateDAO {
+    private ManagerDB db = null;
+    private Connection con = null;
+
+    public StateDAO() {
+        db = new ManagerDB();
+        con = db.getConnection();
+    }
     
-    public ResultSet states() throws SQLException {
-        ManagerDB mdb = new ManagerDB();
-        Connection con = mdb.getConnection();
+    public ArrayList<String> getStates() throws SQLException {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
+        ArrayList<String> res = new ArrayList<>();
 
         ps = con.prepareStatement("SELECT name FROM states;");
    
         rs = ps.executeQuery();
-        return rs;
+        while(rs.next()) {
+            res.add(rs.getString(1));
+        }
+        
+        return res;
     }
 }

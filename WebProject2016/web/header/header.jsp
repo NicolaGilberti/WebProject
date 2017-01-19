@@ -69,7 +69,7 @@
 
                           <li><a href="UserRestaurants">I miei ristoranti</a></li>
                     </c:if>
-                    <li><a href="newRestaurantForm.jsp">Aggiungi Ristorante</a>
+                    <li><a href="prepareNewRestaurantForm">Aggiungi Ristorante</a>
                 </li>
                     <li><a href="SearchNotification">Notifiche</a>
 

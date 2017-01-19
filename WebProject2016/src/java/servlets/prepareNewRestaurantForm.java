@@ -5,10 +5,7 @@
  */
 package servlets;
 
-import beans.CuisineBean;
-import beans.RestaurantBean;
-import beans.ReviewBean;
-import dao.RestaurantDAO;
+import dao.StateDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,18 +13,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.OpeningHours;
 
 /**
  *
  * @author RiccardoUni
  */
-public class RestaurantRequest extends HttpServlet {
-
-    private String restImagesPath = "/img/restImgs/";
+@WebServlet(name = "prepareNewRestaurantForm", urlPatterns = {"/prepareNewRestaurantForm"})
+public class prepareNewRestaurantForm extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,54 +37,19 @@ public class RestaurantRequest extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         
-        //set content type for the response
         response.setContentType("text/html;charset=UTF-8");
-
         
-        Integer id = Integer.parseInt(request.getParameter("id").toString());
+        StateDAO stateDao = new StateDAO();
+        ArrayList<String> states = stateDao.getStates();
         
-        //DAO and bean for the response object
-        RestaurantDAO rq = new RestaurantDAO();
-        RestaurantBean r = new RestaurantBean();
+        request.setAttribute("states", states);
         
         
-        r = rq.searchRestaurant(id);
-
-        request.setAttribute("r", r);
-
-        //get photos
-        ArrayList<String> photos = rq.getPhotos(id);
-        request.setAttribute("photos", photos);
-        request.setAttribute("numberOfPhotos", photos.size());
-
-        //get price range
-        ArrayList<Integer> price = rq.getPriceRange(r.getId_price_range());
-        request.setAttribute("minPrice", price.get(0).toString());
-        request.setAttribute("maxPrice", price.get(1).toString());
-
-        //get cuisine
-        ArrayList<CuisineBean> cuisines = rq.getCuisines(r.getId());
-        request.setAttribute("cuisines", cuisines);
-
-        //opening hours
-        OpeningHours oh = rq.getOpeningHours(r.getId());
-        request.setAttribute("openingDates", oh.toString());
-        
-        //reviews
-        ArrayList<ReviewBean> reviews = rq.getReviews(r.getId());
-        ArrayList<String> userNamesOfReviews = new ArrayList<String>();
-        for (ReviewBean current : reviews) {
-            String currName = rq.getUserName(current.getId_creator());
-            userNamesOfReviews.add(currName);
-        }
-        request.setAttribute("reviews", reviews);
-        request.setAttribute("userNameOfReviews", userNamesOfReviews);
-
-        
-        RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/newRestaurantForm.jsp");
 
         rd.forward(request, response);
-
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -106,9 +67,8 @@ public class RestaurantRequest extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(RestaurantRequest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(prepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
@@ -125,7 +85,7 @@ public class RestaurantRequest extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(RestaurantRequest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(prepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

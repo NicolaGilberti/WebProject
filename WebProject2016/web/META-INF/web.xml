@@ -183,6 +183,14 @@
         <servlet-name>PrepareHome</servlet-name>
         <url-pattern>/PrepareHome</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>prepareNewRestaurantForm</servlet-name>
+        <servlet-class>servlets.prepareNewRestaurantForm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>prepareNewRestaurantForm</servlet-name>
+        <url-pattern>/prepareNewRestaurantForm</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
