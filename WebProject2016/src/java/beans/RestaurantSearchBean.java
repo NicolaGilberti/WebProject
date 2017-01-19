@@ -26,6 +26,15 @@ public class RestaurantSearchBean implements java.io.Serializable {
     private int score;
     private String imgPath;
     private int globalValue;
+    private int n_visits;
+
+    public int getN_visits() {
+        return n_visits;
+    }
+
+    public void setN_visits(int n_visits) {
+        this.n_visits = n_visits;
+    }
     private List<CuisineBean> cuisineTypes = new ArrayList<>();
 
     public int getGlobalValue() {
