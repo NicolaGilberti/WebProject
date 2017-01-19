@@ -62,7 +62,7 @@ public class ConfirmAccount extends HttpServlet {
                 //Se è già stato confermato reindirizziamo TODO
                 if(results.getInt("type")!=-1)
                 {
-                    response.sendRedirect("index.html");
+                    response.sendRedirect("index.jsp");
                 }
             }
             
@@ -85,10 +85,10 @@ public class ConfirmAccount extends HttpServlet {
                 //Abbiamo aggiornato l'account dell'utente. Ora potrà fare l'accesso.   
                 //Spediamo email TODO migliorare
                 EmailSender sender = new EmailSender();
-                sender.send(email, "Email di notifica", "Hai confermato il tuo account! Ora puoi loggare.");
+                sender.send(email, "Ciao, hai confermato il tuo account! Ora puoi utilizzare il sito normalmente", "[TuttoBistrò] Email di conferma account");
                 response.sendRedirect("accountregistrato.html");
             } else {
-                response.sendRedirect("index.html");
+                response.sendRedirect("index.jsp");
             }
 
         } catch (SQLException ex) {

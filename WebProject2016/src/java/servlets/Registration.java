@@ -62,8 +62,7 @@ public class Registration extends HttpServlet {
 
             boolean sessionDebug = false;
             String url = "http://localhost:8084/WebProject2016/ConfirmAccount?id=" + Integer.toString(userID) + "&cod=" + sb.toString();
-            String text = "Questa è una mail di conferma."
-                    + "Clicca qui per confermare l'account: <a href=\" " + url + " \"> Clicca qui </a>";
+            String text = "Ciao, "+ nickname + ". Questa è la mail per confermare il tuo account. Clicca qui per confermare l'account: <a href=\" " + url + " \"> Clicca qui </a>";
 
             String object = "[TuttoBistrò] Mail di conferma";
 
