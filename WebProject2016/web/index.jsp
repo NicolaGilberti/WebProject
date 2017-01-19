@@ -61,9 +61,10 @@
 
         <div class="container-fluid">
             <div class="text-center">
-                <h1>I più richiesti</h1>
+                <h1 style="color:#900c3f">I più richiesti</h1>
             </div>
-
+            
+            <hr class="style15" >
 
             <c:forEach items="${PopularRestaurants}" var="rest">
     
