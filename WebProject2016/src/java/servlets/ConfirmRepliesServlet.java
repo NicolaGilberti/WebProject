@@ -36,22 +36,18 @@ public class ConfirmRepliesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
             String button = null;
-            button = request.getParameter("a");
+            button = request.getParameter("button");
             System.out.println(button);
             int result = 0;
             int id = Integer.parseInt(request.getParameter("id"));
             ApplyConfirmRepliesDAO rep = new ApplyConfirmRepliesDAO();
             if(button.equals("a")){
                 result = rep.confirmReplies(id);
-                 System.out.println("rip");
             }
             else{
-                System.out.println("rip");
+               result = rep.deleteReplies(id);
             }
-            
-            request.getSession().setAttribute("query_result",result);
-
-           response.sendRedirect("SearchNotification");
+           response.sendRedirect("SearchNotification?query_result="+result+"");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

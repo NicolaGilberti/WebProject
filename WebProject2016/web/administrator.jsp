@@ -23,14 +23,15 @@
         <link rel="stylesheet" href="css/generic.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
-             $(document).ready(function(){ 
-                if(${query_result}!= 0){
-                     $('#myModal').modal();
-                    }
-               });
-            /*$('#myModal').on(close(),function(){
-                ${query_result} = null; 
-            });*/
+            $(document).ready(function(){ 
+                var param = ${param.query_result};
+                    if(param != 0){
+                         $('#myModal').modal();
+                        }   
+                       $('#myModal').on('hidden.bs.modal', function() {
+                           param = 0;
+                          });
+            });
         </script>
         <title>JSP Page</title>     
     </head>
