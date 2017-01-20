@@ -15,7 +15,12 @@
         <jsp:include page="header/headerFiles.jsp" />
         <link href="css/userpage.css" rel="stylesheet">
         <link href="css/resultsStyle.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/passwordstrength.css">
+        
         <script src="js/checkNewPwd.js"></script>
+        <script src="js/changeUserPwd.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/scripts.js"></script>
 
         <title>TuttoBistrò - User</title>
 
@@ -88,16 +93,29 @@
                                 <label for="oldPwd">Vecchia password:</label>
                                 <input type="password" class="form-control" id="oldPwd" name="oldPwd" required >
                                 <label for="newPwd" id="label-newPwd">Nuova password:</label>
-                                <input type="password" class="form-control" id="newPwd" name="newPwd" required >
+                                <input type="password" class="form-password form-control" id="newPwd" name="newPwd" pattern= "(?=.*\d)(?=.*[a-z]).{8,}" required >
+                                
+                                <div class ="form-group">
+                                    <div id="pswd_info">
+                                        <h4>La password deve avere:</h4>
+                                        <ul>
+                                            <li id="letter" class="invalid">Almeno <strong>una lettera in minuscolo</strong></li>
+                                            <li id="capital" class="invalid">Almeno <strong>una lettera in maiuscolo</strong></li>
+                                            <li id="number" class="invalid">Almeno <strong>un numero</strong></li>
+                                            <li id="length" class="invalid">Almeno <strong>8 caratteri</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
                                 <label for="newPwd2" id="label-newPwd2">Ripeti password:</label>
-                                <input type="password" class="form-control" id="newPwd2" name="newPwd2" required >
+                                <input type="password" class="form-control" id="newPwd2" name="newPwd2" pattern= "(?=.*\d)(?=.*[a-z]).{8,}" required >
 
                             </p>
                         </div>
                         <div class="modal-footer">
 
                             <button type="submit" class="btn btn-default">Salva</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetChangePwd()">Annulla</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetChangePwd()" id="annulla-btn">Annulla</button>
 
                         </div>
                     </form>
@@ -206,7 +224,7 @@
                     </div>
                     <div class="user-new-restaurant-btn col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <form action="newRestaurantForm.jsp">
-                              <button type="submit" class="btn btn-default col-xs-center" >Aggiungi nuovo</button>
+                            <button type="submit" class="btn btn-default col-xs-center" >Aggiungi nuovo</button>
                         </form>
                     </div>
                 </div>
