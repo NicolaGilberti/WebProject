@@ -50,6 +50,7 @@ public class SearchNotification extends HttpServlet {
             System.err.print(e);
         }
         
+        System.out.print(request.getParameter("query_result"));
         
         request.getSession().setAttribute("noty",notbean);
         

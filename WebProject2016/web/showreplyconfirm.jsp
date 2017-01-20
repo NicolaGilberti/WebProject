@@ -46,8 +46,8 @@
                                     <c:param name="id" value="${param.id}" />
                                 </c:url>
                                 <form action="${repliesURL}" method="POST">
-                                    <button type="submit"  name="d" class="btn btn-danger " value='d'>Rifiuta(Rekt)</button>
-                                    <button type="submit"  name="a" class="btn btn-success" value='a'>Accetta</button>
+                                    <button type="submit"  name="button" class="btn btn-danger " value='d'>Rifiuta(Rekt)</button>
+                                    <button type="submit"  name="button" class="btn btn-success" value='a'>Accetta</button>
                                 </form>
                             </div>
                         </div>

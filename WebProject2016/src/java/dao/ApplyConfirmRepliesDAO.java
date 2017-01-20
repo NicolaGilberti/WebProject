@@ -37,6 +37,15 @@ public class ApplyConfirmRepliesDAO {
         return value;
     }
     
+     public int deleteReplies(int id) throws SQLException, Throwable{
+        PreparedStatement replies = con.prepareStatement("DELETE FROM replies WHERE id = ?");
+        replies.setInt(1,id);
+        int value = replies.executeUpdate();
+        this.finalize();
+        con.close();
+        return value;
+    }
+    
     public void discardReplies() throws SQLException, Throwable{
         
     }
