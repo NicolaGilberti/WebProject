@@ -51,7 +51,6 @@ public class SearchNotification extends HttpServlet {
         }
         
         
-        
         request.getSession().setAttribute("noty",notbean);
         
         RequestDispatcher ds = request.getRequestDispatcher("administrator.jsp");

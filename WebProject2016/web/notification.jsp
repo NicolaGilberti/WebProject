@@ -25,12 +25,6 @@
     </head>
     <body>
         <!-- header -->
-        <div class="container-fluid" >
-           <div class="panel panel-default">
-                <div class="panel-body">
-                    <h2> Benvenuto <strong><c:out value="${user.nickname}"></c:out></strong> </h2>
-                </div>
-              </div>
             <ul class="nav nav-tabs" style="display: inline">
                  <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
                  <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
@@ -101,22 +95,21 @@
                 </div>
                 <div id="menu3" class="tab-pane fade">
                     <p>
-                        <c:set var="n_replies" value="0"></c:set>
-                        <c:forEach var="notbean" items="${noty.replies}">
-                            <c:if test="${notbean.accepted == true}">
-                                <c:set target="n_replies" value="1"></c:set>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <strong><c:out value="${notbean.ristoratore}"/></strong>
-                                        Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
-                                    </a>
-                                </div>
-                            </c:if>
-                        </c:forEach>
-                        <c:set var="n_chowner" value="0"></c:set>
+                         <c:forEach var="notbean" items="${noty.replies}">
+                                <c:if test="${notbean.accepted == true}">
+                                    <div class="list-group">
+                                        <c:url value="showreplyconfirm.jsp" var="repliesURL">
+                                             <c:param name="id" value="${notbean.idrep}" />
+                                        </c:url>
+                                        <a href="${repliesURL}" class="list-group-item">
+                                            <strong><c:out value="${notbean.ristoratore}"/></strong>
+                                            Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
+                                        </a>
+                                    </div>
+                                </c:if>
+                            </c:forEach>
                         <c:forEach var="notbean" items="${noty.chowner}">
                             <c:if test="${notbean.accepted == true}">
-                                <c:set target="n_chowner" value="1"></c:set>
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
                                         <strong><c:out value="${notbean.ristoratore}"/></strong>
@@ -125,10 +118,8 @@
                                 </div>
                             </c:if>
                         </c:forEach>
-                        <c:set var="count_delphotos" value="0"></c:set>
                         <c:forEach var="notbean" items="${noty.delphotos}">
                             <c:if test="${notbean.accepted == true}">
-                                <c:set target="count_delphotos" value="1"></c:set>
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
                                         <strong><c:out value="${notbean.ristoratore}"/></strong>
@@ -137,10 +128,6 @@
                                 </div>
                             </c:if>
                         </c:forEach>
-                        <c:if test="${count_delphotos == 0 && n_replies ==0 && n_chowner ==0}">
-                             <h1> Per ora non ci sono notifiche, torna più tardi</h1>
-                        </c:if>
- 
                     <p>
                 </div>
               </div>
@@ -151,7 +138,5 @@
                     <p>Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
                 </footer>
             </div>
-        </div>
-             
     </body>
 </html>

@@ -42,12 +42,12 @@
                         <div style="text-align:right">
                             <div class="form-group">
                                 <!--Setting get parameter (id of reply) using jstl -->
-                                <c:url value="ConfirmRepliesServlet.java" var="repliesURL">
-                                    <c:param name="id" value="${repliestoconfirm.idrep}" />
+                                 <c:url value="ConfirmRepliesServlet" var="repliesURL">
+                                    <c:param name="id" value="${param.id}" />
                                 </c:url>
-                                <form action="${repliesURL}" method="GET">
-                                    <button id="submit" class="btn btn-danger ">Rifiuta(Rekt)</button>
-                                    <button type="submit" id="accept" class="btn btn-success">Accetta</button>
+                                <form action="${repliesURL}" method="POST">
+                                    <button type="submit"  name="d" class="btn btn-danger " value='d'>Rifiuta(Rekt)</button>
+                                    <button type="submit"  name="a" class="btn btn-success" value='a'>Accetta</button>
                                 </form>
                             </div>
                         </div>

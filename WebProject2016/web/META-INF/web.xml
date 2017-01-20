@@ -191,6 +191,14 @@
         <servlet-name>prepareNewRestaurantForm</servlet-name>
         <url-pattern>/prepareNewRestaurantForm</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ConfirmRepliesServlet</servlet-name>
+        <servlet-class>servlets.ConfirmRepliesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfirmRepliesServlet</servlet-name>
+        <url-pattern>/ConfirmRepliesServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
