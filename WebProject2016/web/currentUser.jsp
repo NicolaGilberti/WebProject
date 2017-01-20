@@ -198,13 +198,13 @@
 
             <c:if test="${user.type gt 0 && fn:length(restaurants) gt 0}">
 
-                <hr class="user-hr">
+                <hr class="style15">
 
                 <div class="row">
-                    <div class="user-restaurants-title col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <div class="user-restaurants-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h2 class="user-restaurants user-title col-xs-center">I miei ristoranti</h2>
                     </div>
-                    <div class="user-new-restaurant-btn col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                    <div class="user-new-restaurant-btn col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <form action="newRestaurantForm.jsp">
                               <button type="submit" class="btn btn-default col-xs-center" >Aggiungi nuovo</button>
                         </form>
@@ -225,10 +225,10 @@
                                             <c:out value="${restaurant.name}" />
                                         </h1>
                                         <div>
-                                            <c:forEach var="j" begin="${restaurant.score + 1}" end="5">
+                                            <c:forEach var="j" begin="${restaurant.global_value + 1}" end="5">
                                                 <span class="pull-right glyphicon glyphicon-star-empty val"></span>
                                             </c:forEach>
-                                            <c:forEach var="i" begin="1" end="${restaurant.score}">
+                                            <c:forEach var="i" begin="1" end="${restaurant.global_value}">
                                                 <span class="pull-right glyphicon glyphicon-star val"></span>
                                             </c:forEach>
                                         </div>
@@ -290,7 +290,7 @@
 
             <c:if test="${fn:length(reviews) gt 0}" >
 
-                <hr class="user-hr">
+                <hr class="style15">
 
                 <div class="row">
                     <div class="col-sm-12">
