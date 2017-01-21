@@ -72,7 +72,7 @@ public class RestaurantRequest extends HttpServlet {
 
         //opening hours
         OpeningHours oh = rq.getOpeningHours(r.getId());
-        request.setAttribute("openingDates", oh.toString());
+        request.setAttribute("openingDates", oh.toArrayListString());
         
         //reviews
         ArrayList<ReviewBean> reviews = rq.getReviews(r.getId());

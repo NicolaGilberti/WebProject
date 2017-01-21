@@ -28,19 +28,13 @@ public class OpeningHours {
     public OpeningHours() {
     }
 
-    @Override
-    public String toString() {
+    public ArrayList<String> toArrayListString() {
         String tmp = "";
+        ArrayList<String> orari = new ArrayList<String>();
         ArrayList<Integer> temp = new ArrayList<Integer>();
         for(int i=0;i<openDays.size();i++){
             temp.add(1);
         }
-        /*for (int i=0; i<openDays.size(); i++) {
-            tmp = tmp.concat(
-                    DAYS.get(openDays.get(i) -1 ) + 
-                    " : " + openingHour.get(i).toString().substring(0, 5) + 
-                    " - " + closingHour.get(i).toString().substring(0, 5) +  " / ");
-        }*/
         int j=0;
         for (int i=openDays.size()-1; i>=0; i--) {
             j=i-1;
@@ -52,7 +46,9 @@ public class OpeningHours {
         for(int i=0;i<temp.size();i++){
             if(flag==true || i==temp.size()-1 || temp.get(i)==1){
                 if(temp.get(i)==1 && flag){
-                    tmp = tmp.concat(" / ");
+                    //tmp = tmp.concat(" / ");
+                    orari.add(tmp);
+                    tmp="";
                 }
                 if(temp.get(i)==1){
                     flag=true;
@@ -67,7 +63,9 @@ public class OpeningHours {
                         first=false;
                     }
                     else{
-                        tmp = tmp.concat(" / ");
+                        //tmp = tmp.concat(" / ");
+                        orari.add(tmp);
+                        tmp="";
                     }
                     tmp = tmp.concat(
                                     DAYS.get(openDays.get(i)-1)
@@ -76,7 +74,8 @@ public class OpeningHours {
                 }
             }
         }
-        return tmp;
+        orari.add(tmp);
+        return orari;
     }
     
     public ArrayList<Integer> getOpenDays() {
