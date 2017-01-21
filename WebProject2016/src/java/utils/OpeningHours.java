@@ -19,7 +19,7 @@ import java.util.Map;
  * @author RiccardoUni
  */
 public class OpeningHours {
-    private final ArrayList<String> DAYS = new ArrayList<>(Arrays.asList("lun", "mar", "mer","gio","ven","sab","dom"));
+    private final ArrayList<String> DAYS = new ArrayList<>(Arrays.asList("lunedì", "martedì", "mercoledì","giovedì","venerdì","sabato","domenica"));
     private ArrayList<Integer> openDays = new ArrayList<Integer>();
     private ArrayList<Time> openingHour = new ArrayList<Time>();
     private ArrayList<Time> closingHour = new ArrayList<Time>();
@@ -31,11 +31,50 @@ public class OpeningHours {
     @Override
     public String toString() {
         String tmp = "";
-        for (int i=0; i<openDays.size(); i++) {
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        for(int i=0;i<openDays.size();i++){
+            temp.add(1);
+        }
+        /*for (int i=0; i<openDays.size(); i++) {
             tmp = tmp.concat(
                     DAYS.get(openDays.get(i) -1 ) + 
                     " : " + openingHour.get(i).toString().substring(0, 5) + 
                     " - " + closingHour.get(i).toString().substring(0, 5) +  " / ");
+        }*/
+        int j=0;
+        for (int i=openDays.size()-1; i>=0; i--) {
+            j=i-1;
+            if(j>=0 && (openDays.get(i)==(openDays.get(j)+1)) && (openingHour.get(i).equals(openingHour.get(j))) && (closingHour.get(i).equals(closingHour.get(j)))){
+                temp.set(j, 0);
+            }
+        }
+        boolean flag = true,first=true;
+        for(int i=0;i<temp.size();i++){
+            if(flag==true || i==temp.size()-1 || temp.get(i)==1){
+                if(temp.get(i)==1 && flag){
+                    tmp = tmp.concat(" / ");
+                }
+                if(temp.get(i)==1){
+                    flag=true;
+                    tmp = tmp.concat(DAYS.get(openDays.get(i)-1)
+                                    + " : "+ openingHour.get(i).toString().substring(0, 5)
+                                    + " - " + closingHour.get(i).toString().substring(0, 5)
+                    );
+                }
+                if(temp.get(i)==0){
+                    flag=false;
+                    if(first){
+                        first=false;
+                    }
+                    else{
+                        tmp = tmp.concat(" / ");
+                    }
+                    tmp = tmp.concat(
+                                    DAYS.get(openDays.get(i)-1)
+                                    + " - "
+                    );
+                }
+            }
         }
         return tmp;
     }

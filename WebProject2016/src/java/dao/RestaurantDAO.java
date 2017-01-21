@@ -270,7 +270,8 @@ public class RestaurantDAO {
                 "SELECT day_of_the_week,start_hour,end_hour "
                         + "FROM opening_hours_range_restaurant "
                         + "JOIN opening_hours_range ON id_range = id "
-                        + "WHERE id_restaurant = ?");
+                        + "WHERE id_restaurant = ?"
+                        + "ORDER BY start_hour, day_of_the_week");
         pd.setInt(1, id);
         ResultSet rs = pd.executeQuery();
         while (rs.next()) {
