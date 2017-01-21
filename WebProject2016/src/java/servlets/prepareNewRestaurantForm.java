@@ -1,4 +1,4 @@
-/*
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +6,7 @@
 package servlets;
 
 import dao.StateDAO;
+import dao.restaurantTypesDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,8 +42,11 @@ public class prepareNewRestaurantForm extends HttpServlet {
         
         StateDAO stateDao = new StateDAO();
         ArrayList<String> states = stateDao.getStates();
-        
         request.setAttribute("states", states);
+        
+        restaurantTypesDAO rtd = new restaurantTypesDAO();
+        ArrayList<String> types = rtd.getTypes();
+        request.setAttribute("restaurantTypes",types);
         
         
         RequestDispatcher rd = request.getRequestDispatcher("/newRestaurantForm.jsp");
