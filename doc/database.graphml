@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
-  <!--Created by yEd 3.16.1-->
+  <!--Created by yEd 3.16.2.1-->
   <key attr.name="Description" attr.type="string" for="graph" id="d0"/>
   <key for="port" id="d1" yfiles.type="portgraphics"/>
   <key for="port" id="d2" yfiles.type="portgeometry"/>
@@ -293,7 +293,7 @@ TIME<y:LabelModel>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="left" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.10546875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="53.921875" x="125.69610457128556" y="4.0">reviews</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="221.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="42.41060739035288">PK
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="221.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="21.08740234375" x="4.0" y="33.357873015352766">PK
 
 
 
@@ -304,14 +304,15 @@ TIME<y:LabelModel>
 
 FK
 FK
-FK<y:LabelModel>
+FK
+<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="-0.5" nodeRatioX="-0.5" nodeRatioY="-0.3519048191855761" offsetX="4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.5" nodeRatioY="0.0028064420468449924" offsetX="4.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="221.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="118.20654296875" x="36.2805884621589" y="42.410607390352766">id
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="239.37109375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="118.20654296875" x="36.2805884621589" y="33.357873015352766">id
 global_value
 food
 service
@@ -322,14 +323,15 @@ description
 data_creation
 id_restaurant
 id_creator
-id_photo<y:LabelModel>
+id_photo
+view<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="-0.5" labelRatioY="0.0" nodeRatioX="-0.38116962057598064" nodeRatioY="0.03441802265428395" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="221.265625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="121.12158203125" x="164.13911431178394" y="42.410607390352766">INTEGER
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Tahoma" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="239.37109375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="121.12158203125" x="164.13911431178394" y="33.357873015352766">INTEGER
 INTEGER
 INTEGER
 INTEGER
@@ -340,7 +342,8 @@ VARCHAR(32000)
 TIMESTAMP
 INTEGER
 INTEGER
-INTEGER<y:LabelModel>
+INTEGER
+BOOLEAN<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
