@@ -18,7 +18,7 @@ public class ManagerDB {
     private Connection c = null;
     /***
      * Costruttore per instaurare la connessione al database
-     * @throws Exception 
+     * 
      */
     public ManagerDB(){
         try {
