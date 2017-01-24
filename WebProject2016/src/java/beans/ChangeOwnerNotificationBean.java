@@ -9,7 +9,7 @@ package beans;
  *
  * @author Marco
  */
-public class ChangeOwnerNotificationBean {
+public class ChangeOwnerNotificationBean implements java.io.Serializable {
     private int resid;
     private int usrid;
     private String resname;

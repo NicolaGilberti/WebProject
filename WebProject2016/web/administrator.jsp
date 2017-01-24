@@ -43,12 +43,20 @@
                     <h2> Benvenuto <strong><c:out value="${user.nickname}"></c:out></strong> </h2>
                 </div>
             </div>
+                <!-- test which kind of user is and so i can show the right notification-->
+               <!-- <c:if test="${sessionScope.admin == 1}">
+                    <c:set var="path"  value="resturantNotification.jsp"></c:set>
+                </c:if>
+                <c:if test="${sessionScope.admin == 2}">
+                    <c:set var="path"  value="adminNotification.jsp"></c:set>
+                </c:if>-->
+            <!--area che verrà aggiornata dallo script-->
             <div id="displayarea">
-                <jsp:include page="notification.jsp"></jsp:include>
+                <jsp:include page="adminNotification.jsp"></jsp:include>
             </div>
         </div>
             
-            
+        <!-- panel per la conferma dei cambiamenti -->    
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">

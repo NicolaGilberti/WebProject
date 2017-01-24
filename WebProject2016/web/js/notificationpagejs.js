@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
  $(document).ready(function() {
+            var flag = 1;
             $.ajaxSetup({ cache: true }); 
             setInterval(function() {
-                $("#displayarea").load("NotificationUpdateJsp")}, 30000);
+                $("#displayarea").load("SearchNotification?flag=1")}, 30000);
             });
 
   
