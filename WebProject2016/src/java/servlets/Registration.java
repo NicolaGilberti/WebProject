@@ -32,6 +32,14 @@ import utils.EmailSender;
 public class Registration extends HttpServlet {
 
     RegistrationDAO regdao = new RegistrationDAO();
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

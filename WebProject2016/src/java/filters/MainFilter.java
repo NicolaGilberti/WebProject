@@ -46,7 +46,7 @@ public class MainFilter implements Filter {
         
         
         if(req.getSession().getAttribute("user") == null){
-        resp.sendRedirect("nonautorizzatoinfo.html");
+        resp.sendRedirect("notauthorized.html");
         
         }
         
