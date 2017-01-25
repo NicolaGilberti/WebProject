@@ -116,7 +116,9 @@ public class UserPageDAO {
                 + "rest.name AS name_restaurant,"
                 + "rest.city AS city_restaurant "
                 + "FROM reviews r JOIN restaurants rest ON (rest.id = id_restaurant) "
-                + "WHERE r.id_creator=" + this.user.getId();
+                + "WHERE r.id_creator=" + this.user.getId()
+                + "ORDER BY r.data_creation DESC "
+                + "LIMIT 5";
         
         try {
             PreparedStatement ps = connection.prepareStatement(revQuery);
