@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @author David
  */
 public class LoginDAO {
-    
+
     private final String email;
     private final String password;
     ManagerDB db = new ManagerDB();
@@ -35,9 +35,9 @@ public class LoginDAO {
         this.email = email;
         this.password = password;
     }
-    
+
     public UserBean authenticate() throws SQLException {
-        
+
         PreparedStatement stm = con.prepareStatement(query);
 
         try {
@@ -67,9 +67,6 @@ public class LoginDAO {
         } finally { // ricordarsi SEMPRE di chiudere i PreparedStatement in un blocco finally 
             stm.close();
         }
-    }
-    
-    }
-    
-    
 
+    }
+}

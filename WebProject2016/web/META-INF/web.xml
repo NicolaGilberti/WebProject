@@ -7,9 +7,41 @@
         <filter-name>MainFilter</filter-name>
         <filter-class>filters.MainFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AmmFilter</filter-name>
+        <filter-class>filters.AmmFilter</filter-class>
+    </filter>
+    <error-page>
+        <location>/general_error_page.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- 404 code -->
+        <error-code>404</error-code>
+        <location>/404_error_page.jsp</location>
+    </error-page>
+    <filter>
+        <filter-name>RistAmmFilter</filter-name>
+        <filter-class>filters.RistAmmFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RistAmmFilter</filter-name>
+        <url-pattern>/SearchNotification</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AmmFilter</filter-name>
+        <url-pattern>/ConfirmRepliesServlet</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
-        <servlet-name>/UserResturants</servlet-name>
+        <url-pattern>/UserAccountPage</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>INCLUDE</dispatcher>
@@ -31,14 +63,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    <error-page>
-        <location>/general_error_page.jsp</location>
-    </error-page>
-    <error-page>
-        <!-- 404 code -->
-        <error-code>404</error-code>
-        <location>/404_error_page.jsp</location>
-    </error-page>
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>
@@ -186,6 +210,14 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordQuery</servlet-name>
         <url-pattern>/ChangePasswordQuery</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>servlets.ChangePassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PrepareHome</servlet-name>

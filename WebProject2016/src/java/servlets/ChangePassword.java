@@ -82,13 +82,14 @@ public class ChangePassword extends HttpServlet {
            //JOptionPane.showMessageDialog(null, sb);
 
             //Il codice corrisponde. Confermiamo account
+            
             if (sb.toString().equals(md5)) {
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("changepasswordform.jsp");
                 request.setAttribute("id", id); // set your String value in the attribute
                 dispatcher.forward(request, response);
             } else {
-                response.sendRedirect("index.html");
+                response.sendRedirect("/");
             }
 
         } catch (SQLException ex) {
