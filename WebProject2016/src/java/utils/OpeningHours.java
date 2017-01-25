@@ -44,7 +44,7 @@ public class OpeningHours {
         }
         boolean flag = true,first=true;
         for(int i=0;i<temp.size();i++){
-            if(flag==true || i==temp.size()-1 || temp.get(i)==1){
+            if(flag==true || temp.get(i)==1){
                 if(temp.get(i)==1 && flag){
                     //tmp = tmp.concat(" / ");
                     orari.add(tmp);
@@ -62,11 +62,11 @@ public class OpeningHours {
                     if(first){
                         first=false;
                     }
-                    else{
+                    //{
                         //tmp = tmp.concat(" / ");
                         orari.add(tmp);
                         tmp="";
-                    }
+                    //}
                     tmp = tmp.concat(
                                     DAYS.get(openDays.get(i)-1)
                                     + " - "
@@ -75,6 +75,7 @@ public class OpeningHours {
             }
         }
         orari.add(tmp);
+        orari.remove(0);
         return orari;
     }
     

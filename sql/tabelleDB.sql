@@ -1,4 +1,4 @@
--- il database lo ho chiamato WebProjectDB io se date altro nome c'è da stare attenti durante la gestione della connessione
+﻿-- il database lo ho chiamato WebProjectDB io se date altro nome c'è da stare attenti durante la gestione della connessione
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -153,3 +153,4 @@ ALTER TABLE reviews ALTER COLUMN name TYPE VARCHAR(100);
 ALTER TABLE restaurants ADD COLUMN n_visits INTEGER;
 ALTER TABLE replies ADD COLUMN accepted boolean;
 ALTER TABLE users ADD CONSTRAINT email_user UNIQUE (email);
+ALTER TABLE reviews ADD COLUMN view boolean DEFAULT false;

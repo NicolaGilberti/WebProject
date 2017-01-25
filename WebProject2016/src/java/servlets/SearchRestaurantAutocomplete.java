@@ -29,9 +29,7 @@ import utils.AutoCompleteData;
  *
  * @author MirkoPortatile
  */
-
 public class SearchRestaurantAutocomplete extends HttpServlet {
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,14 +37,21 @@ public class SearchRestaurantAutocomplete extends HttpServlet {
 
     }
 
+    /**
+     *doPost:Usato per rispondere ad una richiesta POST alla rispettiva Servlet.
+     * Funzione usata per l'autocompletamento dei risultati nella barra di ricerca. 
+     * Invia tramite response in formato json i suggerimenti ottenuti dal DB.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String valoreInserito = request.getParameter("term");
-       String[] valoriInseriti= valoreInserito.split("\\s+");
-        
-        
+        String[] valoriInseriti = valoreInserito.split("\\s+");
 
         List<String> valori = new ArrayList<String>();
 
@@ -55,17 +60,16 @@ public class SearchRestaurantAutocomplete extends HttpServlet {
         Connection connection = manager.getConnection();
 
         //Otteniamo tutte le citta salvate
-        String sql = "select t " +
-"from (select (name ||' , '|| address ||' , '||city) as t" +
-" from restaurants) as a " +
-"where t @@ '";
-        for(int i=0;i<valoriInseriti.length;i++)
-        {
-            sql+=valoriInseriti[i];
-            sql+=" && ";
+        String sql = "select t "
+                + "from (select (name ||' , '|| address ||' , '||city) as t"
+                + " from restaurants) as a "
+                + "where t @@ '";
+        for (int i = 0; i < valoriInseriti.length; i++) {
+            sql += valoriInseriti[i];
+            sql += " && ";
         }
-        sql+="'";
-        
+        sql += "'";
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet results = ps.executeQuery();
@@ -74,8 +78,8 @@ public class SearchRestaurantAutocomplete extends HttpServlet {
             while (results.next()) {
                 //Prendiamo una citta
                 String temp = results.getString("t");
-                    valori.add(temp);
-              
+                valori.add(temp);
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);

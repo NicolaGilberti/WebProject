@@ -37,6 +37,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SearchRestaurant extends HttpServlet {
 
+    /**
+     *doGet: Usata per rispondere ad una richiesta GET alla rispettiva Servlet. 
+     * Spedisce in formato json una lista dei ristoranti che rispettano le caratteristiche di ricerca.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -6,7 +6,8 @@
 package servlets;
 
 import beans.NotificationBean;
-import dao.NotificationsDAO;
+import beans.UserBean;
+import dao.AdminNotificationsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -41,10 +42,18 @@ public class SearchNotification extends HttpServlet {
         //response.setHeader("Cache-Control","no-cache");
         response.setContentType("text/html;charset=UTF-8");
         NotificationBean notbean = new NotificationBean();
-        NotificationsDAO notify = new NotificationsDAO();
+        AdminNotificationsDAO notify = new AdminNotificationsDAO();
         
         try {
-        notbean = notify.getAllNotification();
+            UserBean user_type = (UserBean) request.getSession().getAttribute("user");
+            if(user_type.getType()== 2){
+            
+                 //notifiche dell'amministratore
+            }
+            else if(user_type.getType() == 1){
+                //notifiche del ristorante
+            }
+            notbean = notify.getAllNotification();
         }
         catch(Exception e){
             System.err.print(e);
@@ -53,9 +62,21 @@ public class SearchNotification extends HttpServlet {
         System.out.print(request.getParameter("query_result"));
         
         request.getSession().setAttribute("noty",notbean);
+
+        RequestDispatcher ds;
         
-        RequestDispatcher ds = request.getRequestDispatcher("administrator.jsp");
-        ds.forward(request, response);
+        
+        
+        
+        
+        if(request.getParameter("flag")== null){
+            ds = request.getRequestDispatcher("administrator.jsp");
+            ds.forward(request, response);
+        }
+        else{
+            ds = request.getRequestDispatcher("adminNotification.jsp");
+            ds.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,9 +1,12 @@
+<%-- 
+    Document   : 404_error_page
+    Created on : 22-gen-2017, 17.45.41
+    Author     : David
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Tuttobistrò - Errore</title>
@@ -22,7 +25,7 @@ and open the template in the editor.
         <div class="inner-bg">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1 style="color: white"><strong>TuttoBistrò</strong> | Ooops</h1>
+                    <h1 style="color: white"><strong>TuttoBistrò</strong> | 404 </h1>
 
                     <div class="description">
 
@@ -36,9 +39,7 @@ and open the template in the editor.
                 <div class="form-top">
                     <div class="row"> 
 
-
-                        <h1>Attenzione, è stato riscontrato un errore!</h1>
-
+                        <h1>Che ci fai qui? Questa pagina non esiste! </h1>
 
                     </div>
 

@@ -31,6 +31,14 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    <error-page>
+        <location>/general_error_page.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- 404 code -->
+        <error-code>404</error-code>
+        <location>/404_error_page.jsp</location>
+    </error-page>
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>

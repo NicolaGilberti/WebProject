@@ -23,20 +23,29 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mirko
  */
-//Servlet il cui scopo è quello di ottenere i dati dal database utilizzati nella index.jsp. 
-//In questo caso, ottiene dal Dao i ristoranti più richiesti. 
+
 public class PrepareHome extends HttpServlet {
 
+    /**
+     *Servlet il cui scopo è quello di ottenere i dati dal database utilizzati nella index.jsp. 
+     * In questo caso, ottiene dal Dao i ristoranti più richiesti, e li aggiunge alla request verso index.jsp 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         RestaurantDAO dao = new RestaurantDAO();
+        
         //Otteniamo i ristoranti più popolari
         try {
             List<RestaurantBean> restaurantsList = dao.getRestaurantsbyPopularity();
-              Logger.getLogger(PrepareHome.class.getName()).log(Level.INFO, "Passati di qui: "+restaurantsList.size());
+            //Logger.getLogger(PrepareHome.class.getName()).log(Level.INFO, "Passati di qui: "+restaurantsList.size());
             response.setContentType("text/html");
+            //E aggiungiamo la lista alla request fatta ad index.jsp.
             request.setAttribute("PopularRestaurants", restaurantsList);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
 
