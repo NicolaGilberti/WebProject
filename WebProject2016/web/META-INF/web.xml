@@ -39,6 +39,14 @@
         <error-code>404</error-code>
         <location>/404_error_page.jsp</location>
     </error-page>
+    <filter-mapping>
+        <filter-name>MainFilter</filter-name>
+        <url-pattern>/newRestaurantForm.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>

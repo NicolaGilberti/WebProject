@@ -5,7 +5,7 @@
  */
 package dao;
 
-import beans.StateBean;
+import beans.OpeningHoursBean;
 import database.ManagerDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,31 +16,30 @@ import java.util.List;
 
 /**
  *
- * @author RiccardoUni,Mirko
+ * @author Mirko
  */
-public class StateDAO {
+public class OpeningHoursDAO {
     private ManagerDB db = null;
     private Connection con = null;
 
-    public StateDAO() {
+    public OpeningHoursDAO() {
         db = new ManagerDB();
         con = db.getConnection();
     }
     
-    public ArrayList<StateBean> getStates() throws SQLException {
+    public ArrayList<OpeningHoursBean> getOpeningHours() throws SQLException {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ArrayList<StateBean> res = new ArrayList<>();
+        ArrayList<OpeningHoursBean> res = new ArrayList<>();
 
-        ps = con.prepareStatement("SELECT id,name FROM states;");
+        ps = con.prepareStatement("SELECT id,day_of_the_week,start_hour,end_hour FROM opening_hours_range;");
    
         rs = ps.executeQuery();
         while(rs.next()) {
-            StateBean state=new StateBean();
-            state.setId(rs.getInt(1));
-                state.setName(rs.getString(2));
-            res.add(state);
+            OpeningHoursBean o= new OpeningHoursBean(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4));
+            
+            res.add(o);
         }
         
         return res;

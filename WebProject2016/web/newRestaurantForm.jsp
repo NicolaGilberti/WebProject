@@ -1,17 +1,13 @@
 <%-- 
     Document   : newRestaurantForm
     Created on : 24-mag-2016, 15.04.14
-    Author     : riccardo
+    Author     : riccardo, Mirko
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="dao.StateDAO"%>
-<%@page import="beans.UserBean"%>
-<%@page import="java.net.*"%>
-<%@page import="servlets.prepareNewRestaurantForm"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="week" value="${['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica']}" scope="application" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,126 +15,150 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Nuovo Ristorante - TuttoBistro</title>
-        
+
         <!-- script -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <jsp:include page="header/headerFiles.jsp" />
 
         <!-- css -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/newRestaurantForm.css">
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     </head>
     <body>
-        <% HttpSession ses = request.getSession(false); 
-        UserBean userId = (UserBean) ses.getAttribute("user");
-        if (userId!=null) {   %>
-        
+
         <!-- header -->
         <jsp:include page="header/header.jsp" />
-        
+
         <div class="container">
             <h2>Inserisci nuovo ristorante</h2>
             <hr class="customized">
-            <form action="NewRestaurant" method="post">
+            <form action="NewRestaurant" method="post" enctype="multipart/form-data">
                 <div class="row">
-                <div class="form-group">
-                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                        <label for="nome">Nome:</label>
-                        <input type="nome" class="form-control" id="nome" placeholder="Inserisci un nome" required="true" maxlength="50">
+                    <div class="form-group">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                            <label for="nome">Nome del ristorante:</label>
+                            <input required type="nome" class="form-control" id="nome" name="nome" placeholder="Inserisci un nome"  maxlength="50">
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                            <label for="nome">Carica una foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto">
+                        </div>
+                    </div>
+
+
+                </div>
+                <p></p>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <label for="descrizione">Descrizione:</label>
+                            <textarea required type="descrizione" class="form-control" id="descrizione" name="descrizione"
+                                      placeholder="Inserisci una descrizione" required="true" maxlength="32000"
+                                      rows="5">
+                            </textarea>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <p></p>
                 <div class="row">
-                <div class="form-group">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <label for="descrizione">Descrizione:</label>
-                        <textarea type="descrizione" class="form-control" id="descrizione" 
-                               placeholder="Inserisci una descrizione" required="true" maxlength="32000"
-                               rows="5">
-                        </textarea>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
+                        <label for="URL_sito">URL sito esterno:</label>
+                        <input type="url" class="form-control" name="URL_sito" id="URL_sito" placeholder="">
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
+                        <label for="telefono">Numero Telefonico:</label>
+                        <input type="tel" pattern="\d*" class="form-control" id="telefono" name="telefono" placeholder="">
                     </div>
                 </div>
+                <p></p>
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
+                        <label for="email">E-mail:</label>
+                        <input class="form-control" type="email" placeholder="indirizzo email" id="email" name="email">
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
+                        <label for="indrizzo">Indirizzo:</label>
+                        <input required class="form-control" type="text" maxlength="255" placeholder="indirizzo" id="indrizzo" name="indirizzo">
+                    </div>
                 </div>
                 <p></p>
                 <div class="row">
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
-                    <label for="URL_sito">URL sito esterno:</label>
-                    <input type="url" class="form-control" id="URL_sito" placeholder="">
-                </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
-                    <label for="telefono">Numero Telefonico:</label>
-                    <input type="tel" pattern="\d*" class="form-control" id="telefono" placeholder="">
-                </div>
-                </div>
-                <p></p>
-                <div class="row">
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
-                    <label for="email">e-mail:</label>
-                    <input class="form-control" type="email" placeholder="indrizzo email" id="email" name="email">
-                </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
-                    <label for="indrizzo">Indrizzo:</label>
-                    <input class="form-control" type="text" maxlength="255" placeholder="indrizzo" id="indrizzo" name="indrizzo">
-                </div>
-                </div>
-                <p></p>
-                <div class="row">
-                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 form-group">
-                    <label for="CAP">CAP:</label>
-                    <input class="form-control" type="number" placeholder="CAP" id="cap" name="cap">
-                </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
-                    <label for="citta">città:</label>
-                    <input class="form-control" type="text" maxlength="255" placeholder="città" id="citta" name="citta">
-                </div>
+                    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 form-group">
+                        <label for="CAP">CAP:</label>
+                        <input required class="form-control" type="number" placeholder="CAP" id="cap" name="cap">
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
+                        <label for="citta">Città:</label>
+                        <input required class="form-control" type="text" maxlength="255" placeholder="città" id="citta" name="citta">
+                    </div>
                 </div>
                 <p>
                 <div class="row">
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                        <label for="sel1">state:</label>
-                        <select class="form-control" id="sel1">
-                        <c:forEach items="${states}" var="state">
-                                <option>
-                                    <c:out value="${state}">
-                                    </c:out>
-                                </option>
-                        </c:forEach>
-                        </select>
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label for="sel1">Stato:</label>
+                            <select required class="form-control" id="sel1" name="stato">
+                                <c:forEach items="${states}" var="state">
+                                    <option value="${state.id}">
+                                        ${state.name}
+                                      
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                            <label for="selprice">Seleziona la fascia di prezzo del tuo ristorante:</label>
+                            <select required class="form-control" id="selprice" name="pricerange">
+                                <c:forEach items="${rangeList}" var="range">
+                                    <option value="${range.id}">
+                                        ${range.min_value} -  ${range.max_value} euro
+                                      
+                                    </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="checkbox">
-                    <c:set var="counter" value="0"></c:set>
-                    <c:forEach items="${restaurantTypes}" var="type">
-                        <div class="col-md-3 col-lg-4 col-sm-6 col-xs-6">
-                            <label><input type="checkbox" value="${type}">${type}</label>
-                        </div> 
-                    </c:forEach>
+                
+                <div class="row">
+                    <label >Seleziona l'orario di apertura del tuo ristorante.</label>
+                    <div class="checkbox">
+                        <c:forEach items="${ohList}" var="oh">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <label><input type="checkbox" name="openinghour" value="${oh.id}">${week[oh.day-1]}   ${oh.openHS} - ${oh.closeHS}</label>
+                            </div> 
+                        </c:forEach>
+                    </div>
                 </div>
-                <p></p>
-                <hr class="customized">
-                <p></p>
-                <div class="row col-md-6 col-lg-12 col-sm-12 col-xs-12">
-                <button type="submit" class="btn btn-default">Submit</button>
-                <button type="reset" class="btn btn-warning">Reset</button>
+
+                
+                
+                
+                <div class="row">
+                    <label >Seleziona i tipi di cucina del tuo ristorante.</label>
+                    <div class="checkbox">
+                        <c:set var="counter" value="0"></c:set>
+                        <c:forEach items="${restaurantTypes}" var="type">
+                            <div class="col-md-3 col-lg-4 col-sm-6 col-xs-6">
+                                <label><input type="checkbox" name="cuisine" value="${type.id}">${type.name}</label>
+                            </div> 
+                        </c:forEach>
+                    </div>
+
+                    <div class="row col-md-6 col-lg-12 col-sm-12 col-xs-12 btn-padding">
+                        <button type="submit" class="btn btn-default">Inserisci</button>
+                        <button type="reset" class="btn btn-warning">Reset</button>
+                    </div>
                 </div>
             </form>
         </div>
-        <%
-        }
-        else {
-        %>
-        <jsp:forward page="UserNotAuthenticated.html" />
-        <% }
-        %>
+
     </form>
 </body>
 </html>
