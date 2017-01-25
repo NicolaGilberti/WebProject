@@ -4,31 +4,21 @@
     Author     : Marco
 --%>
 
-<%@page import="beans.NotificationRepliesBean"%>
-<%@page import="beans.NotificationBean"%>
-<%@page import="java.util.ArrayList"%>
+
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <jsp:include page="header/headerFiles.jsp"/>
+ <link rel="stylesheet" href="css/generic.css">
+ 
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/generic.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+
         <!-- header -->
             <ul class="nav nav-tabs" style="display: inline">
                  <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
                  <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
                  <li><a data-toggle="tab" href="#menu2"><h3><strong>Delete Photo Request </strong><span class="badge">${fn:length(noty.delphotos)}</span></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu4"><h3><strong>Restaurant Notification </strong><span class="badge">0</span></h3></a></li>
                  <li><a data-toggle="tab" href="#menu3"><h3><strong>Notification Accepted </strong></h3></a></li>
             </ul>
             <div class="tab-content">
@@ -50,7 +40,7 @@
                             </c:forEach>
                         </c:if>
                          <c:if test="${empty noty.replies}">
-                            <h1> Per ora non ci sono notifiche, torna piÃ¹ tardi</h1>
+                            <h1> Per ora non ci sono notifiche, torna più tardi</h1>
                          </c:if>
                     </p>
                 </div>
@@ -63,14 +53,13 @@
                                      <a href="#" class="list-group-item">
                                            <strong><c:out value="${notbean.nickname}"/></strong>
                                            ha richiesto di diventare il proprietario di <strong><c:out value="${notbean.resname}"/></strong>.
-                                           <button type="button" class="btn btn-lg" aria-label="Left Align" style="float:right" value="Decline"></button>
                                      </a>
                                    </div>
                                 </c:if>
                            </c:forEach>
                          </c:if>
                         <c:if test="${empty noty.chowner}">
-                            <h1> Per ora non ci sono notifiche, torna piÃ¹ tardi</h1>
+                            <h1> Per ora non ci sono notifiche, torna più tardi</h1>
                         </c:if>
                      </p>
                 </div>
@@ -89,7 +78,7 @@
                           </c:forEach>
                          </c:if>
                          <c:if test="${empty noty.delphotos}">
-                             <h1> Per ora non ci sono notifiche, torna piÃ¹ tardi</h1>
+                             <h1> Per ora non ci sono notifiche, torna più tardi</h1>
                          </c:if>
                     <p>
                 </div>
@@ -130,6 +119,30 @@
                         </c:forEach>
                     <p>
                 </div>
+                
+                <div id="menu4" class="tab-pane fade">
+                    <p>
+                          <c:if test="${fn:length(resnoty.review_list) gt 0}">  
+                           <c:forEach var="notbean" items="${resnoty.review_list}">
+                                <c:if test="${notbean.view == false}">
+                                    <c:url value="showreview.jsp" var="reviewURL">
+                                        <c:param name="id" value="${notbean.id}" />
+                                    </c:url>
+                                    <div class="list-group">
+                                     <a href="${reviewURL}" class="list-group-item">
+                                           <strong><c:out value="${notbean.nickname}"/></strong>
+                                           ha scritto una recensione sul tuo ristorante.
+                                     </a>
+                                   </div>
+                                </c:if>
+                           </c:forEach>
+                         </c:if>
+                        <c:if test="${empty resnoty.review_list}">
+                            <h1> Per ora non ci sono notifiche, torna più tardi</h1>
+                        </c:if>
+                     </p>
+                </div>
+                
               </div>
               <div class="navbar">
                 <!--footer-->
@@ -138,5 +151,3 @@
                     <p>Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
                 </footer>
             </div>
-    </body>
-</html>

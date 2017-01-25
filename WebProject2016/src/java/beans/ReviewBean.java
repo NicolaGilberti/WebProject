@@ -26,9 +26,18 @@ public class ReviewBean implements java.io.Serializable {
     private boolean view;
     private String data_creation;
     private int id_restaurant;
+    private String nickname;
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
     
     public void setView(boolean view) {
         this.view = view;
+    }
+
+    public String getNickname() {
+        return nickname;
     }
 
 
@@ -152,4 +161,8 @@ public class ReviewBean implements java.io.Serializable {
         return id_creator;
     }
 
+    public String toString(){
+    return " "+this.id+" "+this.data_creation+" "+this.description+" "+this.name+" "+this.nickname+"  photoname"+this.photo_name+" "+this.restaurant_city+" "+restaurant_name+" "+atmosphere+" "+food+" "+global_value+" "+id_creator+" "+id_restaurant+" "+this.service+" "+this.value_for_money+" "+this.view;
+    
+    }
 }
