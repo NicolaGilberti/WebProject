@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author Marco
  */
-public class NotificationRepliesBean  {
+public class NotificationRepliesBean  implements java.io.Serializable{
    private int idrep;
    private  Date datarep;
    private Date datarew;

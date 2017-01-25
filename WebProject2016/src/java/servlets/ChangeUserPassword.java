@@ -84,7 +84,7 @@ public class ChangeUserPassword extends HttpServlet {
                 request.getParameter("newPwd2"));
 
         request.setAttribute("alert", alert);
-        request.getRequestDispatcher("UserRestaurants").forward(request, response);
+        request.getRequestDispatcher("UserAccountPage").forward(request, response);
     }
 
     /**

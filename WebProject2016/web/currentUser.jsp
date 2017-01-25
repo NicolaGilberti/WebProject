@@ -19,7 +19,6 @@
         
         <script src="js/checkNewPwd.js"></script>
         <script src="js/changeUserPwd.js"></script>
-        <script src="js/jquery.backstretch.min.js"></script>
         <script src="js/scripts.js"></script>
 
         <title>TuttoBistrò - User</title>
@@ -115,7 +114,7 @@
                         <div class="modal-footer">
 
                             <button type="submit" class="btn btn-default">Salva</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetChangePwd()" id="annulla-btn">Annulla</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="annulla-btn">Annulla</button>
 
                         </div>
                     </form>

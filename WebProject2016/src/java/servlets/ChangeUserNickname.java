@@ -78,7 +78,7 @@ public class ChangeUserNickname extends HttpServlet {
         AlertBean alert = DAO.changeNickname(nickname, pwd);
         
         request.setAttribute("alert", alert);
-        request.getRequestDispatcher("UserRestaurants").forward(request, response);
+        request.getRequestDispatcher("UserAccountPage").forward(request, response);
     }
 
     /**

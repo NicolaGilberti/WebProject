@@ -19,12 +19,22 @@ public class ReviewBean implements java.io.Serializable {
     private int atmosphere;
     private String name;
     private String description;
-    private String data_creation;
-    private int id_restaurant;
     private String restaurant_name;
     private String restaurant_city;
     private int id_creator;
     private String photo_name;
+    private boolean view;
+    private String data_creation;
+    private int id_restaurant;
+    
+    public void setView(boolean view) {
+        this.view = view;
+    }
+
+
+    public boolean isView() {
+        return view;
+    }
 
     public String getPhoto_name() {
         return photo_name;

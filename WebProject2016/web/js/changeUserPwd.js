@@ -6,6 +6,15 @@
 
 
 $(document).ready(function() {
+
+$('#annulla-btn').click(function(){
+    $('#pswd_info').hide();
+    $('#oldPwd').val('');
+    $('#newPwd').val('');
+    $('#newPwd2').val('').css('border-color', $('#newPwd').css('border-color'));
+    $('#label-newPwd2').css('color', $('#label-newPwd').css('color'));
+});
+
 $('#newPwd').keyup(function() {
    var pswd = $(this).val();
     if ( pswd.length < 8 ) {
@@ -14,7 +23,7 @@ $('#newPwd').keyup(function() {
     $('#length').removeClass('invalid').addClass('valid');
 }
     
-    if ( pswd.match(/[A-z]/) ) {
+    if ( pswd.match(/[a-z]/) ) {
     $('#letter').removeClass('invalid').addClass('valid');
 } else {
     $('#letter').removeClass('valid').addClass('invalid');
@@ -35,11 +44,13 @@ if ( pswd.match(/\d/) ) {
 }
 }).focus(function() {
     $('#pswd_info').show();
-}).blur(function() {
+});
+
+$('#oldPwd').focus(function(){
     $('#pswd_info').hide();
 });
 
-$('#annulla-btn').click(function(){
+$('#newPwd2').focus(function(){
     $('#pswd_info').hide();
 });
 
