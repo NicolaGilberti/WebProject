@@ -11,13 +11,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <jsp:include page="header/headerFiles.jsp" />
-        <link rel="stylesheet" href="css/header.css">
+        <script src="js/showreplies.js"></script>
         <link rel="stylesheet" href="css/generic.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>JSP Page</title>
     </head>
     <body> 
@@ -64,6 +62,24 @@
                 <div class="panel-body">
                     <c:out value="${review.description}"></c:out>
                     </div>
+                </div>
+                <br>
+                <div class="form-group">
+                 <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
+                </div>  
+                <!--Setting get parameter (id of reply) using jstl -->
+                    <c:url value="InsertReplyServlet" var="repliesURL">
+                        <c:param name="id" value="${param.id}"/>
+                    </c:url>
+                    <form action="${repliesURL}" method="POST" id="replytext" style="display:none" >
+                        <div class="form-group">
+                            <label for="textarea">Inserisci qui la risposta al commento</label>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit"  name="button" class="btn btn-success" value='a'>Invia</button>
+                        </div>
+                    </form>
                 </div>
         </div>
     </body>
