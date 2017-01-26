@@ -18,6 +18,7 @@
 
         <!-- script -->
         <jsp:include page="header/headerFiles.jsp" />
+        <script src="js/checksrestaurantform.js"></script> 
 
         <!-- css -->
         <link rel="stylesheet" href="css/newRestaurantForm.css">
@@ -101,7 +102,7 @@
                                 <c:forEach items="${states}" var="state">
                                     <option value="${state.id}">
                                         ${state.name}
-                                      
+
                                     </option>
                                 </c:forEach>
                             </select>
@@ -117,15 +118,15 @@
                                 <c:forEach items="${rangeList}" var="range">
                                     <option value="${range.id}">
                                         ${range.min_value} -  ${range.max_value} euro
-                                      
+
                                     </option>
                                 </c:forEach>
                             </select>
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <div class="row">
                     <label >Seleziona l'orario di apertura del tuo ristorante.</label>
                     <div class="checkbox">
@@ -137,9 +138,9 @@
                     </div>
                 </div>
 
-                
-                
-                
+
+
+
                 <div class="row">
                     <label >Seleziona i tipi di cucina del tuo ristorante.</label>
                     <div class="checkbox">
@@ -152,7 +153,7 @@
                     </div>
 
                     <div class="row col-md-6 col-lg-12 col-sm-12 col-xs-12 btn-padding">
-                        <button type="submit" class="btn btn-default">Inserisci</button>
+                        <button type="submit" class="btn btn-default" onclick="return checkforms();">Inserisci</button>
                         <button type="reset" class="btn btn-warning">Reset</button>
                     </div>
                 </div>
