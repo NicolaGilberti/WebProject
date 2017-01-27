@@ -2,9 +2,9 @@
 <html lang="it">
 
     <head>
-        
+
         <jsp:include page="header/headerFiles.jsp" />
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,6 +81,9 @@
                                                     <li id="length" class="invalid">Almeno <strong>8 caratteri</strong></li>
                                                 </ul>
                                             </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input required type="checkbox" value="">Accetto la <a href="http://www.garanteprivacy.it/home/provvedimenti-normativa/normativa/normativa-italiana">normativa della privacy</a></label>
                                         </div>
                                         <button type="submit" class="btn">Registrati</button>
                                     </form>

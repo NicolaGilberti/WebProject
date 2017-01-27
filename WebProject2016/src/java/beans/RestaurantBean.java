@@ -27,6 +27,15 @@ public class RestaurantBean {
     private int cap;
     private String city;
     private String country;
+    private int id_country;
+
+    public int getId_country() {
+        return id_country;
+    }
+
+    public void setId_country(int id_country) {
+        this.id_country = id_country;
+    }
     private String telephone;
     private int score;
     private String imgPath;

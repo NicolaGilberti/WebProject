@@ -5,6 +5,7 @@
  */
 package dao;
 
+import beans.AlertBean;
 import beans.CuisineBean;
 import beans.RestaurantBean;
 import beans.ReviewBean;
@@ -21,40 +22,47 @@ import servlets.UserAccountPage;
 
 /**
  *
- * @author nicol
+ * @author Mirko
  */
-public class UserPageDAO {
+public class UserDAO {
+    
+      private ManagerDB db = null;
+    private Connection con = null;
 
-    private UserBean user;
-
-    public UserBean getUser() {
-        return user;
+    public UserDAO() {
+        db = new ManagerDB();
+        con = db.getConnection();
     }
-
-    public void setUser(UserBean user) {
-        this.user = user;
+    
+    public void upgradeUser(int userId) throws SQLException
+    {
+        String query="UPDATE users SET type=1 WHERE id=?";
+        
+        int affectedRows = 0;
+        PreparedStatement ps = con.prepareStatement(query);
+      
+        ps.setInt(1,userId);
+        affectedRows = ps.executeUpdate();
+        if (affectedRows == 0) {
+            throw new SQLException("Errore aggiornamento utente, no rows affected.");
+        }
+        
     }
-
-    public UserPageDAO(UserBean user) {
-        this.user = user;
-    }
-
-    public ArrayList<RestaurantBean> getRestaurants() {
+    
+    public ArrayList<RestaurantBean> getRestaurants(int userId) {
         ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
-
-        //Instauriamo connessione
-        ManagerDB manager = new ManagerDB();
-        Connection connection = manager.getConnection();
 
         String restQuery = "SELECT r.id,r.name,r.description,r.address,r.city,r.global_value,"
                 + "(SELECT p1.name FROM photos p1 WHERE p1.id_restaurant = r.id LIMIT 1) AS photo_name, "
                 + "(SELECT COUNT(*) FROM reviews re WHERE re.id_restaurant = r.id) AS n_reviews, "
                 + "c.name AS cuisine_name "
                 + "FROM restaurants r JOIN photos p ON (r.id = p.id_restaurant) JOIN restaurants_cuisine rc ON (rc.id_restaurant = r.id) JOIN cuisine c ON (c.id = rc.id_cuisine) "
-                + "WHERE id_owner=" + this.user.getId();
+                + "WHERE id_owner=?";
 
         try {
-            PreparedStatement ps = connection.prepareStatement(restQuery);
+            PreparedStatement ps = con.prepareStatement(restQuery);
+            ps.setInt(1, userId);
+            
             ResultSet results = ps.executeQuery();
 
             //Per tutti i risultati
@@ -96,12 +104,8 @@ public class UserPageDAO {
         return null;
     }
     
-    public ArrayList<ReviewBean> getReviews() {
+    public ArrayList<ReviewBean> getReviews(int userId) {
         ArrayList<ReviewBean> rev = new ArrayList<ReviewBean>();
-        
-        //Instauriamo connessione
-        ManagerDB manager = new ManagerDB();
-        Connection connection = manager.getConnection();
         
         String revQuery = "SELECT r.id AS id_review,"
                 + "r.global_value AS global_value,"
@@ -116,12 +120,14 @@ public class UserPageDAO {
                 + "rest.name AS name_restaurant,"
                 + "rest.city AS city_restaurant "
                 + "FROM reviews r JOIN restaurants rest ON (rest.id = id_restaurant) "
-                + "WHERE r.id_creator=" + this.user.getId()
+                + "WHERE r.id_creator=? "
                 + "ORDER BY r.data_creation DESC "
                 + "LIMIT 5";
         
         try {
-            PreparedStatement ps = connection.prepareStatement(revQuery);
+            PreparedStatement ps = con.prepareStatement(revQuery);
+            ps.setInt(1, userId);
+            
             ResultSet results = ps.executeQuery();
             
             //Per tutti i risultati
@@ -139,7 +145,7 @@ public class UserPageDAO {
                 if (id_photo != 0) {
                     String photoName_query = "SELECT name FROM photos WHERE id=" + id_photo;
 
-                    ps = connection.prepareStatement(photoName_query);
+                    ps = con.prepareStatement(photoName_query);
                     ResultSet res1 = ps.executeQuery();
 
                     if (res1.next()) {
@@ -164,4 +170,115 @@ public class UserPageDAO {
         
         return null;
     }
+    
+    public AlertBean changePassword(int userId, String oldPwd, String newPwd, String newPwd2) {
+
+        AlertBean alert = new AlertBean();
+
+        String oldpwd_query = "SELECT password FROM users WHERE id=?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(oldpwd_query);
+            ps.setInt(1, userId);
+            
+            ResultSet results = ps.executeQuery();
+
+            if (results.next()) {
+
+                String old_db_pwd = results.getString("password");
+                String oldpwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(oldPwd);
+                String newpwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(newPwd);
+                String newpwd2 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(newPwd2);
+
+                if (old_db_pwd.equals(oldpwd)) {
+                    if (newpwd.equals(newpwd2)) {
+                        String newpwd_query = "UPDATE users SET password=? WHERE id=?";
+
+                        ps = con.prepareStatement(newpwd_query);
+                        ps.setString(1, newpwd);
+                        ps.setInt(2, userId);
+                        
+                        ps.executeUpdate();
+
+                        alert.setType(0);
+                        alert.setTitle("");
+                        alert.setDescription("La modifica della password è avvenuta con successo.");
+                    } else {
+                        alert.setType(1);
+                        alert.setTitle("Errore!");
+                        alert.setDescription("Nuova password non valida. Riprovare");
+                    }
+                } else {
+                    alert.setType(1);
+                    alert.setTitle("Errore!");
+                    alert.setDescription("Vecchia password non valida. Riprovare");
+                }
+
+            } else {
+                alert.setType(1);
+                alert.setTitle("Errore!");
+                alert.setDescription("Utente non riconosciuto dal sistema.");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            /* request.setAttribute("oldpwd", ex.toString());
+            dispatcher.forward(request, response);*/
+        }
+        
+        return alert;
+    }
+    
+    public AlertBean changeNickname(UserBean user, String newNick, String password) {
+
+        String pwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+
+        AlertBean alert = new AlertBean();
+
+        try {
+            String pwdQuery = "SELECT password FROM users WHERE id=?";
+            
+            PreparedStatement ps = con.prepareStatement(pwdQuery);
+            ps.setInt(1, user.getId());
+            
+            ResultSet results = ps.executeQuery();
+
+            if (results.next()) {
+
+                String db_pwd = results.getString("password");
+
+                if (pwd.equals(db_pwd)) {
+
+                    String nick_query = "UPDATE users SET nickname=? WHERE id=?";
+
+                    ps = con.prepareStatement(nick_query);
+                    ps.setString(1, newNick);
+                    ps.setInt(2, user.getId());
+                    
+                    ps.executeUpdate();
+
+                    user.setNickname(newNick);
+
+                    alert.setType(0);
+                    alert.setTitle("Nickname modificato con successo in ");
+                    alert.setDescription(newNick);
+                } else {
+
+                    alert.setType(1);
+                    alert.setTitle("Errore!");
+                    alert.setDescription("Password non valida. Riprovare");
+                }
+            } else {
+
+                alert.setType(1);
+                alert.setTitle("Errore!");
+                alert.setDescription("Si è verificato un errore nel sistema. Riprovare più tardi");
+            }
+        } catch (Exception ex) {
+            System.out.println("changeUserPwd " + ex.toString());
+        }
+        
+        return alert;
+    }
+    
 }

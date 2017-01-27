@@ -9,17 +9,54 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author RiccardoUni
+ * @author RiccardoUni,Mirko
  */
 public class OpeningHoursBean {
+
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getOpenHS() {
+        return openHS;
+    }
+
+    public void setOpenHS(String openHS) {
+        this.openHS = openHS;
+    }
+
+    public String getCloseHS() {
+        return closeHS;
+    }
+
+    public void setCloseHS(String closeHS) {
+        this.closeHS = closeHS;
+    }
     private int day;
+    private String openHS;
+    private String closeHS;
+    
+    //Usati?
     private Timestamp openH;
     private Timestamp closeH;
-    
+
     OpeningHoursBean(int day, Timestamp openH, Timestamp closeH) {
         this.day = day;
         this.openH = openH;
         this.closeH = closeH;
+    }
+
+    public OpeningHoursBean(int id, int day, String openH, String closeH) {
+        this.id = id;
+        this.day = day;
+        this.openHS = openH;
+        this.closeHS = closeH;
     }
 
     public int getDay() {
@@ -45,6 +82,5 @@ public class OpeningHoursBean {
     public void setCloseH(Timestamp closeH) {
         this.closeH = closeH;
     }
-    
-    
+
 }

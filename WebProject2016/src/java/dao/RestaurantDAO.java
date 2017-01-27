@@ -11,10 +11,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import servlets.SearchRestaurantAutocomplete;
+import utils.AutoCompleteData;
 import utils.OpeningHours;
 
 /*
@@ -24,7 +29,7 @@ import utils.OpeningHours;
  */
 /**
  *
- * @author RiccardoUni
+ * @author RiccardoUni, Mirko
  */
 public class RestaurantDAO {
 
@@ -269,10 +274,10 @@ public class RestaurantDAO {
         OpeningHours oh = new OpeningHours();
         PreparedStatement pd = con.prepareStatement(
                 "SELECT day_of_the_week,start_hour,end_hour "
-                        + "FROM opening_hours_range_restaurant "
-                        + "JOIN opening_hours_range ON id_range = id "
-                        + "WHERE id_restaurant = ?"
-                        + "ORDER BY start_hour, day_of_the_week");
+                + "FROM opening_hours_range_restaurant "
+                + "JOIN opening_hours_range ON id_range = id "
+                + "WHERE id_restaurant = ?"
+                + "ORDER BY start_hour, day_of_the_week");
         pd.setInt(1, id);
         ResultSet rs = pd.executeQuery();
         while (rs.next()) {
@@ -280,10 +285,10 @@ public class RestaurantDAO {
             oh.setOpeningHour(Time.valueOf(rs.getTime(2).toString()));
             oh.setClosingHour(Time.valueOf(rs.getTime(3).toString()));
         }
-        
+
         return oh;
     }
-    
+
     public ArrayList<RestaurantBean> getRestaurantsbyPopularity() throws SQLException {
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
@@ -306,7 +311,7 @@ public class RestaurantDAO {
             risto.setMinPrice(results.getDouble("min_value"));
             risto.setMaxPrice(results.getDouble("max_value"));
             risto.setN_visits(results.getInt("n_visits"));
-            
+
             //Ora devo ottenere il numero di recensioni che ha quel ristorante
             int nReviews = this.getNumOfReviews(risto.getId());
             risto.setNumReviews(nReviews);
@@ -328,6 +333,120 @@ public class RestaurantDAO {
         return restaurantsList;
     }
 
-    
-    
+    public ArrayList<CuisineBean> getCuisineTypes() throws SQLException {
+        ArrayList<CuisineBean> tmp = new ArrayList<>();
+        PreparedStatement st = con.prepareStatement("SELECT name,id FROM cuisine");
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            CuisineBean a = new CuisineBean();
+            a.setName(rs.getString(1));
+            a.setId(rs.getInt(2));
+            tmp.add(a);
+        }
+
+        return tmp;
+    }
+
+    public int addRestaurant(RestaurantBean rest) throws SQLException {
+
+        int affectedRows = 0;
+        int restID = 0;
+
+        String query = "INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, rest.getName());
+        ps.setString(2, rest.getDescription());
+        ps.setString(3, rest.getWeb_site_url());
+        ps.setInt(4, rest.getGlobal_value());
+        ps.setInt(5, rest.getId_owner());
+        ps.setInt(6, rest.getId_creator());
+        ps.setInt(7, rest.getId_price_range());
+        ps.setDouble(8, rest.getLatitude());
+        ps.setDouble(9, rest.getLongitude());
+        ps.setString(10, rest.getAddress());
+        ps.setInt(11, rest.getCap());
+        ps.setString(12, rest.getCity());
+        ps.setInt(13, rest.getId_country());
+
+        affectedRows = ps.executeUpdate();
+        if (affectedRows == 0) {
+            throw new SQLException("Errore inserimento ristorante, no rows affected.");
+        }
+        //Andiamo a prendere l'id del nuovo ristorante
+        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                restID = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Errore creazione utente, no ID obtained.");
+            }
+        }
+        return restID;
+    }
+
+    public void addRestCuisine(int id, String[] checkedCuisineIds) throws SQLException {
+
+        int affectedRows = 0;
+        //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
+        String query = "";
+        for (int i = 0; i < checkedCuisineIds.length; i++) {
+            query += "INSERT INTO restaurants_cuisine VALUES (" + checkedCuisineIds[i] + ",+" + id + ");";
+        }
+        PreparedStatement ps = con.prepareStatement(query);
+        affectedRows = ps.executeUpdate();
+        if (affectedRows == 0) {
+            throw new SQLException("Errore inserimento tipologia di cucina, no rows affected.");
+        }
+
+    }
+
+    public void addRestOpeningHours(int id, String[] checkedOpeningHoursIds) throws SQLException {
+        int affectedRows = 0;
+        //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
+        String query = "";
+        for (int i = 0; i < checkedOpeningHoursIds.length; i++) {
+            query += "INSERT INTO opening_hours_range_restaurant VALUES (" + checkedOpeningHoursIds[i] + ",+" + id + ");";
+        }
+        PreparedStatement ps = con.prepareStatement(query);
+        affectedRows = ps.executeUpdate();
+        if (affectedRows == 0) {
+            throw new SQLException("Errore inserimento tipologia di cucina, no rows affected.");
+        }
+    }
+
+    public List<AutoCompleteData> getAutoCompleteData(String[] valoriInseriti) {
+        List<String> valori = new ArrayList<String>();
+        final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
+        //Otteniamo tutte le citta salvate
+        String sql = "select t "
+                + "from (select (name ||' , '|| address ||' , '||city) as t"
+                + " from restaurants) as a "
+                + "where t @@ '";
+        for (int i = 0; i < valoriInseriti.length; i++) {
+            sql += valoriInseriti[i];
+            sql += " && ";
+        }
+        sql += "'";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet results = ps.executeQuery();
+
+            //Per tutti i risultati
+            while (results.next()) {
+                //Prendiamo una citta
+                String temp = results.getString("t");
+                valori.add(temp);
+
+            }
+
+            for (final String country : valori) {
+                result.add(new AutoCompleteData(country, country));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
 }
