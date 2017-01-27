@@ -6,6 +6,7 @@
 package servlets;
 
 import com.google.gson.Gson;
+import dao.RestaurantDAO;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,48 +51,17 @@ public class SearchRestaurantAutocomplete extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //Otteniamo il parametro formato da varie stringhe
         String valoreInserito = request.getParameter("term");
+        //Splittiamo il parametro in tante stringhe
         String[] valoriInseriti = valoreInserito.split("\\s+");
 
-        List<String> valori = new ArrayList<String>();
-
-        //Instauriamo connessione
-        ManagerDB manager = new ManagerDB();
-        Connection connection = manager.getConnection();
-
-        //Otteniamo tutte le citta salvate
-        String sql = "select t "
-                + "from (select (name ||' , '|| address ||' , '||city) as t"
-                + " from restaurants) as a "
-                + "where t @@ '";
-        for (int i = 0; i < valoriInseriti.length; i++) {
-            sql += valoriInseriti[i];
-            sql += " && ";
-        }
-        sql += "'";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet results = ps.executeQuery();
-
-            //Per tutti i risultati
-            while (results.next()) {
-                //Prendiamo una citta
-                String temp = results.getString("t");
-                valori.add(temp);
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        // Map real data into JSON
+        //Otteniamo i dati autocomplete dal DAO apposito
+        RestaurantDAO restDAO=new RestaurantDAO();
+        List<AutoCompleteData> result= restDAO.getAutoCompleteData(valoriInseriti);
+        
+        //Rispediamo i dati
         response.setContentType("application/json");
-
-        final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
-        for (final String country : valori) {
-            result.add(new AutoCompleteData(country, country));
-        }
         response.getWriter().write(new Gson().toJson(result));
     }
 
