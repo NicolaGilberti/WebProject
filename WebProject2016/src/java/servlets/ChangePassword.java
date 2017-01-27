@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import dao.UserDAO;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,9 +30,15 @@ import utils.EmailSender;
  *
  * @author David
  */
-
 public class ChangePassword extends HttpServlet {
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,54 +46,17 @@ public class ChangePassword extends HttpServlet {
             String id = request.getParameter("id");
             String md5 = request.getParameter("cod");
 
-            String query = "SELECT * FROM users WHERE id=?";
-
-            //Preparazione query
-            ManagerDB db = new ManagerDB();
-            Connection con = db.getConnection();
-
-            PreparedStatement ps;
-
-            ps = con.prepareStatement(query);
-            ps.setInt(1, Integer.valueOf(id));
-            String email = null;
-            String name = null;
-            String surname = null;
-            String nickname = null;
-
-            ResultSet results = ps.executeQuery();
-            while (results.next()) {
-                email = results.getString("email");
-                name = results.getString("name");
-                surname = results.getString("surname");
-                nickname = results.getString("nickname");
-
-            }
-            //JOptionPane.showMessageDialog(null, id + email + name + surname + nickname);
-
-            //Inizio generazione MD5
-            MessageDigest md = MessageDigest.getInstance("MD5");
-
-            md.update(email.getBytes());
-            md.update(nickname.getBytes());
-            md.update(surname.getBytes());
-            md.update(name.getBytes());
-            //Se è già stato confermato reindirizziamo TODO
-
-            byte[] digest = md.digest();
-            StringBuffer sb = new StringBuffer();
-            for (byte b : digest) {
-                sb.append(String.format("%02x", b & 0xff));
-            }
-
-           //JOptionPane.showMessageDialog(null, sb);
-
-            //Il codice corrisponde. Confermiamo account
+            UserDAO user = new UserDAO();
             
+            StringBuffer sb = user.changePassword(id, md5);
+
+            
+            //Se il codice corrisponde, permetto all'utente di cambiare password
             if (sb.toString().equals(md5)) {
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("changepasswordform.jsp");
                 request.setAttribute("id", id); // set your String value in the attribute
+                request.setAttribute("cod", md5);
                 dispatcher.forward(request, response);
             } else {
                 response.sendRedirect("/");
@@ -100,6 +70,13 @@ public class ChangePassword extends HttpServlet {
 
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

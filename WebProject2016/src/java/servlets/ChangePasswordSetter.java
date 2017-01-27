@@ -8,6 +8,7 @@ package servlets;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,13 +19,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import utils.EmailSender;
 
 /**
  *
  * @author David
  */
-public class ChangePasswordQuery extends HttpServlet {
+public class ChangePasswordSetter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,23 +40,35 @@ public class ChangePasswordQuery extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String query = "UPDATE users SET password=? WHERE id=?";
-            String email = "";
-            String password = request.getParameter("password");
-            String id = request.getParameter("id");
-            password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
 
+        try (PrintWriter out = response.getWriter()) {
             ManagerDB db = new ManagerDB();
             Connection con = db.getConnection();
+            
+            // setto la nuova password
+            String query = "UPDATE users SET password=? WHERE id=?";
+            
+            // prendendola direttamente dalla form
+            String password = request.getParameter("password");
+            
+            String id = request.getParameter("id");
+            
+            String cod = request.getParameter("cod");
+            JOptionPane.showMessageDialog(null, "ecco 'l'id " + id + "ed il cod ->" + cod);
+            
+            // la cripto in SHA256
+            password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
 
+            
+            // la inserisco all'interno del database
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(2, Integer.valueOf(id));
             ps.setString(1, password);
             int affected = ps.executeUpdate();
             int userID;
+            
             if (affected == 0) {
-                throw new SQLException("Errore creazione utente, no rows affected.");
+                throw new SQLException("Errore utente, no rows affected.");
 
             }
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
@@ -65,23 +79,8 @@ public class ChangePasswordQuery extends HttpServlet {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ChangePasswordQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ChangePasswordSetter.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

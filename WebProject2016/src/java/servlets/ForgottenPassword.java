@@ -77,7 +77,7 @@ public class ForgottenPassword extends HttpServlet {
            
 
         } catch (Exception ex) {
-            response.sendRedirect("login.html");
+            response.sendRedirect("/");
         }
     }
 

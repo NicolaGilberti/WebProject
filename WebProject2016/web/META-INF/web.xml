@@ -63,7 +63,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-
     <error-page>
         <location>/general_error_page.jsp</location>
     </error-page>
@@ -80,7 +79,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>
@@ -222,12 +220,12 @@
         <url-pattern>/ChangeUserNickname</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ChangePasswordQuery</servlet-name>
-        <servlet-class>servlets.ChangePasswordQuery</servlet-class>
+        <servlet-name>ChangePasswordSetter</servlet-name>
+        <servlet-class>servlets.ChangePasswordSetter</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ChangePasswordQuery</servlet-name>
-        <url-pattern>/ChangePasswordQuery</url-pattern>
+        <servlet-name>ChangePasswordSetter</servlet-name>
+        <url-pattern>/ChangePasswordSetter</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ChangePassword</servlet-name>
