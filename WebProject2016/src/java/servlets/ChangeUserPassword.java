@@ -7,7 +7,7 @@ package servlets;
 
 import beans.AlertBean;
 import beans.UserBean;
-import dao.ChangeUserPwdDAO;
+import dao.UserDAO;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -77,8 +77,9 @@ public class ChangeUserPassword extends HttpServlet {
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("user");
         
-        ChangeUserPwdDAO DAO = new ChangeUserPwdDAO(user);
+        UserDAO DAO = new UserDAO();
         AlertBean alert = DAO.changePassword(
+                user.getId(),
                 request.getParameter("oldPwd"),
                 request.getParameter("newPwd"),
                 request.getParameter("newPwd2"));

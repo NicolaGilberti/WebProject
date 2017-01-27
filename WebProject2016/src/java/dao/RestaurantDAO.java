@@ -16,6 +16,10 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import servlets.SearchRestaurantAutocomplete;
+import utils.AutoCompleteData;
 import utils.OpeningHours;
 
 /*
@@ -116,6 +120,7 @@ public class RestaurantDAO {
         while (rs.next()) {
             ReviewBean r = new ReviewBean();
             r.setId(rs.getInt("id"));
+            r.setName(rs.getString("name"));
             r.setId_creator(rs.getInt("id_creator"));
             r.setId_restaurant(rs.getInt("id_restaurant"));
             r.setData_creation(rs.getTimestamp("data_creation").toString().substring(0, 10));
@@ -380,7 +385,7 @@ public class RestaurantDAO {
     }
 
     public void addRestCuisine(int id, String[] checkedCuisineIds) throws SQLException {
-        
+
         int affectedRows = 0;
         //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
         String query = "";
@@ -396,7 +401,7 @@ public class RestaurantDAO {
     }
 
     public void addRestOpeningHours(int id, String[] checkedOpeningHoursIds) throws SQLException {
-       int affectedRows = 0;
+        int affectedRows = 0;
         //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
         String query = "";
         for (int i = 0; i < checkedOpeningHoursIds.length; i++) {
@@ -409,4 +414,39 @@ public class RestaurantDAO {
         }
     }
 
+    public List<AutoCompleteData> getAutoCompleteData(String[] valoriInseriti) {
+        List<String> valori = new ArrayList<String>();
+        final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
+        //Otteniamo tutte le citta salvate
+        String sql = "select t "
+                + "from (select (name ||' , '|| address ||' , '||city) as t"
+                + " from restaurants) as a "
+                + "where t @@ '";
+        for (int i = 0; i < valoriInseriti.length; i++) {
+            sql += valoriInseriti[i];
+            sql += " && ";
+        }
+        sql += "'";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet results = ps.executeQuery();
+
+            //Per tutti i risultati
+            while (results.next()) {
+                //Prendiamo una citta
+                String temp = results.getString("t");
+                valori.add(temp);
+
+            }
+
+            for (final String country : valori) {
+                result.add(new AutoCompleteData(country, country));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
 }
