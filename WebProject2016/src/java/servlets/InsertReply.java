@@ -5,13 +5,12 @@
  */
 package servlets;
 
-import beans.UserBean;
-import dao.ApplyConfirmRepliesDAO;
+import beans.ReviewBean;
+import dao.InsertReplyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marco
  */
-@WebServlet(name = "ConfirmRepliesServlet", urlPatterns = {"/ConfirmRepliesServlet"})
-public class ConfirmRepliesServlet extends HttpServlet {
+@WebServlet(name = "InsertReply", urlPatterns = {"/InsertReply"})
+public class InsertReply extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,20 +34,30 @@ public class ConfirmRepliesServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Throwable {
-            String button = null;
-            button = request.getParameter("button");
-            UserBean admin = (UserBean) request.getSession().getAttribute("user");
-            int result = 0;
-            int id = Integer.parseInt(request.getParameter("id"));
-            ApplyConfirmRepliesDAO rep = new ApplyConfirmRepliesDAO();
-            if(button.equals("a")){
-                result = rep.confirmReplies(id,admin.getId());
-            }
-            else{
-               result = rep.deleteReplies(id);
-            }
-           response.sendRedirect("SearchNotification?query_result="+result+"");
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String description = request.getParameter("descriptionarea");
+        //System.out.print("LEL"+request.getSession().getAttribute("review"));
+        ReviewBean rev;
+        //aggiungo la reply
+        rev = (ReviewBean)request.getSession().getAttribute("review");
+        
+        System.out.print("REV"+rev);
+        InsertReplyDAO rep = new InsertReplyDAO();
+        boolean result = false;
+        int value=0;
+        try {
+            result = rep.insertReply(rev,description);
+        } catch (Throwable ex) {
+            Logger.getLogger(InsertReply.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(result == false){
+            value = 1;
+        }
+        
+        
+        response.sendRedirect("SearchNotification?insert_reply="+value);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,11 +72,7 @@ public class ConfirmRepliesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Throwable ex) {
-            Logger.getLogger(ConfirmRepliesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -81,11 +86,7 @@ public class ConfirmRepliesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Throwable ex) {
-            Logger.getLogger(ConfirmRepliesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
