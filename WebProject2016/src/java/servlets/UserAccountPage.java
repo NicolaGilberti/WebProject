@@ -6,7 +6,7 @@
 package servlets;
 
 import beans.UserBean;
-import dao.UserPageDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,23 +38,25 @@ public class UserAccountPage extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    
+    protected void preparePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute("user");
-        UserPageDAO dao = new UserPageDAO(user);
+        UserDAO dao = new UserDAO();
 
-        request.setAttribute("restaurants", dao.getRestaurants()); // Will be available as ${restaurants} in JSP
-        request.setAttribute("reviews", dao.getReviews()); // Will be available as ${reviews} in JSP
+        request.setAttribute("restaurants", dao.getRestaurants(user.getId())); // Will be available as ${restaurants} in JSP
+        request.setAttribute("reviews", dao.getReviews(user.getId())); // Will be available as ${reviews} in JSP
         request.getRequestDispatcher("currentUser.jsp").forward(request, response);
-
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        preparePage(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        preparePage(request, response);
     }
 }
