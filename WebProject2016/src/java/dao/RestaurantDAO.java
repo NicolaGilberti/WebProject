@@ -115,6 +115,7 @@ public class RestaurantDAO {
         while (rs.next()) {
             ReviewBean r = new ReviewBean();
             r.setId(rs.getInt("id"));
+            r.setName(rs.getString("name"));
             r.setId_creator(rs.getInt("id_creator"));
             r.setId_restaurant(rs.getInt("id_restaurant"));
             r.setData_creation(rs.getTimestamp("data_creation").toString().substring(0, 10));

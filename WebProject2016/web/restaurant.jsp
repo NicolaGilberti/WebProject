@@ -23,10 +23,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         
         <!--script-->
-        <script type="text/javascript" src="js/login.js"></script> 
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/login.js"></script>
+        
+        
+                                 
         <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
         
         <script src="js/kjua-0.1.1.min.js" type="text/javascript"></script>
@@ -37,12 +40,22 @@
         
         <!--css-->
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/generic.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
-
-        <title>${r.name} - tuttobistro</title>
+        
+        <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 250px;
+          
+        }
+        </style>
+        
+        <title>${r.name} - TuttoBistro</title>
     </head>
     <body>
         <!-- header -->
@@ -91,11 +104,13 @@
                         </a>
                     </div>
                 </div>
-
-            <!--left-->
-            <!--name-->
+            </div>
+                        
+            <!--infos-->
             <div class="container">
-                <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6">
+                <!--left-->
+                <!--name-->
+                <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
                     <h2><c:out value="${r.name}"></c:out></h2>
 
                         <p></p>
@@ -120,13 +135,10 @@
 
                     <!-- opening hours -->
                     <p>
-                    <div class="Row">
-                        orari di apertura:
-                    </div>
-
-                    <div class="Row">
-                        <c:out value="${openingDates}"></c:out>
-                    </div>
+                        orari di apertura: <br>
+                    <c:forEach items="${openingDates}" var="odIterator">
+                        <c:out value="${odIterator}"></c:out> <br>
+                    </c:forEach>
                     <!-- cuisine types -->
                     <p></p>
                     <div class="cuisine-labels"> 
@@ -140,48 +152,56 @@
                     
                 <!--right-->
                 <!-- qrcode -->
-                <p></p>
-                <div class="text-right">
-                    <div class="" id="qrCode">
-                    </div>
-                    <!--map-->
+                <script>
+                    var name = "${r.name}";
+                    var address = "${r.address}";
+                    var openingDates = "${openingDates}"; 
+                </script>
+                <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
                     <p></p>
-                    <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBJUV-VhfzHrLgEKIBkoNpMH5Un4uef5Pc'></script>
-                    <div style='overflow:hidden;height:200px;width:310px;'>
-                        <div id='gmap_canvas' style='height:200px;width:310px;'></div>
-                        <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-                    </div> 
-                    <a href='http://maps-generator.com/it'>maps generator</a>
-                    <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=9d55fbe0a8781beced2c83653978a9ae60980a2e'></script>
-                    <script type='text/javascript'>
-                        function init_map()
-                        {
-                            var myOptions = {zoom:12,center:new google.maps.LatLng(${r.latitude},${r.longitude}),mapTypeId: google.maps.MapTypeId.ROADMAP};
-                            map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                            marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(${r.latitude},${r.longitude})});
-                            infowindow = new google.maps.InfoWindow({content:'<strong></strong>${r.name}'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
-                            infowindow.open(map,marker);
-                        }
-                        google.maps.event.addDomListener(window, 'load', init_map);
-                    </script>
-                </div>       
+                    
+                    <div class="text-right">
+                        <div style="cursor: pointer" id="qrCodeSmall">
+
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <!-- Modal -->
+                <div class="modal fade" id="qrModal" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body" style="align-content: center;">
+                            <div id="qrCodeBig" style="align-content: center;">
+                                
+                            </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
+                    <script>
+                    var name = "${r.name}";
+                    var latitude = "${r.latitude}";
+                    var longitude = "${r.longitude}"; 
+                    </script>
+                    <div id="map"></div>
+                </div>
+            </div> 
                                 
             <div class="container">
                 <!-- description -->
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <h3> Descrizione </h3>
-                    </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h3> Descrizione </h3> <br>
+                    <blockquote style="border-color:#900c3f;">
+                        <c:out value="${r.description}" />
+                    </blockquote>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <blockquote style="border-color:#900c3f;">
-                            <c:out value="${r.description}" />
-                        </blockquote>
-                    </div>
-                </div>
+                
 
                 <!-- recensioni -->
                 
@@ -195,7 +215,7 @@
                                 <small class="text-muted">
                                     <c:out value='${userNameOfReviews.get(i)}'/> 
                                     <wbr>|<wbr>
-                                    <c:out value="${current.data_creation}"/> 
+                                    <c:out value="${current.data_creation}"/>
                                     <div class="col-stars">
                                         <%-- stelle piene --%>
                                         <c:forEach var="i" begin="1" end="${r.global_value}">
@@ -226,14 +246,39 @@
                     </div>
                     <c:set value="${i+1}" var="i"></c:set>
                 </c:forEach>
+                
+                
+                <!--newReview-->
+                <c:if test="${sessionScope.user!=null}">
+                    <div class="panel panel-default">
+                        
+                        <form action="newReview">
+                            <div class="panel-heading">
+                                <div class="form-group">
+                                    <div class="row col-md-4">
+                                    <input type="text" placeholder="Titolo" class="form-control" id="Titolo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row col-md-12">
+                                        Stelle:
+                                        <input type="number" id="stars" min="0" max="5" class="form-control">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                
+                            </div>
+                        </form>
+                    </div>
+                </c:if>
             </div>
-            
-        </div>
-        <script>
-            var el = kjua({text: "${r.name} ${r.address} ${openingDates}", size: 100});
-            document.querySelector('#qrCode').appendChild(el);
-        </script>
         
-        
+        <script type="text/javascript" src="js/qrCreator.js"></script>
+        <script type="text/javascript" src="js/map.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJJ6C2_8shojzgg6W6y4hQznpzNg0hc2s&callback=initMap">
+    </script>
+         
     </body>
 </html>
