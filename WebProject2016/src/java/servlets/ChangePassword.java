@@ -28,7 +28,7 @@ import utils.EmailSender;
 
 /**
  *
- * @author David
+ * @author David,Mirko
  */
 public class ChangePassword extends HttpServlet {
 
@@ -47,12 +47,12 @@ public class ChangePassword extends HttpServlet {
             String md5 = request.getParameter("cod");
 
             UserDAO user = new UserDAO();
-            
-            StringBuffer sb = user.changePassword(id, md5);
+            //Controlliamo la validita' del codice generato 
+            boolean codeIsValid = user.isValidmd5(id, md5);
 
             
             //Se il codice corrisponde, permetto all'utente di cambiare password
-            if (sb.toString().equals(md5)) {
+            if (codeIsValid) {
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("changepasswordform.jsp");
                 request.setAttribute("id", id); // set your String value in the attribute
