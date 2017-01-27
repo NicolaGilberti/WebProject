@@ -74,8 +74,8 @@
                                             </div>
                                         </div>
 
-                                        <input type="hidden" name="id">
-                                        <input type="hidden" name="cod">
+                                        <input type="hidden" name="id" value="${id}">
+                                        <input type="hidden" name="cod" value="${cod}">
                                         <button type="submit" class="btn">Reimposta</button>
                                     </form>
 
