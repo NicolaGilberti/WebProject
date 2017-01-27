@@ -193,10 +193,10 @@ public class UserDAO {
 
                 if (old_db_pwd.equals(oldpwd)) {
                     if (newpwd.equals(newpwd2)) {
-                        String newpwd_query = "UPDATE users SET password='?' WHERE id=?";
+                        String newpwd_query = "UPDATE users SET password=? WHERE id=?";
 
                         ps = con.prepareStatement(newpwd_query);
-                        ps.setString(1, newPwd);
+                        ps.setString(1, newpwd);
                         ps.setInt(2, userId);
                         
                         ps.executeUpdate();
@@ -249,7 +249,7 @@ public class UserDAO {
 
                 if (pwd.equals(db_pwd)) {
 
-                    String nick_query = "UPDATE users SET nickname='?' WHERE id=?";
+                    String nick_query = "UPDATE users SET nickname=? WHERE id=?";
 
                     ps = con.prepareStatement(nick_query);
                     ps.setString(1, newNick);
