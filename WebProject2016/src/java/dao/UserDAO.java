@@ -93,9 +93,6 @@ public class UserDAO {
         //ritorno lo stringbuffer per l'analisi dei dati
         return sb;
     }
-<<<<<<< HEAD
-
-=======
     
     public ArrayList<RestaurantBean> getRestaurants(int userId) {
         ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
@@ -328,6 +325,5 @@ public class UserDAO {
         
         return alert;
     }
-    
->>>>>>> bce2be418d3285e9b7bf06be1984963f5656973c
+
 }
