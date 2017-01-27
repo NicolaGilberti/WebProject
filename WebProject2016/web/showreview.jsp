@@ -25,7 +25,7 @@
             <!--Search that i used to find the reply that was clicked-->
             <c:forEach var="notbean" items="${resnoty.review_list}">
                 <c:if test="${notbean.id == param.id}">
-                    <c:set var="review" value="${notbean}"></c:set>
+                    <c:set var="review" value="${notbean}" scope="session"></c:set>
                 </c:if>
             </c:forEach>
             <div class="panel panel-default">
@@ -68,13 +68,10 @@
                  <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
                 </div>  
                 <!--Setting get parameter (id of reply) using jstl -->
-                    <c:url value="InsertReplyServlet" var="repliesURL">
-                        <c:param name="id" value="${param.id}"/>
-                    </c:url>
-                    <form action="${repliesURL}" method="POST" id="replytext" style="display:none" >
+                    <form action="InsertReply" method="POST" id="replytext" style="display:none" >
                         <div class="form-group">
                             <label for="textarea">Inserisci qui la risposta al commento</label>
-                            <textarea class="form-control"></textarea>
+                            <textarea name="descriptionarea" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit"  name="button" class="btn btn-success" value='a'>Invia</button>

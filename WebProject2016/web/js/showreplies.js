@@ -7,7 +7,6 @@
             $(document).ready(function(){
 
                 $("#replybutton").click(function(){
-                     alert("sad");
                      $("#replytext").show();
                 });
 

@@ -38,7 +38,6 @@ public class RestaurantNotificationDAO {
             try{ 
                     while(rs.next()){
                         ReviewBean t1 = new ReviewBean();
-                        System.out.println("asdsad"+rs.getInt("idreview")+"sdadasd \n \n \n");
                         t1.setId(rs.getInt("idreview"));
                         t1.setGlobal_value(rs.getInt("global_value"));
                         t1.setFood(rs.getInt("food"));
@@ -61,12 +60,10 @@ public class RestaurantNotificationDAO {
                                 t1.setPhoto_name(res1.getString("name"));
                             }
                         } else {
-                            System.out.println("photo id"+id_photo);
                             t1.setPhoto_name("no");
                         }
                         t1.setView(rs.getBoolean("view"));
                         t1.setNickname(rs.getString("nickname"));
-                        System.out.println("GET REKT"+t1+"\n \n \n \n");
                         restaurant_notification.addReviewBean(t1);
                     }
              }finally{

@@ -49,15 +49,29 @@ public class SearchNotification extends HttpServlet {
         RestaurantNotificationDAO resnoty = new RestaurantNotificationDAO();
         UserBean user_type = (UserBean) request.getSession().getAttribute("user");
         String query_result = request.getParameter("query_result");
+        String insert_reply_result =  request.getParameter("insert_reply_result");
         int param;
+        int param_insert;
         
+        //questi due controlli li uso per settare la visibilità dei panel per la conferma di avvenuta modifica(panel si trovano in notification.jsp)
         
         if(query_result == null){
-            param = 0;
+            param = -1;
         }
         else{
             param = Integer.parseInt(query_result);
         }
+         
+        
+        if(insert_reply_result == null){
+            param_insert = -1;
+        }
+        else{
+            param_insert = Integer.parseInt(insert_reply_result);
+        }
+        
+        
+        
         
         
         try {
@@ -76,7 +90,7 @@ public class SearchNotification extends HttpServlet {
         
         RequestDispatcher ds;
         if(request.getParameter("flag")== null){
-            ds = request.getRequestDispatcher("notification.jsp?query_result="+param);
+            ds = request.getRequestDispatcher("notification.jsp?query_result="+param+"&insert_result="+param_insert);
             ds.forward(request, response);
         }
         else{

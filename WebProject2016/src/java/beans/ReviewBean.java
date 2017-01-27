@@ -161,6 +161,7 @@ public class ReviewBean implements java.io.Serializable {
         return id_creator;
     }
 
+    @Override
     public String toString(){
     return " "+this.id+" "+this.data_creation+" "+this.description+" "+this.name+" "+this.nickname+"  photoname"+this.photo_name+" "+this.restaurant_city+" "+restaurant_name+" "+atmosphere+" "+food+" "+global_value+" "+id_creator+" "+id_restaurant+" "+this.service+" "+this.value_for_money+" "+this.view;
     

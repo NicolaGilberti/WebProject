@@ -23,12 +23,36 @@
         <script>
             $(document).ready(function(){ 
                 var param = ${param.query_result};
-                    if(param != 0){
+                var param_ins = ${param.insert_result}
+                    //parte del modal relativa all'admin
+                    if(param > 0){
                          $('#myModal').modal();
-                        }   
+                           
                        $('#myModal').on('hidden.bs.modal', function() {
                            param = 0;
                           });
+                    }
+                    else if(param == 0 ){
+                        $("#myModalLabel").html("Modifica non avvenuta");
+                        $('#myModal').modal();
+                    }
+                 
+                 // modal del ristoratore
+                 
+                    if(param_ins >0){
+                       
+                       $('#myModal').modal();
+                       $("#myModalLabel").html("La sua risposta è stata inoltrata ad un amministratore. La sua risposta sarà visibile una volta accettata dall'amministratore.");
+                       $('#myModal').on('hidden.bs.modal', function() {
+                           param = 0;
+                          });
+                    }
+                    else if(param <= 0 ){
+                        $("#myModalLabel").html("Modifica non avvenuta");
+                        $("#myModalLabel").html("Si e' verificato un erroe. La sua risposta non è stat inoltrata.");
+                        $('#myModal').modal();
+                    }
+                    
             });
         </script>
         <title>JSP Page</title>     
