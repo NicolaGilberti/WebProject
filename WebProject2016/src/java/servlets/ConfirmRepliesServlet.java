@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import beans.UserBean;
 import dao.ApplyConfirmRepliesDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,12 +38,12 @@ public class ConfirmRepliesServlet extends HttpServlet {
             throws ServletException, IOException, Throwable {
             String button = null;
             button = request.getParameter("button");
-            System.out.println(button);
+            UserBean admin = (UserBean) request.getSession().getAttribute("user");
             int result = 0;
             int id = Integer.parseInt(request.getParameter("id"));
             ApplyConfirmRepliesDAO rep = new ApplyConfirmRepliesDAO();
             if(button.equals("a")){
-                result = rep.confirmReplies(id);
+                result = rep.confirmReplies(id,admin.getId());
             }
             else{
                result = rep.deleteReplies(id);

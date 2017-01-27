@@ -42,6 +42,19 @@ public class InsertReplyDAO {
             replies.close();
         }
     }
+    
+    public void UpdateReply(int id) throws SQLException, Throwable{
+        PreparedStatement replies = null;
+        try{
+            replies = con.prepareStatement("UPDATE reviews SET view=true WHERE id=?");
+            replies.setInt(1,id);
+            replies.executeUpdate();
+            this.finalize();
+            con.close(); 
+        }finally{
+            replies.close();
+        }
+    }
     //finalize per chiudere la connessione quando ho finito con la ricerca all'interno del database
     @Override
     protected void finalize() throws Throwable  

@@ -14,6 +14,8 @@
         <jsp:include page="header/headerFiles.jsp" />
         <script src="js/showreplies.js"></script>
         <link rel="stylesheet" href="css/generic.css">
+        <link rel="stylesheet" href="css/restaurantPage.css">
+        <link rel="stylesheet" href="css/search_restaurant.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <title>JSP Page</title>

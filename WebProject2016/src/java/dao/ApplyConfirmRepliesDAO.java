@@ -36,11 +36,12 @@ public class ApplyConfirmRepliesDAO {
      * @throws Throwable 
      */
     
-    public int confirmReplies(int id) throws SQLException, Throwable{
+    public int confirmReplies(int id, int adminid) throws SQLException, Throwable{
         PreparedStatement replies = null;
         try{
-            replies = con.prepareStatement("UPDATE replies SET accepted = true, date_validation = now() WHERE id =? ");
-            replies.setInt(1,id);
+            replies = con.prepareStatement("UPDATE replies SET accepted = true, date_validation = now(),id_validator=? WHERE id =? ");
+            replies.setInt(1,adminid);
+            replies.setInt(2,id);
             int value = replies.executeUpdate();
             this.finalize();
             con.close(); 

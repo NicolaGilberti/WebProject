@@ -51,7 +51,7 @@ public class SearchNotification extends HttpServlet {
         String query_result = request.getParameter("query_result");
         String insert_reply_result =  request.getParameter("insert_reply_result");
         int param;
-        int param_insert;
+        int param_insert=0;
         
         //questi due controlli li uso per settare la visibilità dei panel per la conferma di avvenuta modifica(panel si trovano in notification.jsp)
         
@@ -69,6 +69,7 @@ public class SearchNotification extends HttpServlet {
         else{
             param_insert = Integer.parseInt(insert_reply_result);
         }
+
         
         
         
@@ -90,7 +91,7 @@ public class SearchNotification extends HttpServlet {
         
         RequestDispatcher ds;
         if(request.getParameter("flag")== null){
-            ds = request.getRequestDispatcher("notification.jsp?query_result="+param+"&insert_result="+param_insert);
+            ds = request.getRequestDispatcher("notification.jsp?query_result="+param+"&insert_result="+insert_reply_result);
             ds.forward(request, response);
         }
         else{

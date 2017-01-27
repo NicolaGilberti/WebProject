@@ -40,6 +40,7 @@ public class RestaurantNotificationDAO {
                         ReviewBean t1 = new ReviewBean();
                         t1.setId(rs.getInt("idreview"));
                         t1.setGlobal_value(rs.getInt("global_value"));
+                        t1.setId_creator(rs.getInt("userid"));
                         t1.setFood(rs.getInt("food"));
                         t1.setService(rs.getInt("service"));
                         t1.setValue_for_money(rs.getInt("value_for_money"));

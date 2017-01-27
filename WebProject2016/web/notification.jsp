@@ -23,7 +23,7 @@
         <script>
             $(document).ready(function(){ 
                 var param = ${param.query_result};
-                var param_ins = ${param.insert_result}
+                var param_ins = ${param.insert_reply}
                     //parte del modal relativa all'admin
                     if(param > 0){
                          $('#myModal').modal();
@@ -39,15 +39,15 @@
                  
                  // modal del ristoratore
                  
-                    if(param_ins >0){
+                    if(param_ins > 0 ){
                        
                        $('#myModal').modal();
                        $("#myModalLabel").html("La sua risposta è stata inoltrata ad un amministratore. La sua risposta sarà visibile una volta accettata dall'amministratore.");
                        $('#myModal').on('hidden.bs.modal', function() {
-                           param = 0;
+                           param_ins = 0;
                           });
                     }
-                    else if(param <= 0 ){
+                    else if(param_ins == 0 ){
                         $("#myModalLabel").html("Modifica non avvenuta");
                         $("#myModalLabel").html("Si e' verificato un erroe. La sua risposta non è stat inoltrata.");
                         $('#myModal').modal();

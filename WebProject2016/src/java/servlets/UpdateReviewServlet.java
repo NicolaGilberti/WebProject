@@ -5,7 +5,6 @@
  */
 package servlets;
 
-import beans.ReviewBean;
 import dao.InsertReplyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marco
  */
-@WebServlet(name = "InsertReply", urlPatterns = {"/InsertReply"})
-public class InsertReply extends HttpServlet {
+@WebServlet(name = "UpdateReviewServlet", urlPatterns = {"/UpdateReviewServlet"})
+public class UpdateReviewServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,30 +33,17 @@ public class InsertReply extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String description = request.getParameter("descriptionarea");
-        //System.out.print("LEL"+request.getSession().getAttribute("review"));
-        ReviewBean rev;
-        //aggiungo la reply
-        rev = (ReviewBean)request.getSession().getAttribute("review");
-        
-        System.out.print("REV"+rev);
+            throws ServletException, IOException, Throwable {
+        int id_to_update = Integer.parseInt(request.getParameter("id"));
+        System.out.print("updateeeeee"+id_to_update);
         InsertReplyDAO rep = new InsertReplyDAO();
-        boolean result = false;
-        int value=0;
-        try {
-            result = rep.insertReply(rev,description);
-        } catch (Throwable ex) {
-            Logger.getLogger(InsertReply.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if(result == false){
-            value = 1;
+        try{
+            rep.UpdateReply(id_to_update);
+        }catch(Exception e){
+            System.err.print("Sql error");
         }
         
-        
-        response.sendRedirect("SearchNotification?insert_reply="+value);
-        
+        response.sendRedirect("showreview.jsp?id="+id_to_update);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,7 +58,11 @@ public class InsertReply extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Throwable ex) {
+            Logger.getLogger(UpdateReviewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -86,7 +76,11 @@ public class InsertReply extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Throwable ex) {
+            Logger.getLogger(UpdateReviewServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
