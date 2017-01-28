@@ -72,6 +72,10 @@ public class RestaurantRequest extends HttpServlet {
 
         //opening hours
         OpeningHours oh = rq.getOpeningHours(r.getId());
+       
+        System.out.println("restaurant: " + r.getName() 
+                + "\nsize: " + oh.toArrayListString().size() 
+                + "\ncontent: " + oh.toArrayListString());
         request.setAttribute("openingDates", oh.toArrayListString());
         
         //reviews

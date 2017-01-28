@@ -40,24 +40,27 @@ public class LoginAttempt extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
+        
+        // cerco di fare il login con i parametri passati
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         //Converto la password inserita dall'utente in sha256
         password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+        // utilizzo il loginDAO per autenticarmi
         dao = new LoginDAO(email, password);
         user = dao.authenticate();
       
-        // se non esiste, ridirigo verso pagina di login con messaggio di errore
+        // se il DAO non mi ritorna alcun utente, ridirigo verso pagina di login con messaggio di errore
         if (user == null) {
             // metto il messaggio di errore come attributo di Request, così nel JSP si vede il messaggio
-            //inserire qui il comportamento se la password e' sbagliata
             out.println(0);
         } else {
-
+            //altrimenti avvio la sessione
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 

@@ -9,6 +9,7 @@ var dataFiltered;
 var cuisineList;
 var redirectRestaurantRelativePath="../WebProject2016/RestaurantRequest?id=";
 
+//Funzione di aiuto, usata per ottenere il valore dei parametri nell'url.
 function getParameterByName(name, url) {
     if (!url)
         url = window.location.href;
@@ -21,28 +22,28 @@ function getParameterByName(name, url) {
         return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-
+//Comparatore. Restituisce true se la proprietà minPrice del parametro passato è <=15
 function priceless15(obj) {
     if (obj.minPrice <= 15)
         return true
     else
         return false;
 }
-
+//Comparatore. Restituisce true se la proprietà minPrice del parametro passato è compresa tra 15 e 35
 function priceBetween1535(obj) {
     if (obj.minPrice < 15 || obj.minPrice > 35)
         return false
     else
         return true;
 }
-
+//Comparatore. Restituisce true se la proprietà minPrice del parametro passato è >=35
 function pricemore35(obj) {
     if (obj.minPrice >= 35)
         return true
     else
         return false;
 }
-
+//Funzione il cui scopo è la generazione del codice html della tabella dei ristoranti
 function visualizzaTabella() {
     $("#row-thumbnail").empty();
 
@@ -101,7 +102,7 @@ function visualizzaTabella() {
     $("#trovatiLabel").empty();
     $("#trovatiLabel").append(dataFiltered.length);
 }
-
+//Funzione usata per l'ordinamento dei ristoranti in base al valore del parametro 'val'.
 function sortData(val) {
     // console.log(data);
 
@@ -112,7 +113,7 @@ function sortData(val) {
     }
     if (val === "val") {
         dataFiltered.sort(function (a, b) {
-            return a.score - b.score
+            return  (b.score*b.numReviews)-(a.score*a.numReviews)
         });
     }
     if (val === "name") {
@@ -126,7 +127,7 @@ function sortData(val) {
 }
 
 
-
+//Funzione eseguita al caricamento della pagina. Si occupa di ottenere i dati in JSon dalla Servlet adeguata.
 $(document).ready(function () {
     $.ajax({
         type: 'GET',

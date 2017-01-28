@@ -5,9 +5,12 @@
  */
 package servlets;
 
+import dao.UserDAO;
 import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,13 +21,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import utils.EmailSender;
 
 /**
  *
- * @author David
+ * @author David,Mirko
  */
-public class ChangePasswordQuery extends HttpServlet {
+public class ChangePasswordSetter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,54 +38,48 @@ public class ChangePasswordQuery extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.security.NoSuchAlgorithmException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
-            String query = "UPDATE users SET password=? WHERE id=?";
-            String email = "";
+            
+            
+            // prendo la nuova passowrd direttamente dalla form
             String password = request.getParameter("password");
-            String id = request.getParameter("id");
+            // la cripto in SHA256
             password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
 
-            ManagerDB db = new ManagerDB();
-            Connection con = db.getConnection();
+            // prendo ID e COD per un controllo ed il set della password
+            String id = request.getParameter("id");
+            String cod = request.getParameter("cod");
 
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(2, Integer.valueOf(id));
-            ps.setString(1, password);
-            int affected = ps.executeUpdate();
-            int userID;
-            if (affected == 0) {
-                throw new SQLException("Errore creazione utente, no rows affected.");
+            UserDAO user = new UserDAO();
+            
+            // controllo se l'MD5 generato è valido o è stato manomesso
+            boolean codeIsValid = user.isValidmd5(id, cod);
 
-            }
-            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    userID = generatedKeys.getInt(1);
+            //Se il codice corrisponde, permetto all'utente di cambiare password
+            if (codeIsValid) {
+                int affected = user.changePassword(Integer.valueOf(id), password);
+                if (affected == 0) {
+                    throw new SQLException("Errore utente, no rows affected.");
+
                 } else {
-                    throw new SQLException("Errore creazione utente, no ID obtained.");
+                    response.sendRedirect("/WebProject2016/new_password_set.html");
                 }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ChangePasswordQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            }
+            else
+            {
+                response.sendRedirect("/WebProject2016/general_error_page.jsp");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangePasswordSetter.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -95,7 +93,11 @@ public class ChangePasswordQuery extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ChangePasswordSetter.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -55,7 +55,7 @@
                         <div class="list-group">
                             <button type="button" class="list-group-item" id="btnName">Alfabetico</button>
                             <button type="button" class="list-group-item" id="btnMinPrice">Fascia di Prezzo</button>
-                            <button type="button" class="list-group-item" id="btnVal">Valutazione</button>
+                            <button type="button" class="list-group-item" id="btnVal">Valutazione più alta</button>
                         </div>
                     </div>
 

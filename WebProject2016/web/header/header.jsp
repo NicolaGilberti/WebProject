@@ -1,7 +1,7 @@
 <!--file da includere per usare header -->
 <!-- <script src="js/login.js"></script> -->
- <!--<link rel="stylesheet" href="css/header.css"> -->
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--<link rel="stylesheet" href="css/header.css"> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -65,11 +65,12 @@
             <c:if test="${sessionScope.user != null}">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="prepareNewRestaurantForm">Aggiungi Ristorante</a>
-                </li>
+                    </li>
+                     <c:if test="${user.type gt 0}">
                     <li><a href="SearchNotification">Notifiche</a>
 
                     </li>
-
+                    </c:if>
                     <li class="dropdown" >
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user"></span>

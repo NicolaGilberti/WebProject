@@ -7,7 +7,7 @@ package servlets;
 
 import beans.AlertBean;
 import beans.UserBean;
-import dao.ChangeUserNickDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -74,11 +74,11 @@ public class ChangeUserNickname extends HttpServlet {
         String pwd = request.getParameter("nicknamePwd");
         String nickname = request.getParameter("newNickname");
         
-        ChangeUserNickDAO DAO = new ChangeUserNickDAO(user);
-        AlertBean alert = DAO.changeNickname(nickname, pwd);
+        UserDAO DAO = new UserDAO();
+        AlertBean alert = DAO.changeNickname(user, nickname, pwd);
         
         request.setAttribute("alert", alert);
-        request.getRequestDispatcher("UserRestaurants").forward(request, response);
+        request.getRequestDispatcher("UserAccountPage").forward(request, response);
     }
 
     /**

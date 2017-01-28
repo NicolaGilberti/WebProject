@@ -5,8 +5,14 @@
  */
 package servlets;
 
+import beans.CuisineBean;
+import beans.OpeningHoursBean;
+import beans.PriceRangeBean;
+import beans.StateBean;
+import dao.OpeningHoursDAO;
+import dao.PriceRangeDAO;
+import dao.RestaurantDAO;
 import dao.StateDAO;
-import dao.restaurantTypesDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author RiccardoUni
+ * @author RiccardoUni,Mirko
  */
 @WebServlet(name = "prepareNewRestaurantForm", urlPatterns = {"/prepareNewRestaurantForm"})
 public class prepareNewRestaurantForm extends HttpServlet {
@@ -41,12 +47,20 @@ public class prepareNewRestaurantForm extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         StateDAO stateDao = new StateDAO();
-        ArrayList<String> states = stateDao.getStates();
+        ArrayList<StateBean> states = stateDao.getStates();
         request.setAttribute("states", states);
         
-        restaurantTypesDAO rtd = new restaurantTypesDAO();
-        ArrayList<String> types = rtd.getTypes();
+        RestaurantDAO rtd = new RestaurantDAO();
+        ArrayList<CuisineBean> types = rtd.getCuisineTypes();
         request.setAttribute("restaurantTypes",types);
+        
+        OpeningHoursDAO oh = new OpeningHoursDAO();
+        ArrayList<OpeningHoursBean> ohList = oh.getOpeningHours();
+        request.setAttribute("ohList",ohList);
+        
+        PriceRangeDAO range=new PriceRangeDAO();
+        ArrayList<PriceRangeBean> rangeList = range.getPriceRanges();
+        request.setAttribute("rangeList",rangeList);
         
         
         RequestDispatcher rd = request.getRequestDispatcher("/newRestaurantForm.jsp");

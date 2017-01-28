@@ -5,6 +5,7 @@
  */
 package dao;
 
+import beans.StateBean;
 import database.ManagerDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author RiccardoUni
+ * @author RiccardoUni,Mirko
  */
 public class StateDAO {
     private ManagerDB db = null;
@@ -26,17 +27,20 @@ public class StateDAO {
         con = db.getConnection();
     }
     
-    public ArrayList<String> getStates() throws SQLException {
+    public ArrayList<StateBean> getStates() throws SQLException {
 
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ArrayList<String> res = new ArrayList<>();
+        ArrayList<StateBean> res = new ArrayList<>();
 
-        ps = con.prepareStatement("SELECT name FROM states;");
+        ps = con.prepareStatement("SELECT id,name FROM states;");
    
         rs = ps.executeQuery();
         while(rs.next()) {
-            res.add(rs.getString(1));
+            StateBean state=new StateBean();
+            state.setId(rs.getInt(1));
+                state.setName(rs.getString(2));
+            res.add(state);
         }
         
         return res;
