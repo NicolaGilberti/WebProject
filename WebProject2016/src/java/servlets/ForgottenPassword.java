@@ -41,9 +41,15 @@ public class ForgottenPassword extends HttpServlet {
             throws ServletException, IOException, SQLException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            // Prendo la e-mail dal form
             String email = request.getParameter("email");
+            
             user = authenticate(email);
+            
             if (user != null) {
+                
+                // se la mail è associata a qualche utente calcolo l'MD5
                 String name = user.getName();
                 String surname = user.getSurname();
                 String nickname = user.getNickname();
@@ -61,17 +67,20 @@ public class ForgottenPassword extends HttpServlet {
                     sb.append(String.format("%02x", b & 0xff));
                 }
 
+                // creo il link da inserire all'interno della mail
                 String url = "http://localhost:8084/WebProject2016/ChangePassword?id=" + Integer.toString(id) + "&cod=" + sb.toString();
                 String text = "Ciao, questa mail ti è arrivata perché hai richiesto la reimpostazione della password. "
                         + "Clicca qui per modificare la password: <a href=\" " + url + " \"> Clicca qui </a>";
 
                 String object = "[TuttoBistrò] Modifica Password";
 
+                // invio la mail
                 EmailSender sender = new EmailSender();
                 sender.send(email, text, object);
                 response.sendRedirect("changepasswordinfo.html");
             } else {
             
+                // se la mail non è associata ad alcun account
             response.sendRedirect("erroreinserimento.html");
             }
            

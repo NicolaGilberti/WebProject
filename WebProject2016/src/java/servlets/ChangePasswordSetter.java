@@ -38,28 +38,27 @@ public class ChangePasswordSetter extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.security.NoSuchAlgorithmException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
 
         try (PrintWriter out = response.getWriter()) {
-            ManagerDB db = new ManagerDB();
-            Connection con = db.getConnection();
-
-            // setto la nuova password
-            String query = "UPDATE users SET password=? WHERE id=?";
-
-            // prendendola direttamente dalla form
+            
+            
+            // prendo la nuova passowrd direttamente dalla form
             String password = request.getParameter("password");
             // la cripto in SHA256
             password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
 
+            // prendo ID e COD per un controllo ed il set della password
             String id = request.getParameter("id");
-
             String cod = request.getParameter("cod");
 
             UserDAO user = new UserDAO();
+            
+            // controllo se l'MD5 generato è valido o è stato manomesso
             boolean codeIsValid = user.isValidmd5(id, cod);
 
             //Se il codice corrisponde, permetto all'utente di cambiare password
@@ -69,7 +68,7 @@ public class ChangePasswordSetter extends HttpServlet {
                     throw new SQLException("Errore utente, no rows affected.");
 
                 } else {
-                    response.sendRedirect("/WebProject2016/");
+                    response.sendRedirect("/WebProject2016/new_password_set.html");
                 }
 
             }

@@ -66,10 +66,11 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="prepareNewRestaurantForm">Aggiungi Ristorante</a>
                     </li>
+                     <c:if test="${sessionScope.user != 0}">
                     <li><a href="SearchNotification">Notifiche</a>
 
                     </li>
-
+                    </c:if>
                     <li class="dropdown" >
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user"></span>
