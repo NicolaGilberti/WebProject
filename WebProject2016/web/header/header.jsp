@@ -66,7 +66,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="prepareNewRestaurantForm">Aggiungi Ristorante</a>
                     </li>
-                     <c:if test="${sessionScope.user != null}">
+                     <c:if test="${user.type gt 0}">
                     <li><a href="SearchNotification">Notifiche</a>
 
                     </li>
