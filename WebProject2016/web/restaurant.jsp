@@ -88,7 +88,7 @@
                                 <c:if test="${i>0}" >  
                                     <div class="item">
                                     </c:if>
-                                    <img src="${current}" class="img-rounded" alt="${current}">
+                                    <img src="${current}" class="carousel-img img-rounded" alt="${current}">
                                 </div>
                                 <c:set value="1" var="i"></c:set>    
                             </c:forEach>

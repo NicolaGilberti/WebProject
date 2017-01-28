@@ -449,4 +449,14 @@ public class RestaurantDAO {
         }
         return result;
     }
+
+    public ArrayList<Integer> getLikes(int id) throws SQLException {
+       ArrayList<Integer> result = new ArrayList<Integer>();
+        PreparedStatement pd = con.prepareStatement(
+            "SELECT name FROM users WHERE id = ?;");
+        pd.setInt(1, id);
+        ResultSet rs = pd.executeQuery();
+        rs.next();
+       return result;
+    }
 }

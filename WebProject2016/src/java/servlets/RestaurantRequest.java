@@ -88,6 +88,8 @@ public class RestaurantRequest extends HttpServlet {
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNameOfReviews", userNamesOfReviews);
 
+        //likes
+        ArrayList<Integer> likes = rq.getLikes(r.getId());
         
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
 
