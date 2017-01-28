@@ -6,8 +6,10 @@
 package servlets;
 
 import beans.NotificationBean;
+import beans.RestaurantNotificationBean;
 import beans.UserBean;
 import dao.AdminNotificationsDAO;
+import dao.RestaurantNotificationDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -42,43 +44,67 @@ public class SearchNotification extends HttpServlet {
         //response.setHeader("Cache-Control","no-cache");
         response.setContentType("text/html;charset=UTF-8");
         NotificationBean notbean = new NotificationBean();
+        RestaurantNotificationBean resbean = null;
         AdminNotificationsDAO notify = new AdminNotificationsDAO();
+        RestaurantNotificationDAO resnoty = new RestaurantNotificationDAO();
+        UserBean user_type = (UserBean) request.getSession().getAttribute("user");
+        String query_result = request.getParameter("query_result");
+        String insert_reply_result =  request.getParameter("insert_reply_result");
+        int param;
+        int param_insert=0;
+        
+        //questi due controlli li uso per settare la visibilità dei panel per la conferma di avvenuta modifica(panel si trovano in notification.jsp)
+        
+        if(query_result == null){
+            param = -1;
+        }
+        else{
+            param = Integer.parseInt(query_result);
+        }
+         
+        
+        if(insert_reply_result == null){
+            param_insert = -1;
+        }
+        else{
+            param_insert = Integer.parseInt(insert_reply_result);
+        }
+
+        
+        
+        
+        
         
         try {
-            UserBean user_type = (UserBean) request.getSession().getAttribute("user");
             if(user_type.getType()== 2){
+                notbean = notify.getAllNotification();
+                request.getSession().setAttribute("noty",notbean);
+                 
+            }
+            resbean = resnoty.getAllNotification(user_type.getId());
+            request.getSession().setAttribute("resnoty",resbean);
             
-                 //notifiche dell'amministratore
-            }
-            else if(user_type.getType() == 1){
-                //notifiche del ristorante
-            }
-            notbean = notify.getAllNotification();
         }
         catch(Exception e){
             System.err.print(e);
         }
         
-        System.out.print(request.getParameter("query_result"));
-        
-        request.getSession().setAttribute("noty",notbean);
-
         RequestDispatcher ds;
-        
-        
-        
-        
-        
         if(request.getParameter("flag")== null){
-            ds = request.getRequestDispatcher("administrator.jsp");
+            ds = request.getRequestDispatcher("notification.jsp?query_result="+param+"&insert_result="+insert_reply_result);
             ds.forward(request, response);
         }
         else{
-            ds = request.getRequestDispatcher("adminNotification.jsp");
+            if(user_type.getType()== 2){
+                ds = request.getRequestDispatcher("adminNotification.jsp");
+            
+             }
+            else{
+                ds = request.getRequestDispatcher("restaurantNotification.jsp");
+            }
             ds.forward(request, response);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

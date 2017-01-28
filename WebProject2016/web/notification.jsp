@@ -19,18 +19,40 @@
         <script type="text/javascript" src="js/notificationpagejs.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <jsp:include page="header/headerFiles.jsp" />
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/generic.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
             $(document).ready(function(){ 
                 var param = ${param.query_result};
-                    if(param != 0){
+                var param_ins = ${param.insert_reply}
+                    //parte del modal relativa all'admin
+                    if(param > 0){
                          $('#myModal').modal();
-                        }   
+                           
                        $('#myModal').on('hidden.bs.modal', function() {
                            param = 0;
                           });
+                    }
+                    else if(param == 0 ){
+                        $("#myModalLabel").html("Modifica non avvenuta");
+                        $('#myModal').modal();
+                    }
+                 
+                 // modal del ristoratore
+                 
+                    if(param_ins > 0 ){
+                       
+                       $('#myModal').modal();
+                       $("#myModalLabel").html("La sua risposta è stata inoltrata ad un amministratore. La sua risposta sarà visibile una volta accettata dall'amministratore.");
+                       $('#myModal').on('hidden.bs.modal', function() {
+                           param_ins = 0;
+                          });
+                    }
+                    else if(param_ins == 0 ){
+                        $("#myModalLabel").html("Modifica non avvenuta");
+                        $("#myModalLabel").html("Si e' verificato un erroe. La sua risposta non è stat inoltrata.");
+                        $('#myModal').modal();
+                    }
+                    
             });
         </script>
         <title>JSP Page</title>     
@@ -44,18 +66,16 @@
                 </div>
             </div>
                 <!-- test which kind of user is and so i can show the right notification-->
-               <!-- <c:if test="${sessionScope.admin == 1}">
-                    <c:set var="path"  value="resturantNotification.jsp"></c:set>
-                </c:if>
-                <c:if test="${sessionScope.admin == 2}">
-                    <c:set var="path"  value="adminNotification.jsp"></c:set>
-                </c:if>-->
+                <div id="displayarea">
+                    <c:if test="${user.type == 1}">
+                            <jsp:include page="restaurantNotification.jsp"></jsp:include>
+                    </c:if>
+                    <c:if test="${user.type == 2}">
+                            <jsp:include page="adminNotification.jsp"></jsp:include>
+                    </c:if>
+                </div>
             <!--area che verrà aggiornata dallo script-->
-            <div id="displayarea">
-                <jsp:include page="adminNotification.jsp"></jsp:include>
-            </div>
         </div>
-            
         <!-- panel per la conferma dei cambiamenti -->    
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
