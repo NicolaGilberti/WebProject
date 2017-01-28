@@ -162,7 +162,7 @@
                            </c:forEach>
                          </c:if>
                         <c:if test="${empty resnoty.review_list}">
-                            <h1> Per ora non ci sono notifiche, torna più tardi</h1>
+                            <h2 class="h2-title"> Per ora non ci sono notifiche, torna più tardi</h2>
                         </c:if>
                      </p>
                 </div>
