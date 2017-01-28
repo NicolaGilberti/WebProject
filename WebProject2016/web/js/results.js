@@ -154,7 +154,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: 'GET',
-        url: 'GetCuisine',
+        url: 'resultsGetCuisine',
         data: {},
         success: function (response) {
             cuisineList = $.map(response, function (el) {
