@@ -17,6 +17,7 @@
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/notificationpagejs.js"></script>
+        <link href="css/notifcation.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <jsp:include page="header/headerFiles.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -55,14 +56,14 @@
                     
             });
         </script>
-        <title>JSP Page</title>     
+        <title>Notifiche</title>     
     </head>
     <body>
         <jsp:include page = "header/header.jsp"/>
         <div class="container-fluid">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h2> Benvenuto <strong><c:out value="${user.nickname}"></c:out></strong> </h2>
+                    <h2 class="h2-title"> Benvenuto nella pagina delle notifiche <strong><c:out value="${user.nickname}"></c:out></strong> </h2>
                 </div>
             </div>
                 <!-- test which kind of user is and so i can show the right notification-->

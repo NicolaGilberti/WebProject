@@ -8,9 +8,24 @@ and open the template in the editor.
     Author     : RiccardoUni
 */
 
+.add-restaurants-title {
+    color: #900c3f;
+    font-family: 'Pacifico';
+}
+
+.label-text {
+    font-family: 'Lato';
+}
+
+.btn-yellow{
+    background-color:#ffc300;
+    color:black;
+}
+
 body {
     background-color: rgb(232, 232, 232);
 }
+
 
 hr.customized {
     border-top: 4px double #900c3f;

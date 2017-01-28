@@ -5,11 +5,13 @@
 <jsp:include page="header/headerFiles.jsp" />
 <link rel="stylesheet" href="css/generic.css">
 
+<link rel="stylesheet" href="css/notifcation.css">
+
 
 <!DOCTYPE html-->
             <ul class="nav nav-tabs" style="display: inline">
-                 <li class="active"><a data-toggle="tab" href="#menu"><h3><strong>Notification not viewed</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu1"><h3><strong>Notification viewed </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
+                <li class="active"><a data-toggle="tab" href="#menu"><h3 class="h3-subtitle"><strong>Notifiche non visualizzate</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu1"><h3 class="h3-subtitle"><strong>Notifiche già viste</strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
             </ul>
              <div id="menu" class="tab-pane fade">
                 <c:if test="${fn:length(resnoty.review_list) gt 0}">  
@@ -53,10 +55,3 @@
                         </c:if>
                     </p>
             </div>
-        <div class="navbar">
-                <!--footer-->
-            <footer>
-                <hr>
-                    <p>Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
-            </footer>
-        </div>

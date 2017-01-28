@@ -16,6 +16,10 @@ html {
     width: 100%;
 }
 
+.h1-title{
+    font-family: 'Pacifico';
+}
+
 .searchbox {
     background-color: rgba(88, 24, 69, 0.75);
     color: white;
