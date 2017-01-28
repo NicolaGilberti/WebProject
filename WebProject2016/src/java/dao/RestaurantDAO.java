@@ -294,7 +294,7 @@ public class RestaurantDAO {
 
         PreparedStatement sqlStatement = null;
 
-        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value,n_visits from restaurants join price_range on restaurants.id_price_range=price_range.id ORDER BY n_visits LIMIT 4";
+        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value,n_visits from restaurants join price_range on restaurants.id_price_range=price_range.id ORDER BY n_visits DESC LIMIT 4";
 
         sqlStatement = con.prepareStatement(sql);
 

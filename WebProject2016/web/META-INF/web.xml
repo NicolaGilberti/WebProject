@@ -91,6 +91,10 @@
         <servlet-name>PrepareHome</servlet-name>
         <servlet-class>servlets.PrepareHome</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>resultsGetCuisine</servlet-name>
+        <servlet-class>servlets.resultsGetCuisine</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAccountPage</servlet-name>
         <url-pattern>/UserAccountPage</url-pattern>
@@ -258,6 +262,10 @@
     <servlet-mapping>
         <servlet-name>ConfirmRepliesServlet</servlet-name>
         <url-pattern>/ConfirmRepliesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resultsGetCuisine</servlet-name>
+        <url-pattern>/resultsGetCuisine</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
