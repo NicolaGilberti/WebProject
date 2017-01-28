@@ -1083,7 +1083,7 @@ INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VAL
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',50,31,78);
 
 -- user_review_likes [0,1] 1 -> +1 / 0 -> -1
-
+/*
 INSERT INTO user_review_likes VALUES(10,3,1,'2016-09-25 12:00:00');
 INSERT INTO user_review_likes VALUES(8,3,0,'2016-09-25 12:00:00');
 INSERT INTO user_review_likes VALUES(9,3,1,'2016-09-25 12:00:00');
@@ -1107,31 +1107,8 @@ INSERT INTO user_review_likes VALUES(7,28,0,'2016-10-01 21:25:56');
 
 -- replies con conferma di admin[1,6]
 
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',1,3,'2016-09-30 12:00:30',1); -- 1,3
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',2,3,'2016-09-30 12:00:30',2); -- 1,3
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',5,2,'2016-09-30 12:00:30',3); -- 2,2
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',7,1,'2016-09-30 12:00:30',4); -- 3,1
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',8,1,'2016-09-30 12:00:30',5); -- 3,1
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',11,4,'2016-09-30 12:00:30',6); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',12,4,'2016-09-30 12:00:30',1); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',13,4,'2016-09-30 12:00:30',2); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',14,4,'2016-09-30 12:00:30',2); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',15,4,'2016-09-30 12:00:30',3); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',18,6,'2016-09-30 12:00:30',5); -- 6,6
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',22,1,'2016-09-30 12:00:30',5); -- 8,1
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',25,3,'2016-09-30 12:00:30',6); -- 9,3
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',26,2,'2016-09-30 12:00:30',4); -- 10,2
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',28,3,'2016-09-30 12:00:30',4); -- 11,3
+INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',1,3,'2016-09-30 12:00:30',1); 
 
 -- replies senza conferma
 
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',3,3);-- 1
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',6,2);-- 2
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',9,1);-- 3
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',10,4);-- 4
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',19,2);-- 7
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',20,2);-- 7
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',21,2);-- 7
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',23,1);-- 8
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',27,2);-- 10
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',29,3);-- 11
+INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',3,3);*/
