@@ -239,12 +239,11 @@
                                     <div class="overlay"></div>
                                     <header>
                                         <h1>
-                                            <c:out value="${restaurant.name}" />
+                                            <a style="color: white; text-decoration: none;" href="RestaurantRequest?id=${restaurant.id}">
+                                                <c:out value='${restaurant.name}' />
+                                            </a>
                                         </h1>
                                         <div>
-                                            <c:forEach var="j" begin="${restaurant.global_value + 1}" end="5">
-                                                <span class="pull-right glyphicon glyphicon-star-empty val"></span>
-                                            </c:forEach>
                                             <c:forEach var="i" begin="1" end="${restaurant.global_value}">
                                                 <span class="pull-right glyphicon glyphicon-star val"></span>
                                             </c:forEach>
