@@ -140,14 +140,6 @@
         <url-pattern>/LoginAttempt</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>GetCuisine</servlet-name>
-        <servlet-class>servlets.GetCuisine</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetCuisine</servlet-name>
-        <url-pattern>/GetCuisine</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>ForgottenPassword</servlet-name>
         <servlet-class>servlets.ForgottenPassword</servlet-class>
     </servlet>
