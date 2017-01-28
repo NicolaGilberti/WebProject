@@ -63,11 +63,25 @@
                 </div>
                 <div class="panel-body">
                     <c:out value="${review.description}"></c:out>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="thumbnail">
+                                <img src="${review.photo_name}" class="img-responsive">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <br>
+                </div>
                 <div class="form-group">
-                 <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
+                    <form action="ReportImage" method="POST">
+                        <c:url value="InsertReportImageServlet" var="reviewURL">
+                            <c:param name="id_photo" value="${review.id_photo}" />
+                        </c:url>
+                        <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
+                        <button type="button"  name="button" class="btn btn-success" onClick="request.sendRedirect('InsertReportImageServlet');">Segnala foto</button>
+                    </form>
                 </div>  
                 <!--Setting get parameter (id of reply) using jstl -->
                     <form action="InsertReply" method="POST" id="replytext" style="display:none" >
