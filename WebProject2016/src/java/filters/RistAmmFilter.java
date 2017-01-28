@@ -43,6 +43,8 @@ public class RistAmmFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse)response;
         HttpServletRequest req = (HttpServletRequest)request;
         
+        
+        // L'utente non è un amministratore o un ristoratore gli blocco l'accesso
         if(req.getSession().getAttribute("type") != "2" || req.getSession().getAttribute("type") != "1"){
         resp.sendRedirect("notauthorized_user.html");
         

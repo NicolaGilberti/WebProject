@@ -36,8 +36,14 @@ public class LoginDAO {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public UserBean authenticate() throws SQLException {
 
+        //Eseguo la query di verifica dei parametri
         PreparedStatement stm = con.prepareStatement(query);
 
         try {
@@ -49,6 +55,7 @@ public class LoginDAO {
             try {
                 if (rs.next()) {
                     UserBean user = new UserBean();
+                    // vado a creare un nuovo UserBean con i dati ottenuti
                     user.setEmail(rs.getString("email"));
                     user.setName(rs.getString("name"));
                     user.setSurname(rs.getString("surname"));

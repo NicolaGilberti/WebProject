@@ -5,26 +5,24 @@
  */
 package servlets;
 
-import database.ManagerDB;
+import beans.ReviewBean;
+import dao.InsertReplyDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.EmailSender;
 
 /**
  *
- * @author David
+ * @author Marco
  */
-public class ChangePasswordQuery extends HttpServlet {
+@WebServlet(name = "InsertReply", urlPatterns = {"/InsertReply"})
+public class InsertReply extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,35 +36,28 @@ public class ChangePasswordQuery extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            String query = "UPDATE users SET password=? WHERE id=?";
-            String email = "";
-            String password = request.getParameter("password");
-            String id = request.getParameter("id");
-            password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
-
-            ManagerDB db = new ManagerDB();
-            Connection con = db.getConnection();
-
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(2, Integer.valueOf(id));
-            ps.setString(1, password);
-            int affected = ps.executeUpdate();
-            int userID;
-            if (affected == 0) {
-                throw new SQLException("Errore creazione utente, no rows affected.");
-
-            }
-            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    userID = generatedKeys.getInt(1);
-                } else {
-                    throw new SQLException("Errore creazione utente, no ID obtained.");
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ChangePasswordQuery.class.getName()).log(Level.SEVERE, null, ex);
+        String description = request.getParameter("descriptionarea");
+        //System.out.print("LEL"+request.getSession().getAttribute("review"));
+        ReviewBean rev;
+        //aggiungo la reply
+        rev = (ReviewBean)request.getSession().getAttribute("review");
+        
+        System.out.print("REV"+rev);
+        InsertReplyDAO rep = new InsertReplyDAO();
+        boolean result = false;
+        int value=0;
+        try {
+            result = rep.insertReply(rev,description);
+        } catch (Throwable ex) {
+            Logger.getLogger(InsertReply.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if(result == false){
+            value = 1;
+        }
+        
+        
+        response.sendRedirect("SearchNotification?insert_reply="+value);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -8,9 +8,9 @@
 <html lang="it">
 
     <head>
-        
+
         <jsp:include page="header/headerFiles.jsp" />
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,9 +55,10 @@
 
                                 </div>
                                 <div class="form-bottom">
-                                    <form role="form" action="ChangePasswordQuery" method="post" class="registration-form">
-                                       
+                                    <form role="form" action="ChangePasswordSetter" method="post" class="registration-form">
+
                                         <div class="form-group">
+
                                             <label class="sr-only" for="form-password">Password</label>
                                             <input required type="password" name="password" pattern= "(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Password" maxlength="255" class="form-password form-control" id="form-password">
                                         </div>
@@ -72,7 +73,10 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn">Registrati</button>
+
+                                        <input type="hidden" name="id" value="${id}">
+                                        <input type="hidden" name="cod" value="${cod}">
+                                        <button type="submit" class="btn">Reimposta</button>
                                     </form>
 
 

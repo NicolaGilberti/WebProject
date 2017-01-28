@@ -11,6 +11,8 @@ import beans.RestaurantBean;
 import beans.ReviewBean;
 import beans.UserBean;
 import database.ManagerDB;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,30 +27,79 @@ import servlets.UserAccountPage;
  * @author Mirko
  */
 public class UserDAO {
-    
-      private ManagerDB db = null;
+
+    private ManagerDB db = null;
     private Connection con = null;
 
     public UserDAO() {
         db = new ManagerDB();
         con = db.getConnection();
     }
-    
-    public void upgradeUser(int userId) throws SQLException
-    {
-        String query="UPDATE users SET type=1 WHERE id=?";
-        
+
+    public void upgradeUser(int userId) throws SQLException {
+        String query = "UPDATE users SET type=1 WHERE id=?";
+
         int affectedRows = 0;
         PreparedStatement ps = con.prepareStatement(query);
-      
-        ps.setInt(1,userId);
+
+        ps.setInt(1, userId);
         affectedRows = ps.executeUpdate();
         if (affectedRows == 0) {
             throw new SQLException("Errore aggiornamento utente, no rows affected.");
         }
-        
+
     }
     
+
+    public boolean isValidmd5(String id, String md5) throws SQLException, NoSuchAlgorithmException {
+
+        String query = "SELECT * FROM users WHERE id=?";
+
+        PreparedStatement ps;
+        ps = con.prepareStatement(query);
+        ps.setInt(1, Integer.valueOf(id));
+
+        String email = null;
+        String name = null;
+        String surname = null;
+        String nickname = null;
+
+        ResultSet results = ps.executeQuery();
+
+        while (results.next()) {
+            // Prendo i dati dalla query
+            email = results.getString("email");
+            name = results.getString("name");
+            surname = results.getString("surname");
+            nickname = results.getString("nickname");
+
+        }
+
+        //Inizio generazione MD5
+        MessageDigest md = MessageDigest.getInstance("MD5");
+
+        md.update(email.getBytes());
+        md.update(nickname.getBytes());
+        md.update(surname.getBytes());
+        md.update(name.getBytes());
+        //Se è già stato confermato reindirizziamo TODO
+
+        byte[] digest = md.digest();
+        StringBuffer sb = new StringBuffer();
+        for (byte b : digest) {
+            sb.append(String.format("%02x", b & 0xff));
+        }
+
+        //ritorno lo stringbuffer per l'analisi dei dati
+        if (sb.toString().equals(md5)) {
+            return true;
+        }
+        {
+            return false;
+        }
+
+    }
+
     public ArrayList<RestaurantBean> getRestaurants(int userId) {
         ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
 
@@ -62,7 +113,7 @@ public class UserDAO {
         try {
             PreparedStatement ps = con.prepareStatement(restQuery);
             ps.setInt(1, userId);
-            
+
             ResultSet results = ps.executeQuery();
 
             //Per tutti i risultati
@@ -103,10 +154,10 @@ public class UserDAO {
 
         return null;
     }
-    
+
     public ArrayList<ReviewBean> getReviews(int userId) {
         ArrayList<ReviewBean> rev = new ArrayList<ReviewBean>();
-        
+
         String revQuery = "SELECT r.id AS id_review,"
                 + "r.global_value AS global_value,"
                 + "r.food AS food, r.service AS service,"
@@ -123,13 +174,13 @@ public class UserDAO {
                 + "WHERE r.id_creator=? "
                 + "ORDER BY r.data_creation DESC "
                 + "LIMIT 5";
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(revQuery);
             ps.setInt(1, userId);
-            
+
             ResultSet results = ps.executeQuery();
-            
+
             //Per tutti i risultati
             while (results.next()) {
                 ReviewBean r = new ReviewBean();
@@ -162,15 +213,15 @@ public class UserDAO {
                 r.setRestaurant_city(results.getString("city_restaurant"));
                 rev.add(r);
             }
-            
+
             return rev;
         } catch (SQLException ex) {
             Logger.getLogger(UserAccountPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return null;
     }
-    
+
     public AlertBean changePassword(int userId, String oldPwd, String newPwd, String newPwd2) {
 
         AlertBean alert = new AlertBean();
@@ -181,7 +232,7 @@ public class UserDAO {
 
             PreparedStatement ps = con.prepareStatement(oldpwd_query);
             ps.setInt(1, userId);
-            
+
             ResultSet results = ps.executeQuery();
 
             if (results.next()) {
@@ -198,7 +249,7 @@ public class UserDAO {
                         ps = con.prepareStatement(newpwd_query);
                         ps.setString(1, newpwd);
                         ps.setInt(2, userId);
-                        
+
                         ps.executeUpdate();
 
                         alert.setType(0);
@@ -225,9 +276,20 @@ public class UserDAO {
             /* request.setAttribute("oldpwd", ex.toString());
             dispatcher.forward(request, response);*/
         }
-        
+
         return alert;
     }
+
+    public int changePassword(int id,String pass) throws SQLException
+    {
+         String query = "UPDATE users SET password=? WHERE id=?";
+          // la inserisco all'interno del database
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, pass);
+            ps.setInt(2, Integer.valueOf(id));
+            return ps.executeUpdate();
+    }
+    
     
     public AlertBean changeNickname(UserBean user, String newNick, String password) {
 
@@ -237,10 +299,10 @@ public class UserDAO {
 
         try {
             String pwdQuery = "SELECT password FROM users WHERE id=?";
-            
+
             PreparedStatement ps = con.prepareStatement(pwdQuery);
             ps.setInt(1, user.getId());
-            
+
             ResultSet results = ps.executeQuery();
 
             if (results.next()) {
@@ -254,7 +316,7 @@ public class UserDAO {
                     ps = con.prepareStatement(nick_query);
                     ps.setString(1, newNick);
                     ps.setInt(2, user.getId());
-                    
+
                     ps.executeUpdate();
 
                     user.setNickname(newNick);
@@ -277,8 +339,8 @@ public class UserDAO {
         } catch (Exception ex) {
             System.out.println("changeUserPwd " + ex.toString());
         }
-        
+
         return alert;
     }
-    
+
 }
