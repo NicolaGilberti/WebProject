@@ -7,7 +7,7 @@
 
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
- <jsp:include page="header/headerFiles.jsp"/>
+ <jsp:include page="header/headerFiles.jsp" />
  <link rel="stylesheet" href="css/generic.css">
  
 
@@ -26,15 +26,15 @@
                 <div id="home" class="tab-pane fade in active">
                     <p>
                         <c:if test="${fn:length(noty.replies) gt 0}">
-                            <c:forEach var="notbean" items="${noty.replies}">
-                                <c:if test="${notbean.accepted == false}">
+                            <c:forEach var="replybean" items="${noty.replies}">
+                                <c:if test="${replybean.accepted == false}">
                                     <div class="list-group">
                                         <c:url value="showreplyconfirm.jsp" var="repliesURL">
-                                             <c:param name="id" value="${notbean.idrep}" />
+                                             <c:param name="id" value="${replybean.idrep}" /> --%>
                                         </c:url>
                                         <a href="${repliesURL}" class="list-group-item">
-                                            <strong><c:out value="${notbean.ristoratore}"/></strong>
-                                            Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
+                                            <strong><c:out value="${replybean.ristoratore}"/></strong>
+                                            Ha risposto ad un commento di <strong><c:out value="${replybean.customer}"/></strong> sul proprio ristorante.
                                         </a>
                                     </div>
                                 </c:if>
@@ -71,8 +71,8 @@
                                 <c:if test="${notbean.accepted == false}">
                                     <div class="list-group">
                                      <a href="#" class="list-group-item">
-                                           <strong><c:out value="${notbean.ristoratore}"/></strong>
-                                           Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
+                                           <strong>Il proprietario di<c:out value="${notbean.resname}"/></strong>
+                                           ha chiesto di rimuovere una foto postata sul proprio ristorante.
                                      </a>
                                     </div>
                                 </c:if>
@@ -102,8 +102,8 @@
                             <c:if test="${notbean.accepted == true}">
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
-                                        <strong><c:out value="${notbean.ristoratore}"/></strong>
-                                        Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
+                                        <strong><c:out value="${notbean.nickname}"/></strong>
+                                        Ha risposto ad un commento di <strong><c:out value="${notbean.nickname}"/></strong> sul proprio ristorante.
                                     </a>
                                 </div>
                             </c:if>
@@ -112,8 +112,8 @@
                             <c:if test="${notbean.accepted == true}">
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
-                                        <strong><c:out value="${notbean.ristoratore}"/></strong>
-                                        Ha risposto ad un commento di <strong><c:out value="${notbean.customer}"/></strong> sul proprio ristorante.
+                                        <strong><c:out value="${notbean.resname}"/></strong>
+                                        Ha risposto ad un commento di <strong><c:out value="${notbean.nickname}"/></strong> sul proprio ristorante.
                                     </a>
                                 </div>
                             </c:if>

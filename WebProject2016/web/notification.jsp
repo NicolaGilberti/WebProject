@@ -21,7 +21,7 @@
         <jsp:include page="header/headerFiles.jsp" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
-            $(document).ready(function(){ 
+            /*$(document).ready(function(){ 
                 var param = ${param.query_result};
                 var param_ins = ${param.insert_reply}
                     //parte del modal relativa all'admin
@@ -52,8 +52,8 @@
                         $("#myModalLabel").html("Si e' verificato un erroe. La sua risposta non è stat inoltrata.");
                         $('#myModal').modal();
                     }
-                    
-            });
+                    */
+           // });
         </script>
         <title>JSP Page</title>     
     </head>
