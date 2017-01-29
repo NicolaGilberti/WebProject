@@ -21,7 +21,7 @@
         <script src="js/changeUserPwd.js"></script>
         <script src="js/scripts.js"></script>
 
-        <title>TuttoBistrò - User</title>
+        <title>TuttoBistrò - Profilo Utente</title>
 
     </head>
     <body>
@@ -152,7 +152,7 @@
             <div class="user-info">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="col-xs-center">
+                        <h1 style="color: #900c3f">
                             <c:out value="${user.name} ${user.surname}" />
                         </h1>
                         <!--

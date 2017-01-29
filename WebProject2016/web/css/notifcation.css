@@ -4,44 +4,42 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Jan 19, 2017, 6:04:58 PM
-    Author     : RiccardoUni
+    Created on : 29-nov-2016, 11.03.41
+    Author     : nicol
 */
 
-.add-restaurants-title {
+.h3-subtitle{
+    font-family: 'Lato';
+    color: #581845;
+}
+.notification-title {
     color: #900c3f;
+    text-align: center;
     font-family: 'Pacifico';
 }
 
-.label-text {
+a {
     font-family: 'Lato';
+    
 }
 
-.btn-yellow{
-    background-color:#ffc300;
-    color:black;
+.h2-title{
+    font-family: 'Lato';
+    
 }
 
-body {
-    background-color: rgb(232, 232, 232);
-}
-
-
-hr.customized {
+hr.style15 {
     border-top: 4px double #900c3f;
     text-align: center;
 }
-hr.customized:after {
+
+hr.style15:after {
 	content: '\002666';
 	display: inline-block;
 	position: relative;
 	top: -15px;
 	padding: 0 10px;
-	background: rgb(232, 232, 232);
+	background: #e8e8e8;
 	color: #900c3f;
 	font-size: 18px;
-}
-.btn-padding {
-    padding-top:3em;
-    padding-bottom: 3em;
 }

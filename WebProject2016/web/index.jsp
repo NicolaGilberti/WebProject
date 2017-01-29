@@ -8,10 +8,11 @@
     <!--<![endif]-->
 
     <head>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <!--meta-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>TuttoBistro</title>
+        <title>TuttoBistrò</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--/meta-->
@@ -35,7 +36,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center searchbox">
-                        <h1>Cerca Ristorante</h1>
+                        <h1 class="h1-title">Cerca Ristorante</h1>
 
                         <div class="col-md-8 col-md-offset-2">
                             <form method="get" action="results.jsp">
@@ -61,7 +62,7 @@
 
         <div class="container-fluid">
             <div class="text-center">
-                <h1 style="color:#900c3f">I più richiesti</h1>
+                <h1 class="h1-title" style="color:#900c3f">I più richiesti</h1>
             </div>
             
             <hr class="style15" >
