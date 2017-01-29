@@ -27,6 +27,15 @@ public class ReviewBean implements java.io.Serializable {
     private String data_creation;
     private int id_restaurant;
     private String nickname;
+    private int likes;
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
