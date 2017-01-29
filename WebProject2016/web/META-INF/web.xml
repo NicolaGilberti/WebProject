@@ -11,12 +11,12 @@
         <filter-name>AmmFilter</filter-name>
         <filter-class>filters.AmmFilter</filter-class>
     </filter>
-    <!--
+    
     <filter>
         <filter-name>RistAmmFilter</filter-name>
         <filter-class>filters.RistAmmFilter</filter-class>
     </filter>
-    -->
+    
     <error-page>
         <location>/general_error_page.jsp</location>
     </error-page>
@@ -34,7 +34,7 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    -->
+    
     <filter-mapping>
         <filter-name>AmmFilter</filter-name>
         <url-pattern>/ConfirmRepliesServlet</url-pattern>
@@ -71,7 +71,7 @@
         <location>/general_error_page.jsp</location>
     </error-page>
     <error-page>
-        <!-- 404 code -->
+         404 code
         <error-code>404</error-code>
         <location>/404_error_page.jsp</location>
     </error-page>
@@ -83,6 +83,7 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    -->
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>
@@ -255,10 +256,6 @@
         <servlet-name>ConfirmRepliesServlet</servlet-name>
         <url-pattern>/ConfirmRepliesServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>InsertReportImageServlet</servlet-name>
-        <servlet-class>servlets.InsertReportImageServlet/servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>InsertReportImageServlet</servlet-name>
         <url-pattern>/InsertReportImageServlet</url-pattern>

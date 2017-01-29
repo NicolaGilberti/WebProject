@@ -77,7 +77,8 @@
                 <div class="form-group">
                     <form action="ReportImage" method="POST">
                         <c:url value="InsertReportImageServlet" var="reviewURL">
-                            <c:param name="id_photo" value="${review.id_photo}" />
+                            <c:param name="id_photo" value="${review.id_photo}"/>
+                            <c:param name="id" value="${review.id_creator}"/>
                         </c:url>
                         <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
                         <button type="button"  name="button" class="btn btn-success" onClick="request.sendRedirect('InsertReportImageServlet');">Segnala foto</button>
