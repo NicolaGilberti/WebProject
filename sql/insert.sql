@@ -22,39 +22,39 @@ INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','B
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente12','marioBianchi12@gmail.com','0bb7bfa3245650cc89f938a698e6158a21201253847684d31794630a90cde7ec',0); -- password : sha256(utente12)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente13','marioBianchi13@gmail.com','27724b50732a97379e09482776209f6bc70841dbea3e120681a5d7f099b811ad',0); -- password : sha256(utente13)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente14','marioBianchi14@gmail.com','e94c6d0f637a93ef8605f840eb045378a102bdc69bd397ad1c6d0a8c5a5415a1',0); -- password : sha256(utente14)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente15','marioBianchi15@gmail.com','2497abd7e052e11b05acc37fc7b69e9f00c86b5cc4398f89cbbed74513495a68',0); -- password : sha256(utente15)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente16','marioBianchi16@gmail.com','1c81d05165b1979565fc5142fc7ec8bd378cd2f96d63bea8eb8e75e284e4f64f',0); -- password : sha256(utente16)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente17','marioBianchi17@gmail.com','a7c8693f45857ab821003d06e9532c5dee2e0bfd976c3896f1e0b4b1e4076702',0); -- password : sha256(utente17)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente18','marioBianchi18@gmail.com','7572676229bdd03868a9e15809676f4f99635792c7e3d594788555fa492a2291',0); -- password : sha256(utente18)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente19','marioBianchi19@gmail.com','fb6cb1505db10928b29c6c9345313f2aea0146e63cdcf24a4f234b172f591176',0); -- password : sha256(utente19)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente20','marioBianchi20@gmail.com','e957ed2cae09a505af1e0d0d7dffdfd8bb94b113dff71bf391d3168cdd4922e0',0); -- password : sha256(utente20)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente21','marioBianchi21@gmail.com','9dce2d97c7decd1a831b1ed561eaf6b774252969671f4e7270b2a3730db02f7c',0); -- password : sha256(utente21)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente22','marioBianchi22@gmail.com','013f8f99e0cdb705752f0b12eb574a9fb13a6d89b71cecd7999e16f28ad3b243',0); -- password : sha256(utente22)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente23','marioBianchi23@gmail.com','021eb8e18bd0889d1d6e78c106c446df37a751f6dfd507fbb237dc0242a1465b',0); -- password : sha256(utente23)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente24','marioBianchi24@gmail.com','b6431b353646ed506f8c6107b4bc16b90799c0ae7a65a18e41c1ca63412c6695',0); -- password : sha256(utente24)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente25','marioBianchi25@gmail.com','cd22879dd9784f4ba241392b7ad9419bb5cf8cf0f89ef0d45847aabed1199783',0); -- password : sha256(utente25)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente26','marioBianchi26@gmail.com','b385f0565d8752ee09e8913e54c8d50a19ca7454f0deda8cc4ed8d948ad4b06b',0); -- password : sha256(utente26)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente27','marioBianchi27@gmail.com','738aee4d98c62032055e487a8ebceffdbecb35c0bfc8de7bb949fef57c1251c4',0); -- password : sha256(utente27)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente28','marioBianchi28@gmail.com','64d4cf29ce3d741e611aa639fe778254bdf5837d0ce28f8199dd8fea85c73db3',0); -- password : sha256(utente28)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente29','marioBianchi29@gmail.com','7b132fcb9b52e55411a7e2dd6d29518f492bdea34b6efaf7fd3b002f91883c40',0); -- password : sha256(utente29)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente30','marioBianchi30@gmail.com','9e7cf7090f13a57528ce80c7047d26de3d3b277dafbc262c840cb51edc973638',0); -- password : sha256(utente30)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente31','marioBianchi31@gmail.com','5ad0726ea12f0869901e992663d150f7d516e0bee70cd51ca965b76c35c394b3',0); -- password : sha256(utente31)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente32','marioBianchi32@gmail.com','5fb7c08b0359915910fb26360117794b02cd4c39cef80098c0cad37c958f8c90',0); -- password : sha256(utente32)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente33','marioBianchi33@gmail.com','aa33cddac037d9197dbe25c9007cb4a4c6a80fa92c50ee87b53187acdbe8be9a',0); -- password : sha256(utente33)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente34','marioBianchi34@gmail.com','7fa984e7817ab85878dd334e4e30d26766153781284c186978661ad6a171223b',0); -- password : sha256(utente34)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente35','marioBianchi35@gmail.com','b614621f71e668fca72b45910463847701a5446db71f1a20d8b8996a41f39067',0); -- password : sha256(utente35)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente36','marioBianchi36@gmail.com','0ef19136e2558631032b9fc9c4b5e585dc4636c84647f5ace6c56b2a6364875f',0); -- password : sha256(utente36)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente37','marioBianchi37@gmail.com','a48311890d143629d63b391c0cebaf104680ef8484632f9a6d9fd9e82b215326',0); -- password : sha256(utente37)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente38','marioBianchi38@gmail.com','23896caf37b1ac4a0f47af8a9bac9e3c77502dac3d6cdaab5ccd2e55c54a06a9',0); -- password : sha256(utente38)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente39','marioBianchi39@gmail.com','01f127ece8f77fca4e49ebf67a47caef41e0d4e30a820d1421d6104a1dcaa0e1',0); -- password : sha256(utente39)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente40','marioBianchi40@gmail.com','288793ca88adcd4b43eefaff97af3c03eefd5ef028005c2be27919e1f07fb88f',0); -- password : sha256(utente40)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente41','marioBianchi41@gmail.com','474d5326bb561351d594b21181cfae59e1590fc5f8db1df45086eb83910b1026',0); -- password : sha256(utente41)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente42','marioBianchi42@gmail.com','2cf573b85cecc049d6bff12722a0bc00cd2d61289ebc56e0293c7ea2c44f00aa',0); -- password : sha256(utente42)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente43','marioBianchi43@gmail.com','ad3f53be0de9b1ed67438432e89574c7cdf55aa24a50dfad60a3b0063d96241f',0); -- password : sha256(utente43)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente44','marioBianchi44@gmail.com','0214995a03b56dedb088d97b2a94314ffcf520469444ee85ecdc75acb5f9db8b',0); -- password : sha256(utente44)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente45','marioBianchi45@gmail.com','cf5393ce96c6b052737ffb3b69f5debcb198ec8cab195105ab9232f63187071a',0); -- password : sha256(utente45)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente46','marioBianchi46@gmail.com','47e736f0cf1fd97bebe3b6d3f57304884964f18954e5373addbb411233dd44e9',0); -- password : sha256(utente46)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente47','marioBianchi47@gmail.com','0a444736b972c4174374dd33826b3de41928330422302bdc46daffd9e441b8b0',0); -- password : sha256(utente47)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente15','marioBianchi15@gmail.com','2497abd7e052e11b05acc37fc7b69e9f00c86b5cc4398f89cbbed74513495a68',1); -- password : sha256(utente15)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente16','marioBianchi16@gmail.com','1c81d05165b1979565fc5142fc7ec8bd378cd2f96d63bea8eb8e75e284e4f64f',1); -- password : sha256(utente16)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente17','marioBianchi17@gmail.com','a7c8693f45857ab821003d06e9532c5dee2e0bfd976c3896f1e0b4b1e4076702',1); -- password : sha256(utente17)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente18','marioBianchi18@gmail.com','7572676229bdd03868a9e15809676f4f99635792c7e3d594788555fa492a2291',1); -- password : sha256(utente18)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente19','marioBianchi19@gmail.com','fb6cb1505db10928b29c6c9345313f2aea0146e63cdcf24a4f234b172f591176',1); -- password : sha256(utente19)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente20','marioBianchi20@gmail.com','e957ed2cae09a505af1e0d0d7dffdfd8bb94b113dff71bf391d3168cdd4922e0',1); -- password : sha256(utente20)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente21','marioBianchi21@gmail.com','9dce2d97c7decd1a831b1ed561eaf6b774252969671f4e7270b2a3730db02f7c',1); -- password : sha256(utente21)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente22','marioBianchi22@gmail.com','013f8f99e0cdb705752f0b12eb574a9fb13a6d89b71cecd7999e16f28ad3b243',1); -- password : sha256(utente22)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente23','marioBianchi23@gmail.com','021eb8e18bd0889d1d6e78c106c446df37a751f6dfd507fbb237dc0242a1465b',1); -- password : sha256(utente23)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente24','marioBianchi24@gmail.com','b6431b353646ed506f8c6107b4bc16b90799c0ae7a65a18e41c1ca63412c6695',1); -- password : sha256(utente24)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente25','marioBianchi25@gmail.com','cd22879dd9784f4ba241392b7ad9419bb5cf8cf0f89ef0d45847aabed1199783',1); -- password : sha256(utente25)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente26','marioBianchi26@gmail.com','b385f0565d8752ee09e8913e54c8d50a19ca7454f0deda8cc4ed8d948ad4b06b',1); -- password : sha256(utente26)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente27','marioBianchi27@gmail.com','738aee4d98c62032055e487a8ebceffdbecb35c0bfc8de7bb949fef57c1251c4',1); -- password : sha256(utente27)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente28','marioBianchi28@gmail.com','64d4cf29ce3d741e611aa639fe778254bdf5837d0ce28f8199dd8fea85c73db3',1); -- password : sha256(utente28)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente29','marioBianchi29@gmail.com','7b132fcb9b52e55411a7e2dd6d29518f492bdea34b6efaf7fd3b002f91883c40',1); -- password : sha256(utente29)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente30','marioBianchi30@gmail.com','9e7cf7090f13a57528ce80c7047d26de3d3b277dafbc262c840cb51edc973638',1); -- password : sha256(utente30)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente31','marioBianchi31@gmail.com','5ad0726ea12f0869901e992663d150f7d516e0bee70cd51ca965b76c35c394b3',1); -- password : sha256(utente31)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente32','marioBianchi32@gmail.com','5fb7c08b0359915910fb26360117794b02cd4c39cef80098c0cad37c958f8c90',1); -- password : sha256(utente32)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente33','marioBianchi33@gmail.com','aa33cddac037d9197dbe25c9007cb4a4c6a80fa92c50ee87b53187acdbe8be9a',1); -- password : sha256(utente33)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente34','marioBianchi34@gmail.com','7fa984e7817ab85878dd334e4e30d26766153781284c186978661ad6a171223b',1); -- password : sha256(utente34)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente35','marioBianchi35@gmail.com','b614621f71e668fca72b45910463847701a5446db71f1a20d8b8996a41f39067',1); -- password : sha256(utente35)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente36','marioBianchi36@gmail.com','0ef19136e2558631032b9fc9c4b5e585dc4636c84647f5ace6c56b2a6364875f',1); -- password : sha256(utente36)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente37','marioBianchi37@gmail.com','a48311890d143629d63b391c0cebaf104680ef8484632f9a6d9fd9e82b215326',1); -- password : sha256(utente37)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente38','marioBianchi38@gmail.com','23896caf37b1ac4a0f47af8a9bac9e3c77502dac3d6cdaab5ccd2e55c54a06a9',1); -- password : sha256(utente38)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente39','marioBianchi39@gmail.com','01f127ece8f77fca4e49ebf67a47caef41e0d4e30a820d1421d6104a1dcaa0e1',1); -- password : sha256(utente39)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente40','marioBianchi40@gmail.com','288793ca88adcd4b43eefaff97af3c03eefd5ef028005c2be27919e1f07fb88f',1); -- password : sha256(utente40)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente41','marioBianchi41@gmail.com','474d5326bb561351d594b21181cfae59e1590fc5f8db1df45086eb83910b1026',1); -- password : sha256(utente41)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente42','marioBianchi42@gmail.com','2cf573b85cecc049d6bff12722a0bc00cd2d61289ebc56e0293c7ea2c44f00aa',1); -- password : sha256(utente42)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente43','marioBianchi43@gmail.com','ad3f53be0de9b1ed67438432e89574c7cdf55aa24a50dfad60a3b0063d96241f',1); -- password : sha256(utente43)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente44','marioBianchi44@gmail.com','0214995a03b56dedb088d97b2a94314ffcf520469444ee85ecdc75acb5f9db8b',1); -- password : sha256(utente44)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente45','marioBianchi45@gmail.com','cf5393ce96c6b052737ffb3b69f5debcb198ec8cab195105ab9232f63187071a',1); -- password : sha256(utente45)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente46','marioBianchi46@gmail.com','47e736f0cf1fd97bebe3b6d3f57304884964f18954e5373addbb411233dd44e9',1); -- password : sha256(utente46)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente47','marioBianchi47@gmail.com','0a444736b972c4174374dd33826b3de41928330422302bdc46daffd9e441b8b0',1); -- password : sha256(utente47)
 
 -- opening_hours_range
 
@@ -401,39 +401,39 @@ INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_c
 INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Zur Kaiserkron','Benvenuto, il tuo viaggio nel mondo del ristorante Zur Kaiserkron inizia qui. Preparati a vivere un''esperienza indimenticabile.','',4,13,13,3,46.498321,11.353288,'Piazza della Mostra 2','39100','Bolzano',114,12);
 INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria dai Carrettai','Piccolo rustico locale in una delle vie più centrali di Bolzano.','https://www.tripadvisor.it/Restaurant_Review-g187857-d1057412-Reviews-Osteria_dai_Carrettai-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,13,13,3,46.500215,11.354820,'Via Doktor Joseph Streiter 20/b ','39100','Bolzano',114,45);
 INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Franziskanerstuben','Storia, centralità e tradizione – unione difficile da trovare in una trattoria a Bolzano. Qui dove confluiscono la via Dr. Streiter, piazza delle erbe e la via dei Francescani, viziamo i nostri clienti con specialitá regionali e una raffinata selezione di vini di alta qualità. Completamente ristrutturata nel 2014, oggi all´interno delle nostre 3 “Stuben” e della cantina storica offriamo una variegata cucina in una piacevole atmosfera.','http://www.franziskanerstuben.com/it/',4,13,13,3,46.500366, 11.353595,'Via dei Francescani 7','39100','Bolzano',114,66);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Casa al Torchio','Ambiente rustico, cortesia, il gusto della cucina altoastesina, i piatti della tradizione italiana e una vasta scelta di pizze!','http://www.casaaltorchio.com/',4,13,13,3,46.499723, 11.352333,'Via Museo 2','39100','Bolzano',114,18);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Bamboo','Offriamo ai nostri ospiti una vasta scelta di cibi della cucina giapponese e orientale: sushi, sashimi, tempura e molto altro ancora. Tutti piatti che prepariamo scegliendo gli ingredienti migliori: pesce fresco dai nostri mari e riso di prima qualità.','https://www.alpensushi.it/it/ristoranti/bamboo',4,13,13,3,46.496554, 11.353582,'Via dell''Isarco 3/B','39100','Bolzano',114,43);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Anita','Cucina tipica di ottima qualità, porzioni abbondanti e prezzi più che ragionevoli. Ottimi dolci.','https://www.tripadvisor.it/Restaurant_Review-g187857-d1380186-Reviews-Anita-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,13,13,3,46.500117, 11.353185,'Piazza delle Erbe 5','39100','Bolzano',114,52);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Marechiaro','Una tavola senza vino è come una giornata senza sole.','http://www.marechiarobz.it/',4,13,13,3,46.494111, 11.341640,'Via Vicenza 14','39100','Bolzano',114,4);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Alumix','Alumix è un locale unico e sfaccettato, un vero spazio multifunzione per una clientela diversificata ed esigente in materia di drink e food. Il format del locale è incentrato sull''attenzione alle esigenze degli avventori: il servizio e’ un punto cruciale, inteso soprattutto come modalita’ di soddisfare i bisogni del cliente dalla colazione fino a tarda notte. Il servizio e’ familiare, cosi’ da far sentire il cliente come a casa propria, regalandogli un’ emozione unica.','http://www.alumix.it/index.asp',4,13,13,3,46.479160, 11.333225,'Via Alessandro Volta 9','39100','Bolzano',114,28);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Tortuga Beer & Pizza','Ambiente molto intimo, pizza molto buona e ottima selezione di birre, personale cortese e simpatico.','https://www.tripadvisor.it/Restaurant_Review-g187857-d8360985-Reviews-Tortuga_Beer_Pizza-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,13,13,3,46.495175, 11.347022,'Piazzetta Questore Renato Mazzoni 9','39100','Bolzano',114,15);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Da Piero - Antico Abramo','...che dire...in poche parole gusto e cordialità, con Piero e famiglia ci si trova splendidamente ! Da provare tutte le sue specialità culinarie e la sua famosa pizza da campione del mondo!','https://www.tripadvisor.it/Restaurant_Review-g187857-d1137206-Reviews-Da_Piero_Antico_Abramo-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,13,13,3,46.503826, 11.333962,'Piazza Gries 16','39100','Bolzano',114,68);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Beverara','L''accoglienza e il servizio di sala sono riservati ad una coppia di gentilissimi signori, con un approccio confidenziale e famigliare ma discreto e a modo. La cucina riserva piatti che appagano sempre le tue aspettative con un''eccelsa qualità di materia prima e ricette che invogliano a provarle tutte.','https://www.tripadvisor.it/Restaurant_Review-g1948051-d2697126-Reviews-Beverara-Acquanegra_sul_Chiese_Province_of_Mantua_Lombardy.html',4,13,13,3,45.168088, 10.425928,'Strada Beverara 110','46011','Acquanegra sul Chiese',114,23);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('La Filanda','Nel cuore di una terra ricca di tradizione gastronomica, una perla ricca di qualità in un ambiente raffinato. Dalla crudità di mare alle specialità del territorio, il Ristorante La Filanda Vi offre un insieme di sensazioni difficili da dimenticare. Nella nostra sala o ovunque sia di Vostro gradimento, la qualità della nostra cucina rende indimenticabili i Vostri momenti più importanti, una serata romantica o in buona compagnia.','http://www.la-filanda.it/',4,13,13,3,45.219797, 10.406646,'Via Carducci 21/E','46041','Asola',114,7);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Locanda del Gastaldo','La nostra storia inizia da un attento recupero del fascinoso edificio delle Scuderie ed e'' proprio qui che potrete trascorrere piacevoli momenti degustando i nostri piatti. ','http://www.locandadelgastaldo.it/index.html',4,13,13,3,45.201515, 10.387786,'Via Sorbara 8','46041','Asola',114,34);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Al Giardino Stube','La grande varietà di birre, i taglieri tipici e la preparazione del personale, rendono questo locale il luogo ideale dove passare una serata molto piacevole.','https://www.tripadvisor.it/Restaurant_Review-g1373027-d3266529-Reviews-Al_Giardino_Stube-Asola_Province_of_Mantua_Lombardy.html',4,13,13,3,45.220878, 10.416843,'Viale Belfiore 3','46041','Asola',114,0);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria Selvole','Gusterete ricette tradizionali in un ambiente tranquillo, rinnovato, idoneo per pranzare e cenare insieme. I suoi ampi spazi lo rendono perfetto per ogni occasione. Le comode sale climatizzate e i toni naturali del locale vi faranno sentire come a casa vostra.','http://www.osteriaselvole.it/',4,13,13,3,45.308019, 10.465635,'Strada Selvole 23','46042','Castel Goffredo',114,61);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('GASTRONOMIA LA PIALLA','Il ristorante paninoteca pizzeria "La Pialla" nasce negli anni ''80 nel cuore della provincia di mantova. Da subito abbiamo voluto portare in tavola tutto il gusto della cucina mantovana e la qualità dei nostri prodotti. La cucina mantovana è l''insieme dei piatti della tradizione culinaria della provincia italiana di Mantova, alcuni dei quali risalenti ai tempi dei Gonzaga.','http://www.gastronomialapialla.com/',4,13,13,3,45.295393, 10.476627,'Viale Europa 31','46042','Castel Goffredo',114,12);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria da Pencio','arte culinaria di Mantova iniziò più di centinaia di anni fa. La gastronomia e la cucina di Casalmoro iniziano con le specialità di carne da Osteria da Pencio. La nuova gestione risponde al nome di Osteria da Pencio e propone una prelibata tavola rotonda di idee dove poter mangiare carne alla brace naturale e genuina.','http://www.osteriadapencio.it/',4,13,13,3,45.260485, 10.405707,'Via Piave 14','46040','Casalmoro',114,44);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Park Hotel','Ottimi abbinamenti con i piatti sia di pesce che di carne personale disponibile e cordiale e tempi d''attesa distinti ambiente molto bello','https://www.tripadvisor.it/Restaurant_Review-g2627015-d7077782-Reviews-Park_Hotel-Casalmoro_Province_of_Mantua_Lombardy.html',4,13,13,3,45.259905, 10.414724,'Via Asola 1','46040','Casalmoro',114,26);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Pizzeria Ristorante Sport da Luigi','Il ristorante offre una cucina varia e raffinata, anche per chi è a dieta con piatti light.','https://www.tripadvisor.it/Restaurant_Review-g1948051-d2184084-Reviews-Pizzeria_Ristorante_Sport_da_Luigi-Acquanegra_sul_Chiese_Province_of_Mantua_Lomb.html',4,13,13,3,45.161132, 10.431345,'Via Brunelli 110','46011','Acquanegra sul Chiese',114,33);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria al Lago','Posto suggestivo, anche nel periodo invernale. Il locale è carino, ben arredato e curato. Il personale cordiale.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d2331331-Reviews-Osteria_al_Lago-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,43.011746, 13.393794,'Lago di San Ruffino','63857','Amandola',114,37);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Vecchio Moro','Il ristorante è situato in una bella, zona ricca di verde e lontana dal traffico. Cucina tipica di qualità ad un buon prezzo. Tanto verde per far svagare i bamini','https://www.tripadvisor.it/Restaurant_Review-g1226846-d1936592-Reviews-Vecchio_Moro-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,43.011028, 13.396680,'Lago San Ruffino','63857','Amandola',114,19);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Hotel Ristorante Paradiso','Ambiente raffinato e cordiale. Cibo buono e servizio curato.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d7019653-Reviews-Hotel_Ristorante_Paradiso-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,42.981376, 13.357412,'Piazzale Umberto Primo 7','63857','Amandola',114,34);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Ristorante Bella Napoli','Il ristorante, appena fuori il centro storico di Amandola, è stato ricavato all''interno di un vecchio monastero. Il locale è accogliente, il personale molto gentile','https://www.tripadvisor.it/Restaurant_Review-g1226846-d5821788-Reviews-Ristorante_Bella_Napoli-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,42.975847,13.350489,'Via Zoccolanti 10','63857','Amandola',114,78);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Rifugio Città di Amandola','Paesaggi splendidi,possibilità di fare pic-nic ed equitazione,locale accogliente,cucina ottima e personale disponibile','www.rifugiocittadiamandola.com/',4,13,13,3,42.965954, 13.287137,'Loc.Campolungo','63857','Amandola',114,42);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Gusteau','Situato nella piazza principale di Amandola, offre ristorazione ''classica'', pizzeria e funge anche da pub con una buona offerta di birre italiane.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d6959206-Reviews-Gusteau-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,42.980558, 13.356253,'Piazza Risorgimento 31','63857','Amandola',114,27);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Gran Caffè Belli','Sotto lo storico porticato di Piazza Risorgimento, è uno dei caffè più antichi della provincia, nato nei primi anni del ''900.','http://www.grancaffebelli.it/home1.htm',4,13,13,3,42.980254, 13.355719,'Piazza Risorgimento 13','63857','Amandola',114,55);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Mare e Monti','Buona varietà e ottima qualità delle materie prime impiegate in cucina. Pietanze singole o menù completo, qualità-prezzo imbattibile.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d6160366-Reviews-Mare_e_Monti-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,42.977120, 13.351217,'Via Cesare Battisti 102','63857','Amandola',114,8);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Bar La Stazione','È sempre un piacere venire in questo bar. Lo staff è disponibile e cortese','https://www.tripadvisor.it/Restaurant_Review-g1226846-d4554719-Reviews-Bar_La_Stazione-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,42.975893, 13.350826,' Via Zoccolanti 4','63857','Amandola',114,17);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Agriturismo Madonna di Piana','Location suggestiva e curata, staff molto professionale.','https://www.tripadvisor.it/Hotel_Review-g1226846-d2279327-Reviews-Agriturismo_Madonna_di_Piana-Amandola_Province_of_Fermo_Marche.html',4,13,13,3,42.985997, 13.358526,'Loc. Madonna di Piana','63857','Amandola',114,15);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('La Pergola','Ristorante elegante e raffinato con vista su Piazza San Pietro.Cucina di buon livello.','https://www.tripadvisor.it/Restaurant_Review-g187791-d806462-Reviews-La_Pergola-Rome_Lazio.html',4,13,13,3,41.918867, 12.446451,'Via Alberto Cadlolo 101','00136','Roma',114,16);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Metamorfosi Restaurant','Emozionanti e sorprendenti. Espressione di creatività e passione. Innovativi e coinvolgenti. Percorsi da scoprire e da condividere','http://www.metamorfosiroma.it/',4,13,13,3,41.924185, 12.484679,'Via Giovanni Antonelli 30','00197','Roma',114,15);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Pane e Salame','Tutta roba di qualità, gli abbinamenti degli ingredienti nei panini impeccabili. Servizio cortese, rapidi. Pane fantastico. Porchetta suprema. Ottimo rapporto qualità prezzo. Grande attenzione ai dettagli.','https://www.tripadvisor.it/Restaurant_Review-g187791-d10044289-Reviews-Pane_e_Salame-Rome_Lazio.html',4,13,13,3,41.900716, 12.481769,'Via di Santa Maria in Via 19','00187','Roma',114,35);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Il Picchio Rosso','Dalla profonda conoscenza del nostro Chef, arriva un menù di terra e mare, ricco, fantasioso, sublime. Una vera e propria poesia sul piatto che deliziera ogni momento della vostra cena. Venite a scoprire le note inconfondibli della migliore cucina italiana: non avrete di che pentirvi.','http://www.ilpicchiorosso.it/',4,13,13,3,41.993307, 12.417970,'Via Italo Piccagli 101','00189','Roma',114,34);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('L''Uliveto Shop','La gastronomia della Puglia non è solo la Puccia o la focaccina; da noi puoi trovare selezionatissimi prodotti tipici artigianali come olio d''oliva, vini, taralli, conserve varie, birre artigianale, salumi e latticini sempre freschi come: burrata, stracciatella e nodini di mozzarella. Naturalmente tutto accuratamente selezionato dallo staff professionista dell''Uliveto Shop.','http://www.lulivetoshop.it/',4,13,13,3,41.902482, 12.473330,'Via Di Monte Brianzo 66/67','00186','Roma',114,14);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Paraponzipo','‘Na Pagnottella ancora calla NON è ‘NA VIA PE’ FA’ PRIMA ma UN modo Pe’ RACCONTA’ Delle storie, la Tradizione proprio Lì, Tra er pane er companatico. NON servono 100 ingredienti pe’ non annoiasse ma l’ amore per le materie prime, ‘NA selezione sicura su cui se pò contà, pe’ divertisse A GIOCÀ su combinazioni e consistente …. perché in cucina quello che ce metti c’aritrovi! Questione de ingredienti, de scerte e de persone …..questo è er mestiere der pagnottellaro, PARAPONZIPO’','http://www.paraponzipo.it/',4,13,13,3,41.877001, 12.482258,'Piazza di Porta S. Paolo 9','00153','Roma',114,2);
-INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Bistrè','Benvenuti al Bistrè, dove innovazione e tradizione si incontrano. La cucina dello chef unisce i sapori autentici alla cura della presentazione, perchè si sa, anche l''occhio vuole la sua parte! I prodotti genuini, serviti in un ambiente accogliente, sazieranno tutti i vostri desideri culinari. Venite a trovarci, saremo lieti di servirvi!','http://www.bistre.it/',4,13,13,3,41.852670, 12.568152,'Via Publio Rutilio Rufo 12','00174','Roma',114,46);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Casa al Torchio','Ambiente rustico, cortesia, il gusto della cucina altoastesina, i piatti della tradizione italiana e una vasta scelta di pizze!','http://www.casaaltorchio.com/',4,40,13,3,46.499723, 11.352333,'Via Museo 2','39100','Bolzano',114,18);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Bamboo','Offriamo ai nostri ospiti una vasta scelta di cibi della cucina giapponese e orientale: sushi, sashimi, tempura e molto altro ancora. Tutti piatti che prepariamo scegliendo gli ingredienti migliori: pesce fresco dai nostri mari e riso di prima qualità.','https://www.alpensushi.it/it/ristoranti/bamboo',4,39,13,3,46.496554, 11.353582,'Via dell''Isarco 3/B','39100','Bolzano',114,43);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Anita','Cucina tipica di ottima qualità, porzioni abbondanti e prezzi più che ragionevoli. Ottimi dolci.','https://www.tripadvisor.it/Restaurant_Review-g187857-d1380186-Reviews-Anita-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,38,13,3,46.500117, 11.353185,'Piazza delle Erbe 5','39100','Bolzano',114,52);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Marechiaro','Una tavola senza vino è come una giornata senza sole.','http://www.marechiarobz.it/',4,37,13,3,46.494111, 11.341640,'Via Vicenza 14','39100','Bolzano',114,4);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Alumix','Alumix è un locale unico e sfaccettato, un vero spazio multifunzione per una clientela diversificata ed esigente in materia di drink e food. Il format del locale è incentrato sull''attenzione alle esigenze degli avventori: il servizio e’ un punto cruciale, inteso soprattutto come modalita’ di soddisfare i bisogni del cliente dalla colazione fino a tarda notte. Il servizio e’ familiare, cosi’ da far sentire il cliente come a casa propria, regalandogli un’ emozione unica.','http://www.alumix.it/index.asp',4,36,13,3,46.479160, 11.333225,'Via Alessandro Volta 9','39100','Bolzano',114,28);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Tortuga Beer & Pizza','Ambiente molto intimo, pizza molto buona e ottima selezione di birre, personale cortese e simpatico.','https://www.tripadvisor.it/Restaurant_Review-g187857-d8360985-Reviews-Tortuga_Beer_Pizza-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,35,13,3,46.495175, 11.347022,'Piazzetta Questore Renato Mazzoni 9','39100','Bolzano',114,15);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Da Piero - Antico Abramo','...che dire...in poche parole gusto e cordialità, con Piero e famiglia ci si trova splendidamente ! Da provare tutte le sue specialità culinarie e la sua famosa pizza da campione del mondo!','https://www.tripadvisor.it/Restaurant_Review-g187857-d1137206-Reviews-Da_Piero_Antico_Abramo-Bolzano_Province_of_South_Tyrol_Trentino_Alto_Adige.html',4,34,13,3,46.503826, 11.333962,'Piazza Gries 16','39100','Bolzano',114,68);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Beverara','L''accoglienza e il servizio di sala sono riservati ad una coppia di gentilissimi signori, con un approccio confidenziale e famigliare ma discreto e a modo. La cucina riserva piatti che appagano sempre le tue aspettative con un''eccelsa qualità di materia prima e ricette che invogliano a provarle tutte.','https://www.tripadvisor.it/Restaurant_Review-g1948051-d2697126-Reviews-Beverara-Acquanegra_sul_Chiese_Province_of_Mantua_Lombardy.html',4,33,13,3,45.168088, 10.425928,'Strada Beverara 110','46011','Acquanegra sul Chiese',114,23);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('La Filanda','Nel cuore di una terra ricca di tradizione gastronomica, una perla ricca di qualità in un ambiente raffinato. Dalla crudità di mare alle specialità del territorio, il Ristorante La Filanda Vi offre un insieme di sensazioni difficili da dimenticare. Nella nostra sala o ovunque sia di Vostro gradimento, la qualità della nostra cucina rende indimenticabili i Vostri momenti più importanti, una serata romantica o in buona compagnia.','http://www.la-filanda.it/',4,32,13,3,45.219797, 10.406646,'Via Carducci 21/E','46041','Asola',114,7);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Locanda del Gastaldo','La nostra storia inizia da un attento recupero del fascinoso edificio delle Scuderie ed e'' proprio qui che potrete trascorrere piacevoli momenti degustando i nostri piatti. ','http://www.locandadelgastaldo.it/index.html',4,31,13,3,45.201515, 10.387786,'Via Sorbara 8','46041','Asola',114,34);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Al Giardino Stube','La grande varietà di birre, i taglieri tipici e la preparazione del personale, rendono questo locale il luogo ideale dove passare una serata molto piacevole.','https://www.tripadvisor.it/Restaurant_Review-g1373027-d3266529-Reviews-Al_Giardino_Stube-Asola_Province_of_Mantua_Lombardy.html',4,30,13,3,45.220878, 10.416843,'Viale Belfiore 3','46041','Asola',114,0);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria Selvole','Gusterete ricette tradizionali in un ambiente tranquillo, rinnovato, idoneo per pranzare e cenare insieme. I suoi ampi spazi lo rendono perfetto per ogni occasione. Le comode sale climatizzate e i toni naturali del locale vi faranno sentire come a casa vostra.','http://www.osteriaselvole.it/',4,29,13,3,45.308019, 10.465635,'Strada Selvole 23','46042','Castel Goffredo',114,61);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('GASTRONOMIA LA PIALLA','Il ristorante paninoteca pizzeria "La Pialla" nasce negli anni ''80 nel cuore della provincia di mantova. Da subito abbiamo voluto portare in tavola tutto il gusto della cucina mantovana e la qualità dei nostri prodotti. La cucina mantovana è l''insieme dei piatti della tradizione culinaria della provincia italiana di Mantova, alcuni dei quali risalenti ai tempi dei Gonzaga.','http://www.gastronomialapialla.com/',4,28,13,3,45.295393, 10.476627,'Viale Europa 31','46042','Castel Goffredo',114,12);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria da Pencio','arte culinaria di Mantova iniziò più di centinaia di anni fa. La gastronomia e la cucina di Casalmoro iniziano con le specialità di carne da Osteria da Pencio. La nuova gestione risponde al nome di Osteria da Pencio e propone una prelibata tavola rotonda di idee dove poter mangiare carne alla brace naturale e genuina.','http://www.osteriadapencio.it/',4,27,13,3,45.260485, 10.405707,'Via Piave 14','46040','Casalmoro',114,44);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Park Hotel','Ottimi abbinamenti con i piatti sia di pesce che di carne personale disponibile e cordiale e tempi d''attesa distinti ambiente molto bello','https://www.tripadvisor.it/Restaurant_Review-g2627015-d7077782-Reviews-Park_Hotel-Casalmoro_Province_of_Mantua_Lombardy.html',4,26,13,3,45.259905, 10.414724,'Via Asola 1','46040','Casalmoro',114,26);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Pizzeria Ristorante Sport da Luigi','Il ristorante offre una cucina varia e raffinata, anche per chi è a dieta con piatti light.','https://www.tripadvisor.it/Restaurant_Review-g1948051-d2184084-Reviews-Pizzeria_Ristorante_Sport_da_Luigi-Acquanegra_sul_Chiese_Province_of_Mantua_Lomb.html',4,25,13,3,45.161132, 10.431345,'Via Brunelli 110','46011','Acquanegra sul Chiese',114,33);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Osteria al Lago','Posto suggestivo, anche nel periodo invernale. Il locale è carino, ben arredato e curato. Il personale cordiale.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d2331331-Reviews-Osteria_al_Lago-Amandola_Province_of_Fermo_Marche.html',4,24,13,3,43.011746, 13.393794,'Lago di San Ruffino','63857','Amandola',114,37);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Vecchio Moro','Il ristorante è situato in una bella, zona ricca di verde e lontana dal traffico. Cucina tipica di qualità ad un buon prezzo. Tanto verde per far svagare i bamini','https://www.tripadvisor.it/Restaurant_Review-g1226846-d1936592-Reviews-Vecchio_Moro-Amandola_Province_of_Fermo_Marche.html',4,23,13,3,43.011028, 13.396680,'Lago San Ruffino','63857','Amandola',114,19);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Hotel Ristorante Paradiso','Ambiente raffinato e cordiale. Cibo buono e servizio curato.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d7019653-Reviews-Hotel_Ristorante_Paradiso-Amandola_Province_of_Fermo_Marche.html',4,22,13,3,42.981376, 13.357412,'Piazzale Umberto Primo 7','63857','Amandola',114,34);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Ristorante Bella Napoli','Il ristorante, appena fuori il centro storico di Amandola, è stato ricavato all''interno di un vecchio monastero. Il locale è accogliente, il personale molto gentile','https://www.tripadvisor.it/Restaurant_Review-g1226846-d5821788-Reviews-Ristorante_Bella_Napoli-Amandola_Province_of_Fermo_Marche.html',4,21,13,3,42.975847,13.350489,'Via Zoccolanti 10','63857','Amandola',114,78);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Rifugio Città di Amandola','Paesaggi splendidi,possibilità di fare pic-nic ed equitazione,locale accogliente,cucina ottima e personale disponibile','www.rifugiocittadiamandola.com/',4,20,13,3,42.965954, 13.287137,'Loc.Campolungo','63857','Amandola',114,42);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Gusteau','Situato nella piazza principale di Amandola, offre ristorazione ''classica'', pizzeria e funge anche da pub con una buona offerta di birre italiane.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d6959206-Reviews-Gusteau-Amandola_Province_of_Fermo_Marche.html',4,19,13,3,42.980558, 13.356253,'Piazza Risorgimento 31','63857','Amandola',114,27);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Gran Caffè Belli','Sotto lo storico porticato di Piazza Risorgimento, è uno dei caffè più antichi della provincia, nato nei primi anni del ''900.','http://www.grancaffebelli.it/home1.htm',4,18,13,3,42.980254, 13.355719,'Piazza Risorgimento 13','63857','Amandola',114,55);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Mare e Monti','Buona varietà e ottima qualità delle materie prime impiegate in cucina. Pietanze singole o menù completo, qualità-prezzo imbattibile.','https://www.tripadvisor.it/Restaurant_Review-g1226846-d6160366-Reviews-Mare_e_Monti-Amandola_Province_of_Fermo_Marche.html',4,17,13,3,42.977120, 13.351217,'Via Cesare Battisti 102','63857','Amandola',114,8);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Bar La Stazione','È sempre un piacere venire in questo bar. Lo staff è disponibile e cortese','https://www.tripadvisor.it/Restaurant_Review-g1226846-d4554719-Reviews-Bar_La_Stazione-Amandola_Province_of_Fermo_Marche.html',4,16,13,3,42.975893, 13.350826,' Via Zoccolanti 4','63857','Amandola',114,17);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Agriturismo Madonna di Piana','Location suggestiva e curata, staff molto professionale.','https://www.tripadvisor.it/Hotel_Review-g1226846-d2279327-Reviews-Agriturismo_Madonna_di_Piana-Amandola_Province_of_Fermo_Marche.html',4,15,13,3,42.985997, 13.358526,'Loc. Madonna di Piana','63857','Amandola',114,15);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('La Pergola','Ristorante elegante e raffinato con vista su Piazza San Pietro.Cucina di buon livello.','https://www.tripadvisor.it/Restaurant_Review-g187791-d806462-Reviews-La_Pergola-Rome_Lazio.html',4,14,13,3,41.918867, 12.446451,'Via Alberto Cadlolo 101','00136','Roma',114,16);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Metamorfosi Restaurant','Emozionanti e sorprendenti. Espressione di creatività e passione. Innovativi e coinvolgenti. Percorsi da scoprire e da condividere','http://www.metamorfosiroma.it/',4,12,13,3,41.924185, 12.484679,'Via Giovanni Antonelli 30','00197','Roma',114,15);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Pane e Salame','Tutta roba di qualità, gli abbinamenti degli ingredienti nei panini impeccabili. Servizio cortese, rapidi. Pane fantastico. Porchetta suprema. Ottimo rapporto qualità prezzo. Grande attenzione ai dettagli.','https://www.tripadvisor.it/Restaurant_Review-g187791-d10044289-Reviews-Pane_e_Salame-Rome_Lazio.html',4,11,13,3,41.900716, 12.481769,'Via di Santa Maria in Via 19','00187','Roma',114,35);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Il Picchio Rosso','Dalla profonda conoscenza del nostro Chef, arriva un menù di terra e mare, ricco, fantasioso, sublime. Una vera e propria poesia sul piatto che deliziera ogni momento della vostra cena. Venite a scoprire le note inconfondibli della migliore cucina italiana: non avrete di che pentirvi.','http://www.ilpicchiorosso.it/',4,10,13,3,41.993307, 12.417970,'Via Italo Piccagli 101','00189','Roma',114,34);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('L''Uliveto Shop','La gastronomia della Puglia non è solo la Puccia o la focaccina; da noi puoi trovare selezionatissimi prodotti tipici artigianali come olio d''oliva, vini, taralli, conserve varie, birre artigianale, salumi e latticini sempre freschi come: burrata, stracciatella e nodini di mozzarella. Naturalmente tutto accuratamente selezionato dallo staff professionista dell''Uliveto Shop.','http://www.lulivetoshop.it/',4,9,13,3,41.902482, 12.473330,'Via Di Monte Brianzo 66/67','00186','Roma',114,14);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Paraponzipo','‘Na Pagnottella ancora calla NON è ‘NA VIA PE’ FA’ PRIMA ma UN modo Pe’ RACCONTA’ Delle storie, la Tradizione proprio Lì, Tra er pane er companatico. NON servono 100 ingredienti pe’ non annoiasse ma l’ amore per le materie prime, ‘NA selezione sicura su cui se pò contà, pe’ divertisse A GIOCÀ su combinazioni e consistente …. perché in cucina quello che ce metti c’aritrovi! Questione de ingredienti, de scerte e de persone …..questo è er mestiere der pagnottellaro, PARAPONZIPO’','http://www.paraponzipo.it/',4,8,13,3,41.877001, 12.482258,'Piazza di Porta S. Paolo 9','00153','Roma',114,2);
+INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Bistrè','Benvenuti al Bistrè, dove innovazione e tradizione si incontrano. La cucina dello chef unisce i sapori autentici alla cura della presentazione, perchè si sa, anche l''occhio vuole la sua parte! I prodotti genuini, serviti in un ambiente accogliente, sazieranno tutti i vostri desideri culinari. Venite a trovarci, saremo lieti di servirvi!','http://www.bistre.it/',4,7,13,3,41.852670, 12.568152,'Via Publio Rutilio Rufo 12','00174','Roma',114,46);
 INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Artigiani della Passione','oranei del buon cibo...In uno dei rioni più antichi e caratteristici di Roma, a pochi metri da piazza Navona, Est - Artigiani del gusto è il luogo di incontro, ottimo per immergersi nella lettura dei giornali, ideale per una colazione all’italiana o internazionale, perfetto per un pranzo veloce, sano e genuino o una cena alla carta.','http://www.estartigianidelgusto.it/',4,13,13,3,41.897484, 12.471375,'Vicolo della Cancelleria 11-12','00186','Roma',114,5);
 INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Orlando','Ambiente riservato e tranquillo, ottima cantina di Vini Siciliani. Pesce predominante nel menù. Dolci superlativi.','https://www.tripadvisor.it/Restaurant_Review-g187791-d3544980-Reviews-Orlando-Rome_Lazio.html',4,13,13,3,41.908417, 12.490553,'Angolo Via Marche 9','00187','Roma',114,7);
 INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES ('Il Tamburello di Pulcinella','Atmosfera davvero bella personale molto simpatico e gioioso e cucina ottima.','https://www.tripadvisor.it/Restaurant_Review-g187791-d8076107-Reviews-Il_Tamburello_di_Pulcinella-Rome_Lazio.html',4,13,13,3,41.897394, 12.430070,'Via Pasquale Fiore 23','00165','Roma',114,4);
@@ -1033,8 +1033,8 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 
 INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s1.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',7,4);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',7,4,54);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s2.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',8,13);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',8,13,55);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s2.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',8,14);
+INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',8,14,55);
 INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s3.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',9,1);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',9,1,56);
 INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s4.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',10,35);
@@ -1082,7 +1082,7 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s25.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',50,31);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',50,31,78);
 
--- replies con conferma di admin[1,6]
+-- replies confirmed
 
 INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,81,13);
 INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,82,13); 
@@ -1097,7 +1097,7 @@ INSERT INTO replies(description,data_creation,date_validation,id_validator,id_re
 INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,91,13); 
 INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,92,13); 
 
--- replies senza conferma
+-- replies tbc
 
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-10-01 15:30:47',93,13);
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-10-01 15:30:47',94,13);
@@ -1112,28 +1112,162 @@ INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono C
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-10-01 15:30:47',103,13);
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-10-01 15:30:47',104,13);
 INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-10-01 15:30:47',105,13);
-/*
--- user_review_likes [0,1] 1 -> +1 / 0 -> -1
 
-INSERT INTO user_review_likes VALUES(10,3,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(8,3,0,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(9,3,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,6,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,7,0,'2016-09-25 13:45:56');
-INSERT INTO user_review_likes VALUES(9,12,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,12,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,15,0,'2016-10-01 21:25:56');
-INSERT INTO user_review_likes VALUES(4,18,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,18,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,18,0,'2016-09-25 13:45:56');
-INSERT INTO user_review_likes VALUES(9,18,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(12,18,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(1,18,0,'2016-10-01 21:25:56');
-INSERT INTO user_review_likes VALUES(9,28,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(5,28,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(3,28,0,'2016-09-25 13:45:56');
-INSERT INTO user_review_likes VALUES(8,28,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,28,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,28,0,'2016-10-01 21:25:56');
+-- user_review_likes attribute like_type: 1 -> like or 0 -> dislike
 
-*/
+INSERT INTO user_review_likes VALUES(5,105,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(6,104,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(7,103,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(8,102,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(9,101,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(10,100,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,99,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(12,97,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(14,98,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(15,96,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(16,95,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(17,94,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(18,93,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(19,92,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(20,91,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(21,90,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(22,89,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(23,88,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(24,87,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(25,86,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(26,85,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(27,84,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(28,83,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(29,82,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(30,81,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(1,105,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(2,104,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(3,103,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(4,102,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(5,101,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(6,100,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(7,99,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(8,97,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(9,98,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(10,96,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,95,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(12,94,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(14,93,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(15,92,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(16,91,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(17,90,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(18,89,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(19,88,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(20,87,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(21,86,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(22,85,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(23,84,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(24,83,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(25,82,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(26,81,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(1,81,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(2,82,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(3,83,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(4,84,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(5,85,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(6,86,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(7,87,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(8,88,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(9,89,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(10,90,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(11,91,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(12,92,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(14,94,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(15,94,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(16,1,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(17,45,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(18,64,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(19,42,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(20,25,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(21,7,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(22,42,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(23,34,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(24,49,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(25,23,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(26,48,0,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(16,78,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(17,15,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(18,35,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(19,23,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(20,7,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(21,98,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(22,43,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(23,16,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(24,34,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(25,24,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(26,14,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(27,31,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(28,47,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(29,64,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(30,7,1,'2016-09-25 12:00:00');
+INSERT INTO user_review_likes VALUES(1,73,1,'2016-09-25 12:00:00');
+
+-- request_delete_photos
+
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,78);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,76);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,70);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,68);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,67);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,63);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,59);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,58);
+INSERT INTO request_delete_photos(id_user,id_photo) VALUES(13,55);
+
+-- request_changes_owner accepted
+
+INSERT INTO request_changes_owner VALUES(7,47,true);
+INSERT INTO request_changes_owner VALUES(8,46,true);
+INSERT INTO request_changes_owner VALUES(9,45,true);
+INSERT INTO request_changes_owner VALUES(10,44,true);
+INSERT INTO request_changes_owner VALUES(11,43,true);
+INSERT INTO request_changes_owner VALUES(12,42,true);
+INSERT INTO request_changes_owner VALUES(14,41,true);
+INSERT INTO request_changes_owner VALUES(15,40,true);
+INSERT INTO request_changes_owner VALUES(16,39,true);
+INSERT INTO request_changes_owner VALUES(17,38,true);
+INSERT INTO request_changes_owner VALUES(18,37,true);
+INSERT INTO request_changes_owner VALUES(19,36,true);
+INSERT INTO request_changes_owner VALUES(20,35,true);
+INSERT INTO request_changes_owner VALUES(21,34,true);
+INSERT INTO request_changes_owner VALUES(22,33,true);
+INSERT INTO request_changes_owner VALUES(23,32,true);
+INSERT INTO request_changes_owner VALUES(24,31,true);
+INSERT INTO request_changes_owner VALUES(25,30,true);
+INSERT INTO request_changes_owner VALUES(26,29,true);
+INSERT INTO request_changes_owner VALUES(27,28,true);
+INSERT INTO request_changes_owner VALUES(28,27,true);
+INSERT INTO request_changes_owner VALUES(29,26,true);
+INSERT INTO request_changes_owner VALUES(30,25,true);
+INSERT INTO request_changes_owner VALUES(31,24,true);
+INSERT INTO request_changes_owner VALUES(32,23,true);
+INSERT INTO request_changes_owner VALUES(33,22,true);
+INSERT INTO request_changes_owner VALUES(34,21,true);
+INSERT INTO request_changes_owner VALUES(35,20,true);
+INSERT INTO request_changes_owner VALUES(36,19,true);
+INSERT INTO request_changes_owner VALUES(37,18,true);
+INSERT INTO request_changes_owner VALUES(38,17,true);
+INSERT INTO request_changes_owner VALUES(39,16,true);
+INSERT INTO request_changes_owner VALUES(40,15,true);
+
+-- request_changes_owner tbc
+
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(41,14);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(42,13);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(43,12);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(44,11);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(45,10);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(46,9);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(47,8);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(48,7);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(49,6);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(50,5);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(51,4);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(52,3);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(53,2);
+INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(54,1);

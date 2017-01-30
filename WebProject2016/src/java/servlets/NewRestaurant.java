@@ -142,9 +142,13 @@ public class NewRestaurant extends HttpServlet {
                 //Dobbiamo aggiornare l'utente se non era già ristoratore, ora che ha messo un ristorante!
                 if (userLogged.getType() == 0) {
                     UserDAO userDAO = new UserDAO();
-                    userDAO.upgradeUser(userLogged.getId());
-                    userLogged.setType(1);
-                    session.setAttribute("user", userLogged);
+                    int affectedRows = userDAO.upgradeUser(userLogged.getId());
+                    if (affectedRows == 0) {
+                        throw new SQLException("Errore aggiornamento utente, no rows affected.");
+                    } else {
+                        userLogged.setType(1);
+                        session.setAttribute("user", userLogged);
+                    }
                 }
 
                 request.setAttribute("formValid", "The restaurant " + rest.getName() + " has been create ");

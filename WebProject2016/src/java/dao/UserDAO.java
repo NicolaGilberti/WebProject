@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,8 +36,44 @@ public class UserDAO {
         db = new ManagerDB();
         con = db.getConnection();
     }
+    
+    public UserBean authenticate(String email, String password) throws SQLException {
+        String query = "SELECT * FROM users WHERE email = ? AND password = ? AND type <> -1";
+        //Eseguo la query di verifica dei parametri
+        PreparedStatement stm = con.prepareStatement(query);
 
-    public void upgradeUser(int userId) throws SQLException {
+        try {
+            stm.setString(1, email);
+            stm.setString(2, password);
+
+            ResultSet rs = stm.executeQuery();
+
+            try {
+                if (rs.next()) {
+                    UserBean user = new UserBean();
+                    // vado a creare un nuovo UserBean con i dati ottenuti
+                    user.setEmail(rs.getString("email"));
+                    user.setName(rs.getString("name"));
+                    user.setSurname(rs.getString("surname"));
+                    user.setNickname(rs.getString("nickname"));
+                    user.setId(rs.getInt("id"));
+                    //   user.setLast_log("last_log");
+                    user.setType(Integer.valueOf(rs.getString("type")));
+                    return user;
+                } else {
+                    return null;
+                }
+            } finally {
+                // ricordarsi SEMPRE di chiudere i ResultSet in un blocco finally 
+                rs.close();
+            }
+        } finally { // ricordarsi SEMPRE di chiudere i PreparedStatement in un blocco finally 
+            stm.close();
+        }
+
+    }
+
+    public int upgradeUser(int userId) throws SQLException {
         String query = "UPDATE users SET type=1 WHERE id=?";
 
         int affectedRows = 0;
@@ -44,12 +81,58 @@ public class UserDAO {
 
         ps.setInt(1, userId);
         affectedRows = ps.executeUpdate();
-        if (affectedRows == 0) {
-            throw new SQLException("Errore aggiornamento utente, no rows affected.");
-        }
+        
+        return affectedRows;
+    }
 
+    public int updateUserType(String id) throws SQLException {
+        
+        String updateuserid = "UPDATE users SET type=0 WHERE id=?";
+        PreparedStatement ps = con.prepareStatement(updateuserid);
+        ps.setInt(1, Integer.valueOf(id));
+        int affectedRows = ps.executeUpdate();
+        return affectedRows;
     }
     
+    public int setRegistrationParameters(String name, String surname, String nickname, String email, String password) throws SQLException {
+        String regquery = "INSERT INTO users(name,surname,nickname,email,password,type) VALUES (?,?,?,?,?,-1)";
+        int affectedRows = 0;
+        int userID = 0;
+
+        // Inserisco i dati nel database utilizzando la variabile regquery, definita sopra
+        PreparedStatement ps = con.prepareStatement(regquery, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, name);
+        ps.setString(2, surname);
+        ps.setString(3, nickname);
+        ps.setString(4, email);
+        ps.setString(5, password);
+
+        //eseguo l'update
+        affectedRows = ps.executeUpdate();
+        if (affectedRows == 0) {
+            throw new SQLException("Errore creazione utente, no rows affected.");
+        }
+        //Andiamo a prendere l'id del nuovo utente
+        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                userID = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Errore creazione utente, no ID obtained.");
+            }
+        }
+        return userID;
+    }
+
+    public ResultSet searchUserToRegisterByID(String id) throws SQLException {
+
+        String searchbyidquery = "SELECT * FROM users WHERE id=?";
+        //Preparazione query
+        PreparedStatement ps = con.prepareStatement(searchbyidquery);
+        ps.setInt(1, Integer.valueOf(id));
+        ResultSet results = ps.executeQuery();
+
+        return results;
+    }
 
     public boolean isValidmd5(String id, String md5) throws SQLException, NoSuchAlgorithmException {
 
@@ -280,17 +363,15 @@ public class UserDAO {
         return alert;
     }
 
-    public int changePassword(int id,String pass) throws SQLException
-    {
-         String query = "UPDATE users SET password=? WHERE id=?";
-          // la inserisco all'interno del database
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, pass);
-            ps.setInt(2, Integer.valueOf(id));
-            return ps.executeUpdate();
+    public int changePassword(int id, String pass) throws SQLException {
+        String query = "UPDATE users SET password=? WHERE id=?";
+        // la inserisco all'interno del database
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, pass);
+        ps.setInt(2, Integer.valueOf(id));
+        return ps.executeUpdate();
     }
-    
-    
+
     public AlertBean changeNickname(UserBean user, String newNick, String password) {
 
         String pwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);

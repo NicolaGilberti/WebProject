@@ -35,6 +35,18 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
     -->
+    
+    <error-page>
+        <location>/general_error_page.jsp</location>
+    </error-page>
+    
+    <!-- 404 code -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404_error_page.jsp</location>
+    </error-page>
+    
+    <!-- FILTRI -->
     <filter-mapping>
         <filter-name>AmmFilter</filter-name>
         <url-pattern>/ConfirmRepliesServlet</url-pattern>
@@ -44,8 +56,26 @@
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
     <filter-mapping>
+        <filter-name>AmmFilter</filter-name>
+        <url-pattern>/showreplyconfirm.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    
+    <filter-mapping>
         <filter-name>MainFilter</filter-name>
         <url-pattern>/UserAccountPage</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>MainFilter</filter-name>
+        <url-pattern>/SearchNotification</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
         <dispatcher>INCLUDE</dispatcher>
@@ -67,14 +97,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    <error-page>
-        <location>/general_error_page.jsp</location>
-    </error-page>
-    <error-page>
-        <!-- 404 code -->
-        <error-code>404</error-code>
-        <location>/404_error_page.jsp</location>
-    </error-page>
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
         <url-pattern>/newRestaurantForm.jsp</url-pattern>
@@ -83,6 +105,9 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    
+    
+    <!-- FINE FILTRI -->
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>

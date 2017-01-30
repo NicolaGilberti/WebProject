@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/generic.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Conferma notitfica</title>
     </head>
     <body> 
         <jsp:include page = "header/header.jsp"/>
