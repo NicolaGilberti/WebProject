@@ -11,18 +11,10 @@
         <filter-name>AmmFilter</filter-name>
         <filter-class>filters.AmmFilter</filter-class>
     </filter>
-<<<<<<< HEAD
-=======
-    
->>>>>>> notification
     <filter>
         <filter-name>RistAmmFilter</filter-name>
         <filter-class>filters.RistAmmFilter</filter-class>
     </filter>
-<<<<<<< HEAD
-=======
-    
->>>>>>> notification
     <error-page>
         <location>/general_error_page.jsp</location>
     </error-page>
@@ -31,15 +23,19 @@
         <error-code>404</error-code>
         <location>/404_error_page.jsp</location>
     </error-page>
+    
     <error-page>
         <location>/general_error_page.jsp</location>
     </error-page>
+    
     <!-- 404 code -->
     <error-page>
         <error-code>404</error-code>
         <location>/404_error_page.jsp</location>
     </error-page>
+    
     <!-- FILTRI -->
+    
     <filter-mapping>
         <filter-name>RistAmmFilter</filter-name>
         <url-pattern>/SearchNotification</url-pattern>
@@ -48,10 +44,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-<<<<<<< HEAD
-=======
-    
->>>>>>> notification
     <filter-mapping>
         <filter-name>AmmFilter</filter-name>
         <url-pattern>/ConfirmRepliesServlet</url-pattern>
@@ -60,6 +52,7 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
         <url-pattern>/UserAccountPage</url-pattern>
@@ -68,6 +61,7 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
         <url-pattern>/SearchNotification</url-pattern>
@@ -92,17 +86,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-<<<<<<< HEAD
-=======
-    <error-page>
-        <location>/general_error_page.jsp</location>
-    </error-page>
-    <error-page>
-         404 code
-        <error-code>404</error-code>
-        <location>/404_error_page.jsp</location>
-    </error-page>
->>>>>>> notification
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
         <url-pattern>/newRestaurantForm.jsp</url-pattern>
@@ -111,11 +94,9 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-<<<<<<< HEAD
+    
+    
     <!-- FINE FILTRI -->
-=======
-    -->
->>>>>>> notification
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>
@@ -125,13 +106,8 @@
         <servlet-class>servlets.PrepareHome</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>resultsGetCuisine</servlet-name>
         <servlet-class>servlets.resultsGetCuisine</servlet-class>
-=======
-        <servlet-name>InsertReportImageServlet</servlet-name>
-        <servlet-class>servlets.InsertReportImageServlet</servlet-class>
->>>>>>> notification
     </servlet>
     <servlet-mapping>
         <servlet-name>UserAccountPage</servlet-name>
@@ -226,6 +202,14 @@
         <url-pattern>/LoginAttempt</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>GetCuisine</servlet-name>
+        <servlet-class>servlets.GetCuisine</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCuisine</servlet-name>
+        <url-pattern>/GetCuisine</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ForgottenPassword</servlet-name>
         <servlet-class>servlets.ForgottenPassword</servlet-class>
     </servlet>
@@ -294,21 +278,15 @@
         <url-pattern>/ConfirmRepliesServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>resultsGetCuisine</servlet-name>
         <url-pattern>/resultsGetCuisine</url-pattern>
-    </servlet-mapping>
-    <servlet>
+    </servlet-mapping> <servlet>
         <servlet-name>NewReview</servlet-name>
         <servlet-class>servlets.NewReview</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>NewReview</servlet-name>
         <url-pattern>/NewReview</url-pattern>
-=======
-        <servlet-name>InsertReportImageServlet</servlet-name>
-        <url-pattern>/InsertReportImageServlet</url-pattern>
->>>>>>> notification
     </servlet-mapping>
     <session-config>
         <session-timeout>
