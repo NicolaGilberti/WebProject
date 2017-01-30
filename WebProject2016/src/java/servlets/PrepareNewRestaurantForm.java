@@ -29,7 +29,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author RiccardoUni,Mirko
  */
-@WebServlet(name = "prepareNewRestaurantForm", urlPatterns = {"/prepareNewRestaurantForm"})
 public class PrepareNewRestaurantForm extends HttpServlet {
 
     /**
