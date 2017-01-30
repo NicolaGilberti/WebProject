@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 /**
  *
@@ -40,25 +41,21 @@ public class ReviewDAO {
         ps.setInt(5, revBean.getAtmosphere());
         ps.setString(6, revBean.getName());
         ps.setString(7, revBean.getDescription());
-        ps.setString(8, revBean.getData_creation());
+        ps.setTimestamp(8, revBean.getData_creation());
         ps.setInt(9,revBean.getId_restaurant());
         ps.setInt(10, revBean.getId_creator());
-        ResultSet rs = ps.executeQuery();
-        
         
         affectedRows = ps.executeUpdate();
         if (affectedRows == 0) {
             throw new SQLException("Errore inserimento recensione, no rows affected.");
         }
-        //Andiamo a vedere se c'è la nuova recensione
-        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-            if (generatedKeys.next()) {
-                result = generatedKeys.getInt(1);
-            } else {
-                throw new SQLException("Errore creazione recensione, no ID obtained.");
-            }
+        else {
+            ps = con.prepareStatement("SELECT id FROM reviews LIMIT ?");
+            ps.setInt(1,1);
+            ResultSet rs = ps.executeQuery();
+            return result = rs.getInt(1);
         }
-        return result;
+        
     }
 
     public void addPhoto(int reviewID, int photoID) throws SQLException {

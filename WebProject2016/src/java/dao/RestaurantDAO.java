@@ -4,6 +4,7 @@ import beans.CuisineBean;
 import beans.RestaurantBean;
 import beans.RestaurantBean;
 import beans.ReviewBean;
+import beans.UserReviewLikesBean;
 import comparators.CuisineAlphabeticalComparator;
 import database.ManagerDB;
 import database.ManagerDB;
@@ -14,7 +15,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -123,7 +126,7 @@ public class RestaurantDAO {
             r.setName(rs.getString("name"));
             r.setId_creator(rs.getInt("id_creator"));
             r.setId_restaurant(rs.getInt("id_restaurant"));
-            r.setData_creation(rs.getTimestamp("data_creation").toString().substring(0, 10));
+            r.setData_creation(rs.getTimestamp("data_creation"));
             r.setDescription(rs.getString("description"));
             r.setId_photo(rs.getInt("id_photo"));
             
@@ -451,13 +454,23 @@ public class RestaurantDAO {
         return result;
     }
 
-    public ArrayList<Integer> getLikes(int id) throws SQLException {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+    public HashMap<Integer,ArrayList<Integer>> getLikes(int id) throws SQLException {
+        HashMap<Integer,ArrayList<Integer>> result = new HashMap<>();
         PreparedStatement pd = con.prepareStatement(
-            "SELECT name FROM users WHERE id = ?;");
+            "SELECT rev.id, SUM(url.like_type) AS n_like,"
+                    + " COUNT(url.like_type) AS questo_meno_like_implica_dislike"
+                    + " FROM public.reviews rev "
+                    + "FULL OUTER JOIN public.user_review_likes url ON (url.id_review = rev.id) "
+                    + "WHERE rev.id_restaurant = ? GROUP BY rev.id ORDER BY rev.id");
         pd.setInt(1, id);
         ResultSet rs = pd.executeQuery();
-        rs.next();
+        while (rs.next()) {
+            //arrayList per likes dislikes
+            ArrayList<Integer> tmp = new ArrayList();
+            tmp.add(rs.getInt(2));
+            tmp.add(rs.getInt(3)-rs.getInt(2));
+            result.put(rs.getInt(1), tmp);
+        }
        return result;
     }
 }

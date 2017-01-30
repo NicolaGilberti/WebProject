@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,13 +71,16 @@ public class NewReview extends HttpServlet {
         
         //CURRENT DATE
         Date data_creation = new Date();
-        review.setData_creation(data_creation.toString());
+        Timestamp tmp = new Timestamp(data_creation.getTime());
+        review.setData_creation(tmp);
         
         
         // inseriamo review nel database
         ReviewDAO rDao = new ReviewDAO();
         int reviewID = rDao.insertReview(review);
-        
+        RequestDispatcher rd = request.getRequestDispatcher("WebProject2016");
+
+        rd.forward(request, response);
         //aggiungiamo foto
         PhotoBean foto = new PhotoBean();
         foto.setName("rev" + String.valueOf(reviewID) + ".jpg");
@@ -113,7 +117,7 @@ public class NewReview extends HttpServlet {
         Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
 
         
-        RequestDispatcher rd = request.getRequestDispatcher("RestaurantRequest?id=3");
+        //RequestDispatcher rd = request.getRequestDispatcher("RestaurantRequest?id=3");
 
         rd.forward(request, response);
         

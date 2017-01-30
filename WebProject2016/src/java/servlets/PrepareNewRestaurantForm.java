@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author RiccardoUni,Mirko
  */
-@WebServlet(name = "prepareNewRestaurantForm", urlPatterns = {"/prepareNewRestaurantForm"})
+@WebServlet(name = "PrepareNewRestaurantForm", urlPatterns = {"/PrepareNewRestaurantForm"})
 public class PrepareNewRestaurantForm extends HttpServlet {
 
     /**

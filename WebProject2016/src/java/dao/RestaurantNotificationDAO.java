@@ -49,7 +49,7 @@ public class RestaurantNotificationDAO {
                         t1.setDescription(rs.getString("description"));
                         t1.setRestaurant_name(rs.getString("res_name"));
                         t1.setRestaurant_city(rs.getString("city"));
-                        t1.setData_creation(rs.getString("dcreation"));
+                        t1.setData_creation(rs.getTimestamp("dcreation"));
                         t1.setDescription(rs.getString("description"));
                         t1.setId_restaurant(rs.getInt("resid"));
                         int id_photo = rs.getInt("id_photo");

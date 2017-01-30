@@ -244,9 +244,22 @@
                             <c:out value="${current.description}"></c:out>
                         </div>
                             <div class='panel-footer'>
-                                <img src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                                <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                                <!-- Modal -->
+                                <div class="modal fade" id="photosModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span>
+                                            <div class="modal-body" style="align-content: center;">
+                                                <img src="${photoPaths.get(i)}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <c:out value="${replies.get(i)}"/>
                             </div>
-                    </div>
+                        </div>
                     <c:set value="${i+1}" var="i"></c:set>
                 </c:forEach>
                 
@@ -299,6 +312,7 @@
                 </c:if>
             </div>
         
+        <script type="text/javascript" src="js/modalForReviews.js"/>
         <script type="text/javascript" src="js/qrCreator.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJJ6C2_8shojzgg6W6y4hQznpzNg0hc2s&callback=initMap">

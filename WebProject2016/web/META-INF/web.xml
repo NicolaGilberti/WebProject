@@ -262,12 +262,12 @@
         <url-pattern>/PrepareHome</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>prepareNewRestaurantForm</servlet-name>
-        <servlet-class>servlets.prepareNewRestaurantForm</servlet-class>
+        <servlet-name>PrepareNewRestaurantForm</servlet-name>
+        <servlet-class>servlets.PrepareNewRestaurantForm</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>prepareNewRestaurantForm</servlet-name>
-        <url-pattern>/prepareNewRestaurantForm</url-pattern>
+        <servlet-name>PrepareNewRestaurantForm</servlet-name>
+        <url-pattern>/PrepareNewRestaurantForm</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ConfirmRepliesServlet</servlet-name>
