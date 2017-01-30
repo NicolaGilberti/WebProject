@@ -44,7 +44,7 @@ public class MainFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse)response;
         HttpServletRequest req = (HttpServletRequest)request;
         
-        
+        // Blocco l'accesso a tutti gli utenti non loggati
         if(req.getSession().getAttribute("user") == null){
         resp.sendRedirect("notauthorized.html");
         
