@@ -5,20 +5,15 @@
  */
 package servlets;
 
-import database.ManagerDB;
+import dao.UserDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +23,6 @@ import utils.EmailSender;
  *
  * @author MirkoPortatile
  */
-
 public class ConfirmAccount extends HttpServlet {
 
     @Override
@@ -37,17 +31,13 @@ public class ConfirmAccount extends HttpServlet {
         try {
             String id = request.getParameter("id");
             String md5 = request.getParameter("cod");
-            String query = "SELECT * FROM users WHERE id=?";
+
+            EmailSender sender = new EmailSender();
             String email = "";
-            //Preparazione query
-            ManagerDB db = new ManagerDB();
-            Connection con = db.getConnection();
 
-            PreparedStatement ps;
-
-            ps = con.prepareStatement(query);
-            ps.setInt(1, Integer.valueOf(id));
-            ResultSet results = ps.executeQuery();
+            // Cerco l'utente per l'ID ottenuto
+            UserDAO userdao = new UserDAO();
+            ResultSet results = userdao.searchUserToRegisterByID(id);
 
             //Inizio generazione MD5
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -60,12 +50,11 @@ public class ConfirmAccount extends HttpServlet {
                 email = results.getString("email");
                 md.update(email.getBytes());
                 //Se è già stato confermato reindirizziamo TODO
-                if(results.getInt("type")!=-1)
-                {
+                if (results.getInt("type") != -1) {
                     response.sendRedirect("index.jsp");
                 }
             }
-            
+
             byte[] digest = md.digest();
             StringBuffer sb = new StringBuffer();
             for (byte b : digest) {
@@ -74,19 +63,19 @@ public class ConfirmAccount extends HttpServlet {
 
             //Il codice corrisponde. Confermiamo account
             if (sb.toString().equals(md5)) {
-                query = "UPDATE users SET type=0 WHERE id=?";
-                ps = con.prepareStatement(query);
-                ps.setInt(1, Integer.valueOf(id));
-                int affected = ps.executeUpdate();
+
+                //aggiorno il type se gli MD5 combaciano
+                int affected = userdao.updateUserType(id);
+
                 if (affected == 0) {
                     throw new SQLException("Errore creazione utente, no rows affected.");
 
+                } else {
+                    //Abbiamo aggiornato l'account dell'utente. Ora potrà fare l'accesso.   
+                    //Spediamo email TODO migliorare
+                    sender.send(email, "Ciao, hai confermato il tuo account! Ora puoi utilizzare il sito normalmente", "[TuttoBistrò] Email di conferma account");
+                    response.sendRedirect("accountregistrato.html");
                 }
-                //Abbiamo aggiornato l'account dell'utente. Ora potrà fare l'accesso.   
-                //Spediamo email TODO migliorare
-                EmailSender sender = new EmailSender();
-                sender.send(email, "Ciao, hai confermato il tuo account! Ora puoi utilizzare il sito normalmente", "[TuttoBistrò] Email di conferma account");
-                response.sendRedirect("accountregistrato.html");
             } else {
                 response.sendRedirect("index.jsp");
             }

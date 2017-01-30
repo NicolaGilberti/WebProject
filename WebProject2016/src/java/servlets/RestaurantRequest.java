@@ -8,6 +8,7 @@ package servlets;
 import beans.CuisineBean;
 import beans.RestaurantBean;
 import beans.ReviewBean;
+import dao.PhotoDAO;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -79,15 +80,37 @@ public class RestaurantRequest extends HttpServlet {
         request.setAttribute("openingDates", oh.toArrayListString());
         
         //reviews
+        PhotoDAO pDao = new PhotoDAO();
         ArrayList<ReviewBean> reviews = rq.getReviews(r.getId());
-        ArrayList<String> userNamesOfReviews = new ArrayList<String>();
+        ArrayList<String> userNamesOfReviews = new ArrayList<>();
+        ArrayList<String> photoPaths = new ArrayList<>();
         for (ReviewBean current : reviews) {
             String currName = rq.getUserName(current.getId_creator());
             userNamesOfReviews.add(currName);
+            String currPhotoPath = "";
+            if (((Integer)current.getId_photo()) != 0) {
+                currPhotoPath = "";
+                System.out.println("id_photo = " + ((Integer)current.getId_photo()));
+                currPhotoPath = "img/restImgs/"+ pDao.getName(current.getId_photo());
+                
+                System.out.println("currentPhotoPath = " + currPhotoPath);
+                if (!currPhotoPath.equals("img/restImgs/")) {
+                
+                photoPaths.add(currPhotoPath);
+                }
+                else {
+                    photoPaths.add("");
+                }
+            }
+            else photoPaths.add("");
+            
         }
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNameOfReviews", userNamesOfReviews);
-
+        request.setAttribute("photoPaths", photoPaths);
+        
+        //likes
+        ArrayList<Integer> likes = rq.getLikes(r.getId());
         
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
 

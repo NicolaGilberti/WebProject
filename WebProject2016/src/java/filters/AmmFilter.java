@@ -5,6 +5,7 @@
  */
 package filters;
 
+import beans.UserBean;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -42,8 +43,10 @@ public class AmmFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse)response;
         HttpServletRequest req = (HttpServletRequest)request;
         
-        if(req.getSession().getAttribute("type") != "2"){
-        resp.sendRedirect("notauthorized_ristoratore.html");
+        UserBean user = (UserBean) req.getSession(false).getAttribute("user");
+        System.out.println(user.getType());
+        if(user.getType() != 2){
+            resp.sendRedirect("notauthorized_ristoratore.html");
         
         }
 
