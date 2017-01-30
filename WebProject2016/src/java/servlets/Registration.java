@@ -40,15 +40,16 @@ public class Registration extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         try {
-
+            
+            // Prendo i parametri dalla form
             String name = request.getParameter("name");
             String surname = request.getParameter("surname");
             String nickname = request.getParameter("nickname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+           
             //Inizio generazione MD5 per link
-            
             MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(name.getBytes());
             md.update(surname.getBytes());
