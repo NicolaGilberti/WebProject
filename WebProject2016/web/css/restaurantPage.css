@@ -11,3 +11,32 @@ and open the template in the editor.
 .panel .panel-default {
     border-color:#900c3f;
 }
+  .carousel, .carousel-img {
+        height : 200px!important;
+    }
+    #qrCodeBig > img {
+        height : 200px!important;
+        width : 200px!important;
+    }
+    #qrCodeBig {
+        text-align: center;
+    }
+    #qrCodeSmall {
+        text-align: left;
+    }
+
+/* For devices 600px and larger: */    
+@media only screen and (min-device-width: 600px) {
+    .carousel, .carousel-img {
+        height : 400px!important ;
+    }
+    
+    #qrCodeBig > img {
+        height : 400px!important;
+        width : 400px!important;
+        
+    }
+    #qrCodeSmall {
+        text-align: right;
+    }
+} 

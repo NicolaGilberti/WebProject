@@ -5,6 +5,7 @@
  */
 package filters;
 
+import beans.UserBean;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -45,8 +46,10 @@ public class RistAmmFilter implements Filter {
         
         
         // L'utente non è un amministratore o un ristoratore gli blocco l'accesso
-        if(req.getSession().getAttribute("type") != "2" || req.getSession().getAttribute("type") != "1"){
-        resp.sendRedirect("notauthorized_user.html");
+        UserBean user = (UserBean) req.getSession(false).getAttribute("user");
+        System.out.println(user.getType());
+        if(user.getType() != 2 && user.getType() != 1 ){
+            resp.sendRedirect("notauthorized_user.html");
         
         }
 
