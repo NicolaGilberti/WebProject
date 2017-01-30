@@ -7,6 +7,7 @@
 
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+ <link rel="stylesheet" href="css/notification.css">
  <link rel="stylesheet" href="css/generic.css">
  
 
@@ -14,28 +15,19 @@
 
         <!-- header -->
             <ul class="nav nav-tabs" style="display: inline">
-<<<<<<< HEAD
-                 <li class="active"><a data-toggle="tab" href="#home"><h3 class="h3-subtitle"><strong>Risposte da confermare</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu1"><h3 class="h3-subtitle"><strong>Richiesta di cambiamento proprietario </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu2"><h3 class="h3-subtitle"><strong>Elimina richiesta foto </strong><span class="badge">${fn:length(noty.delphotos)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu4"><h3 class="h3-subtitle"><strong>Notifiche ristorante </strong><span class="badge">0</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu5"><h3 class="h3-subtitle"><strong>Notifiche ristorante già viste</strong><span class="badge">0</span></h3></a></li>
+                 <li class="active"><a data-toggle="tab" href="#home"><h3 class="h3-subtitle"><strong>Risposte da confermare</strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu1"><h3 class="h3-subtitle"><strong>Richiesta di cambiamento proprietario </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu2"><h3 class="h3-subtitle"><strong>Elimina richiesta foto </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu4"><h3 class="h3-subtitle"><strong>Notifiche ristorante </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu5"><h3 class="h3-subtitle"><strong>Notifiche ristorante già viste</strong></h3></a></li>
                  <li><a data-toggle="tab" href="#menu3"><h3 class="h3-subtitle"><strong>Notifiche accettate </strong></h3></a></li>
-=======
-                 <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request </strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu2"><h3><strong>Delete Photo Request </strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu4"><h3><strong>Restaurant Notification </strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu5"><h3><strong>Restaurant Notification Viewed</strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu3"><h3><strong>Notification Accepted </strong></h3></a></li>
->>>>>>> notification
             </ul>
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <p>
                         <c:if test="${fn:length(noty.replies) gt 0}">
                             <c:forEach var="replybean" items="${noty.replies}">
-                                <c:if test="${replybean.accepted == ''}">
+                                <c:if test="${replybean.accepted == false}">
                                     <div class="list-group">
                                         <c:url value="showreplyconfirm.jsp" var="repliesURL">
                                              <c:param name="id" value="${replybean.idrep}" /> --%>
@@ -57,7 +49,7 @@
                     <p>
                         <c:if test="${fn:length(noty.chowner) gt 0}">   
                            <c:forEach var="notbean" items="${noty.chowner}">
-                                <c:if test="${notbean.accepted == ''}">
+                                <c:if test="${notbean.accepted == false}">
                                     <div class="list-group">
                                      <a href="#" class="list-group-item">
                                            <strong><c:out value="${notbean.nickname}"/></strong>
@@ -76,7 +68,7 @@
                     <p>
                         <c:if test="${fn:length(noty.delphotos) gt 0}">
                           <c:forEach var="notbean" items="${noty.delphotos}">
-                                <c:if test="${notbean.accepted == ''}">
+                                <c:if test="${notbean.accepted == false}">
                                     <div class="list-group">
                                      <a href="#" class="list-group-item">
                                            <strong>Il proprietario di<c:out value="${notbean.resname}"/></strong>
@@ -94,7 +86,7 @@
                 <div id="menu3" class="tab-pane fade">
                     <p>
                          <c:forEach var="notbean" items="${noty.replies}">
-                                <c:if test="${notbean.accepted != ''}">
+                                <c:if test="${notbean.accepted == true}">
                                     <div class="list-group">
                                         <c:url value="showreplyconfirm.jsp" var="repliesURL">
                                              <c:param name="id" value="${notbean.idrep}" />
@@ -107,7 +99,7 @@
                                 </c:if>
                             </c:forEach>
                         <c:forEach var="notbean" items="${noty.chowner}">
-                            <c:if test="${notbean.accepted != ''}">
+                            <c:if test="${notbean.accepted == true}">
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
                                         <strong><c:out value="${notbean.nickname}"/></strong>
@@ -117,7 +109,7 @@
                             </c:if>
                         </c:forEach>
                         <c:forEach var="notbean" items="${noty.delphotos}">
-                            <c:if test="${notbean.accepted != ''}">
+                            <c:if test="${notbean.accepted == true}">
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
                                         <strong><c:out value="${notbean.resname}"/></strong>
