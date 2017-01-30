@@ -5,10 +5,8 @@
  */
 package servlets;
 
-import database.ManagerDB;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,18 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import beans.UserBean;
-import javax.servlet.annotation.WebServlet;
-import dao.LoginDAO;
+import dao.UserDAO;
 
 /**
  *
  * @author David
  */
-
 public class LoginAttempt extends HttpServlet {
-    
+
     UserBean user;
-    LoginDAO dao;
+    UserDAO dao;
     String exit = null;
 
     /**
@@ -44,17 +40,18 @@ public class LoginAttempt extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        
+
         // cerco di fare il login con i parametri passati
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         //Converto la password inserita dall'utente in sha256
         password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
-        // utilizzo il loginDAO per autenticarmi
-        dao = new LoginDAO(email, password);
-        user = dao.authenticate();
-      
+
+        // utilizzo lo UserDAO per autenticarmi con la funzione authenticate
+        dao = new UserDAO();
+        user = dao.authenticate(email, password);
+
         // se il DAO non mi ritorna alcun utente, ridirigo verso pagina di login con messaggio di errore
         if (user == null) {
             // metto il messaggio di errore come attributo di Request, così nel JSP si vede il messaggio
