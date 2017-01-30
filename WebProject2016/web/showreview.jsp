@@ -17,7 +17,24 @@
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <script>
+            $(document).ready(function(){ 
+                var param = ${param.result};
+                    //parte del modal relativa all'admin
+                    if(param > 0){
+                         $('#myModal').modal();
+                           
+                       $('#myModal').on('hidden.bs.modal', function() {
+                           param = 0;
+                          });
+                    }
+                    else if(param == 0 ){
+                        $("#myModalLabel").html("Non è stato possibile inserire la sua richiesta. La invitiamo a riprovare più tardi.");
+                        $('#myModal').modal();
+                    }
+                    
+            });
+        </script>
         <title>JSP Page</title>
     </head>
     <body> 
@@ -33,7 +50,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 style="font: bold;"><c:out value="${review.name}"/> 
-                        <div>
+                     <div>
                             <small class="text-muted">
                                 <c:out value='${review.nickname}'/> 
                                 <wbr>|<wbr>
@@ -63,11 +80,30 @@
                 </div>
                 <div class="panel-body">
                     <c:out value="${review.description}"></c:out>
-                    </div>
+                    <br>
+                    <br>
+                    <c:if test="${review.photo_name != ''}">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="thumbnail">
+                                    <img src="${review.photo_name}" class="img-responsive">
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
                 </div>
-                <br>
+                </div>
                 <div class="form-group">
-                 <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
+                        <c:url value="InsertReportImageServlet" var="reviewURL">
+                            <c:param name="id_photo" value="${review.id_photo}"/>
+                            <c:param name="id" value="${review.id_creator}"/>
+                        </c:url>
+                    <form action="${reviewURL}" method="POST">
+                        <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
+                        <c:if test="${review.photo_name != ''}">
+                            <button type="submit"  name="button" class="btn btn-success">Segnala foto</button>
+                        </c:if>
+                    </form>
                 </div>  
                 <!--Setting get parameter (id of reply) using jstl -->
                     <form action="InsertReply" method="POST" id="replytext" style="display:none" >
@@ -80,6 +116,20 @@
                         </div>
                     </form>
                 </div>
-        </div>
-    </body>
+                        
+            <!-- panel -->
+             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Il report dell'immagine è stato effettuato.</h4>
+                      <div style="text-align:right">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+     </body>
 </html>

@@ -13,14 +13,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+<<<<<<< HEAD
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/notificationpagejs.js"></script>
         <link href="css/notifcation.css" rel="stylesheet">
+=======
+
+>>>>>>> notification
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <jsp:include page="header/headerFiles.jsp" />
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/notificationpagejs.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
         <script>
             $(document).ready(function () {
                 var param = ${param.query_result};
@@ -55,6 +62,9 @@
             });
         </script>
         <title>Notifiche</title>     
+=======
+        <title>JSP Page</title>     
+>>>>>>> notification
     </head>
     <body>
         <jsp:include page = "header/header.jsp"/>

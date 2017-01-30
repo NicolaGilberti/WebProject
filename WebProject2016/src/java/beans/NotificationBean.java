@@ -28,10 +28,10 @@ public class NotificationBean implements java.io.Serializable {
        replies.add(rep);
    }
    public void addChowner(ChangeOwnerNotificationBean rep){
-       replies.add(rep);
+       chowner.add(rep);
    }
     public void addDelPhotos(DeletePhotoNotificationBean rep){
-       replies.add(rep);
+       delphotos.add(rep);
    }
 
     public ArrayList getReplies() {

@@ -55,6 +55,22 @@ public class InsertReplyDAO {
             replies.close();
         }
     }
+    
+    public int InsertPhotoReport(int id,int id_photo) throws SQLException, Throwable{
+        PreparedStatement replies = null;
+        int value;
+        try{
+            replies = con.prepareStatement("INSERT INTO request_delete_photos(id_user,id_photo) VALUES (?,?)");
+            replies.setInt(1,id);
+            replies.setInt(2,id_photo);
+            value = replies.executeUpdate();
+            this.finalize();
+            con.close(); 
+        }finally{
+            replies.close();
+        }
+        return value;
+    }
     //finalize per chiudere la connessione quando ho finito con la ricerca all'interno del database
     @Override
     protected void finalize() throws Throwable  
