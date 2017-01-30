@@ -291,6 +291,13 @@
     <servlet-mapping>
         <servlet-name>resultsGetCuisine</servlet-name>
         <url-pattern>/resultsGetCuisine</url-pattern>
+    </servlet-mapping> <servlet>
+        <servlet-name>NewReview</servlet-name>
+        <servlet-class>servlets.NewReview</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewReview</servlet-name>
+        <url-pattern>/NewReview</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
