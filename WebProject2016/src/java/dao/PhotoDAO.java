@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -33,7 +34,7 @@ public class PhotoDAO {
         //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
         String query = "INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES (?,?,?,?,?);";
 
-        PreparedStatement ps = con.prepareStatement(query);
+        PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, foto.getName());
         ps.setString(2, foto.getDescription());
         ps.setInt(3, foto.getId_restaurant());

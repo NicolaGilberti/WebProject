@@ -24,8 +24,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import static java.lang.Integer.parseInt;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
+import org.apache.commons.collections4.CollectionUtils;
 import utils.GeoCoder;
 import utils.GeocodeResponse;
 
@@ -95,40 +100,55 @@ public class NewRestaurant extends HttpServlet {
                 restDAO.addRestCuisine(restID, checkedCuisineIds);
                 restDAO.addRestOpeningHours(restID, checkedOpeningHoursIds);
 
-                //Tutto è andato a buon fine, possiamo dunque salvare la foto in locale e apportare modifiche nel database
-                PhotoBean foto = new PhotoBean();
-                foto.setName(String.valueOf(restID) + ".jpg");
-                foto.setDescription("Foto ristorante");
-                foto.setId_restaurant(restID);
-                foto.setId_user(userLogged.getId());
+                //Tutto è andato a buon fine, possiamo dunque salvare le foto in locale e apportare modifiche nel database
+                //Ottengo la COllection di tutte le Parts
+                Collection<Part> fileParts = request.getParts();
+                //Ora devo filtrarla, in modo da avere solo quelle riguardanti le foto
+                CollectionUtils.filter(fileParts, new org.apache.commons.collections4.Predicate<Part>() {
+                    @Override
+                    public boolean evaluate(Part o) {
+                        return o.getName().equals("foto");
+                    }
+                });
+                int i = 0;
+                //Per ogni foto salvo in db e locale.
+                for (Part part : fileParts) {
+                    PhotoBean foto = new PhotoBean();
+                    foto.setName(String.valueOf(restID) + "-" + i + ".jpg");
+                    foto.setDescription("Foto ristorante");
+                    foto.setId_restaurant(restID);
+                    foto.setId_user(userLogged.getId());
 
-                // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
-                Calendar calendar = Calendar.getInstance();
-                foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
+                    // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
+                    Calendar calendar = Calendar.getInstance();
+                    foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
 
-                //Inseriamo la foto nel db
-                PhotoDAO photoDao = new PhotoDAO();
-                photoDao.addPhoto(foto);
+                    //Inseriamo la foto nel db
+                    PhotoDAO photoDao = new PhotoDAO();
+                    photoDao.addPhoto(foto);
 
-                //Salviamo la foto in locale
-                // gets absolute path of the web application
-                String appPath = request.getServletContext().getRealPath("");
-                // constructs path of the directory to save uploaded file
-                String savePath = appPath + File.separator + SAVE_DIR;
+                    //Salviamo la foto in locale
+                    // gets absolute path of the web application
+                    String appPath = request.getServletContext().getRealPath("");
+                    // constructs path of the directory to save uploaded file
+                    String savePath = appPath + File.separator + SAVE_DIR;
 
-                // creates the save directory if it does not exists
-                File fileSaveDir = new File(savePath);
-                if (!fileSaveDir.exists()) {
-                    fileSaveDir.mkdir();
+                    // creates the save directory if it does not exists
+                    File fileSaveDir = new File(savePath);
+                    if (!fileSaveDir.exists()) {
+                        fileSaveDir.mkdir();
+                    }
+
+                    // Part part = request.getPart("foto");
+                    String fileName = String.valueOf(restID) + "-" + i + ".jpg";
+                    // refines the fileName in case it is an absolute path
+                    fileName = new File(fileName).getName();
+                    part.write(savePath + File.separator + fileName);
+                    Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
+
+                    //Incremento contatore numero foto
+                    i++;
                 }
-
-                Part part = request.getPart("foto");
-                String fileName = String.valueOf(restID) + ".jpg";
-                // refines the fileName in case it is an absolute path
-                fileName = new File(fileName).getName();
-                part.write(savePath + File.separator + fileName);
-                Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
-
                 //Fine salvataggio foto
                 //Dobbiamo aggiornare l'utente se non era già ristoratore, ora che ha messo un ristorante!
                 if (userLogged.getType() == 0) {
@@ -156,76 +176,5 @@ public class NewRestaurant extends HttpServlet {
             rd.forward(request, response);
         }
 
-        //can also write the photo to local storage
-
-        /*
-        RestaurantBean rest = new RestaurantBean();
-
-        rest.setName(request.getParameter("nome"));
-        rest.setDescription(request.getParameter("descrizione"));
-        rest.setWeb_site_url(request.getParameter("URL_sito"));
-        
-        rest.setAddress(request.getParameter("indrizzo"));
-        rest.setCap(request.getParameter("cap").isEmpty() ? 0 : parseInt(request.getParameter("cap")));
-        rest.setCity(request.getParameter("citta"));
-        rest.setCountry(request.getParameter("stato"));
-        
-        rest.setGlobal_value(0);
-
-        HttpSession session = request.getSession(false);
-        UserBean userLogged = (UserBean) session.getAttribute("utente");
-        
-        if (userLogged == null) {
-            //Errore log in utente
-        }
-        else {
-            
-            rest.setId_creator(userLogged.getId());
-            rest.setId_owner(userLogged.getId());
-            
-            //connessione DataBase
-            ManagerDB mdb = new ManagerDB();
-            Connection con = mdb.getConnection();
-
-            PreparedStatement ps = null;
-
-            try {
-                ps = con.prepareStatement(
-                        "INSERT INTO restaurants(name,description,web_site_url,"
-                                + "id_owner,id_creator,latitude,longitude,address,"
-                                + "cap,city,country,telephone,e_mail)"
-                                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);");
-
-                ps.setString(1, rest.getName());
-                ps.setString(2, rest.getDescription());
-                ps.setString(3, rest.getWeb_site_url());
-                ps.setInt(4, rest.getId_creator());
-                ps.setInt(5, rest.getId_creator());
-                //6-7
-                ps.setString(8, rest.getAddress());
-                ps.setString(9, ((Integer) rest.getCap()).toString());
-                ps.setString(10, rest.getCity());
-                ps.setString(11, rest.getCountry());
-                ps.setString(12, rest.getTelephone());
-                ps.setString(13, rest.getE_mail());
-
-                ResultSet rs = ps.executeQuery();
-
-            } catch (SQLException ex) {
-                System.out.println(ex.toString() + " errore query");
-                Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    ps.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString() + " errore chiusura classe PreparedStatement");
-                    Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                request.setAttribute("formValid", "The restaurant " + rest.getName() + " has been create ");
-                RequestDispatcher rd = request.getRequestDispatcher("/createdRestaurant.jsp");
-                rd.forward(request, response);
-            }
-        }*/
     }
 }
