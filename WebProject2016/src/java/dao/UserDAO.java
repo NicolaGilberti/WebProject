@@ -36,8 +36,44 @@ public class UserDAO {
         db = new ManagerDB();
         con = db.getConnection();
     }
+    
+    public UserBean authenticate(String email, String password) throws SQLException {
+        String query = "SELECT * FROM users WHERE email = ? AND password = ? AND type <> -1";
+        //Eseguo la query di verifica dei parametri
+        PreparedStatement stm = con.prepareStatement(query);
 
-    public void upgradeUser(int userId) throws SQLException {
+        try {
+            stm.setString(1, email);
+            stm.setString(2, password);
+
+            ResultSet rs = stm.executeQuery();
+
+            try {
+                if (rs.next()) {
+                    UserBean user = new UserBean();
+                    // vado a creare un nuovo UserBean con i dati ottenuti
+                    user.setEmail(rs.getString("email"));
+                    user.setName(rs.getString("name"));
+                    user.setSurname(rs.getString("surname"));
+                    user.setNickname(rs.getString("nickname"));
+                    user.setId(rs.getInt("id"));
+                    //   user.setLast_log("last_log");
+                    user.setType(Integer.valueOf(rs.getString("type")));
+                    return user;
+                } else {
+                    return null;
+                }
+            } finally {
+                // ricordarsi SEMPRE di chiudere i ResultSet in un blocco finally 
+                rs.close();
+            }
+        } finally { // ricordarsi SEMPRE di chiudere i PreparedStatement in un blocco finally 
+            stm.close();
+        }
+
+    }
+
+    public int upgradeUser(int userId) throws SQLException {
         String query = "UPDATE users SET type=1 WHERE id=?";
 
         int affectedRows = 0;
@@ -45,20 +81,17 @@ public class UserDAO {
 
         ps.setInt(1, userId);
         affectedRows = ps.executeUpdate();
-        if (affectedRows == 0) {
-            throw new SQLException("Errore aggiornamento utente, no rows affected.");
-        }
-
+        
+        return affectedRows;
     }
 
     public int updateUserType(String id) throws SQLException {
-
+        
         String updateuserid = "UPDATE users SET type=0 WHERE id=?";
         PreparedStatement ps = con.prepareStatement(updateuserid);
         ps.setInt(1, Integer.valueOf(id));
-        int affected = ps.executeUpdate();
-
-        return affected;
+        int affectedRows = ps.executeUpdate();
+        return affectedRows;
     }
     
     public int setRegistrationParameters(String name, String surname, String nickname, String email, String password) throws SQLException {
