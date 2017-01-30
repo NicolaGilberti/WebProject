@@ -24,7 +24,7 @@ public class LoginDAO {
     private final String password;
     ManagerDB db = new ManagerDB();
     Connection con = db.getConnection();
-    final String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+    final String query = "SELECT * FROM users WHERE email = ? AND password = ? AND type <> -1";
 
     /**
      *

@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/form-elements.css">
         <link rel="stylesheet" href="css/passwordstrength.css">
-
         <!-- scripts -->
         <script src="js/passwordstrength.js"></script>
         <script src="js/jquery.backstretch.min.js"></script>

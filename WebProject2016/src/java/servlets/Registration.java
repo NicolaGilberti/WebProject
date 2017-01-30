@@ -5,21 +5,15 @@
  */
 package servlets;
 
-import dao.RegistrationDAO;
-import database.ManagerDB;
+import dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +25,7 @@ import utils.EmailSender;
  */
 public class Registration extends HttpServlet {
 
-    RegistrationDAO regdao = new RegistrationDAO();
+    UserDAO userdao = new UserDAO();
 
     /**
      *
@@ -66,7 +60,7 @@ public class Registration extends HttpServlet {
                 sb.append(String.format("%02x", b & 0xff));
             }
             //Fine generazione MD5
-            int userID = regdao.setRegistrationParameters(name, surname, nickname, email, password);            
+            int userID = userdao.setRegistrationParameters(name, surname, nickname, email, password);            
 
             boolean sessionDebug = false;
             String url = "http://localhost:8084/WebProject2016/ConfirmAccount?id=" + Integer.toString(userID) + "&cod=" + sb.toString();
