@@ -218,11 +218,11 @@
                                     <c:out value="${current.data_creation}"/>
                                     <div class="col-stars">
                                         <%-- stelle piene --%>
-                                        <c:forEach var="i" begin="1" end="${r.global_value}">
+                                        <c:forEach var="c" begin="1" end="${r.global_value}">
                                             <span class="glyphicon glyphicon-star"></span>
                                         </c:forEach>
                                         <%-- stelle vuote --%>
-                                        <c:forEach var="i" begin="${r.global_value + 1}" end="5">
+                                        <c:forEach var="c" begin="${r.global_value + 1}" end="5">
                                             <span class="glyphicon glyphicon-star-empty"></span>
                                         </c:forEach>
                                     </div>
@@ -243,11 +243,9 @@
                         <div class="panel-body">
                             <c:out value="${current.description}"></c:out>
                         </div>
-                        <c:if test="${!photoPaths.get(i).isEmpty()}" >
                             <div class='panel-footer'>
-                                <!--img src="${photoPaths.get(i)}"-->
+                                <img src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
                             </div>
-                        </c:if>
                     </div>
                     <c:set value="${i+1}" var="i"></c:set>
                 </c:forEach>

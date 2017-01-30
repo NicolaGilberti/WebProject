@@ -88,15 +88,22 @@ public class RestaurantRequest extends HttpServlet {
             String currName = rq.getUserName(current.getId_creator());
             userNamesOfReviews.add(currName);
             String currPhotoPath = "";
-            if (!((Integer)current.getId_photo()).toString().isEmpty()) {
-                currPhotoPath = pDao.getName(current.getId_photo());
-            }
-            if (!currPhotoPath.isEmpty()) {
+            if (((Integer)current.getId_photo()) != 0) {
+                currPhotoPath = "";
+                System.out.println("id_photo = " + ((Integer)current.getId_photo()));
+                currPhotoPath = "img/restImgs/"+ pDao.getName(current.getId_photo());
+                
+                System.out.println("currentPhotoPath = " + currPhotoPath);
+                if (!currPhotoPath.equals("img/restImgs/")) {
+                
                 photoPaths.add(currPhotoPath);
+                }
+                else {
+                    photoPaths.add("");
+                }
             }
-            else {
-                photoPaths.add("");
-            }
+            else photoPaths.add("");
+            
         }
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNameOfReviews", userNamesOfReviews);

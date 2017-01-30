@@ -59,8 +59,10 @@ public class PhotoDAO {
          PreparedStatement ps = con.prepareStatement(query);
          ps.setInt(1, id_photo);
          ResultSet rs = ps.executeQuery();
-         rs.next();
-         String result = rs.getString(1);
+         String result = "";
+         if (rs.next()) {
+            result = rs.getString(1);
+         }
          rs.close();
          ps.close();
          return result;

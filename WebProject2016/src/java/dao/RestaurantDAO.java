@@ -113,9 +113,8 @@ public class RestaurantDAO {
     public ArrayList<ReviewBean> getReviews(int id) throws SQLException {
         ArrayList<ReviewBean> tmp = new ArrayList<ReviewBean>();
         PreparedStatement pd = con.prepareStatement(
-                "SELECT * FROM reviews WHERE id_restaurant = ? ORDER BY ?;");
+                "SELECT * FROM reviews WHERE id_restaurant = ?");
         pd.setInt(1, id);
-        pd.setString(2, "data_creation");
         ResultSet rs = pd.executeQuery();
 
         while (rs.next()) {
@@ -126,6 +125,7 @@ public class RestaurantDAO {
             r.setId_restaurant(rs.getInt("id_restaurant"));
             r.setData_creation(rs.getTimestamp("data_creation").toString().substring(0, 10));
             r.setDescription(rs.getString("description"));
+            r.setId_photo(rs.getInt("id_photo"));
             
             tmp.add(r);
         }
