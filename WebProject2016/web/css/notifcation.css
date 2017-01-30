@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29-nov-2016, 11.03.41
+    Author     : nicol
+*/
+
+.h3-subtitle{
+    font-family: 'Lato';
+    color: #581845;
+}
+.notification-title {
+    color: #900c3f;
+    text-align: center;
+    font-family: 'Pacifico';
+}
+
+a {
+    font-family: 'Lato';
+    
+}
+
+.h2-title{
+    font-family: 'Lato';
+    
+}
+
+hr.style15 {
+    border-top: 4px double #900c3f;
+    text-align: center;
+}
+
+hr.style15:after {
+	content: '\002666';
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	padding: 0 10px;
+	background: #e8e8e8;
+	color: #900c3f;
+	font-size: 18px;
+}
