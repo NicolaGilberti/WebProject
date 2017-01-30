@@ -13,11 +13,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/notifcation.css" rel="stylesheet">
+         <link rel="stylesheet" href="css/notification.css">
+        <link rel="stylesheet" href="css/genericsnotification.css">
+        <jsp:include page="header/headerFiles.jsp"/>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="js/notificationpagejs.js"></script>
-        <link href="css/notifcation.css" rel="stylesheet">
-        <jsp:include page="header/headerFiles.jsp"/>
-        <title>Notifiche</title>         
+        
+                 
     </head>
     <body>
         <jsp:include page = "header/header.jsp"/>

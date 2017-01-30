@@ -17,13 +17,13 @@ function getParameterByName(name, url) {
 }
 
 
- $(document).ready(function() {
-            var flag = 1;
+ $(document).ready(function(){
             $.ajaxSetup({ cache: true }); 
             setInterval(function() {
                 $("#displayarea").load("SearchNotification?flag=1")}, 30000);
+                
                 var param = getParameterByName("query_result");
-                var param_ins = getParameterByName("param.insert_reply");
+                var param_ins = getParameterByName("insert_reply");
                 //parte del modal relativa all'admin
                 if (param > 0) {
                     $('#myModal').modal();
