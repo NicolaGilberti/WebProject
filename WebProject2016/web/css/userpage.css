@@ -20,8 +20,8 @@ and open the template in the editor.
 }
 
 .add-restaurant-btn > h1 {
-    font-size: 52px;
-    margin: 10px 0 10px 0;
+    font-size: 36px;
+    margin: 15px 0 15px 0;
     color: gray;
 }
 
@@ -130,7 +130,7 @@ and open the template in the editor.
 .panel-review {
     /*border-color: #581845;*/
     box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
-    margin: 15px 0 !important;
+    margin: 0 0 15px 0 !important;
 }
 .col-stars {
     margin: 3px 0 7px 0;
