@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,21 +36,105 @@ public class UserDAO {
         db = new ManagerDB();
         con = db.getConnection();
     }
+    
+    public UserBean authenticate(String email, String password) throws SQLException {
+        String query = "SELECT * FROM users WHERE email = ? AND password = ? AND type <> -1";
+        //Eseguo la query di verifica dei parametri
+        PreparedStatement stm = con.prepareStatement(query);
 
-    public void upgradeUser(int userId) throws SQLException {
-        String query = "UPDATE users SET type=1 WHERE id=?";
+        try {
+            stm.setString(1, email);
+            stm.setString(2, password);
 
-        int affectedRows = 0;
-        PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
 
-        ps.setInt(1, userId);
-        affectedRows = ps.executeUpdate();
-        if (affectedRows == 0) {
-            throw new SQLException("Errore aggiornamento utente, no rows affected.");
+            try {
+                if (rs.next()) {
+                    UserBean user = new UserBean();
+                    // vado a creare un nuovo UserBean con i dati ottenuti
+                    user.setEmail(rs.getString("email"));
+                    user.setName(rs.getString("name"));
+                    user.setSurname(rs.getString("surname"));
+                    user.setNickname(rs.getString("nickname"));
+                    user.setId(rs.getInt("id"));
+                    //   user.setLast_log("last_log");
+                    user.setType(Integer.valueOf(rs.getString("type")));
+                    return user;
+                } else {
+                    return null;
+                }
+            } finally {
+                // ricordarsi SEMPRE di chiudere i ResultSet in un blocco finally 
+                rs.close();
+            }
+        } finally { 
+                // ricordarsi SEMPRE di chiudere i PreparedStatement in un blocco finally 
+            stm.close();
         }
 
     }
+
+    public int upgradeUser(int userId) throws SQLException {
+        // Preparo la query
+        String upgradequery = "UPDATE users SET type=1 WHERE id=?";
+        int affectedRows = 0;
+        PreparedStatement ps = con.prepareStatement(upgradequery);
+        // Imposto il tipo da 0 a 1 
+        ps.setInt(1, userId);
+        affectedRows = ps.executeUpdate();
+        
+        return affectedRows;
+    }
+
+    public int updateUserType(String id) throws SQLException {
+        // Preparo la query
+        String updateuserquery = "UPDATE users SET type=0 WHERE id=?";
+        PreparedStatement ps = con.prepareStatement(updateuserquery);
+        //imposto la type da -1 a 0
+        ps.setInt(1, Integer.valueOf(id));
+        int affectedRows = ps.executeUpdate();
+        return affectedRows;
+    }
     
+    public int setRegistrationParameters(String name, String surname, String nickname, String email, String password) throws SQLException {
+        String regquery = "INSERT INTO users(name,surname,nickname,email,password,type) VALUES (?,?,?,?,?,-1)";
+        int affectedRows = 0;
+        int userID = 0;
+
+        // Inserisco i dati nel database utilizzando la variabile regquery, definita sopra
+        PreparedStatement ps = con.prepareStatement(regquery, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, name);
+        ps.setString(2, surname);
+        ps.setString(3, nickname);
+        ps.setString(4, email);
+        ps.setString(5, password);
+
+        //eseguo l'update
+        affectedRows = ps.executeUpdate();
+        if (affectedRows == 0) {
+            throw new SQLException("Errore creazione utente, no rows affected.");
+        }
+        //Andiamo a prendere l'id del nuovo utente
+        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                userID = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Errore creazione utente, no ID obtained.");
+            }
+        }
+        return userID;
+    }
+
+    public ResultSet searchUserToRegisterByID(String id) throws SQLException {
+
+        String searchbyidquery = "SELECT * FROM users WHERE id=?";
+        //Preparazione query
+        PreparedStatement ps = con.prepareStatement(searchbyidquery);
+        ps.setInt(1, Integer.valueOf(id));
+        ResultSet results = ps.executeQuery();
+
+        return results;
+    }
 
     public boolean isValidmd5(String id, String md5) throws SQLException, NoSuchAlgorithmException {
 
@@ -128,7 +213,8 @@ public class UserDAO {
                     risto = new RestaurantBean();
                     cList = new ArrayList<CuisineBean>();
                     cList.add(c);
-
+                    
+                    // Imposto tutte le caratteristiche del ristorante
                     risto.setId(results.getInt("id"));
                     risto.setName(results.getString("name"));
                     risto.setDescription(results.getString("description"));
@@ -183,35 +269,41 @@ public class UserDAO {
 
             //Per tutti i risultati
             while (results.next()) {
-                ReviewBean r = new ReviewBean();
-                r.setAtmosphere(results.getInt("atmosphere"));
-                r.setData_creation(results.getString("data_creation"));
-                r.setDescription(results.getString("description"));
-                r.setFood(results.getInt("food"));
-                r.setGlobal_value(results.getInt("global_value"));
-                r.setId(results.getInt("id_review"));
+                ReviewBean review = new ReviewBean();
+                
+                // imposto tutte le caratteristiche delle review
+                review.setAtmosphere(results.getInt("atmosphere"));
+                review.setData_creation(results.getString("data_creation"));
+                review.setDescription(results.getString("description"));
+                review.setFood(results.getInt("food"));
+                review.setGlobal_value(results.getInt("global_value"));
+                review.setId(results.getInt("id_review"));
                 //r.setId_creator(results.getInt("id_creator"));
                 //r.setId_photo(results.getInt("id_photo"));
                 int id_photo = results.getInt("id_photo");
+                
+                // Inizio il controllo per la foto. Se esiste la foto...
                 if (id_photo != 0) {
+                    
+                    // ...vado  a prenderne il nome
                     String photoName_query = "SELECT name FROM photos WHERE id=" + id_photo;
-
                     ps = con.prepareStatement(photoName_query);
                     ResultSet res1 = ps.executeQuery();
 
                     if (res1.next()) {
-                        r.setPhoto_name(res1.getString("name"));
+                        review.setPhoto_name(res1.getString("name"));
                     }
                 } else {
-                    r.setPhoto_name("no");
+                    // ...altrimenti se non c'è imposto il campo a "no"
+                    review.setPhoto_name("no");
                 }
-                r.setId_restaurant(results.getInt("id_restaurant"));
-                r.setName(results.getString("name_review"));
-                r.setService(results.getInt("service"));
-                r.setValue_for_money(results.getInt("value_for_money"));
-                r.setRestaurant_name(results.getString("name_restaurant"));
-                r.setRestaurant_city(results.getString("city_restaurant"));
-                rev.add(r);
+                review.setId_restaurant(results.getInt("id_restaurant"));
+                review.setName(results.getString("name_review"));
+                review.setService(results.getInt("service"));
+                review.setValue_for_money(results.getInt("value_for_money"));
+                review.setRestaurant_name(results.getString("name_restaurant"));
+                review.setRestaurant_city(results.getString("city_restaurant"));
+                rev.add(review);
             }
 
             return rev;
@@ -236,31 +328,39 @@ public class UserDAO {
             ResultSet results = ps.executeQuery();
 
             if (results.next()) {
-
+                
+                // Prendo dal database la vecchia password e codifico secondo SHA256 tutti i parametri come la vecchia pwd, la nuova e la conferma della nuova
                 String old_db_pwd = results.getString("password");
                 String oldpwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(oldPwd);
                 String newpwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(newPwd);
                 String newpwd2 = org.apache.commons.codec.digest.DigestUtils.sha256Hex(newPwd2);
 
+                // Se quella nel database è uguale a quella scritta dall'utente
                 if (old_db_pwd.equals(oldpwd)) {
+                    // E quella nuova è uguale alla conferma della nuova
                     if (newpwd.equals(newpwd2)) {
+                        
+                        // Allora eseguo l'aggiornamento
                         String newpwd_query = "UPDATE users SET password=? WHERE id=?";
-
                         ps = con.prepareStatement(newpwd_query);
                         ps.setString(1, newpwd);
                         ps.setInt(2, userId);
-
                         ps.executeUpdate();
-
+                        
+                        // comunico
                         alert.setType(0);
                         alert.setTitle("");
                         alert.setDescription("La modifica della password è avvenuta con successo.");
                     } else {
+                        
+                        // comunico
                         alert.setType(1);
                         alert.setTitle("Errore!");
                         alert.setDescription("Nuova password non valida. Riprovare");
                     }
                 } else {
+                    
+                    // comunico
                     alert.setType(1);
                     alert.setTitle("Errore!");
                     alert.setDescription("Vecchia password non valida. Riprovare");
@@ -280,17 +380,17 @@ public class UserDAO {
         return alert;
     }
 
-    public int changePassword(int id,String pass) throws SQLException
-    {
-         String query = "UPDATE users SET password=? WHERE id=?";
-          // la inserisco all'interno del database
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, pass);
-            ps.setInt(2, Integer.valueOf(id));
-            return ps.executeUpdate();
+    public int changePassword(int id, String pass) throws SQLException {
+        // Preparo la query
+        String changepasswordquery = "UPDATE users SET password=? WHERE id=?";
+        // la inserisco all'interno del database
+        PreparedStatement ps = con.prepareStatement(changepasswordquery);
+        
+        ps.setString(1, pass);
+        ps.setInt(2, id);
+        return ps.executeUpdate();
     }
-    
-    
+
     public AlertBean changeNickname(UserBean user, String newNick, String password) {
 
         String pwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
@@ -308,15 +408,16 @@ public class UserDAO {
             if (results.next()) {
 
                 String db_pwd = results.getString("password");
-
+                
+                // Prendo la password dal database e se è uguale a quella inserita
                 if (pwd.equals(db_pwd)) {
-
+                    
+                    // Setto il nuovo nickname
                     String nick_query = "UPDATE users SET nickname=? WHERE id=?";
 
                     ps = con.prepareStatement(nick_query);
                     ps.setString(1, newNick);
                     ps.setInt(2, user.getId());
-
                     ps.executeUpdate();
 
                     user.setNickname(newNick);

@@ -113,7 +113,7 @@ public class RestaurantDAO {
     public ArrayList<ReviewBean> getReviews(int id) throws SQLException {
         ArrayList<ReviewBean> tmp = new ArrayList<ReviewBean>();
         PreparedStatement pd = con.prepareStatement(
-                "SELECT * FROM reviews WHERE id_restaurant = ?;");
+                "SELECT * FROM reviews WHERE id_restaurant = ?");
         pd.setInt(1, id);
         ResultSet rs = pd.executeQuery();
 
@@ -125,7 +125,8 @@ public class RestaurantDAO {
             r.setId_restaurant(rs.getInt("id_restaurant"));
             r.setData_creation(rs.getTimestamp("data_creation").toString().substring(0, 10));
             r.setDescription(rs.getString("description"));
-
+            r.setId_photo(rs.getInt("id_photo"));
+            
             tmp.add(r);
         }
         return tmp;
@@ -139,7 +140,7 @@ public class RestaurantDAO {
         ResultSet rs = pd.executeQuery();
 
         while (rs.next()) {
-            if (rs.getString("name") != "") {
+            if (!"".equals(rs.getString("name"))) {
                 path = rs.getString("name");
             } else {
                 path = rs.getString("default.png");
@@ -294,7 +295,7 @@ public class RestaurantDAO {
 
         PreparedStatement sqlStatement = null;
 
-        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value,n_visits from restaurants join price_range on restaurants.id_price_range=price_range.id ORDER BY n_visits LIMIT 4";
+        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value,n_visits from restaurants join price_range on restaurants.id_price_range=price_range.id ORDER BY n_visits DESC LIMIT 4";
 
         sqlStatement = con.prepareStatement(sql);
 
@@ -448,5 +449,15 @@ public class RestaurantDAO {
             Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
+    }
+
+    public ArrayList<Integer> getLikes(int id) throws SQLException {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        PreparedStatement pd = con.prepareStatement(
+            "SELECT name FROM users WHERE id = ?;");
+        pd.setInt(1, id);
+        ResultSet rs = pd.executeQuery();
+        rs.next();
+       return result;
     }
 }

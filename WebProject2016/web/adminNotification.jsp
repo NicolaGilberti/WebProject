@@ -15,12 +15,12 @@
 
         <!-- header -->
             <ul class="nav nav-tabs" style="display: inline">
-                 <li class="active"><a data-toggle="tab" href="#home"><h3><strong>Replies To Confirm</strong> <span class="badge">${fn:length(noty.replies)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu1"><h3><strong>Change owner Request </strong><span class="badge">${fn:length(noty.chowner)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu2"><h3><strong>Delete Photo Request </strong><span class="badge">${fn:length(noty.delphotos)}</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu4"><h3><strong>Restaurant Notification </strong><span class="badge">0</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu5"><h3><strong>Restaurant Notification Viewed</strong><span class="badge">0</span></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu3"><h3><strong>Notification Accepted </strong></h3></a></li>
+                 <li class="active"><a data-toggle="tab" href="#home"><h3 class="h3-subtitle"><strong>Risposte da confermare</strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu1"><h3 class="h3-subtitle"><strong>Richiesta di cambiamento proprietario </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu2"><h3 class="h3-subtitle"><strong>Elimina richiesta foto </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu4"><h3 class="h3-subtitle"><strong>Notifiche ristorante </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu5"><h3 class="h3-subtitle"><strong>Notifiche ristorante già viste</strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu3"><h3 class="h3-subtitle"><strong>Notifiche accettate </strong></h3></a></li>
             </ul>
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
@@ -162,16 +162,9 @@
                            </c:forEach>
                          </c:if>
                         <c:if test="${empty resnoty.review_list}">
-                            <h1> Per ora non ci sono notifiche, torna più tardi</h1>
+                            <h2 class="h2-title"> Per ora non ci sono notifiche, torna più tardi</h2>
                         </c:if>
                      </p>
                 </div>
                 
               </div>
-              <div class="navbar">
-                <!--footer-->
-                <footer>
-                    <hr>
-                    <p>Realizzato da Mirko, Nicola, David, Marco e Riccardo.</p>
-                </footer>
-            </div>

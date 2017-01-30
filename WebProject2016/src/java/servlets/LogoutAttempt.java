@@ -18,14 +18,12 @@ import javax.servlet.http.HttpSession;
  *
  * @author MirkoPortatile
  */
-
 public class LogoutAttempt extends HttpServlet {
 
- 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+
     }
 
     /**
@@ -40,11 +38,11 @@ public class LogoutAttempt extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-       if (request.getParameter("logout") != null) {  
-    session.invalidate();
-    response.sendRedirect("index.jsp");
-    return;
-}
+        if (request.getParameter("logout") != null) {
+            session.invalidate();
+            response.sendRedirect("index.jsp");
+            return;
+        }
     }
 
 }

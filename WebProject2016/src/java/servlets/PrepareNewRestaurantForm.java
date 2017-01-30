@@ -29,8 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author RiccardoUni,Mirko
  */
-@WebServlet(name = "prepareNewRestaurantForm", urlPatterns = {"/prepareNewRestaurantForm"})
-public class prepareNewRestaurantForm extends HttpServlet {
+public class PrepareNewRestaurantForm extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -85,7 +84,7 @@ public class prepareNewRestaurantForm extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(prepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PrepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,7 +102,7 @@ public class prepareNewRestaurantForm extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(prepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PrepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

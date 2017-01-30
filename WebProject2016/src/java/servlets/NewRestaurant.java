@@ -11,15 +11,8 @@ import beans.UserBean;
 import dao.PhotoDAO;
 import dao.RestaurantDAO;
 import dao.UserDAO;
-import database.ManagerDB;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,8 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import static java.lang.Integer.parseInt;
 import java.util.Calendar;
-import java.util.Collection;
-import javax.servlet.ServletContext;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 import utils.GeoCoder;
@@ -142,9 +133,13 @@ public class NewRestaurant extends HttpServlet {
                 //Dobbiamo aggiornare l'utente se non era già ristoratore, ora che ha messo un ristorante!
                 if (userLogged.getType() == 0) {
                     UserDAO userDAO = new UserDAO();
-                    userDAO.upgradeUser(userLogged.getId());
-                    userLogged.setType(1);
-                    session.setAttribute("user", userLogged);
+                    int affectedRows = userDAO.upgradeUser(userLogged.getId());
+                    if (affectedRows == 0) {
+                        throw new SQLException("Errore aggiornamento utente, no rows affected.");
+                    } else {
+                        userLogged.setType(1);
+                        session.setAttribute("user", userLogged);
+                    }
                 }
 
                 request.setAttribute("formValid", "The restaurant " + rest.getName() + " has been create ");

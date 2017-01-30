@@ -6,13 +6,11 @@
 package dao;
 
 import beans.PhotoBean;
-import beans.StateBean;
 import database.ManagerDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -28,9 +26,10 @@ public class PhotoDAO {
         con = db.getConnection();
     }
 
-    public void addPhoto(PhotoBean foto) throws SQLException {
+    public int addPhoto(PhotoBean foto) throws SQLException {
 
         int affectedRows = 0;
+        int result = 0;
         //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
         String query = "INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES (?,?,?,?,?);";
 
@@ -40,9 +39,34 @@ public class PhotoDAO {
         ps.setInt(3, foto.getId_restaurant());
         ps.setInt(4, foto.getId_user());
         ps.setTimestamp(5, foto.getDate());
+        
         affectedRows = ps.executeUpdate();
         if (affectedRows == 0) {
             throw new SQLException("Errore inserimento foto, no rows affected.");
         }
+        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                result = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Errore creazione foto, no ID obtained.");
+            }
+        }
+        return result;
+    }
+
+    public String getName(int id_photo) throws SQLException {
+         String query = "SELECT name FROM photos WHERE id = ?";
+         PreparedStatement ps = con.prepareStatement(query);
+         ps.setInt(1, id_photo);
+         ResultSet rs = ps.executeQuery();
+         String result = "";
+         if (rs.next()) {
+            result = rs.getString(1);
+         }
+         rs.close();
+         ps.close();
+         return result;
+        
+
     }
 }

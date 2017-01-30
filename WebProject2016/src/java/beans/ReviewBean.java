@@ -5,6 +5,8 @@
  */
 package beans;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author nicol
@@ -22,22 +24,20 @@ public class ReviewBean implements java.io.Serializable {
     private String restaurant_name;
     private String restaurant_city;
     private int id_creator;
+    private int id_photo;
     private String photo_name;
     private boolean view;
     private String data_creation;
-    private int id_restaurant;
-    private String nickname;
-    private int id_photo;
-
-    
-    
-    public void setId_photo(int id_photo) {
-        this.id_photo = id_photo;
-    }
 
     public int getId_photo() {
         return id_photo;
     }
+
+    public void setId_photo(int id_photo) {
+        this.id_photo = id_photo;
+    }
+    private int id_restaurant;
+    private String nickname;
     
     public void setNickname(String nickname) {
         this.nickname = nickname;
@@ -177,4 +177,5 @@ public class ReviewBean implements java.io.Serializable {
     return " "+this.id+" "+this.data_creation+" "+this.description+" "+this.name+" "+this.nickname+"  photoname"+this.photo_name+" "+this.restaurant_city+" "+restaurant_name+" "+atmosphere+" "+food+" "+global_value+" "+id_creator+" "+id_restaurant+" "+this.service+" "+this.value_for_money+" "+this.view;
     
     }
+
 }

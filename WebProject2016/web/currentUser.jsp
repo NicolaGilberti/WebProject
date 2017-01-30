@@ -16,12 +16,12 @@
         <link href="css/userpage.css" rel="stylesheet">
         <link href="css/resultsStyle.css" rel="stylesheet">
         <link rel="stylesheet" href="css/passwordstrength.css">
-        
+
         <script src="js/checkNewPwd.js"></script>
         <script src="js/changeUserPwd.js"></script>
         <script src="js/scripts.js"></script>
 
-        <title>TuttoBistrò - User</title>
+        <title>TuttoBistrò - Profilo Utente</title>
 
     </head>
     <body>
@@ -93,21 +93,21 @@
                                 <input type="password" class="form-control" id="oldPwd" name="oldPwd" required >
                                 <label for="newPwd" id="label-newPwd">Nuova password:</label>
                                 <input type="password" class="form-password form-control" id="newPwd" name="newPwd" pattern= "(?=.*\d)(?=.*[a-z]).{8,}" required >
-                                
-                                <div class ="form-group">
-                                    <div id="pswd_info">
-                                        <h4>La password deve avere:</h4>
-                                        <ul>
-                                            <li id="letter" class="invalid">Almeno <strong>una lettera in minuscolo</strong></li>
-                                            <li id="capital" class="invalid">Almeno <strong>una lettera in maiuscolo</strong></li>
-                                            <li id="number" class="invalid">Almeno <strong>un numero</strong></li>
-                                            <li id="length" class="invalid">Almeno <strong>8 caratteri</strong></li>
-                                        </ul>
-                                    </div>
+
+                            <div class ="form-group">
+                                <div id="pswd_info">
+                                    <h4>La password deve avere:</h4>
+                                    <ul>
+                                        <li id="letter" class="invalid">Almeno <strong>una lettera in minuscolo</strong></li>
+                                        <li id="capital" class="invalid">Almeno <strong>una lettera in maiuscolo</strong></li>
+                                        <li id="number" class="invalid">Almeno <strong>un numero</strong></li>
+                                        <li id="length" class="invalid">Almeno <strong>8 caratteri</strong></li>
+                                    </ul>
                                 </div>
-                            
-                                <label for="newPwd2" id="label-newPwd2">Ripeti password:</label>
-                                <input type="password" class="form-control" id="newPwd2" name="newPwd2" pattern= "(?=.*\d)(?=.*[a-z]).{8,}" required >
+                            </div>
+
+                            <label for="newPwd2" id="label-newPwd2">Ripeti password:</label>
+                            <input type="password" class="form-control" id="newPwd2" name="newPwd2" pattern= "(?=.*\d)(?=.*[a-z]).{8,}" required >
 
                             </p>
                         </div>
@@ -152,7 +152,7 @@
             <div class="user-info">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="col-xs-center">
+                        <h1 style="color: #900c3f">
                             <c:out value="${user.name} ${user.surname}" />
                         </h1>
                         <!--
@@ -221,11 +221,6 @@
                     <div class="user-restaurants-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h2 class="user-restaurants user-title col-xs-center">I miei ristoranti</h2>
                     </div>
-                    <div class="user-new-restaurant-btn col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <form action="newRestaurantForm.jsp">
-                            <button type="submit" class="btn btn-default col-xs-center" >Aggiungi nuovo</button>
-                        </form>
-                    </div>
                 </div>
 
                 <!-- Avvia servlet per ricerca miei ristoranti -->
@@ -239,12 +234,11 @@
                                     <div class="overlay"></div>
                                     <header>
                                         <h1>
-                                            <c:out value="${restaurant.name}" />
+                                            <a style="color: white; text-decoration: none;" href="RestaurantRequest?id=${restaurant.id}">
+                                                <c:out value='${restaurant.name}' />
+                                            </a>
                                         </h1>
                                         <div>
-                                            <c:forEach var="j" begin="${restaurant.global_value + 1}" end="5">
-                                                <span class="pull-right glyphicon glyphicon-star-empty val"></span>
-                                            </c:forEach>
                                             <c:forEach var="i" begin="1" end="${restaurant.global_value}">
                                                 <span class="pull-right glyphicon glyphicon-star val"></span>
                                             </c:forEach>
@@ -287,16 +281,13 @@
                     <!--/row-->
                 </div>
 
-                <!--
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3>Ristorante 1</h3>
-                    </div>
-                    <div class="col-sm-12">
-                        <p>via X 69, Trento (TN)</p>
+                <div class="row add-restaurant-row">
+                    <div class="col-sm-3"></div>
+                    <div class="add-restaurant-btn col-xs-12 col-sm-6">
+                        <h1>Aggiungi ristorante</h1>
+                        <a class="add-restaurant-link" href="prepareNewRestaurantForm"></a>
                     </div>
                 </div>
-                -->
 
             </c:if>
 

@@ -88,7 +88,7 @@
                                 <c:if test="${i>0}" >  
                                     <div class="item">
                                     </c:if>
-                                    <img src="${current}" class="img-rounded" alt="${current}">
+                                    <img src="${current}" class="carousel-img img-rounded" alt="${current}">
                                 </div>
                                 <c:set value="1" var="i"></c:set>    
                             </c:forEach>
@@ -218,11 +218,11 @@
                                     <c:out value="${current.data_creation}"/>
                                     <div class="col-stars">
                                         <%-- stelle piene --%>
-                                        <c:forEach var="i" begin="1" end="${r.global_value}">
+                                        <c:forEach var="c" begin="1" end="${r.global_value}">
                                             <span class="glyphicon glyphicon-star"></span>
                                         </c:forEach>
                                         <%-- stelle vuote --%>
-                                        <c:forEach var="i" begin="${r.global_value + 1}" end="5">
+                                        <c:forEach var="c" begin="${r.global_value + 1}" end="5">
                                             <span class="glyphicon glyphicon-star-empty"></span>
                                         </c:forEach>
                                     </div>
@@ -243,6 +243,9 @@
                         <div class="panel-body">
                             <c:out value="${current.description}"></c:out>
                         </div>
+                            <div class='panel-footer'>
+                                <img src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                            </div>
                     </div>
                     <c:set value="${i+1}" var="i"></c:set>
                 </c:forEach>
@@ -250,35 +253,56 @@
                 
                 <!--newReview-->
                 <c:if test="${sessionScope.user!=null}">
+                    <form action="NewReview">
                     <div class="panel panel-default">
-                        
-                        <form action="newReview">
                             <div class="panel-heading">
                                 <div class="form-group">
-                                    <div class="row col-md-4">
-                                    <input type="text" placeholder="Titolo" class="form-control" id="Titolo">
+                                    <div class="row">
+                                        <div class="col-md-4 col-xs-6 col-sm-8 col-lg-4">
+                                        <input required type="text" placeholder="Com'è il ristorante?" class="form-control" id="name" name='name'>
+                                        </div>
+                                        <div class="col-md-8 col-xs-6 col-sm-4 col-lg-8 text-right">
+                                            <button type=" submit" class="btn btn-primary">lascia recensione</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="row col-md-12">
-                                        Stelle:
-                                        <input type="number" id="stars" min="0" max="5" class="form-control">
-                                        
+                                    <div class="row">
+                                        <div class="col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                            <input required placeholder="stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                            <input required placeholder="cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                            <input required placeholder="qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                            <input required placeholder="atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                            <input required  placeholder="servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                        <textarea required class="form-control" rows="3"  placeholder="la tua esperienza..." id="description" name='description'></textarea>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </div> 
+                        <input type='hidden' name="restaurantId" value="${r.id}">
+                    </form>
                 </c:if>
             </div>
         
         <script type="text/javascript" src="js/qrCreator.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJJ6C2_8shojzgg6W6y4hQznpzNg0hc2s&callback=initMap">
-    </script>
+    </scri
          
     </body>
 </html>

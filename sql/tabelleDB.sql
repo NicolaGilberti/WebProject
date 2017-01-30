@@ -1,4 +1,11 @@
-﻿-- il database lo ho chiamato WebProjectDB io se date altro nome c'è da stare attenti durante la gestione della connessione
+-- il database lo ho chiamato WebProjectDB io se date altro nome c'è da stare attenti durante la gestione della connessione
+
+CREATE TABLE states(
+id SERIAL PRIMARY KEY,
+name VARCHAR(50),
+abbr VARCHAR(3)
+);
+
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
 name VARCHAR(255) NOT NULL,
@@ -9,6 +16,7 @@ password VARCHAR(260) NOT NULL,
 type INTEGER NOT NULL,
 last_log TIMESTAMP
 );
+ALTER TABLE users ADD CONSTRAINT email_user UNIQUE (email);
 
 CREATE TABLE price_range(
 id SERIAL PRIMARY KEY,
@@ -32,6 +40,15 @@ FOREIGN KEY (id_creator) REFERENCES users (id),
 FOREIGN KEY (id_owner) REFERENCES users (id),
 FOREIGN KEY (id_price_range) REFERENCES price_range (id)
 );
+ALTER TABLE restaurants ADD COLUMN cap VARCHAR(5);
+ALTER TABLE restaurants ADD COLUMN city VARCHAR(25);
+ALTER TABLE restaurants ADD COLUMN country INTEGER;
+ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
+ALTER TABLE restaurants ADD COLUMN telephone VARCHAR(10);
+ALTER TABLE restaurants ADD COLUMN email VARCHAR(50);
+ALTER TABLE restaurants ADD CONSTRAINT states FOREIGN KEY (country) REFERENCES states (id) MATCH FULL;
+ALTER TABLE restaurants ADD CONSTRAINT email UNIQUE (email);
+ALTER TABLE restaurants ADD COLUMN n_visits INTEGER;
 
 CREATE TABLE opening_hours_range(
 id SERIAL PRIMARY KEY,
@@ -71,6 +88,8 @@ data_creation TIMESTAMP NOT NULL,
 FOREIGN KEY (id_restaurant) REFERENCES restaurants (id),
 FOREIGN KEY (id_user) REFERENCES users (id)
 );
+ALTER TABLE photos ALTER COLUMN name TYPE VARCHAR(100);
+ALTER TABLE photos ADD COLUMN visible boolean DEFAULT true;
 
 CREATE TABLE reviews(
 id SERIAL PRIMARY KEY,
@@ -89,6 +108,8 @@ FOREIGN KEY (id_restaurant) REFERENCES restaurants (id),
 FOREIGN KEY (id_creator) REFERENCES users (id),
 FOREIGN KEY (id_photo) REFERENCES photos (id)
 );
+ALTER TABLE reviews ADD COLUMN view boolean DEFAULT false;
+ALTER TABLE reviews ALTER COLUMN name TYPE VARCHAR(100);
 
 CREATE TABLE user_review_likes(
 id_user INTEGER,
@@ -112,6 +133,7 @@ FOREIGN KEY (id_validator) REFERENCES users (id),
 FOREIGN KEY (id_owner) REFERENCES users (id),
 FOREIGN KEY (id_review) REFERENCES reviews (id)
 );
+ALTER TABLE replies ADD COLUMN accepted boolean;
 
 CREATE TABLE request_delete_photos (
 id_user INTEGER,
@@ -120,6 +142,7 @@ PRIMARY KEY(id_user,id_photo),
 FOREIGN KEY (id_user) REFERENCES users (id),
 FOREIGN KEY (id_photo) REFERENCES photos (id)
 );
+ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
 
 CREATE TABLE request_changes_owner (
 id_user INTEGER,
@@ -128,29 +151,4 @@ PRIMARY KEY(id_user,id_restaurant),
 FOREIGN KEY (id_user) REFERENCES users (id),
 FOREIGN KEY (id_restaurant) REFERENCES restaurants (id)
 );
-
-
--- aggiunte 
-ALTER TABLE restaurants ADD COLUMN cap VARCHAR(5);
-ALTER TABLE restaurants ADD COLUMN city VARCHAR(25);
-ALTER TABLE restaurants ADD COLUMN country INTEGER;
-ALTER TABLE request_delete_photos ADD COLUMN accepted boolean;
 ALTER TABLE request_changes_owner ADD COLUMN accepted boolean;
-ALTER TABLE restaurants ALTER COLUMN name TYPE VARCHAR(50);
-ALTER TABLE restaurants ADD COLUMN telephone VARCHAR(10);
-ALTER TABLE restaurants ADD COLUMN email VARCHAR(50);
--- nuova tabella richiestissima
-CREATE TABLE states(
-id SERIAL PRIMARY KEY,
-name VARCHAR(50),
-abbr VARCHAR(3)
-);
--- non so cosa sia il primo states ma funziona
-ALTER TABLE restaurants ADD CONSTRAINT states FOREIGN KEY (country) REFERENCES states (id) MATCH FULL;
-ALTER TABLE photos ALTER COLUMN name TYPE VARCHAR(100);
-ALTER TABLE restaurants ADD CONSTRAINT email UNIQUE (email);
-ALTER TABLE reviews ALTER COLUMN name TYPE VARCHAR(100);
-ALTER TABLE restaurants ADD COLUMN n_visits INTEGER;
-ALTER TABLE replies ADD COLUMN accepted boolean;
-ALTER TABLE users ADD CONSTRAINT email_user UNIQUE (email);
-ALTER TABLE reviews ADD COLUMN view boolean DEFAULT false;
