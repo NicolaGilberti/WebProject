@@ -23,8 +23,9 @@
                  
     </head>
     <body>
-        <jsp:include page = "header/header.jsp"/>
         <div class="container-fluid">
+        <jsp:include page = "header/header.jsp"/>
+       
             <div class="panel-body">
                 <h1 class="notification-title">Le Notifiche </h1>
             </div>
@@ -39,7 +40,7 @@
                 </c:if>
             </div>
             <!--area che verrà aggiornata dallo script-->
-        </div>
+        
         <!-- panel per la conferma dei cambiamenti -->    
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -53,6 +54,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </body>
 </html>

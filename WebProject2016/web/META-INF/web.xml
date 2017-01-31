@@ -133,6 +133,10 @@
         <servlet-name>DeletePhotoRequest</servlet-name>
         <servlet-class>servlets.DeletePhotoRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeOwnerRequestServlet</servlet-name>
+        <servlet-class>ChangeOwnerRequestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAccountPage</servlet-name>
         <url-pattern>/UserAccountPage</url-pattern>
@@ -336,6 +340,10 @@
     <servlet-mapping>
         <servlet-name>UpdateReviewServlet</servlet-name>
         <url-pattern>/UpdateReviewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeOwnerRequestServlet</servlet-name>
+        <url-pattern>/ChangeOwnerRequestServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

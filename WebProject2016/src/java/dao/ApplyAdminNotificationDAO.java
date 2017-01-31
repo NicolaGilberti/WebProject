@@ -20,65 +20,68 @@ import java.sql.SQLException;
  * @author Marco
  */
 public class ApplyAdminNotificationDAO {
+
     ManagerDB db;
     Connection con;
-    
-    public ApplyAdminNotificationDAO(){
-        db= new ManagerDB();
+
+    public ApplyAdminNotificationDAO() {
+        db = new ManagerDB();
         con = db.getConnection();
     }
+
     /**
-     * 
+     *
      * @param id
-     * @return this function return the numbers of the replies updated. i'm going to update 1 row at time so if the reply is updated
-     * the function return 1
+     * @return this function return the numbers of the replies updated. i'm
+     * going to update 1 row at time so if the reply is updated the function
+     * return 1
      * @throws SQLException
-     * @throws Throwable 
+     * @throws Throwable
      */
-    
-    public int confirmReplies(int id, int adminid) throws SQLException, Throwable{
+
+    public int confirmReplies(int id, int adminid) throws SQLException, Throwable {
         PreparedStatement replies = null;
-        try{
+        try {
             replies = con.prepareStatement("UPDATE replies SET accepted = true, date_validation = now(),id_validator=? WHERE id =? ");
-            replies.setInt(1,adminid);
-            replies.setInt(2,id);
-            int value = replies.executeUpdate();
-            this.finalize();
-            con.close(); 
-            return value;
-        }finally{
-            replies.close();
-        }
-    }
-    
-    /**
-     * 
-     * @param id
-     * @return this function return the numbers of the replies deleted. i'm going to delete 1 row at time so if the reply is deleted 
-     * the function return 1
-     * @throws SQLException
-     * @throws Throwable 
-     */
-    
-     public int deleteReplies(int id,int adminid) throws SQLException, Throwable{
-        PreparedStatement replies = null;
-        try{
-            replies = con.prepareStatement("UPDATE replies SET accepted = false, date_validation = now(),id_validator=? WHERE id =? ");
-            replies.setInt(1,adminid);
-            replies.setInt(2,id);
+            replies.setInt(1, adminid);
+            replies.setInt(2, id);
             int value = replies.executeUpdate();
             this.finalize();
             con.close();
             return value;
-        }finally{
+        } finally {
             replies.close();
         }
     }
-    
-    public int acceptPhotoRequest(int id) throws SQLException, Throwable{
+
+    /**
+     *
+     * @param id
+     * @return this function return the numbers of the replies deleted. i'm
+     * going to delete 1 row at time so if the reply is deleted the function
+     * return 1
+     * @throws SQLException
+     * @throws Throwable
+     */
+    public int deleteReplies(int id, int adminid) throws SQLException, Throwable {
+        PreparedStatement replies = null;
+        try {
+            replies = con.prepareStatement("UPDATE replies SET accepted = false, date_validation = now(),id_validator=? WHERE id =? ");
+            replies.setInt(1, adminid);
+            replies.setInt(2, id);
+            int value = replies.executeUpdate();
+            this.finalize();
+            con.close();
+            return value;
+        } finally {
+            replies.close();
+        }
+    }
+
+    public int acceptPhotoRequest(int id) throws SQLException, Throwable {
         PreparedStatement replies = null;
         int value;
-        try{
+        try {
             replies = con.prepareStatement("UPDATE request_delete_photos SET accepted = true WHERE id_photo =? ");
             replies.setInt(1, id);
             value = replies.executeUpdate();
@@ -88,16 +91,15 @@ public class ApplyAdminNotificationDAO {
             this.finalize();
             con.close();
             return value;
-        }finally{
+        } finally {
             replies.close();
         }
     }
-    
-    
-    public int discardPhotoRequest(int id) throws SQLException, Throwable{
+
+    public int discardPhotoRequest(int id) throws SQLException, Throwable {
         PreparedStatement replies = null;
         int value;
-        try{
+        try {
             replies = con.prepareStatement("UPDATE request_delete_photos SET accepted = false WHERE id_photo =? ");
             replies.setInt(1, id);
             value = replies.executeUpdate();
@@ -107,20 +109,59 @@ public class ApplyAdminNotificationDAO {
             this.finalize();
             con.close();
             return value;
-        }finally{
+        } finally {
             replies.close();
         }
     }
+
+    public int acceptChangeOwnerRequest(int idu,int idr) throws SQLException, Throwable {
+        PreparedStatement replies = null;
+        int value;
+        try {
+            replies = con.prepareStatement("UPDATE request_changes_owner SET accepted = true WHERE id_user = ? AND id_restaurant = ?  ");
+            replies.setInt(1, idu);
+            replies.setInt(2, idr);
+            value = replies.executeUpdate();
+            replies = con.prepareStatement("UPDATE users SET type = 1  WHERE id = ? ");
+            replies.setInt(1, idu);
+            value = replies.executeUpdate();
+            replies = con.prepareStatement("UPDATE restaurants SET id_owner = ?  WHERE id = ? ");
+            replies.setInt(1, idu);
+            replies.setInt(2, idr);
+            value = replies.executeUpdate();
+            this.finalize();
+            con.close();
+            return value;
+        } finally {
+            replies.close();
+        }
+    }
+
+    public int discardChangeOwnerRequest(int idu,int idr) throws SQLException, Throwable {
+        PreparedStatement replies = null;
+        int value;
+        try {
+            replies = con.prepareStatement("UPDATE request_changes_owner SET accepted = false WHERE id_user = ? AND id_restaurant = ?  ");
+            replies.setInt(1, idu);
+            replies.setInt(2, idr);
+            value = replies.executeUpdate();
+            this.finalize();
+            con.close();
+            return value;
+        } finally {
+            replies.close();
+        }
+    }
+
     //finalize per chiudere la connessione quando ho finito con la ricerca all'interno del database
     @Override
-    protected void finalize() throws Throwable  
-{  
-    try { con.close(); } 
-    catch (SQLException e) { 
-        e.printStackTrace();
+    protected void finalize() throws Throwable {
+        try {
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        super.finalize();
     }
-    super.finalize();  
-}  
-    
-}
 
+}
