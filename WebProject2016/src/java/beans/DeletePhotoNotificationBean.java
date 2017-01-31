@@ -21,6 +21,13 @@ public class DeletePhotoNotificationBean {
         this.accepted = accepted;
     }
     
+    public void setPhotoname(String photo_name) {
+        if (photo_name.equals("no")) {
+            this.photoname = "";
+        } else {
+            this.photoname = "img\\reviewsImgs\\" + photo_name;
+        }
+    }
     
     public int getUsrid() {
         return usrid;
@@ -48,10 +55,6 @@ public class DeletePhotoNotificationBean {
 
     public void setResname(String resname) {
         this.resname = resname;
-    }
-
-    public void setPhotoname(String photoname) {
-        this.photoname = photoname;
     }
 
     public void setNickname(String nickname) {

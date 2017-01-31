@@ -19,11 +19,11 @@ import java.sql.SQLException;
  *
  * @author Marco
  */
-public class ApplyConfirmRepliesDAO {
+public class ApplyAdminNotificationDAO {
     ManagerDB db;
     Connection con;
     
-    public ApplyConfirmRepliesDAO(){
+    public ApplyAdminNotificationDAO(){
         db= new ManagerDB();
         con = db.getConnection();
     }
@@ -60,11 +60,12 @@ public class ApplyConfirmRepliesDAO {
      * @throws Throwable 
      */
     
-     public int deleteReplies(int id) throws SQLException, Throwable{
+     public int deleteReplies(int id,int adminid) throws SQLException, Throwable{
         PreparedStatement replies = null;
         try{
-            replies = con.prepareStatement("DELETE FROM replies WHERE id = ?");
-            replies.setInt(1,id);
+            replies = con.prepareStatement("UPDATE replies SET accepted = false, date_validation = now(),id_validator=? WHERE id =? ");
+            replies.setInt(1,adminid);
+            replies.setInt(2,id);
             int value = replies.executeUpdate();
             this.finalize();
             con.close();
@@ -74,8 +75,41 @@ public class ApplyConfirmRepliesDAO {
         }
     }
     
-    public void discardReplies() throws SQLException, Throwable{
-        
+    public int acceptPhotoRequest(int id) throws SQLException, Throwable{
+        PreparedStatement replies = null;
+        int value;
+        try{
+            replies = con.prepareStatement("UPDATE request_delete_photos SET accepted = true WHERE id_photo =? ");
+            replies.setInt(1, id);
+            value = replies.executeUpdate();
+            replies = con.prepareStatement("UPDATE photos SET visible = true WHERE id =? ");
+            replies.setInt(1, id);
+            value = replies.executeUpdate();
+            this.finalize();
+            con.close();
+            return value;
+        }finally{
+            replies.close();
+        }
+    }
+    
+    
+    public int discardPhotoRequest(int id) throws SQLException, Throwable{
+        PreparedStatement replies = null;
+        int value;
+        try{
+            replies = con.prepareStatement("UPDATE request_delete_photos SET accepted = false WHERE id_photo =? ");
+            replies.setInt(1, id);
+            value = replies.executeUpdate();
+            replies = con.prepareStatement("UPDATE photos SET visible = false WHERE id =? ");
+            replies.setInt(1, id);
+            value = replies.executeUpdate();
+            this.finalize();
+            con.close();
+            return value;
+        }finally{
+            replies.close();
+        }
     }
     //finalize per chiudere la connessione quando ho finito con la ricerca all'interno del database
     @Override

@@ -69,10 +69,13 @@
                         <c:if test="${fn:length(noty.delphotos) gt 0}">
                           <c:forEach var="notbean" items="${noty.delphotos}">
                                 <c:if test="${notbean.accepted == false}">
+                                <c:url value="showPhotoDeleteRequest.jsp" var="photoURL">
+                                    <c:param name="id" value="${notbean.idphoto}" />
+                                </c:url>
                                     <div class="list-group">
-                                     <a href="#" class="list-group-item">
-                                           <strong>Il proprietario di<c:out value="${notbean.resname}"/></strong>
-                                           ha chiesto di rimuovere una foto postata sul proprio ristorante.
+                                     <a href="${photoURL}" class="list-group-item">
+                                         E'stata segnalata una foto di 
+                                           <strong><c:out value="${notbean.nickname}"/></strong>
                                      </a>
                                     </div>
                                 </c:if>
@@ -110,10 +113,13 @@
                         </c:forEach>
                         <c:forEach var="notbean" items="${noty.delphotos}">
                             <c:if test="${notbean.accepted == true}">
+                                <c:url value="showPhotoDeleteRequest.jsp" var="repliesURL">
+                                    <c:param name="id" value="${notbean.idphoto}" />
+                                </c:url>
                                 <div class="list-group">
                                     <a href="#" class="list-group-item">
-                                        <strong><c:out value="${notbean.resname}"/></strong>
-                                        Ha risposto ad un commento di <strong><c:out value="${notbean.nickname}"/></strong> sul proprio ristorante.
+                                        E'stata segnalata una foto di 
+                                           <strong><c:out value="${notbean.nickname}"/></strong>
                                     </a>
                                 </div>
                             </c:if>
@@ -150,7 +156,7 @@
                            <c:forEach var="notbean" items="${resnoty.review_list}">
                                 <c:if test="${notbean.view == true}">
                                     <c:url value="showreview.jsp" var="reviewURL">
-                                        <c:param name="id" value="${notbean.id}" />
+                                        <c:param name="id" value="${notbean.idphoto}" />
                                     </c:url>
                                     <div class="list-group">
                                      <a href="${reviewURL}" class="list-group-item">
