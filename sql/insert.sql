@@ -76,7 +76,7 @@ INSERT INTO opening_hours_range(day_of_the_week,start_hour,end_hour) VALUES (7,'
 -- cuisine
 
 INSERT INTO cuisine(name) VALUES('Afgana'); -- 1
-INSERT INTO cuisine(name) VALUES('Africana'); -- 2 
+INSERT INTO cuisine(name) VALUES('Africana'); -- 2
 INSERT INTO cuisine(name) VALUES('Americana'); -- 3
 INSERT INTO cuisine(name) VALUES('Argentina'); -- 4
 INSERT INTO cuisine(name) VALUES('Asiatica');-- 5
@@ -890,7 +890,7 @@ INSERT INTO opening_hours_range_restaurant VALUES (9,50);
 INSERT INTO opening_hours_range_restaurant VALUES (11,50);
 INSERT INTO opening_hours_range_restaurant VALUES (13,50); --50
 
--- Restaurant's photo path: 'WebProject\WebProject2016\web\img\restImgs' 
+-- Restaurant's photo path: 'WebProject\WebProject2016\web\img\restImgs'
 
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('20443944484fe4333ba1832_large.jpg','Interni Orostube',11,1,'2016-09-24 01:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('esterno3.jpg','Esterno Margon',10,2,'2016-09-24 02:00:00');
@@ -1029,7 +1029,7 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',36,29);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',50,30);
 
--- Reviews with photo path: 'WebProject\WebProject2016\web\img\reviewsImgs' 
+-- Reviews with photo path: 'WebProject\WebProject2016\web\img\reviewsImgs'
 
 INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev1.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',7,4);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',7,4,54);
@@ -1085,17 +1085,17 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 -- replies confirmed
 
 INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,81,13,true);
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,82,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,82,13,true);
 INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,83,13,true);
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,84,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,85,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,86,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,87,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,88,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,89,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,90,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,91,13,true); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,92,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,84,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,85,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,86,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,87,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,88,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,89,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,90,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,91,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,92,13,true);
 
 -- replies tbc
 

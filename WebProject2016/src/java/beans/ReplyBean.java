@@ -20,7 +20,15 @@ public class ReplyBean {
     private Timestamp data_validation;
     private boolean accepted;
     private int id_validator;
+    private String nameOfIdOwner;
 
+    public String getNameOfIdOwner() {
+        return nameOfIdOwner;
+    }
+
+    public void setNameOfIdOwner(String nameOfIdOwner) {
+        this.nameOfIdOwner = nameOfIdOwner;
+    }
     public int getId_validator() {
         return id_validator;
     }

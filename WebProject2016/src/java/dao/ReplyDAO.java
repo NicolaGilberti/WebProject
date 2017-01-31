@@ -26,7 +26,7 @@ public class ReplyDAO {
     }
     
     public ReplyBean getReplyFromIdReview(int idReview) throws SQLException {
-        ReplyBean result = new ReplyBean();
+        ReplyBean result = null;
         
         String query = "SELECT * FROM replies WHERE accepted='true' AND id_review = ?";
          PreparedStatement ps = con.prepareStatement(query);
@@ -34,6 +34,7 @@ public class ReplyDAO {
          ResultSet rs = ps.executeQuery();
          
          if (rs.next()) {
+             result = new ReplyBean();
              result.setId(rs.getInt("id"));
              result.setDesc(rs.getString("description"));
              result.setData_creation(rs.getTimestamp("data_creation"));

@@ -43,7 +43,29 @@ public class RestaurantDAO {
         db = new ManagerDB();
         con = db.getConnection();
     }
-
+    public boolean reclameRestaurant(int restID, int userID) {
+        
+        try {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES (?,?)");
+            ps.setInt(1, userID);
+            ps.setInt(2, restID);
+            
+            ResultSet rs = ps.executeQuery();
+            int affectedRows = ps.executeUpdate();
+            ps.close();
+            rs.close();
+            if (affectedRows == 0) {
+                Logger.getLogger("Errore inserimento recensione, no rows affected.");
+                return false;
+            }
+            return true;
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
     public RestaurantBean searchRestaurant(int id) throws SQLException {
         RestaurantBean restaurant = new RestaurantBean();
         PreparedStatement st = con.prepareStatement("SELECT * FROM restaurants WHERE ? = restaurants.id");
@@ -77,7 +99,13 @@ public class RestaurantDAO {
         ResultSet rs = pd.executeQuery();
         ArrayList<String> pn = new ArrayList<String>();
         while (rs.next()) {
-            pn.add("img/restImgs/" + rs.getString(1));
+            String name = rs.getString(1);
+            if (name.substring(0, 3).equals("rev")) {
+                pn.add("img/reviewsImgs/" + name);
+            }
+            else {
+                pn.add("img/restImgs/" + name);
+            }
         }
         return pn;
     }

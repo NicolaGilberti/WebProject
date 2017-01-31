@@ -74,9 +74,6 @@ and open the template in the editor.
     padding: 15px;
 }
 
-.panel .panel-default {
-    border-color:#900c3f;
-}
 .carousel, .carousel-img {
     height : 200px!important;
 }
@@ -113,6 +110,8 @@ and open the template in the editor.
 .cuisine-label{
     background-color: #900c3f;
     margin: 2px;
-
-
+}
+.label-like{
+    padding-left:1em;
+    margin-right: 1em;
 }
