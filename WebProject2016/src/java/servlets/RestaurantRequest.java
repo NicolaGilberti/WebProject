@@ -12,6 +12,7 @@ import beans.ReviewBean;
 import dao.PhotoDAO;
 import dao.ReplyDAO;
 import dao.RestaurantDAO;
+import dao.UserDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -99,11 +100,7 @@ public class RestaurantRequest extends HttpServlet {
                 photoPaths.add(currPhotoPath);
             }
             else photoPaths.add("");
-            //reply at the reviews
-            ReplyBean replyBean = new ReplyBean();
-            ReplyDAO replyDao = new ReplyDAO();
-            replyBean = replyDao.getReplyFromIdReview(current.getId());
-            replies.add(replyBean.getDesc());
+          
         }
         
         //replies
@@ -111,8 +108,11 @@ public class RestaurantRequest extends HttpServlet {
         for (ReviewBean current : reviews) {
             ReplyBean replyBean = replyDao.getReplyFromIdReview(current.getId());
             if (replyBean != null) {
+                UserDAO userDao=new UserDAO();
+                replyBean.setNameOfIdOwner(userDao.getName(replyBean.getId_owner()));
                 current.setReply(replyBean);
             }
+            
         }
         
         request.setAttribute("reviews", reviews);

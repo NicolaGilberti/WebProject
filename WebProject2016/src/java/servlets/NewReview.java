@@ -122,9 +122,9 @@ public class NewReview extends HttpServlet {
         }
         
         
-        RequestDispatcher rd = request.getRequestDispatcher("/RestaurantRequest?id="+restID);
-
-        rd.forward(request, response);
+        
+        response.sendRedirect("RestaurantRequest?id="+restID);
+  
         
     }
 

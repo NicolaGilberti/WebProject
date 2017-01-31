@@ -31,7 +31,7 @@ public class ReviewBean implements java.io.Serializable {
     private Timestamp data_creation;
     private int id_restaurant;
     private String nickname;
-    private ReplyBean reply;
+    private ReplyBean reply=null;
 
     public ReplyBean getReply() {
         return reply;
