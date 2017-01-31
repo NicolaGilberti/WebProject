@@ -16,6 +16,8 @@ import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.apache.commons.collections4.CollectionUtils;
 
 /**
  *
@@ -57,8 +60,9 @@ public class NewReview extends HttpServlet {
         HttpSession session = request.getSession();
         UserBean userLogged = (UserBean) session.getAttribute("user");
         int restID = parseInt(request.getParameter("restaurantId"));
+        int userID = userLogged.getId();
         
-        //popoliamo il review
+        //popoliamo la review
         ReviewBean review = new ReviewBean();
         review.setName(request.getParameter("name"));
         review.setGlobal_value(parseInt(request.getParameter("stars")));
@@ -66,7 +70,7 @@ public class NewReview extends HttpServlet {
         review.setAtmosphere(parseInt(request.getParameter("atmosphere")));
         review.setValue_for_money(parseInt(request.getParameter("valueForMoney")));
         review.setDescription(request.getParameter("description"));
-        review.setId_creator(userLogged.getId());
+        review.setId_creator(userID);
         review.setId_restaurant(restID);
         
         //CURRENT DATE
@@ -78,27 +82,27 @@ public class NewReview extends HttpServlet {
         // inseriamo review nel database
         ReviewDAO rDao = new ReviewDAO();
         int reviewID = rDao.insertReview(review);
-        RequestDispatcher rd = request.getRequestDispatcher("WebProject2016");
-
-        rd.forward(request, response);
-        //aggiungiamo foto
-        PhotoBean foto = new PhotoBean();
-        foto.setName("rev" + String.valueOf(reviewID) + ".jpg");
-        foto.setDescription("Foto review");
-        foto.setId_restaurant(restID);
-        foto.setId_user(userLogged.getId());
         
+        //salvataggio foto
+        PhotoBean foto = new PhotoBean();
+        foto.setName("rev" + String.valueOf(restID) + "-" + ".jpg");
+        foto.setDescription("Foto recensione");
+        foto.setId_restaurant(restID);
+        foto.setId_user(userID);
+
+        // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
+        Calendar calendar = Calendar.getInstance();
+        foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
+
         //Inseriamo la foto nel db
         PhotoDAO photoDao = new PhotoDAO();
         int photoID = photoDao.addPhoto(foto);
         
-        //e in bean
+        //aggiorniamo la review
         rDao.addPhoto(reviewID, photoID);
-
         //Salviamo la foto in locale
-        //gets absolute path of the web application
+        // gets absolute path of the web application
         String appPath = request.getServletContext().getRealPath("");
-        
         // constructs path of the directory to save uploaded file
         String savePath = appPath + File.separator + SAVE_DIR;
 
@@ -107,17 +111,15 @@ public class NewReview extends HttpServlet {
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
-
-        Part part = request.getPart("foto");
-        String fileName = "rev" + String.valueOf(restID) + ".jpg";
         
-        //refines the fileName in case it is an absolute path
+        Part part = request.getPart("foto");
+        String fileName = "rev" + String.valueOf(restID) + "-" + ".jpg";
+        // refines the fileName in case it is an absolute path
         fileName = new File(fileName).getName();
         part.write(savePath + File.separator + fileName);
         Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
-
         
-        //RequestDispatcher rd = request.getRequestDispatcher("RestaurantRequest?id=3");
+        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 
         rd.forward(request, response);
         

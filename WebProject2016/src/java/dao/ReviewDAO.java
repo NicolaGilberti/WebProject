@@ -30,7 +30,6 @@ public class ReviewDAO {
     public int insertReview(ReviewBean revBean) throws SQLException {
         
         int affectedRows;
-        int result = 0;
         
         PreparedStatement ps = con.prepareStatement("INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) " +
                             "VALUES (?,?,?,?,?,?,?,?,?,?)");
@@ -53,7 +52,8 @@ public class ReviewDAO {
             ps = con.prepareStatement("SELECT id FROM reviews LIMIT ?");
             ps.setInt(1,1);
             ResultSet rs = ps.executeQuery();
-            return result = rs.getInt(1);
+            rs.next();
+            return rs.getInt(1);
         }
         
     }
@@ -63,8 +63,6 @@ public class ReviewDAO {
         PreparedStatement ps = con.prepareStatement("UPDATE reviews SET id_photo = ? WHERE id = ?");
         ps.setInt(1, photoID);
         ps.setInt(2, reviewID);
-        
-        ResultSet res = ps.executeQuery();
         
         int affectedRows = ps.executeUpdate();
          if (affectedRows == 0) {

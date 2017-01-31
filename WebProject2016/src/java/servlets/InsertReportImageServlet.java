@@ -1,35 +1,25 @@
-/**
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package servlets;
 
-import beans.CuisineBean;
-import beans.OpeningHoursBean;
-import beans.PriceRangeBean;
-import beans.StateBean;
-import dao.OpeningHoursDAO;
-import dao.PriceRangeDAO;
-import dao.RestaurantDAO;
-import dao.StateDAO;
+import dao.InsertReplyDAO;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author RiccardoUni,Mirko
+ * @author Marco
  */
-public class PrepareNewRestaurantForm extends HttpServlet {
+public class InsertReportImageServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,32 +31,16 @@ public class PrepareNewRestaurantForm extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, Throwable {
+        int id_user = Integer.parseInt(request.getParameter("id"));
+        int id_photo = Integer.parseInt(request.getParameter("id_photo"));
+        int retval;
         
-        response.setContentType("text/html;charset=UTF-8");
+        //inserisco la query
+        InsertReplyDAO repdao = new InsertReplyDAO();
+        retval =  repdao.InsertPhotoReport(id_user, id_photo);
         
-        StateDAO stateDao = new StateDAO();
-        ArrayList<StateBean> states = stateDao.getStates();
-        request.setAttribute("states", states);
-        
-        RestaurantDAO rtd = new RestaurantDAO();
-        ArrayList<CuisineBean> types = rtd.getCuisineTypes();
-        request.setAttribute("restaurantTypes",types);
-        
-        OpeningHoursDAO oh = new OpeningHoursDAO();
-        ArrayList<OpeningHoursBean> ohList = oh.getOpeningHours();
-        request.setAttribute("ohList",ohList);
-        
-        PriceRangeDAO range=new PriceRangeDAO();
-        ArrayList<PriceRangeBean> rangeList = range.getPriceRanges();
-        request.setAttribute("rangeList",rangeList);
-        
-        
-        RequestDispatcher rd = request.getRequestDispatcher("/newRestaurantForm.jsp");
-
-        rd.forward(request, response);
-        
-        
+        response.sendRedirect("showreview.jsp?result="+retval);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -83,8 +57,8 @@ public class PrepareNewRestaurantForm extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(PrepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Throwable ex) {
+            Logger.getLogger(InsertReportImageServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -101,8 +75,8 @@ public class PrepareNewRestaurantForm extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(PrepareNewRestaurantForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Throwable ex) {
+            Logger.getLogger(InsertReportImageServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

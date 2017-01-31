@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/login.js"></script>

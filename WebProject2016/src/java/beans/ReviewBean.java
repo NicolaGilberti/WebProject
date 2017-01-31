@@ -39,7 +39,7 @@ public class ReviewBean implements java.io.Serializable {
     }
     private int id_restaurant;
     private String nickname;
-
+    
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }

@@ -52,6 +52,7 @@ public class RestaurantNotificationDAO {
                         t1.setData_creation(rs.getTimestamp("dcreation"));
                         t1.setDescription(rs.getString("description"));
                         t1.setId_restaurant(rs.getInt("resid"));
+                        t1.setId_photo(rs.getInt("id_photo"));
                         int id_photo = rs.getInt("id_photo");
                         if (id_photo != 0) {
                             String photoName_query = "SELECT name FROM photos WHERE id=" + id_photo;
@@ -65,6 +66,7 @@ public class RestaurantNotificationDAO {
                         }
                         t1.setView(rs.getBoolean("view"));
                         t1.setNickname(rs.getString("nickname"));
+                        System.out.println(t1);
                         restaurant_notification.addReviewBean(t1);
                     }
              }finally{

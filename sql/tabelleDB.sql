@@ -89,6 +89,7 @@ FOREIGN KEY (id_restaurant) REFERENCES restaurants (id),
 FOREIGN KEY (id_user) REFERENCES users (id)
 );
 ALTER TABLE photos ALTER COLUMN name TYPE VARCHAR(100);
+ALTER TABLE photos ADD COLUMN visible boolean DEFAULT true;
 
 CREATE TABLE reviews(
 id SERIAL PRIMARY KEY,

@@ -31,7 +31,7 @@ import utils.OpeningHours;
  */
 public class RestaurantRequest extends HttpServlet {
 
-    private String restImagesPath = "/img/restImgs/";
+    private final String restImagesPath = "/img/restImgs/";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,16 +48,15 @@ public class RestaurantRequest extends HttpServlet {
         //set content type for the response
         response.setContentType("text/html;charset=UTF-8");
 
-        
+        //the id of the restaurant requested
         Integer id = Integer.parseInt(request.getParameter("id").toString());
         
         //DAO and bean for the response object
         RestaurantDAO restaurantDao = new RestaurantDAO();
         RestaurantBean restBean = new RestaurantBean();
         
-        
+        //retreive restaurant
         restBean = restaurantDao.searchRestaurant(id);
-
         request.setAttribute("r", restBean);
 
         //get photos
@@ -74,50 +73,33 @@ public class RestaurantRequest extends HttpServlet {
         ArrayList<CuisineBean> cuisines = restaurantDao.getCuisines(restBean.getId());
         request.setAttribute("cuisines", cuisines);
 
-        //opening hours
+        //get opening hours
         OpeningHours oh = restaurantDao.getOpeningHours(restBean.getId());
-       
-        System.out.println("restaurant: " + restBean.getName() 
-                + "\nsize: " + oh.toArrayListString().size() 
-                + "\ncontent: " + oh.toArrayListString());
         request.setAttribute("openingDates", oh.toArrayListString());
         
         //reviews
-        PhotoDAO pDao = new PhotoDAO();
-        
-        //collections
+        //collections for reviews
         ArrayList<ReviewBean> reviews = restaurantDao.getReviews(restBean.getId());
         ArrayList<String> userNamesOfReviews = new ArrayList<>();
         ArrayList<String> replies = new ArrayList<>();
-        //photo of the reviews
+        //collecting photo of the reviews and name of the user
+        PhotoDAO pDao = new PhotoDAO();
         ArrayList<String> photoPaths = new ArrayList<>();
         for (ReviewBean current : reviews) {
             String currName = restaurantDao.getUserName(current.getId_creator());
+            //name of the user
             userNamesOfReviews.add(currName);
             String currPhotoPath = "";
+            //if any photo exists
             if (((Integer)current.getId_photo()) != 0) {
-                currPhotoPath = "";
-                System.out.println("id_photo = " + ((Integer)current.getId_photo()));
                 currPhotoPath = "img/restImgs/"+ pDao.getName(current.getId_photo());
-                
-                System.out.println("currentPhotoPath = " + currPhotoPath);
-                if (!currPhotoPath.equals("img/restImgs/")) {
-                
-                photoPaths.add(currPhotoPath);
-                }
-                else {
-                    photoPaths.add("");
-                }
             }
             else photoPaths.add("");
             //reply at the reviews
             ReplyBean replyBean = new ReplyBean();
             ReplyDAO replyDao = new ReplyDAO();
-            
             replyBean = replyDao.getReplyFromIdReview(current.getId());
             replies.add(replyBean.getDesc());
-            
-            
         }
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNameOfReviews", userNamesOfReviews);
@@ -127,7 +109,7 @@ public class RestaurantRequest extends HttpServlet {
         ArrayList<Integer> likes = new ArrayList<>();
         ArrayList<Integer> dislikes = new ArrayList<>();
         HashMap<Integer,ArrayList<Integer>> likesDislikes = restaurantDao.getLikes(restBean.getId());
-        
+        //collecting likes
         for (ReviewBean current : reviews) {
             if (likesDislikes.containsKey(current.getId())) {
                 ArrayList<Integer> currentLD = likesDislikes.get(current.getId());
@@ -141,7 +123,7 @@ public class RestaurantRequest extends HttpServlet {
         }
         
         request.setAttribute("likes", likes);
-        request.setAttribute("dislikse", dislikes);
+        request.setAttribute("dislikes", dislikes);
         
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
 

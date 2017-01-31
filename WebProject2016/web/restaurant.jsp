@@ -235,7 +235,14 @@
                                         |
                                         SERVIZIO: <c:out value="${current.service}" />
                                     </div>
+                                    <label style ="color: green">
+                                    mi piace <c:out value="${likes.get(i)}"/></label> 
+                                    |
+                                    <label style="color:red">
+                                    non mi piace <c:out value="${dislikes.get(i)}"/>
+                                    </label>
                                 </small>
+                                        
                                 </div>
                                 
                             </h4>
@@ -303,6 +310,14 @@
                                 <div class="row">
                                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                         <textarea required class="form-control" rows="3"  placeholder="la tua esperienza..." id="description" name='description'></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                                        <label class="label-text" for="nome">Carica una foto</label>
+                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto">
                                     </div>
                                 </div>
                             </div>
