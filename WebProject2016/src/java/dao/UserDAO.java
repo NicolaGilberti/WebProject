@@ -190,10 +190,9 @@ public class UserDAO {
 
         String restQuery = "SELECT r.id,r.name,r.description,r.address,r.city,r.global_value,"
                 + "(SELECT p1.name FROM photos p1 WHERE p1.id_restaurant = r.id LIMIT 1) AS photo_name, "
-                + "(SELECT COUNT(*) FROM reviews re WHERE re.id_restaurant = r.id) AS n_reviews, "
-                + "c.name AS cuisine_name "
-                + "FROM restaurants r JOIN photos p ON (r.id = p.id_restaurant) JOIN restaurants_cuisine rc ON (rc.id_restaurant = r.id) JOIN cuisine c ON (c.id = rc.id_cuisine) "
-                + "WHERE id_owner=?";
+                + "(SELECT COUNT(*) FROM reviews re WHERE re.id_restaurant = r.id) AS n_reviews "
+                + "FROM restaurants r JOIN photos p ON (r.id = p.id_restaurant) "
+                + "WHERE r.id_owner=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(restQuery);
@@ -206,14 +205,7 @@ public class UserDAO {
             ArrayList<CuisineBean> cList;
             while (results.next()) {
 
-                if (results.isFirst() || results.getInt("id") != risto.getId()) {
-                    CuisineBean c = new CuisineBean();
-                    c.setName(results.getString("cuisine_name"));
-
                     risto = new RestaurantBean();
-                    cList = new ArrayList<CuisineBean>();
-                    cList.add(c);
-                    
                     // Imposto tutte le caratteristiche del ristorante
                     risto.setId(results.getInt("id"));
                     risto.setName(results.getString("name"));
@@ -223,13 +215,13 @@ public class UserDAO {
                     risto.setGlobal_value(results.getInt("global_value"));
                     risto.setImgPath(results.getString("photo_name"));
                     risto.setNumReviews(results.getInt("n_reviews"));
+                    
+                    RestaurantDAO rDAO = new RestaurantDAO();
+                    cList = rDAO.getCuisines(risto.getId());
+                    rDAO.closeConnection();
+                    
                     risto.setCuisineTypes(cList);
                     rest.add(risto);
-                } else if (results.getInt("id") == risto.getId()) {
-                    CuisineBean c = new CuisineBean();
-                    c.setName(results.getString("cuisine_name"));
-                    risto.getCuisineTypes().add(c);
-                }
             }
 
             return rest;

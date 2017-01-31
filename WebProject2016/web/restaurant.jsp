@@ -215,9 +215,20 @@
                                             Mi piace </label>
                                         <label id="${current.id}-1"><c:out value="${likes.get(i)}"/></label>
                                         |
+<<<<<<< HEAD
                                         <label style="color:red" onclick="like(${current.id}, 0,${user.id})">
                                             Non mi piace  </label> 
                                         <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label>
+=======
+                                        SERVIZIO: <c:out value="${current.service}" />
+                                    </div>
+                                    <label id="${current.id}-1-gen" class="label label-success" onclick="like(${current.id}, 1,${user.id})">
+                                        Mi piace <label  id="${current.id}-1"><c:out value="${likes.get(i)}"/></label> </label>
+                                    
+                                    <label id="${current.id}-0-gen" class="label label-danger" onclick="like(${current.id}, 0,${user.id})">
+                                        Non mi piace  <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label></label> 
+                                    
+>>>>>>> e6862677cafa2748e76a8a0913faf5c9ed4d3ece
 
                                     </small>
 
