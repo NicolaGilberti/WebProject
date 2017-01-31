@@ -26,9 +26,12 @@ public class EmailSender {
 
     public EmailSender() {
 
+        // Setto le credenziali dell'account
         String host = "mail.google.com";
         final String username = "david.marinangeli@gmail.com";
         final String passw = "fsavsdakchxmflgp";
+        
+        // Setto le proprietà
         Properties props = System.getProperties();
         props.setProperty("mail.smtp.host", "smtp.gmail.com");
         props.setProperty("mail.smtp.port", "465");
@@ -47,6 +50,7 @@ public class EmailSender {
         });
     }
 
+    // invio 
     public void send(String email, String t, String o) {
         try {
 
