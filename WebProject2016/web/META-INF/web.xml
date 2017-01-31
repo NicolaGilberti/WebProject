@@ -329,6 +329,7 @@
     <servlet-mapping>
         <servlet-name>LikesHandler</servlet-name>
         <url-pattern>/LikesHandler</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>InsertReply</servlet-name>
