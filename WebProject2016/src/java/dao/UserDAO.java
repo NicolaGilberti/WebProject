@@ -191,7 +191,7 @@ public class UserDAO {
         String restQuery = "SELECT r.id,r.name,r.description,r.address,r.city,r.global_value,"
                 + "(SELECT p1.name FROM photos p1 WHERE p1.id_restaurant = r.id LIMIT 1) AS photo_name, "
                 + "(SELECT COUNT(*) FROM reviews re WHERE re.id_restaurant = r.id) AS n_reviews "
-                + "FROM restaurants r JOIN photos p ON (r.id = p.id_restaurant) "
+                + "FROM restaurants r "
                 + "WHERE r.id_owner=?";
 
         try {
