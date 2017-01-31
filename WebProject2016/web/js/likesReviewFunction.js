@@ -23,11 +23,23 @@ function like(revId, value, userId)
                 var text = label.text();
                 text = Number(text) + 1;
                 label.text(text);
-            }
-            else
+                if (value == 1)
+                    $("#" + revId + "-0-gen").attr('class', 'label label-default');
+                if (value == 0)
+                    $("#" + revId + "-1-gen").attr('class', 'label label-default');
+
+            } else
             {
-                alert("Hai gia votato, oppure c'è stato un errore.");
+                alert("Hai gia votato in passato, oppure c'è stato un errore.");
+
+                $("#" + revId + "-0-gen").attr('class', 'label label-default');
+                $("#" + revId + "-1-gen").attr('class', 'label label-default');
+
+
+
             }
+            $("#" + revId + "-0-gen").removeAttr("onclick");
+            $("#" + revId + "-1-gen").removeAttr("onclick");
         }
     });
 

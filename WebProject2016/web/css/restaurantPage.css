@@ -8,6 +8,11 @@ and open the template in the editor.
     Author     : RiccardoUni
 */
 
+.label{
+    padding-left: 1em;
+    margin-right:1em;
+}
+
 .panel .panel-default {
     border-color:#900c3f;
 }
