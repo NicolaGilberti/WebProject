@@ -285,7 +285,7 @@
                     <div class="col-sm-3"></div>
                     <div class="add-restaurant-btn col-xs-12 col-sm-6">
                         <h1>Aggiungi ristorante</h1>
-                        <a class="add-restaurant-link" href="prepareNewRestaurantForm"></a>
+                        <a class="add-restaurant-link" href="PrepareNewRestaurantForm"></a>
                     </div>
                 </div>
 
