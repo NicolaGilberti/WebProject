@@ -24,7 +24,7 @@
                  <li><a data-toggle="tab" href="#menu3"><strong class="h3-subtitle">Notifiche accettate </strong></h3></a></li>
             </ul>
         </div>
-        <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
+        <div class="col-sm-12 col-xs-12">
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <p>

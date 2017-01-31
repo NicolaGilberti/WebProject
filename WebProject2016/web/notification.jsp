@@ -13,19 +13,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="css/notifcation.css" rel="stylesheet">
-         <link rel="stylesheet" href="css/notification.css">
-        <link rel="stylesheet" href="css/genericsnotification.css">
         <jsp:include page="header/headerFiles.jsp"/>
+        <link href="css/notifcation.css" rel="stylesheet">
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="js/notificationpagejs.js"></script>
-        
-                 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div class="container-fluid">
         <jsp:include page = "header/header.jsp"/>
-       
+        <div class="container-fluid">
             <div class="panel-body">
                 <h1 class="notification-title">Le Notifiche </h1>
             </div>
