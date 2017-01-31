@@ -185,6 +185,9 @@ public class UserDAO {
 
     }
 
+    /* Restituisce una lista che contiene i ristoranti appartenenti all'utente
+     * con userId
+     */
     public ArrayList<RestaurantBean> getRestaurants(int userId) {
         ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
 
@@ -380,7 +383,9 @@ public class UserDAO {
         
         ps.setString(1, pass);
         ps.setInt(2, id);
-        return ps.executeUpdate();
+        int affected=ps.executeUpdate();
+        ps.close();
+        return affected;
     }
 
     public AlertBean changeNickname(UserBean user, String newNick, String password) {
@@ -436,4 +441,28 @@ public class UserDAO {
         return alert;
     }
 
+    public String getName(int id)
+    {
+        try {
+            // Preparo la query
+            String query = "SELECT name from users WHERE id=?";
+            String name="";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet res=ps.executeQuery();
+            while(res.next())
+            {
+                 name=res.getString(1);
+            }
+            res.close();
+            ps.close();
+            return name;
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+        
+    }
+    
 }
