@@ -40,7 +40,7 @@ public class LogoutAttempt extends HttpServlet {
         HttpSession session = request.getSession();
         if (request.getParameter("logout") != null) {
             session.invalidate();
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("");
             return;
         }
     }

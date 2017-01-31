@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 /**
  *
@@ -76,5 +77,22 @@ public class ReviewDAO {
         
          ps.close();
          
+    }
+
+    public void addLikeOrDislike(int revId, int value,int userId) throws SQLException{
+        
+     PreparedStatement ps = con.prepareStatement("INSERT INTO user_review_likes VALUES(?,?,?,?)");
+        ps.setInt(1, userId);
+        ps.setInt(2, revId);
+        ps.setInt(3, value);
+        
+         Calendar calendar = Calendar.getInstance();
+         ps.setTimestamp(4, new java.sql.Timestamp(calendar.getTime().getTime()));
+        
+        int affectedRows = ps.executeUpdate();
+         if (affectedRows == 0) {
+            throw new SQLException("Errore inserimento review, no rows affected.");
+        }
+         ps.close();
     }
 }
