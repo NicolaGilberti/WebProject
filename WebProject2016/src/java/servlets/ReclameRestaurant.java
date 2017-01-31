@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package beans;
+package servlets;
 
+import beans.UserBean;
 import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -74,16 +76,26 @@ public class ReclameRestaurant extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        //response type
         response.setContentType("text/html;charset=UTF-8");
-        RestaurantDAO restDao = new RestaurantDAO();
-        int userID = parseInt(request.getParameter("userID"));
-        int restID = parseInt(request.getParameter("restID"));
-        if (restDao.reclameRestaurant(userID,restID)) {
-            response.sendRedirect("/RestaurantRequest?id=" + restID);
+        
+        //fetch userID e restID
+        HttpSession session = request.getSession();
+        UserBean userLogged = (UserBean) session.getAttribute("user");
+        int restID = parseInt(request.getParameter("restaurantId"));
+        int userID = userLogged.getId();
+        
+        if (userID != 0) {
+            RestaurantDAO restDao = new RestaurantDAO();
+            if (restDao.reclameRestaurant(userID,restID)) {
+                response.sendRedirect("/RestaurantRequest?id=" + restID);
+            }
+            else {
+                response.sendRedirect("/RestaurantRequest?id=" + restID + "&notReclamed");
+            }
         }
         else {
-            response.sendRedirect("/RestaurantRequest?id=" + restID + "&notReclamed");
+            response.sendRedirect("/index.jsp");
         }
     }
 

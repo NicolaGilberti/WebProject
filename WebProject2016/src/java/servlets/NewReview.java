@@ -6,7 +6,6 @@
 package servlets;
 
 import beans.PhotoBean;
-import beans.RestaurantBean;
 import beans.ReviewBean;
 import beans.UserBean;
 import dao.PhotoDAO;
@@ -17,20 +16,16 @@ import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import org.apache.commons.collections4.CollectionUtils;
 
 /**
  *
@@ -77,53 +72,55 @@ public class NewReview extends HttpServlet {
         Timestamp tmp = new Timestamp(data_creation.getTime());
         review.setData_creation(tmp);
         
-        
-            // inseriamo review nel database
-            ReviewDAO rDao = new ReviewDAO();
-            int reviewID = rDao.insertReview(review);
-            
-        if (request.getPart("foto").getSize()!=0) {
-            
-            //salvataggio foto
-            PhotoBean foto = new PhotoBean();
-            foto.setName("rev" + String.valueOf(restID) + String.valueOf(reviewID) + ".jpg");
-            foto.setDescription("Foto recensione");
-            foto.setId_restaurant(restID);
-            foto.setId_user(userID);
 
-            // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
-            Calendar calendar = Calendar.getInstance();
-            foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
+        // inseriamo review nel database
+        ReviewDAO rDao = new ReviewDAO();
+        int reviewID = rDao.insertReview(review);
+        if (reviewID != 0) {    
+            if (request.getPart("foto").getSize()!=0) {
 
-            //Inseriamo la foto nel db
-            PhotoDAO photoDao = new PhotoDAO();
-            int photoID = photoDao.addPhoto(foto);
+                //salvataggio foto
+                PhotoBean foto = new PhotoBean();
+                foto.setName("rev" + String.valueOf(restID) + String.valueOf(reviewID) + ".jpg");
+                foto.setDescription("Foto recensione");
+                foto.setId_restaurant(restID);
+                foto.setId_user(userID);
 
-            //aggiorniamo la review
-            rDao.addPhoto(reviewID, photoID);
-            //Salviamo la foto in locale
-            // gets absolute path of the web application
-            String appPath = request.getServletContext().getRealPath("");
-            // constructs path of the directory to save uploaded file
-            String savePath = appPath + File.separator + SAVE_DIR;
+                // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
+                Calendar calendar = Calendar.getInstance();
+                foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
 
-            // creates the save directory if it does not exists
-            File fileSaveDir = new File(savePath);
-            if (!fileSaveDir.exists()) {
-                fileSaveDir.mkdir();
+                //Inseriamo la foto nel db
+                PhotoDAO photoDao = new PhotoDAO();
+                int photoID = photoDao.addPhoto(foto);
+
+                //aggiorniamo la review
+                rDao.addPhoto(reviewID, photoID);
+                //Salviamo la foto in locale
+                // gets absolute path of the web application
+                String appPath = request.getServletContext().getRealPath("");
+                // constructs path of the directory to save uploaded file
+                String savePath = appPath + File.separator + SAVE_DIR;
+
+                // creates the save directory if it does not exists
+                File fileSaveDir = new File(savePath);
+                if (!fileSaveDir.exists()) {
+                    fileSaveDir.mkdir();
+                }
+
+                Part part = request.getPart("foto");
+                String fileName = "rev" + String.valueOf(restID) + String.valueOf(reviewID) + ".jpg";
+                // refines the fileName in case it is an absolute path
+                fileName = new File(fileName).getName();
+                part.write(savePath + File.separator + fileName);
+                Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
             }
-
-            Part part = request.getPart("foto");
-            String fileName = "rev" + String.valueOf(restID) + String.valueOf(reviewID) + ".jpg";
-            // refines the fileName in case it is an absolute path
-            fileName = new File(fileName).getName();
-            part.write(savePath + File.separator + fileName);
-            Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
+            
+            response.sendRedirect("RestaurantRequest?id=" + restID);
         }
-        
-        
-        
-        response.sendRedirect("RestaurantRequest?id="+restID);
+        else {
+            response.sendRedirect("RestaurantRequest?id=" + restID + "&reviewNotInsert");
+        }
   
         
     }

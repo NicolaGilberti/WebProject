@@ -121,17 +121,15 @@
                             </span>
                     </c:forEach>
                 </div>
-                <div>
-                    <div>
-                        <p></p>
 
-                        <div class="text-right">
-                            <div class="qr-code-small" id="qrCodeSmall">
-
-                            </div>
+                <!-- qrcode -->
+                <div class="row">
+                    <p></p>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="qr-code-small" id="qrCodeSmall">
                         </div>
                     </div>
-                    <!-- Modal -->
+                    <!-- Modal for QR -->
                     <div class="modal fade" id="qrModal" role="dialog">
                         <div class="modal-dialog">
 
@@ -140,20 +138,23 @@
 
                                 <div class="modal-body" style="align-content: center;">
                                     <div id="qrCodeBig" style="align-content: center;">
-
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
 
+                    <!--reclame button-->
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <c:if test="${sessionScope.user != null}">
+                            <button class="btn btn-purple" onclick="../WebProject2016/ReclameRestaurant">Reclama Ristorante</button>
+                        </c:if>
+                    </div>
                 </div>
             </div>
 
             <!--right-->
-            <!-- qrcode -->
             <script>
                 var name = "${r.name}";
                 var address = "${r.address}";
@@ -225,16 +226,16 @@
                             <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
                         </div>
 
-                            <c:if test="${current.reply!=null}">
-                        <div class='panel-footer'>
+                        <c:if test="${current.reply!=null}">
+                            <div class='panel-footer'>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
-                                <div class="panel-body">${current.reply.desc}</div>
-                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
+                                    <div class="panel-body">${current.reply.desc}</div>
+
+                                </div>
                             </div>
-                        </div>
-                            </c:if>
+                        </c:if>
 
                     </div>
                     <c:set value="${i+1}" var="i"></c:set>
