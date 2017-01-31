@@ -27,6 +27,7 @@ public class ReviewDAO {
         con = db.getConnection();
     }
     
+    //add the review passed into the database
     public int insertReview(ReviewBean revBean) throws SQLException {
         
         int affectedRows;
@@ -49,15 +50,19 @@ public class ReviewDAO {
             throw new SQLException("Errore inserimento recensione, no rows affected.");
         }
         else {
-            ps = con.prepareStatement("SELECT id FROM reviews LIMIT ?");
+            ps = con.prepareStatement("SELECT id FROM reviews ORDER BY id DESC LIMIT ?");
             ps.setInt(1,1);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            return rs.getInt(1);
+            int id = rs.getInt(1);
+            rs.close();
+            ps.close();
+            return id;
         }
         
     }
 
+    //add the photoID to reviewID
     public void addPhoto(int reviewID, int photoID) throws SQLException {
         
         PreparedStatement ps = con.prepareStatement("UPDATE reviews SET id_photo = ? WHERE id = ?");
@@ -69,5 +74,7 @@ public class ReviewDAO {
             throw new SQLException("Errore inserimento foto, no rows affected.");
         }
         
+         ps.close();
+         
     }
 }

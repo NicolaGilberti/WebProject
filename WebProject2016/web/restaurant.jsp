@@ -23,24 +23,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         
         <!--script-->
-        
+        <jsp:include page="header/headerFiles.jsp" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/login.js"></script>
-        
-        
-                                 
-        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-        
         <script src="js/kjua-0.1.1.min.js" type="text/javascript"></script>
         
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-        <jsp:include page="header/headerFiles.jsp" />
-        
         <!--css-->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
@@ -273,7 +262,7 @@
                 
                 <!--newReview-->
                 <c:if test="${sessionScope.user!=null}">
-                    <form action="NewReview">
+                    <form action="NewReview" method="post" enctype="multipart/form-data">
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="form-group">
@@ -317,7 +306,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                                         <label class="label-text" for="nome">Carica una foto</label>
-                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto">
+                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
                                     </div>
                                 </div>
                             </div>
@@ -327,11 +316,10 @@
                 </c:if>
             </div>
         
-        <script type="text/javascript" src="js/modalForReviews.js"/>
-        <script type="text/javascript" src="js/qrCreator.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJJ6C2_8shojzgg6W6y4hQznpzNg0hc2s&callback=initMap">
-    </scri
+        <script type="text/javascript" src="js/modalForReviews.js"></script>
+        <script type="text/javascript" src="js/qrCreator.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs&callback=initMap"></script>
          
     </body>
 </html>

@@ -55,6 +55,9 @@ public class RestaurantRequest extends HttpServlet {
         RestaurantDAO restaurantDao = new RestaurantDAO();
         RestaurantBean restBean = new RestaurantBean();
         
+        //increment n_visit
+        restaurantDao.incrNumVisit(id);
+        
         //retreive restaurant
         restBean = restaurantDao.searchRestaurant(id);
         request.setAttribute("r", restBean);
@@ -93,6 +96,7 @@ public class RestaurantRequest extends HttpServlet {
             //if any photo exists
             if (((Integer)current.getId_photo()) != 0) {
                 currPhotoPath = "img/restImgs/"+ pDao.getName(current.getId_photo());
+                photoPaths.add(currPhotoPath);
             }
             else photoPaths.add("");
             //reply at the reviews

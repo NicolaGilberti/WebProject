@@ -36,14 +36,13 @@ import org.apache.commons.collections4.CollectionUtils;
  *
  * @author RiccardoUni
  */
-@WebServlet(name = "NewReview", urlPatterns = {"/NewReview"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)   // 50MB
 public class NewReview extends HttpServlet {
     
     //Path della cartella dove salvare i file immagine
-    private static final String SAVE_DIR = "img\\restImgs";
+    private static final String SAVE_DIR = "img/restImgs/";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -85,7 +84,7 @@ public class NewReview extends HttpServlet {
         
         //salvataggio foto
         PhotoBean foto = new PhotoBean();
-        foto.setName("rev" + String.valueOf(restID) + "-" + ".jpg");
+        foto.setName("rev" + String.valueOf(restID) + ".jpg");
         foto.setDescription("Foto recensione");
         foto.setId_restaurant(restID);
         foto.setId_user(userID);
@@ -113,7 +112,7 @@ public class NewReview extends HttpServlet {
         }
         
         Part part = request.getPart("foto");
-        String fileName = "rev" + String.valueOf(restID) + "-" + ".jpg";
+        String fileName = "rev" + String.valueOf(restID) + ".jpg";
         // refines the fileName in case it is an absolute path
         fileName = new File(fileName).getName();
         part.write(savePath + File.separator + fileName);
