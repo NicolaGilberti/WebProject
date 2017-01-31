@@ -1,4 +1,4 @@
--- il database lo ho chiamato WebProjectDB io se date altro nome c'è da stare attenti durante la gestione della connessione
+CREATE DATABASE WebProjectDB;
 
 CREATE TABLE states(
 id SERIAL PRIMARY KEY,
