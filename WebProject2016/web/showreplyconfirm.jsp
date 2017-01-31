@@ -46,10 +46,12 @@
                                  <c:url value="ConfirmRepliesServlet" var="repliesURL">
                                     <c:param name="id" value="${param.id}" />
                                 </c:url>
-                                <form action="${repliesURL}" method="POST">
-                                    <button type="submit"  name="button" class="btn btn-danger " value='d'>Rifiuta</button>
-                                    <button type="submit"  name="button" class="btn btn-success" value='a'>Accetta</button>
-                                </form>
+                                <c:if test="${param.sh == true}">
+                                    <form action="${repliesURL}" method="POST">
+                                        <button type="submit"  name="button" class="btn btn-danger " value='d'>Rifiuta</button>
+                                        <button type="submit"  name="button" class="btn btn-success" value='a'>Accetta</button>
+                                    </form>
+                                </c:if>
                             </div>
                         </div>
                     </div>

@@ -52,17 +52,16 @@
             <!-- panel per la conferma dei cambiamenti -->  
             <div class="row" style="text-align:center">
                 <div class="col-lg-12 col-sx-12 col-sm-12 col-md-12" >
-
+                    <c:url value="DeletePhotoRequest" var="deletephotoURL">
+                        <c:param name="id" value="${param.id}"/>
+                    </c:url>
                     <form action="${deletephotoURL}" method="POST">
                         <div class="form-group">
-                            <!--Setting get parameter (id of reply) using jstl -->
-                            <c:url value="DeletePhotoRequest" var="deletephotoURL">
-                                <c:param name="id" value="${param.id}"/>
-                            </c:url>
-
-                            <button type="submit"  name="button" class="btn btn-danger" value='n'>No</button>
-                            <button type="submit"  name="button" class="btn btn-success" value='s'>Si</button>
-
+                            <c:if test="${param.sh == true}">
+                                <!--Setting get parameter (id of the photo that i have to delete  or not) using jstl -->
+                                <button type="submit"  name="button" class="btn btn-danger" value='n'>No</button>
+                                <button type="submit"  name="button" class="btn btn-success" value='s'>Si</button>
+                            </c:if>
                         </div>
                     </form>
                 </div>

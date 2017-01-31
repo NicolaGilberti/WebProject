@@ -46,10 +46,12 @@
                                     <c:param name="idu" value="${param.idu}" />
                                     <c:param name="idr" value="${param.idr}" />
                                 </c:url>
-                                <form action="${chownerURL}" method="POST">
-                                    <button type="submit"  name="button" class="btn btn-danger " value='d'>Rifiuta</button>
-                                    <button type="submit"  name="button" class="btn btn-success" value='a'>Accetta</button>
-                                </form>
+                                <c:if test="${param.sh == true}">  
+                                    <form action="${chownerURL}" method="POST">
+                                        <button type="submit"  name="button" class="btn btn-danger " value='d'>Rifiuta</button>
+                                        <button type="submit"  name="button" class="btn btn-success" value='a'>Accetta</button>
+                                    </form>
+                               </c:if>
                             </div>
                         </div>
                     </div>

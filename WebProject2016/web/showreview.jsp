@@ -13,6 +13,7 @@
     <head>
         
         <link rel="stylesheet" href="css/generic.css">
+        <link rel="stylesheet" href="css/notifcation.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/search_restaurant.css">
         <jsp:include page="header/headerFiles.jsp" />
@@ -71,7 +72,7 @@
                         <div class="row">
                             <div class="col-xs-4">
                                 <div class="thumbnail">
-                                    <img src="${review.photo_name}" class="img-responsive">
+                                    <img src="${review.photo_name}">
                                 </div>
                             </div>
                         </div>

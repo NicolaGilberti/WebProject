@@ -33,7 +33,8 @@
                                 <c:if test="${replybean.accepted == false}">
                                     <div class="list-group">
                                         <c:url value="showreplyconfirm.jsp" var="repliesURL">
-                                             <c:param name="id" value="${replybean.idrep}" /> --%>
+                                             <c:param name="id" value="${replybean.idrep}" /> 
+                                             <c:param name="sh" value="true"/> 
                                         </c:url>
                                         <a href="${repliesURL}" class="list-group-item">
                                             <strong><c:out value="${replybean.ristoratore}"/></strong>
@@ -57,6 +58,7 @@
                                     <c:url value="showchangeowner.jsp" var="chownerURL">
                                              <c:param name="idu" value="${notbean.usrid}" />
                                              <c:param name="idr" value="${notbean.resid}" />
+                                             <c:param name="sh" value="true"/> 
                                     </c:url>
                                     <a href="${chownerURL}" class="list-group-item">
                                         <strong><c:out value="${notbean.nickname}"/></strong>
@@ -78,6 +80,7 @@
                                 <c:if test="${notbean.accepted == false}">
                                 <c:url value="showPhotoDeleteRequest.jsp" var="photoURL">
                                     <c:param name="id" value="${notbean.idphoto}" />
+                                    <c:param name="sh" value="true"/> 
                                 </c:url>
                                     <div class="list-group">
                                      <a href="${photoURL}" class="list-group-item">
@@ -100,6 +103,7 @@
                                     <div class="list-group">
                                         <c:url value="showreplyconfirm.jsp" var="repliesURL">
                                              <c:param name="id" value="${notbean.idrep}" />
+                                             <c:param name="sh" value="false"/> 
                                         </c:url>
                                         <a href="${repliesURL}" class="list-group-item">
                                             <strong><c:out value="${notbean.ristoratore}"/></strong>
@@ -112,11 +116,13 @@
                             <c:if test="${notbean.accepted == true}">
                                 <div class="list-group">
                                     <c:url value="showchangeowner.jsp" var="chownerURL">
-                                             <c:param name="id" value="${notbean.usrid}" />
+                                             <c:param name="id" value="${notbean.usrid}"/>
+                                             <c:param name="idr" value="${notbean.resid}" />
+                                             <c:param name="sh" value="false"/> 
                                     </c:url>
                                     <a href="${chownerURL}" class="list-group-item">
                                         <strong><c:out value="${notbean.nickname}"/></strong>
-                                        Ha risposto ad un commento di <strong><c:out value="${notbean.nickname}"/></strong> sul proprio ristorante.
+                                        ha reclamato il ristorante <strong><c:out value="${notbean.resname}"/></strong> sul proprio ristorante.
                                     </a>
                                 </div>
                             </c:if>
@@ -125,6 +131,7 @@
                             <c:if test="${notbean.accepted == true}">
                                 <c:url value="showPhotoDeleteRequest.jsp" var="photodeleteURL">
                                     <c:param name="id" value="${notbean.idphoto}" />
+                                    <c:param name="sh" value="false"/> 
                                 </c:url>
                                 <div class="list-group">
                                     <a href="${photodeleteURL}" class="list-group-item">
