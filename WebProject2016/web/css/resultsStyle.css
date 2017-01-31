@@ -1,5 +1,6 @@
 hr.stylish-input-group .input-group-addon {
     background: white !important;
+    
 }
 
 .stylish-input-group .form-control {
@@ -78,6 +79,21 @@ hr.style15:after {
     height: 150px;
     position: relative;
     overflow: hidden;
+}
+
+.btn-yellow{
+    background-color:#ffc300;
+    color:black;
+}
+.btn-violet{
+    margin: 2px;
+    background-color:#900c3f;
+    color:white;
+}
+
+.resultscheckbox {
+    padding-top: 15px;
+    
 }
 
 .overlay {

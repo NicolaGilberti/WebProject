@@ -17,10 +17,6 @@
         <link href="css/resultsStyle.css" rel="stylesheet">
         <link rel="stylesheet" href="css/passwordstrength.css">
 
-        <script src="js/checkNewPwd.js"></script>
-        <script src="js/changeUserPwd.js"></script>
-        <script src="js/scripts.js"></script>
-
         <title>TuttoBistrò - Profilo Utente</title>
 
     </head>
@@ -29,8 +25,7 @@
         <!-- header -->
         <jsp:include page="header/header.jsp" />
 
-        <%--<c:if test="${sessionScope.user != null}">--%>
-
+        <%-- pannello modal per la visualizzazione delle foto --%>
         <div id="photo-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -42,7 +37,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <%-- pannello modal per la modifica del nickname --%>
         <div id="changeNickname" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -75,7 +70,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <%-- pannello modal per la modifica della password --%>
         <div id="changePassword" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -124,6 +119,11 @@
         </div>
 
         <div class="container">
+            
+            <%-- controllo se esiste un alert e se esiste lo stampo a schermo.
+            Un alert puo venire generato dalla servlet che modifica la password (richiamata
+            al click del bottone "salva" nell'apposito modal panel in alto) oppure dalla
+            servlet che modifica il nickname (allo stesso modo della password). --%>
             <c:if test="${alert.type gt -1}">
                 <div class="user-alert-box">
                     <c:choose>
@@ -148,21 +148,22 @@
                     </c:choose>
                 </div>
             </c:if>
+            <%-- fine alert --%>
 
+            <%-- INFORMAZIONI UTENTE --%>
             <div class="user-info">
+                
+                <%-- nome e cognome --%>
                 <div class="row">
                     <div class="col-md-12">
                         <h1 style="color: #900c3f">
                             <c:out value="${user.name} ${user.surname}" />
                         </h1>
-                        <!--
-                                                <form class="col-sm-6" action="#" method="post">
-                                                    <button type="submit" class="nameModifyButton iconButton"><span class="glyphicon glyphicon-edit"></span></button>
-                                                </form> -->
                     </div>
                 </div>
                 <br>
 
+                <%-- nickname --%>
                 <div class="row">
 
                     <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
@@ -173,11 +174,15 @@
                             <c:out value="${user.nickname}" />
                         </p>
                     </div>
+                        
+                    <%-- bottone di modifica nickname --%>
                     <div class="col-xs-2 col-sm-6 col-md-8 col-lg-8">
                         <button type="button" class="iconButton" data-toggle="modal" data-target="#changeNickname"><span class="glyphicon glyphicon-pencil"></span></button>
                     </div>
 
                 </div>
+                    
+                <%-- email --%>
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                         <span class="iconInfo glyphicon glyphicon-envelope"></span>
@@ -189,6 +194,8 @@
                     </div>
                     <div class="col-xs-2"></div>
                 </div>
+                        
+                <%-- ultimo accesso --%>
                 <div class="row">
                     <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                         <span class="iconInfo glyphicon glyphicon-time"></span>
@@ -201,6 +208,8 @@
                     </div>
                     <div class="col-xs-2"></div>
                 </div>
+                        
+                <%-- bottone di modifica password --%>
                 <div class="row">
                     <div class="col-sm-1 col-md-1 col-lg-1"></div>
                     <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
@@ -213,6 +222,8 @@
 
             <%-- I MIEI RISTORANTI --%>
 
+            <%-- controllo se l'utente in sessione puo avere ristoranti e se li ha
+            effettivamente --%>
             <c:if test="${user.type gt 0 && fn:length(restaurants) gt 0}">
 
                 <hr class="style15">
@@ -223,7 +234,7 @@
                     </div>
                 </div>
 
-                <!-- Avvia servlet per ricerca miei ristoranti -->
+                <%-- visualizzazione ristoranti tramite panels --%>
                 <div class="row" id="row-thumbnail">
 
                     <c:forEach items="${restaurants}" var="restaurant">
@@ -268,24 +279,20 @@
                                         <span class="glyphicon glyphicon-globe"></span>
                                         <c:out value="${restaurant.address}" />
                                     </p>
-                                    <%--
-                                    <p>
-                                        <c:out value="${restaurant.description}" />
-                                    </p>
-                                    --%>
                                 </div>
                             </div>
                         </div>
                     </c:forEach>
 
-                    <!--/row-->
                 </div>
 
+                <%-- bottone per aggiunta di un nuovo ristorante. 
+                Reindirizzamento alla pagina di inserimento ristorante --%>
                 <div class="row add-restaurant-row">
                     <div class="col-sm-3"></div>
                     <div class="add-restaurant-btn col-xs-12 col-sm-6">
                         <h1>Aggiungi ristorante</h1>
-                        <a class="add-restaurant-link" href="prepareNewRestaurantForm"></a>
+                        <a class="add-restaurant-link" href="PrepareNewRestaurantForm"></a>
                     </div>
                 </div>
 
@@ -296,54 +303,66 @@
 
             <%-- LE MIE ULTIME RECENSIONI --%>
 
+            <%-- controllo che effettivamente esistano reviews --%>
             <c:if test="${fn:length(reviews) gt 0}" >
 
                 <hr class="style15">
 
+                <%-- titolo --%>
                 <div class="row">
                     <div class="col-sm-12">
                         <h2 class="user-reviews user-title col-xs-center">Le mie ultime recensioni</h2>
                     </div>
                 </div>
 
+                <%-- reviews organizzate in panels (classe di bootstrap) --%>
                 <div class="panel-group">
                     <c:forEach var="r" items="${reviews}">
                         <div class="panel panel-default panel-review">
                             <div class="panel-heading panel-outer">
                                 <div class="panel-heading-inner"></div>
                                 <div class="row">
+                                    
+                                    <%-- titolo --%>
                                     <div class="panel-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <h3>
                                             <c:out value="${r.name}" />
                                         </h3>
                                     </div>
+                                        
+                                    <%-- valutazione (stelle) --%>
                                     <div class="col-stars col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <%-- stelle piene --%>
                                         <c:forEach var="i" begin="1" end="${r.global_value}">
                                             <span class="glyphicon glyphicon-star"></span>
                                         </c:forEach>
-                                        <%-- stelle vuote --%>
-                                        <c:forEach var="i" begin="${r.global_value + 1}" end="5">
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                        </c:forEach>
                                     </div>
+                                    
+                                    <%-- valutazione nei singoli campi --%>
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="valutations">
+                                            
+                                            <%-- cibo --%>
                                             <span class="label label-warning label-review">CIBO: 
                                                 <span class="badge badge-review">
                                                     <c:out value="${r.food}" />
                                                 </span>
                                             </span>
+                                                
+                                            <%-- qualita/prezzo --%>
                                             <span class="label label-warning label-review">QUALITA'/PREZZO: 
                                                 <span class="badge badge-review">
                                                     <c:out value="${r.value_for_money}" />
                                                 </span>
                                             </span>
+                                                
+                                            <%-- atmosfera --%>
                                             <span class="label label-warning label-review">ATMOSFERA: 
                                                 <span class="badge badge-review">
                                                     <c:out value="${r.atmosphere}" />
                                                 </span>
                                             </span>
+                                                
+                                            <%-- servizio --%>
                                             <span class="label label-warning label-review">SERVIZIO: 
                                                 <span class="badge badge-review">
                                                     <c:out value="${r.service}" />
@@ -352,6 +371,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                                
+                                <%-- nome e citta ristorante --%>
                                 <div class="row">
                                     <div class="review-rest col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <h4>
@@ -371,6 +392,8 @@
                             <div class="panel-body">
                                 <c:out value="${r.description}" />
                             </div>
+                            
+                            <%-- inserimento foto (se esistono) --%>
                             <c:if test="${r.photo_name != ''}">
                                 <div class="panel-footer panel-outer">
                                     <div class="photos-container">
@@ -388,123 +411,17 @@
                     </c:forEach>
                 </div>
 
-                <%--
-                <div class="row reviews">
-                    <c:set var="index" value="${1}" />
-                    <c:forEach items="${reviews}" var="r">
-                        <div class="
-                             <c:choose>
-                                 <c:when test="${index%2 eq 0}">
-                                     <c:out value="review-wrap-right" />
-                                 </c:when>
-                                 <c:otherwise>
-                                     <c:out value="review-wrap-left" />
-                                 </c:otherwise>
-                             </c:choose>
-                             col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                            <div class="review">
-                                <c:choose>
-                                    <c:when test="${r.photo_name != ''}">
-                                        <div class="user-review-image col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                            <img src="<c:out value='${r.photo_name}' />" alt="Nessuna immagine disponibile" >
-                                            <div class="overlay"></div>
-                                        </div>
-                                        <c:set var="photo" value="8" />
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:set var="photo" value="12" />
-                                    </c:otherwise>
-                                </c:choose>
-                                <div class="review-content col-xs-12 
-                                     <c:out value="col-sm-${photo} col-md-${photo} col-lg-${photo}" />
-                                     ">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h3 class="user-review-name user-review-name-<c:out value='${photo}' /> ">
-                                                <c:out value="${r.name}" />
-                                            </h3>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h4 class="user-review-rest-name user-review-rest-name-<c:out value='${photo}' /> ">
-                                                <c:out value="${r.restaurant_name}" />
-                                            </h4>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 user-review-rest-city">
-                                            <h3>
-                                                <small class="text-muted">
-                                                    <c:out value="${r.restaurant_city} - ${fn:split(r.data_creation, ' ')[0]}" />
-                                                </small>
-                                            </h3>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 col-md-5-stars">
-                                            <h4 class="col-stars">
-                <%-- stelle piene -->
-                <c:forEach var="i" begin="1" end="${r.global_value}">
-                    <span class="glyphicon glyphicon-star"></span>
-                </c:forEach>
-                <%-- stelle vuote -->
-                <c:forEach var="i" begin="${r.global_value + 1}" end="5">
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </c:forEach>
-            </h4>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 review-food">
-            <h5>
-                <c:out value="CIBO: ${r.food}/5" />
-            </h5>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 review-atmosphere">
-            <h5>
-                <c:out value="ATMOSFERA: ${r.atmosphere}/5" />
-            </h5>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 review-service">
-            <h5>
-                <c:out value="SERVIZIO: ${r.service}/5" />
-            </h5>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-6 review-value-for-money">
-            <h5>
-                <c:out value="QUALITÀ/PREZZO: ${r.value_for_money}/5" />
-            </h5>
-        </div>
-    </div>
-</div>
-<div class="review-description col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <blockquote class="blockquote user-review-description">
-        <p class="m-b-0">
-            <c:out value="${r.description}" />
-        </p>
-    </blockquote>
-    <p class="user-review-description-xs">
-        <c:out value="${r.description}" />
-    </p>
-</div>
-
-</div>
-</div>
-<c:set var="index" value="${index + 1}" />
-</c:forEach>
-</div>
-                --%>
-
             </c:if>
 
             <%-- fine recensioni --%>
 
-            <div>
-                <c:out value="${sql}" />
-            </div>
-
         </div>
 
+        <!-- js files -->
+        <script src="js/checkNewPwd.js"></script>
+        <script src="js/changeUserPwd.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/UserPageModalImages.js"></script>
 
-        <script>
-            function setModalImage(photoname) {
-                path = photoname.replace("\r", "\\r");
-                path = path.replace("Imgs", "Imgs\\");
-                document.getElementById("photo-modal-img").src = path;
-            }
-        </script>
     </body>
 </html>

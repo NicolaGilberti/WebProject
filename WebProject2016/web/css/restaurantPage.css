@@ -8,35 +8,111 @@ and open the template in the editor.
     Author     : RiccardoUni
 */
 
+.h1-restaurant-title{
+    font-family: "Pacifico";
+}
+
+.p-misc{
+    font-family: "Lato";
+}
+
+.review {
+    padding: 15px;
+}
+
+.review-elements{
+    padding-top: 5px;
+}
+
+.qr-code-small{
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+}
+
+.h2-title{
+
+    font-family: "Pacifico";
+}
+
+.blockquote-description{
+    border-color:#900c3f;
+    background-color: #f5f5f5;
+    font-family: "Lato";
+}
+
+.restaurant-specs{
+    font-family: "Lato";
+    font-size: medium;
+}
+
+.btn-violet{
+    margin: 2px;
+    background-color:#900c3f;
+    color:white;
+}
+
+.review-parameters{
+    padding: 5px;
+}
+
+.row-mine{
+    padding: 10px;
+}
+
+.h4-review{
+    
+    font-family: "Lato";
+    font: bold;
+}
+
+#map{
+    
+    height: 200px;
+}
+.maps-temporary-override{
+    padding: 15px;
+}
+
 .panel .panel-default {
     border-color:#900c3f;
 }
-  .carousel, .carousel-img {
-        height : 200px!important;
-    }
-    #qrCodeBig > img {
-        height : 200px!important;
-        width : 200px!important;
-    }
-    #qrCodeBig {
-        text-align: center;
-    }
-    #qrCodeSmall {
-        text-align: left;
-    }
+.carousel, .carousel-img {
+    height : 200px!important;
+}
+#qrCodeBig > img {
+    height : 200px!important;
+    width : 200px!important;
+}
+#qrCodeBig {
+    text-align: center;
+}
+#qrCodeSmall {
+    text-align: left;
+}
 
 /* For devices 600px and larger: */    
 @media only screen and (min-device-width: 600px) {
     .carousel, .carousel-img {
         height : 400px!important ;
     }
-    
+
     #qrCodeBig > img {
         height : 400px!important;
         width : 400px!important;
-        
+
     }
     #qrCodeSmall {
         text-align: right;
     }
-} 
+    #map{
+        height : 350px !important;
+    }
+}
+
+.cuisine-label{
+    background-color: #900c3f;
+    margin: 2px;
+
+
+}

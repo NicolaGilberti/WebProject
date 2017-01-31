@@ -13,7 +13,7 @@ INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','B
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente4','marioBianchi4@gmail.com','7d5e7ba8a0aa09aa357c6db0e9aa8a856e509630a1a6f69b3bb8656544bc821a',0); -- password : sha256(utente4)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente5','marioBianchi5@gmail.com','eed71541825170544740adc4ef06e48dab2f251902653a2849dd264a094416d7',0); -- password : sha256(utente5)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente6','marioBianchi6@gmail.com','789617c344f2f3092037ef48cfe1881ad4d6638762b23513fd372a14ce2da2e6',0); -- password : sha256(utente6)
-INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Ristoratore','Top','Cippalippa','risto@gmail.com','3dd223a11e1d4d6794e0eb61157c02854388024466f53d2417365bcf5dc994ec',1); -- password : sha256(risto)
+INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Paperon','de'' Paperoni','Zione','klondike@gmail.com','1a2220adba6d9d0cdd42ec7fd828438f857c3f42b4d1ad37d1a9855740f498e4',1); -- password : sha256(klondike)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente7','marioBianchi7@gmail.com','34737f5b2ded8cb31d30d4c34e2f139ebf0f8ae58a70e5465d87e8a36520bc4e',0); -- password : sha256(utente7)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente8','marioBianchi8@gmail.com','5f079bbb5012d7f0305ac56bfce893628ff00674b6a6ad84ee660e331d669b75',0); -- password : sha256(utente8)
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Mario','Bianchi','Utente9','marioBianchi9@gmail.com','8327a13fd6e8239b135b6203b9876a4a4f0073d342a70bc1269f4a05aa3a328f',0); -- password : sha256(utente9)
@@ -1031,55 +1031,55 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 
 -- Reviews with photo path: 'WebProject\WebProject2016\web\img\reviewsImgs' 
 
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s1.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',7,4);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev1.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',7,4);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',7,4,54);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s2.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',8,14);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev2.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',8,14);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',8,14,55);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s3.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',9,1);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev3.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',9,1);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',9,1,56);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s4.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',10,35);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev4.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',10,35);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',10,35,57);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s5.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',11,42);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev5.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',11,42);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',11,42,58);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s6.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',17,50);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev6.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',17,50);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',17,50,59);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s7.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',18,49);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev7.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',18,49);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',18,49,60);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s8.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',19,48);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev8.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',19,48);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',19,48,61);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s9.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',20,47);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev9.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',20,47);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',20,47,62);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s10.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',21,46);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev10.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',21,46);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',21,46,63);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s11.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',26,45);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev11.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',26,45);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',26,45,64);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s12.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',27,44);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev12.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',27,44);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',27,44,65);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s13.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',28,43);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev13.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',28,43);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',28,43,66);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s14.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',29,42);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev14.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',29,42);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',29,42,67);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s15.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',30,41);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev15.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',30,41);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',30,41,68);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s16.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',36,40);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev16.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',36,40);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',36,40,69);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s17.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',37,39);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev17.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',37,39);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',37,39,70);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s18.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',38,38);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev18.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',38,38);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',38,38,71);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s19.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',39,37);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev19.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',39,37);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',39,37,72);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s20.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',40,36);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev20.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',40,36);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',40,36,73);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s21.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',46,35);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev21.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',46,35);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',46,35,74);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s22.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',47,34);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev22.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',47,34);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',47,34,75);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s23.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',48,33);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev23.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',48,33);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',48,33,76);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s24.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',49,32);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev24.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',49,32);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',49,32,77);
-INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('s25.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',50,31);
+INSERT INTO photos (name, description,data_creation, id_restaurant, id_user) VALUES ('rev25.jpg','Piatto presente nel menu','2016-10-02T09:46:48+00:00',50,31);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,3,4,3,'Buon Cibo!','È sempre un piacere andarci! La cucina e'' ottima e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',50,31,78);
 
 -- replies confirmed

@@ -118,7 +118,7 @@ public class NewReview extends HttpServlet {
         part.write(savePath + File.separator + fileName);
         Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
         
-        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/RestaurantRequest?id="+restID);
 
         rd.forward(request, response);
         

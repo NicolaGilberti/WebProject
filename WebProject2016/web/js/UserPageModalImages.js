@@ -1,0 +1,15 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/*
+ * Genera il vero path dell'immagine in questione, correggendo la stringa in
+ * modo che possa essere interpretata correttamente.
+ */
+function setModalImage(photoname) {
+    path = photoname.replace("\r", "\\r");
+    path = path.replace("Imgs", "Imgs\\");
+    document.getElementById("photo-modal-img").src = path;
+}
