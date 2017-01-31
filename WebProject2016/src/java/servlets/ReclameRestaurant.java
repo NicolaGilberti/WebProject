@@ -10,6 +10,7 @@ import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -82,21 +83,30 @@ public class ReclameRestaurant extends HttpServlet {
         //fetch userID e restID
         HttpSession session = request.getSession();
         UserBean userLogged = (UserBean) session.getAttribute("user");
-        int restID = parseInt(request.getParameter("restaurantId"));
         int userID = userLogged.getId();
+        int restID = 0;       
+        String stringRestID = request.getParameter("restaurantID");
+        if (stringRestID != null && !stringRestID.isEmpty()) {
+            restID = parseInt(stringRestID);
+        }
+        
+        String responsePath =  request.getContextPath()+"/RestaurantRequest?id=" + restID;
         
         if (userID != 0) {
             RestaurantDAO restDao = new RestaurantDAO();
+            
+            response.setIntHeader("id", restID);
             if (restDao.reclameRestaurant(userID,restID)) {
-                response.sendRedirect("/RestaurantRequest?id=" + restID);
+                response.sendRedirect(responsePath);
             }
             else {
-                response.sendRedirect("/RestaurantRequest?id=" + restID + "&notReclamed");
+                response.sendRedirect(responsePath + "&notReclamed");
             }
         }
         else {
             response.sendRedirect("/index.jsp");
         }
+        
     }
 
     /**

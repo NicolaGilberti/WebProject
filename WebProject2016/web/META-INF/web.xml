@@ -195,6 +195,14 @@
         <servlet-name>RestaurantRequest</servlet-name>
         <url-pattern>/RestaurantRequest</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>ReclameRestaurant</servlet-name>
+        <servlet-class>servlets.ReclameRestaurant</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReclameRestaurant</servlet-name>
+        <url-pattern>/ReclameRestaurant</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Registration</servlet-name>
         <servlet-class>servlets.Registration</servlet-class>

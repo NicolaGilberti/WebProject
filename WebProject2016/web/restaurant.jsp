@@ -36,17 +36,23 @@
         <title>${r.name} - TuttoBistro</title>
     </head>
     <body>
+        
         <!-- header -->
         <jsp:include page="header/header.jsp"></jsp:include>
 
+        <c:if test="${param.notReclamed != null}">
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+                Hai già reclamato questo ristorante!
+            </div>
+        </c:if>
 
 
-
-            <!--new carousel -->
-            <div class="container">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
+        <!--new carousel -->
+        <div class="container">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
 
                     <c:forEach var="i" begin="0" end="${numberOfPhotos-1}">
                         <c:if test="${i==0}">
@@ -148,10 +154,12 @@
                         </div>
 
                         <!--reclame button-->
-
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <c:if test="${sessionScope.user != null}">
-                                <button class="btn btn-purple" onclick="../WebProject2016/ReclameRestaurant">Reclama Ristorante</button>
+                                <form action="ReclameRestaurant" method="POST">
+                                    <input name="restaurantID" hidden value="${r.id}">
+                                    <button class="btn btn-purple">Reclama Ristorante</button>
+                                </form>
                             </c:if>
                         </div>
                     </div>
@@ -159,16 +167,16 @@
 
                 <!--right-->
                 <script>
-                var name = "${r.name}";
-                var address = "${r.address}";
-                var openingDates = "${openingDates}";
+                    var name = "${r.name}";
+                    var address = "${r.address}";
+                    var openingDates = "${openingDates}";
                 </script>
 
                 <div class="maps-temporary-override col-lg-6 col-sm-12 col-xs-12 col-md-6">
                     <script>
-                    var name = "${r.name}";
-                    var latitude = "${r.latitude}";
-                    var longitude = "${r.longitude}";
+                        var name = "${r.name}";
+                        var latitude = "${r.latitude}";
+                        var longitude = "${r.longitude}";
                     </script>
                     <div id="map"></div>
                 </div>
