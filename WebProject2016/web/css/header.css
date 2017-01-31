@@ -105,6 +105,11 @@
     background-color: #CCC;
 }
 
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu>li>a {
         color: #777;
@@ -113,13 +118,13 @@
     .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
         color: #333;
     }
+    .navbar-login{
+        width:auto;
+    }
+    
 }
 
-.navbar-login {
-    width: 305px;
-    padding: 10px;
-    padding-bottom: 0px;
-}
+
 
 .navbar-login-session {
     padding: 10px;
