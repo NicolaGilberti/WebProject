@@ -12,10 +12,16 @@ and open the template in the editor.
     font-family: 'Lato';
     color: #581845;
 }
+
 .notification-title {
     color: #900c3f;
     text-align: center;
     font-family: 'Pacifico';
+}
+
+.btn-yellow{
+    background-color:#ffc300;
+    color:black;
 }
 
 a {
