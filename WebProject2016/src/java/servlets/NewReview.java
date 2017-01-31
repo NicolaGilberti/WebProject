@@ -42,7 +42,7 @@ import org.apache.commons.collections4.CollectionUtils;
 public class NewReview extends HttpServlet {
     
     //Path della cartella dove salvare i file immagine
-    private static final String SAVE_DIR = "img/restImgs/";
+    private static final String SAVE_DIR = "img/reviewsImgs/";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

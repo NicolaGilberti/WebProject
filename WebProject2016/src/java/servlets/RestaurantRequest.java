@@ -83,19 +83,19 @@ public class RestaurantRequest extends HttpServlet {
         //reviews
         //collections for reviews
         ArrayList<ReviewBean> reviews = restaurantDao.getReviews(restBean.getId());
-        ArrayList<String> userNamesOfReviews = new ArrayList<>();
+        ArrayList<String> userNickamesOfReviews = new ArrayList<>();
         ArrayList<String> replies = new ArrayList<>();
         //collecting photo of the reviews and name of the user
         PhotoDAO pDao = new PhotoDAO();
         ArrayList<String> photoPaths = new ArrayList<>();
         for (ReviewBean current : reviews) {
-            String currName = restaurantDao.getUserName(current.getId_creator());
+            String currName = restaurantDao.getUserNickname(current.getId_creator());
             //name of the user
-            userNamesOfReviews.add(currName);
+            userNickamesOfReviews.add(currName);
             String currPhotoPath = "";
             //if any photo exists
             if (((Integer)current.getId_photo()) != 0) {
-                currPhotoPath = "img/restImgs/"+ pDao.getName(current.getId_photo());
+                currPhotoPath = "img/reviewsImgs/"+ pDao.getName(current.getId_photo());
                 photoPaths.add(currPhotoPath);
             }
             else photoPaths.add("");
@@ -106,7 +106,7 @@ public class RestaurantRequest extends HttpServlet {
             replies.add(replyBean.getDesc());
         }
         request.setAttribute("reviews", reviews);
-        request.setAttribute("userNameOfReviews", userNamesOfReviews);
+        request.setAttribute("userNicknamesOfReviews", userNickamesOfReviews);
         request.setAttribute("photoPaths", photoPaths);
         
         //likes

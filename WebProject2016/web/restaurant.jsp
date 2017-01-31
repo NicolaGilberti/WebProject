@@ -202,7 +202,7 @@
                             <h4 style="font: bold;"><c:out value="${current.name}"/> 
                                 <div>
                                 <small class="text-muted">
-                                    <c:out value='${userNameOfReviews.get(i)}'/> 
+                                    <c:out value='${userNicknamesOfReviews.get(i)}'/> 
                                     <wbr>|<wbr>
                                     <c:out value="${current.data_creation}"/>
                                     <div class="col-stars">
