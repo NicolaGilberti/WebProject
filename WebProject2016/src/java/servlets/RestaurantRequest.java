@@ -55,6 +55,9 @@ public class RestaurantRequest extends HttpServlet {
         RestaurantDAO restaurantDao = new RestaurantDAO();
         RestaurantBean restBean = new RestaurantBean();
         
+        //increment n_visit
+        restaurantDao.incrNumVisit(id);
+        
         //retreive restaurant
         restBean = restaurantDao.searchRestaurant(id);
         request.setAttribute("r", restBean);

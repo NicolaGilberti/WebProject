@@ -473,4 +473,15 @@ public class RestaurantDAO {
         }
        return result;
     }
+    public void incrNumVisit(int id_restaurant) throws SQLException{
+        PreparedStatement pd = con.prepareStatement(
+                "UPDATE restaurants" +
+                " SET n_visits=n_visits+1" +
+                " WHERE id=?");
+        pd.setInt(1, id_restaurant);
+        int rs = pd.executeUpdate();
+        if (rs == 0) {
+            throw new SQLException("Errore inserimento tipologia di cucina, no rows affected.");
+        }
+    }
 }
