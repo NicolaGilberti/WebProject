@@ -13,15 +13,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="css/notifcation.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/notification.css">
-        <link rel="stylesheet" href="css/genericsnotification.css">
+        
         <jsp:include page="header/headerFiles.jsp"/>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>        
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/notifcation.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/generic.css">
+        
     </head>
     <body>
         <jsp:include page = "header/header.jsp"/>
         <div class="container-fluid">
+            <div class="col-sm-12 col-xs-12">
             <!--Search that i used to find the reply that was clicked-->
             <c:forEach var="notbean" items="${noty.delphotos}">
                 <c:if test="${notbean.idphoto == param.id}">
@@ -34,7 +37,7 @@
             <!--area che verrà aggiornata dallo script-->
             <div class="row" style="text-align: center">
                 <div class=" col-sx-8 col-md-8" >
-                        <img src="${deletephoto.photoname}">
+                        <img src="${deletephoto.photoname}" class="img-responsive">
                 </div>
             </div>
             <br>
@@ -48,10 +51,11 @@
                     <c:param name="id" value="${param.id}"/>
                 </c:url>
                 <form action="${deletephotoURL}" method="POST">
-                    <button type="submit"  name="button" class="btn btn-danger " value='n'>No</button>
+                    <button type="submit"  name="button" class="btn btn-danger" value='n'>No</button>
                     <button type="submit"  name="button" class="btn btn-success" value='s'>Si</button>
                 </form>
             </div>
+        </div>
         </div>
     </body>
 </html>
