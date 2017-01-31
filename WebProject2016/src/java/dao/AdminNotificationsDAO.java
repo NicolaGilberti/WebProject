@@ -56,7 +56,7 @@ public class AdminNotificationsDAO {
                 
                     
                 //the query for seletting all the change owner request
-                PreparedStatement cown = con.prepareStatement("SELECT t1.accepted AS accepted,t2.id AS resid,t3.id AS usrid , t2.name AS resname,t3.name AS usrname,t3.surname,t3.nickname FROM (request_changes_owner AS t1 INNER JOIN restaurants AS t2 ON (t1.id_restaurant =t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id OR t2.id_owner = t3.id)");
+                PreparedStatement cown = con.prepareStatement("SELECT t1.accepted AS accepted,t2.id AS resid,t3.id AS usrid , t2.name AS resname,t3.name AS usrname,t3.surname,t3.nickname, t4.nickname AS owner FROM ((request_changes_owner AS t1 INNER JOIN restaurants AS t2 ON (t1.id_restaurant =t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id)) INNER JOIN users AS t4 ON (t2.id_owner = t4.id)");
                 rs = cown.executeQuery();
                 while(rs.next()){
                     ChangeOwnerNotificationBean t1 = new ChangeOwnerNotificationBean();
@@ -66,6 +66,7 @@ public class AdminNotificationsDAO {
                     t1.setResname(rs.getString("resname"));
                     t1.setUsrid(rs.getInt("usrid"));
                     t1.setUsername(rs.getString("usrname"));
+                    t1.setResnickname(rs.getString("owner"));
                     t1.setAccepted(rs.getBoolean("accepted"));
                     notification.addChowner(t1);
                 }

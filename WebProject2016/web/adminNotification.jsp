@@ -7,21 +7,24 @@
 
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
- <link rel="stylesheet" href="css/notification.css">
+ <link rel="stylesheet" href="css/notifcation.css">
  <link rel="stylesheet" href="css/generic.css">
  
 
 <!DOCTYPE html>
 
         <!-- header -->
-            <ul class="nav nav-tabs" style="display: inline">
-                 <li class="active"><a data-toggle="tab" href="#home"><h3 class="h3-subtitle"><strong>Risposte da confermare</strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu1"><h3 class="h3-subtitle"><strong>Richiesta di cambiamento proprietario </strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu2"><h3 class="h3-subtitle"><strong>Elimina richiesta foto </strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu4"><h3 class="h3-subtitle"><strong>Notifiche ristorante </strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu5"><h3 class="h3-subtitle"><strong>Notifiche ristorante già viste</strong></h3></a></li>
-                 <li><a data-toggle="tab" href="#menu3"><h3 class="h3-subtitle"><strong>Notifiche accettate </strong></h3></a></li>
+        <div class=" col-sm-12 col-xs-12">
+            <ul class="nav nav-tabs">
+                 <li class="active"><a data-toggle="nav nav-tabs" href="#home"><strong class="h3-subtitle">Risposte da confermare</strong></a></li>
+                 <li><a data-toggle="tab" href="#menu1"><strong class="h3-subtitle">Richiesta di cambiamento proprietario </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu2"><strong class="h3-subtitle">Elimina richiesta foto </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu4"><strong  class="h3-subtitle">Notifiche ristorante </strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu5"><strong class="h3-subtitle">Notifiche ristorante già viste</strong></h3></a></li>
+                 <li><a data-toggle="tab" href="#menu3"><strong class="h3-subtitle">Notifiche accettate </strong></h3></a></li>
             </ul>
+        </div>
+        <div class="col-sm-12 col-xs-12">
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <p>
@@ -49,13 +52,17 @@
                     <p>
                         <c:if test="${fn:length(noty.chowner) gt 0}">   
                            <c:forEach var="notbean" items="${noty.chowner}">
-                                <c:if test="${notbean.accepted == false}">
+                                <c:if test="${notbean.accepted == ''}">
                                     <div class="list-group">
-                                     <a href="#" class="list-group-item">
-                                           <strong><c:out value="${notbean.nickname}"/></strong>
-                                           ha richiesto di diventare il proprietario di <strong><c:out value="${notbean.resname}"/></strong>.
-                                     </a>
-                                   </div>
+                                    <c:url value="showchangeowner.jsp" var="chownerURL">
+                                             <c:param name="idu" value="${notbean.usrid}" />
+                                             <c:param name="idr" value="${notbean.resid}" />
+                                    </c:url>
+                                    <a href="${chownerURL}" class="list-group-item">
+                                        <strong><c:out value="${notbean.nickname}"/></strong>
+                                        ha reclamato il ristorante <strong><c:out value="${notbean.resname}"/></strong> sul proprio ristorante.
+                                    </a>
+                                    </div>
                                 </c:if>
                            </c:forEach>
                          </c:if>
@@ -104,7 +111,10 @@
                         <c:forEach var="notbean" items="${noty.chowner}">
                             <c:if test="${notbean.accepted == true}">
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item">
+                                    <c:url value="showchangeowner.jsp" var="chownerURL">
+                                             <c:param name="id" value="${notbean.usrid}" />
+                                    </c:url>
+                                    <a href="${chownerURL}" class="list-group-item">
                                         <strong><c:out value="${notbean.nickname}"/></strong>
                                         Ha risposto ad un commento di <strong><c:out value="${notbean.nickname}"/></strong> sul proprio ristorante.
                                     </a>
@@ -174,3 +184,4 @@
                 </div>
                 
               </div>
+        </div>

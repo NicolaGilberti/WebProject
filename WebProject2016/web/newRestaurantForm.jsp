@@ -85,7 +85,7 @@
                 <div class="row">
                     <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2 form-group">
                         <label class="label-text" for="CAP">CAP *:</label>
-                        <input required class="form-control" type="number" placeholder="CAP" id="cap" name="cap">
+                        <input min="0" required class="form-control" type="number" placeholder="CAP" id="cap" name="cap">
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 form-group">
                         <label  class="label-text" for="citta">Città *:</label>

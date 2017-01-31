@@ -40,24 +40,26 @@
         <jsp:include page="header/header.jsp"></jsp:include>
 
 
-            <!-- carousel -->
 
+
+            <!--new carousel -->
             <div class="container">
-                <div id="myCarousel" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 carousel slide" data-ride="carousel">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
+
                     <c:forEach var="i" begin="0" end="${numberOfPhotos-1}">
                         <c:if test="${i==0}">
-                            <li data-target="#myCarousel" data-slide-to="i" class="active tales"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="i" class="active"></li>
                             </c:if>
                             <c:if test="${i>0}">
-                            <li data-target="#myCarousel" data-slide-to="i"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="i"></li>
                             </c:if>
                         </c:forEach>
                 </ol>
-                <!-- Wrapper for slides -->
 
-                <div class="carousel-inner" role="listbox">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
                     <c:set value="0" var="i"></c:set>
                     <c:forEach  items="${photos}" var="current">
                         <c:if test="${i==0}" >
@@ -66,243 +68,247 @@
                             <c:if test="${i>0}" >  
                                 <div class="item">
                                 </c:if>
-                                <img src="${current}" class="carousel-img img-rounded" alt="${current}">
+
+                                <img src="${current}" alt="...">
+
                             </div>
                             <c:set value="1" var="i"></c:set>    
                         </c:forEach>
                     </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                 </div>
             </div>
-        </div>
 
-        <!--infos-->
-        <div class="container">
-            <!--left-->
-            <!--name-->
-            <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
-                <h1 class="h1-restaurant-title"><c:out value="${r.name}"></c:out></h1>
 
-                    <p></p>
-                    <p class="restaurant-specs"> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
-                <!-- price range -->
-                <div>
-                    <p class="restaurant-specs"><span class=" glyphicon glyphicon-tag"></span>  €<c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out></p>
-                    </div>
-                    <!-- stars -->
+            <!--infos-->
+            <div class="container">
+                <!--left-->
+                <!--name-->
+                <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
+                    <h1 class="h1-restaurant-title"><c:out value="${r.name}"></c:out></h1>
+
+                        <p></p>
+                        <p class="restaurant-specs"> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
+                    <!-- price range -->
                     <div>
-                    <c:forEach begin="1" end="${r.global_value}">
-                        <span class="glyphicon glyphicon-star"></span>
-                    </c:forEach>
-                    <c:forEach begin="${r.global_value+1}" end="5">
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </c:forEach>
-                </div>
-                <p></p>
-
-                <!-- opening hours -->
-                <p class="restaurant-specs">Orari di apertura: <br>
-                    <c:forEach items="${openingDates}" var="odIterator">
-                        <c:out value="${odIterator}"></c:out> <br>
-                    </c:forEach>
-                    <!-- cuisine types -->
-                <div class="cuisine-labels"> 
-                    <c:forEach items="${cuisines}" var="current">
-                        <span class="cuisine-label label label-info" style="font-size: 14px;">
-                            <c:out value="${current.name}"></c:out>
-                            </span>
-                    </c:forEach>
-                </div>
-
-                <!-- qrcode -->
-                <div class="row">
-                    <p></p>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                        <div class="qr-code-small" id="qrCodeSmall">
+                        <p class="restaurant-specs"><span class=" glyphicon glyphicon-tag"></span>  €<c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out></p>
                         </div>
+                        <!-- stars -->
+                        <div>
+                        <c:forEach begin="1" end="${r.global_value}">
+                            <span class="glyphicon glyphicon-star"></span>
+                        </c:forEach>
+                        <c:forEach begin="${r.global_value+1}" end="5">
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </c:forEach>
                     </div>
-                    <!-- Modal for QR -->
-                    <div class="modal fade" id="qrModal" role="dialog">
-                        <div class="modal-dialog">
+                    <p></p>
 
-                            <!-- Modal content-->
-                            <div class="modal-content">
+                    <!-- opening hours -->
+                    <p class="restaurant-specs">Orari di apertura: <br>
+                        <c:forEach items="${openingDates}" var="odIterator">
+                            <c:out value="${odIterator}"></c:out> <br>
+                        </c:forEach>
+                        <!-- cuisine types -->
+                    <div class="cuisine-labels"> 
+                        <c:forEach items="${cuisines}" var="current">
+                            <span class="cuisine-label label label-info" style="font-size: 14px;">
+                                <c:out value="${current.name}"></c:out>
+                                </span>
+                        </c:forEach>
+                    </div>
 
-                                <div class="modal-body" style="align-content: center;">
-                                    <div id="qrCodeBig" style="align-content: center;">
+                    <!-- qrcode -->
+                    <div class="row">
+                        <p></p>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="qr-code-small" id="qrCodeSmall">
+                            </div>
+                        </div>
+                        <!-- Modal for QR -->
+                        <div class="modal fade" id="qrModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+
+                                    <div class="modal-body" style="align-content: center;">
+                                        <div id="qrCodeBig" style="align-content: center;">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!--reclame button-->
-                    
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                        <c:if test="${sessionScope.user != null}">
-                            <button class="btn btn-purple" onclick="../WebProject2016/ReclameRestaurant">Reclama Ristorante</button>
-                        </c:if>
+                        <!--reclame button-->
+
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            <c:if test="${sessionScope.user != null}">
+                                <button class="btn btn-purple" onclick="../WebProject2016/ReclameRestaurant">Reclama Ristorante</button>
+                            </c:if>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!--right-->
-            <script>
+                <!--right-->
+                <script>
                 var name = "${r.name}";
                 var address = "${r.address}";
                 var openingDates = "${openingDates}";
-            </script>
+                </script>
 
-            <div class="maps-temporary-override col-lg-6 col-sm-12 col-xs-12 col-md-6">
-                <script>
+                <div class="maps-temporary-override col-lg-6 col-sm-12 col-xs-12 col-md-6">
+                    <script>
                     var name = "${r.name}";
                     var latitude = "${r.latitude}";
                     var longitude = "${r.longitude}";
-                </script>
-                <div id="map"></div>
-            </div>
-        </div> 
+                    </script>
+                    <div id="map"></div>
+                </div>
+            </div> 
 
-        <div class="container">
-            <!-- description -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2 class="h2-title"> Descrizione </h2> <br>
-                <blockquote class="blockquote-description">
-                    <c:out value="${r.description}" />
-                </blockquote>
-            </div>
+            <div class="container">
+                <!-- description -->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2 class="h2-title"> Descrizione </h2> <br>
+                    <blockquote class="blockquote-description">
+                        <c:out value="${r.description}" />
+                    </blockquote>
+                </div>
 
-            <!-- recensioni -->
-            <div class="review">
-                <h2 class="h2-title"> Recensioni </h2>
-                <c:set value="0" var="i"></c:set>
-                <c:forEach items="${reviews}" var="current">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="h4-review "><c:out value="${current.name}"/>  </h4>
-                            <div><c:out value='${userNicknamesOfReviews.get(i)}'/>
-                                <wbr>|<wbr>
-                                <c:out value="${current.data_creation}"/>
-                                <div class="review-elements col-stars">
-                                    <%-- stelle piene --%>
-                                    <c:forEach var="c" begin="1" end="${r.global_value}">
-                                        <span class="glyphicon glyphicon-star"></span>
-                                    </c:forEach>
-                                    <%-- stelle vuote --%>
-                                    <c:forEach var="c" begin="${r.global_value + 1}" end="5">
-                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                    </c:forEach>
-                                </div>
-                                <div class="review-elements p-misc">
-                                    Cibo: <c:out value="${current.food}" /> 
-                                    |
-                                    Qualità / Prezzo: <c:out value="${current.value_for_money}" />
-                                    |
-                                    Atmosfera: <c:out value="${current.atmosphere}" />
-                                    |
-                                    Servizio: <c:out value="${current.service}" />
-                                </div>
-                                <label id="${current.id}-1-gen" class="label label-like label-success" onclick="like(${current.id}, 1,${user.id})">
-                                    Mi piace <label  id="${current.id}-1"><c:out value="${likes.get(i)}"/></label> </label>
-
-                                <label id="${current.id}-0-gen" class="label label-like label-danger" onclick="like(${current.id}, 0,${user.id})">
-                                    Non mi piace  <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label></label> 
-
-
-                            </div>
-
-
-                        </div>
-                        <div class="p-misc panel-body">
-                            <c:out value="${current.description}"></c:out>
-                            <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
-                        </div>
-
-                        <c:if test="${current.reply!=null}">
-                            <div class='panel-footer'>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
-                                    <div class="panel-body">${current.reply.desc}</div>
-
-                                </div>
-                            </div>
-                        </c:if>
-
-                    </div>
-                    <c:set value="${i+1}" var="i"></c:set>
-                </c:forEach>
-            </div>
-            <!--newReview-->
-            <div class="review">
-                <c:if test="${sessionScope.user!=null}">
-                    <form action="NewReview" method="post" enctype="multipart/form-data">
+                <!-- recensioni -->
+                <div class="review">
+                    <h2 class="h2-title"> Recensioni </h2>
+                    <c:set value="0" var="i"></c:set>
+                    <c:forEach items="${reviews}" var="current">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4 col-xs-6 col-sm-8 col-lg-4">
-                                            <input required type="text" placeholder="Titolo recensione" class="form-control" id="name" name='name'>
-                                        </div>
-                                        <div class="col-md-8 col-xs-6 col-sm-4 col-lg-8 text-right">
-                                            <button type=" submit" class="btn-violet btn btn-primary">Invia</button>
-                                        </div>
+                                <h4 class="h4-review "><c:out value="${current.name}"/>  </h4>
+                                <div><c:out value='${userNicknamesOfReviews.get(i)}'/>
+                                    <wbr>|<wbr>
+                                    <c:out value="${current.data_creation}"/>
+                                    <div class="review-elements col-stars">
+                                        <%-- stelle piene --%>
+                                        <c:forEach var="c" begin="1" end="${r.global_value}">
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        </c:forEach>
+                                        <%-- stelle vuote --%>
+                                        <c:forEach var="c" begin="${r.global_value + 1}" end="5">
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </c:forEach>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row row-mine">
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required  placeholder="servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
-                                        </div>
+                                    <div class="review-elements p-misc">
+                                        Cibo: <c:out value="${current.food}" /> 
+                                        |
+                                        Qualità / Prezzo: <c:out value="${current.value_for_money}" />
+                                        |
+                                        Atmosfera: <c:out value="${current.atmosphere}" />
+                                        |
+                                        Servizio: <c:out value="${current.service}" />
                                     </div>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                        <textarea required class="form-control" rows="3"  placeholder="Descrivi la tua esperienza" id="description" name='description'></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                                        <label class="label-text" for="nome">Carica una foto</label>
-                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <input type='hidden' name="restaurantId" value="${r.id}">
-                    </form>
-                </c:if>
-            </div>
-        </div>
+                                    <label id="${current.id}-1-gen" class="label label-like label-success" onclick="like(${current.id}, 1,${user.id})">
+                                        Mi piace <label  id="${current.id}-1"><c:out value="${likes.get(i)}"/></label> </label>
 
-        <script type="text/javascript" src="js/map.js"></script>
-        <script type="text/javascript" src="js/modalForReviews.js"></script>
-        <script type="text/javascript" src="js/qrCreator.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs&callback=initMap"></script>
+                                    <label id="${current.id}-0-gen" class="label label-like label-danger" onclick="like(${current.id}, 0,${user.id})">
+                                        Non mi piace  <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label></label> 
 
-    </body>
-</html>
+
+                                </div>
+
+
+                            </div>
+                            <div class="p-misc panel-body">
+                                <c:out value="${current.description}"></c:out>
+                                <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                            </div>
+
+                            <c:if test="${current.reply!=null}">
+                                <div class='panel-footer'>
+
+
+                                    <div class="panel panel-default">
+
+                                        <div class="panel panel-reply">
+                                            <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
+                                            <div class="panel-body">${current.reply.desc}</div>
+
+                                        </div>
+                                    </div>
+                                </c:if>
+
+                            </div>
+                            <c:set value="${i+1}" var="i"></c:set>
+                        </c:forEach>
+                    </div>
+                    <!--newReview-->
+                    <div class="review">
+                        <c:if test="${sessionScope.user!=null}">
+                            <form action="NewReview" method="post" enctype="multipart/form-data">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-6 col-sm-8 col-lg-4">
+                                                    <input required type="text" placeholder="Titolo recensione" class="form-control" id="name" name='name'>
+                                                </div>
+                                                <div class="col-md-8 col-xs-6 col-sm-4 col-lg-8 text-right">
+                                                    <button type=" submit" class="btn-violet btn btn-primary">Invia</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row row-mine">
+                                                <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                                    <input required placeholder="Stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
+                                                </div>
+                                                <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                                    <input required placeholder="Cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
+                                                </div>
+                                                <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                                    <input required placeholder="Qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
+                                                </div>
+                                                <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                                    <input required placeholder="Atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
+                                                </div>
+                                                <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                                    <input required  placeholder="Servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                                <textarea required class="form-control" rows="3"  placeholder="Descrivi la tua esperienza" id="description" name='description'></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                                                <label class="label-text" for="nome">Carica una foto</label>
+                                                <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <input type='hidden' name="restaurantId" value="${r.id}">
+                            </form>
+                        </c:if>
+                    </div>
+                </div>
+
+                <script type="text/javascript" src="js/map.js"></script>
+
+                <script type="text/javascript" src="js/qrCreator.js"></script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs&callback=initMap"></script>
+
+                </body>
+                </html>

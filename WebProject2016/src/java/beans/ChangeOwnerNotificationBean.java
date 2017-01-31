@@ -15,8 +15,17 @@ public class ChangeOwnerNotificationBean implements java.io.Serializable {
     private String resname;
     private String surname;
     private String nickname;
+    private String resnickname;
     private boolean accepted;
 
+    public String getResnickname() {
+        return resnickname;
+    }
+
+    public void setResnickname(String resnickname) {
+        this.resnickname = resnickname;
+    }
+    
     public boolean isAccepted() {
         return accepted;
     }
