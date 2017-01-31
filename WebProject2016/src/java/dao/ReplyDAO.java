@@ -39,7 +39,7 @@ public class ReplyDAO {
              result.setData_creation(rs.getTimestamp("data_creation"));
              result.setId_review(rs.getInt("id_review"));
              result.setId_owner(rs.getInt("id_owner"));
-             result.setData_validation(rs.getTimestamp("data_validation"));
+             result.setData_validation(rs.getTimestamp("date_validation"));
              result.setId_validator(rs.getInt("id_validator"));
              result.setAccepted(rs.getBoolean("accepted"));
              
