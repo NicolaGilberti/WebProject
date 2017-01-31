@@ -211,116 +211,102 @@
                                             |
                                             Servizio: <c:out value="${current.service}" />
                                         </div>
-                                        <label style ="color: green" onclick="like(${current.id}, 1,${user.id})">
-                                            Mi piace </label>
-                                        <label id="${current.id}-1"><c:out value="${likes.get(i)}"/></label>
-                                        |
-<<<<<<< HEAD
-                                        <label style="color:red" onclick="like(${current.id}, 0,${user.id})">
-                                            Non mi piace  </label> 
-                                        <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label>
-=======
-                                        SERVIZIO: <c:out value="${current.service}" />
-                                    </div>
-                                    <label id="${current.id}-1-gen" class="label label-success" onclick="like(${current.id}, 1,${user.id})">
-                                        Mi piace <label  id="${current.id}-1"><c:out value="${likes.get(i)}"/></label> </label>
-                                    
-                                    <label id="${current.id}-0-gen" class="label label-danger" onclick="like(${current.id}, 0,${user.id})">
-                                        Non mi piace  <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label></label> 
-                                    
->>>>>>> e6862677cafa2748e76a8a0913faf5c9ed4d3ece
+                                        <label id="${current.id}-1-gen" class="label label-success" onclick="like(${current.id}, 1,${user.id})">
+                                            Mi piace <label  id="${current.id}-1"><c:out value="${likes.get(i)}"/></label> </label>
+
+                                        <label id="${current.id}-0-gen" class="label label-danger" onclick="like(${current.id}, 0,${user.id})">
+                                            Non mi piace  <label id="${current.id}-0"><c:out value="${dislikes.get(i)}"/></label></label> 
 
                                     </small>
-
                                 </div>
 
-                            </h4>
-                        </div>
-                        <div class="p-misc panel-body">
-                            <c:out value="${current.description}"></c:out>
-                            </div>
-                            <div class='panel-footer'>
-                                <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
-                            <!-- Modal -->
-                            <div class="modal fade" id="photosModal" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <span class="close">&times;</span>
-                                        <div class="modal-body" style="align-content: center;">
-                                            <img src="${photoPaths.get(i)}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <c:out value="${replies.get(i)}"/>
-                        </div>
+                        </h4>
                     </div>
-                    <c:set value="${i+1}" var="i"></c:set>
-                </c:forEach>
-            </div>
-            <!--newReview-->
-            <div class="review">
-                <c:if test="${sessionScope.user!=null}">
-                    <form action="NewReview" method="post" enctype="multipart/form-data">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4 col-xs-6 col-sm-8 col-lg-4">
-                                            <input required type="text" placeholder="Titolo recensione" class="form-control" id="name" name='name'>
-                                        </div>
-                                        <div class="col-md-8 col-xs-6 col-sm-4 col-lg-8 text-right">
-                                            <button type=" submit" class="btn-violet btn btn-primary">Invia</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row row-mine">
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
-                                        </div>
-                                        <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required  placeholder="servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
-                                        </div>
+                    <div class="p-misc panel-body">
+                        <c:out value="${current.description}"></c:out>
+                        </div>
+                        <div class='panel-footer'>
+                            <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                        <!-- Modal -->
+                        <div class="modal fade" id="photosModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <div class="modal-body" style="align-content: center;">
+                                        <img src="${photoPaths.get(i)}">
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                        <textarea required class="form-control" rows="3"  placeholder="Descrivi la tua esperienza" id="description" name='description'></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                                        <label class="label-text" for="nome">Carica una foto</label>
-                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <input type='hidden' name="restaurantId" value="${r.id}">
-                    </form>
-                </c:if>
-            </div>
+                        </div>
+                        <c:out value="${replies.get(i)}"/>
+                    </div>
+                </div>
+                <c:set value="${i+1}" var="i"></c:set>
+            </c:forEach>
         </div>
+        <!--newReview-->
+        <div class="review">
+            <c:if test="${sessionScope.user!=null}">
+                <form action="NewReview" method="post" enctype="multipart/form-data">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 col-xs-6 col-sm-8 col-lg-4">
+                                        <input required type="text" placeholder="Titolo recensione" class="form-control" id="name" name='name'>
+                                    </div>
+                                    <div class="col-md-8 col-xs-6 col-sm-4 col-lg-8 text-right">
+                                        <button type=" submit" class="btn-violet btn btn-primary">Invia</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row row-mine">
+                                    <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                        <input required placeholder="stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
+                                    </div>
+                                    <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                        <input required placeholder="cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
+                                    </div>
+                                    <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                        <input required placeholder="qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
+                                    </div>
+                                    <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                        <input required placeholder="atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
+                                    </div>
+                                    <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
+                                        <input required  placeholder="servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                    <textarea required class="form-control" rows="3"  placeholder="Descrivi la tua esperienza" id="description" name='description'></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                                    <label class="label-text" for="nome">Carica una foto</label>
+                                    <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <input type='hidden' name="restaurantId" value="${r.id}">
+                </form>
+            </c:if>
+        </div>
+    </div>
 
-        <script type="text/javascript" src="js/map.js"></script>
-        <script type="text/javascript" src="js/modalForReviews.js"></script>
-        <script type="text/javascript" src="js/qrCreator.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs&callback=initMap"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/modalForReviews.js"></script>
+    <script type="text/javascript" src="js/qrCreator.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs&callback=initMap"></script>
 
-    </body>
+</body>
 </html>

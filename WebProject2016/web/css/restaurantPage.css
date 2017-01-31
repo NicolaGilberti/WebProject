@@ -8,7 +8,6 @@ and open the template in the editor.
     Author     : RiccardoUni
 */
 
-<<<<<<< HEAD
 .h1-restaurant-title{
     font-family: "Pacifico";
 }
@@ -73,12 +72,6 @@ and open the template in the editor.
 }
 .maps-temporary-override{
     padding: 15px;
-    
-=======
-.label{
-    padding-left: 1em;
-    margin-right:1em;
->>>>>>> e6862677cafa2748e76a8a0913faf5c9ed4d3ece
 }
 
 .panel .panel-default {
