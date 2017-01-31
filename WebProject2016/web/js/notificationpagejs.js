@@ -41,15 +41,18 @@ function getParameterByName(name, url) {
                 if (param_ins > 0) {
 
                     $('#myModal').modal();
-                    $("#myModalLabel").html("La sua risposta è stata inoltrata ad un amministratore. La sua risposta sarà visibile una volta accettata dall'amministratore.");
+                    $("#myModalLabel").html("La sua richiesta è stata inoltrata ad un amministratore. La sua risposta sarà visibile una volta accettata dall'amministratore.");
                     $('#myModal').on('hidden.bs.modal', function () {
                         param_ins = 0;
                     });
                 } else if (param_ins == 0) {
-                    $("#myModalLabel").html("Modifica non avvenuta");
-                    $("#myModalLabel").html("Si e' verificato un erroe. La sua risposta non è stat inoltrata.");
+                    $("#myModalLabel").html("Questa richiesta è già stata inoltrata e quindi è impossibile inoltrarne una nuova.");
                     $('#myModal').modal();
                 }
+                
+                $("#replybutton").click(function(){
+                     $("#replytext").show();
+                });
 
             });
   

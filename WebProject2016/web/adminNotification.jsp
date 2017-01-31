@@ -113,11 +113,11 @@
                         </c:forEach>
                         <c:forEach var="notbean" items="${noty.delphotos}">
                             <c:if test="${notbean.accepted == true}">
-                                <c:url value="showPhotoDeleteRequest.jsp" var="repliesURL">
+                                <c:url value="showPhotoDeleteRequest.jsp" var="photodeleteURL">
                                     <c:param name="id" value="${notbean.idphoto}" />
                                 </c:url>
                                 <div class="list-group">
-                                    <a href="#" class="list-group-item">
+                                    <a href="${photodeleteURL}" class="list-group-item">
                                         E'stata segnalata una foto di 
                                            <strong><c:out value="${notbean.nickname}"/></strong>
                                     </a>
