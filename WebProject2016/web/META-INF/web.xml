@@ -133,6 +133,10 @@
         <servlet-name>DeletePhotoRequest</servlet-name>
         <servlet-class>servlets.DeletePhotoRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LikesHandler</servlet-name>
+        <servlet-class>servlets.LikesHandler</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserAccountPage</servlet-name>
         <url-pattern>/UserAccountPage</url-pattern>
@@ -320,6 +324,10 @@
     <servlet-mapping>
         <servlet-name>InsertReportImageServlet</servlet-name>
         <url-pattern>/InsertReportImageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LikesHandler</servlet-name>
+        <url-pattern>/LikesHandler</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
