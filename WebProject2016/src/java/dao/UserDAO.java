@@ -185,6 +185,9 @@ public class UserDAO {
 
     }
 
+    /* Restituisce una lista che contiene i ristoranti appartenenti all'utente
+     * con userId
+     */
     public ArrayList<RestaurantBean> getRestaurants(int userId) {
         ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
 
