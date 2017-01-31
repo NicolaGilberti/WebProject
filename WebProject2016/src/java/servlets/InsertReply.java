@@ -36,27 +36,25 @@ public class InsertReply extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String description = request.getParameter("descriptionarea");
-        //System.out.print("LEL"+request.getSession().getAttribute("review"));
         ReviewBean rev;
         //aggiungo la reply
-        rev = (ReviewBean)request.getSession().getAttribute("review");
-        
-        System.out.print("REV"+rev);
+        rev = (ReviewBean) request.getSession().getAttribute("review");
+
+        System.out.print("REV" + rev);
         InsertReplyDAO rep = new InsertReplyDAO();
         boolean result = false;
-        int value=0;
+        int value = 0;
         try {
-            result = rep.insertReply(rev,description);
+            result = rep.insertReply(rev, description);
         } catch (Throwable ex) {
             Logger.getLogger(InsertReply.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(result == false){
+        if (result == false) {
             value = 1;
         }
-        
-        
-        response.sendRedirect("SearchNotification?insert_reply="+value);
-        
+
+        response.sendRedirect("SearchNotification?insert_reply=" + value);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

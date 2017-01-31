@@ -129,7 +129,7 @@ public class RestaurantDAO {
             r.setData_creation(rs.getTimestamp("data_creation"));
             r.setDescription(rs.getString("description"));
             r.setId_photo(rs.getInt("id_photo"));
-            
+            r.setName(rs.getString("name"));
             tmp.add(r);
         }
         return tmp;
@@ -265,13 +265,13 @@ public class RestaurantDAO {
         return restaurantsList;
     }
 
-    public String getUserName(int userId) throws SQLException {
+    public String getUserNickname(int userId) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
-                "SELECT name FROM users WHERE id = ?;");
+                "SELECT nickname FROM users WHERE id = ?;");
         pd.setInt(1, userId);
         ResultSet rs = pd.executeQuery();
         rs.next();
-        return rs.getString("name");
+        return rs.getString(1);
     }
 
     public OpeningHours getOpeningHours(int id) throws SQLException {
