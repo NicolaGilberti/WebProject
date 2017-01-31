@@ -51,7 +51,7 @@
                     <c:param name="id" value="${param.id}"/>
                 </c:url>
                 <form action="${deletephotoURL}" method="POST">
-                    <button type="submit"  name="button" class="btn btn-danger " value='n'>No</button>
+                    <button type="submit"  name="button" class="btn btn-danger" value='n'>No</button>
                     <button type="submit"  name="button" class="btn btn-success" value='s'>Si</button>
                 </form>
             </div>
