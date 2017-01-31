@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : nicol
 */
 
+@media only screen and (min-device-width: 600px){
+    img{
+        min-width: 400px;
+        min-height: 400px;
+    }
+}
 .h3-subtitle{
     font-family: 'Lato';
     color: #581845;
@@ -48,4 +54,9 @@ hr.style15:after {
 	background: #e8e8e8;
 	color: #900c3f;
 	font-size: 18px;
+}
+
+img{
+    max-height: 400px;
+    max-width: 400px;
 }
