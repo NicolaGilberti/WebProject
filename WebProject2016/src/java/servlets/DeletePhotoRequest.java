@@ -37,7 +37,6 @@ public class DeletePhotoRequest extends HttpServlet {
         ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
         int result;
         if(button.equals("s")){
-            System.out.print("DSADHBBHSADAHSDHASADGVSAJDJSAVDAHDSADDSAMDJS");
             result = rep.acceptPhotoRequest(id_photo);
         }
         else{
