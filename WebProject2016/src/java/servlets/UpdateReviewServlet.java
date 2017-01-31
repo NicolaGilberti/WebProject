@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marco
  */
-@WebServlet(name = "UpdateReviewServlet", urlPatterns = {"/UpdateReviewServlet"})
 public class UpdateReviewServlet extends HttpServlet {
 
     /**

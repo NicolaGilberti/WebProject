@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marco
  */
-@WebServlet(name = "ConfirmRepliesServlet", urlPatterns = {"/ConfirmRepliesServlet"})
 public class ConfirmRepliesServlet extends HttpServlet {
 
     /**

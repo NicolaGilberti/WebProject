@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marco
  */
-@WebServlet(name = "InsertReply", urlPatterns = {"/InsertReply"})
 public class InsertReply extends HttpServlet {
 
     /**
