@@ -40,7 +40,7 @@ public class InsertReportImageServlet extends HttpServlet {
         InsertReplyDAO repdao = new InsertReplyDAO();
         retval =  repdao.InsertPhotoReport(id_user, id_photo);
         
-        response.sendRedirect("showreview.jsp?insert_result="+retval);
+        response.sendRedirect("showreview.jsp?insert_reply="+retval);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
