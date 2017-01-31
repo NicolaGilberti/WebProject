@@ -40,49 +40,52 @@
         <jsp:include page="header/header.jsp"></jsp:include>
 
 
-            <!-- carousel -->
-
+           
+      
+            <!--new carousel -->
             <div class="container">
-                <div id="myCarousel" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 carousel slide" data-ride="carousel">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
-                    <c:forEach var="i" begin="0" end="${numberOfPhotos-1}">
-                        <c:if test="${i==0}">
-                            <li data-target="#myCarousel" data-slide-to="i" class="active tales"></li>
-                            </c:if>
-                            <c:if test="${i>0}">
-                            <li data-target="#myCarousel" data-slide-to="i"></li>
-                            </c:if>
-                        </c:forEach>
-                </ol>
-                <!-- Wrapper for slides -->
 
-                <div class="carousel-inner" role="listbox">
-                    <c:set value="0" var="i"></c:set>
-                    <c:forEach  items="${photos}" var="current">
-                        <c:if test="${i==0}" >
-                            <div class="item active">   
-                            </c:if>
-                            <c:if test="${i>0}" >  
-                                <div class="item">
+                        <c:forEach var="i" begin="0" end="${numberOfPhotos-1}">
+                            <c:if test="${i==0}">
+                                <li data-target="#carousel-example-generic" data-slide-to="i" class="active"></li>
                                 </c:if>
-                                <img src="${current}" class="carousel-img img-rounded" alt="${current}">
-                            </div>
-                            <c:set value="1" var="i"></c:set>    
-                        </c:forEach>
+                                <c:if test="${i>0}">
+                                <li data-target="#carousel-example-generic" data-slide-to="i"></li>
+                                </c:if>
+                            </c:forEach>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <c:set value="0" var="i"></c:set>
+                        <c:forEach  items="${photos}" var="current">
+                            <c:if test="${i==0}" >
+                                <div class="item active">   
+                                </c:if>
+                                <c:if test="${i>0}" >  
+                                    <div class="item">
+                                    </c:if>
+
+                                    <img src="${current}" alt="...">
+                                    
+                                </div>
+                                <c:set value="1" var="i"></c:set>    
+                            </c:forEach>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
                     </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-            </div>
-        </div>
+        
 
         <!--infos-->
         <div class="container">
@@ -225,16 +228,16 @@
                             <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
                         </div>
 
-                            <c:if test="${current.reply!=null}">
-                        <div class='panel-footer'>
+                        <c:if test="${current.reply!=null}">
+                            <div class='panel-footer'>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
-                                <div class="panel-body">${current.reply.desc}</div>
-                                
+                                <div class="panel panel-reply">
+                                    <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
+                                    <div class="panel-body">${current.reply.desc}</div>
+
+                                </div>
                             </div>
-                        </div>
-                            </c:if>
+                        </c:if>
 
                     </div>
                     <c:set value="${i+1}" var="i"></c:set>
@@ -259,19 +262,19 @@
                                 <div class="form-group">
                                     <div class="row row-mine">
                                         <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
+                                            <input required placeholder="Stelle (0-5)" type="number" id="stars" name='stars' min="0" max="5" class="form-control">
                                         </div>
                                         <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
+                                            <input required placeholder="Cibo (0-5)" type="number" id="food" name='food' min="0" max="5" class="form-control">
                                         </div>
                                         <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
+                                            <input required placeholder="Qual/prez (0-5)" type="number" id="valueForMoney" name='valueForMoney' min="0" max="5" class="form-control">
                                         </div>
                                         <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required placeholder="atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
+                                            <input required placeholder="Atmosfera (0-5)" type="number" id="atmosphere" name='atmosphere' min="0" max="5" class="form-control">
                                         </div>
                                         <div class="review-parameters col-md-2 col-lg-2 col-sm-8 col-xs-8">
-                                            <input required  placeholder="servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
+                                            <input required  placeholder="Servizio (0-5)" type="number" id="service" name='service' min="0" max="5" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +302,7 @@
         </div>
 
         <script type="text/javascript" src="js/map.js"></script>
-        <script type="text/javascript" src="js/modalForReviews.js"></script>
+
         <script type="text/javascript" src="js/qrCreator.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs&callback=initMap"></script>
 
