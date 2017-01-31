@@ -29,6 +29,8 @@ public class ReviewBean implements java.io.Serializable {
     private String photo_name;
     private boolean view;
     private Timestamp data_creation;
+    private int id_restaurant;
+    private String nickname;
 
     public int getId_photo() {
         return id_photo;
@@ -37,8 +39,6 @@ public class ReviewBean implements java.io.Serializable {
     public void setId_photo(int id_photo) {
         this.id_photo = id_photo;
     }
-    private int id_restaurant;
-    private String nickname;
     
     public void setNickname(String nickname) {
         this.nickname = nickname;
