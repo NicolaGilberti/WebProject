@@ -93,6 +93,7 @@ public class RestaurantRequest extends HttpServlet {
             //if any photo exists
             if (((Integer)current.getId_photo()) != 0) {
                 currPhotoPath = "img/restImgs/"+ pDao.getName(current.getId_photo());
+                photoPaths.add(currPhotoPath);
             }
             else photoPaths.add("");
             //reply at the reviews

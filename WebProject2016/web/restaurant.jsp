@@ -273,7 +273,7 @@
                 
                 <!--newReview-->
                 <c:if test="${sessionScope.user!=null}">
-                    <form action="NewReview">
+                    <form action="NewReview" method="post" enctype="multipart/form-data">
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="form-group">
@@ -317,7 +317,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                                         <label class="label-text" for="nome">Carica una foto</label>
-                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto">
+                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
                                     </div>
                                 </div>
                             </div>

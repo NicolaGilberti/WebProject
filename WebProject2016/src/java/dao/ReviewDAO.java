@@ -49,7 +49,7 @@ public class ReviewDAO {
             throw new SQLException("Errore inserimento recensione, no rows affected.");
         }
         else {
-            ps = con.prepareStatement("SELECT id FROM reviews LIMIT ?");
+            ps = con.prepareStatement("SELECT id FROM reviews ORDER BY id DESC LIMIT ?");
             ps.setInt(1,1);
             ResultSet rs = ps.executeQuery();
             rs.next();
