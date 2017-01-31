@@ -23,19 +23,15 @@
         <error-code>404</error-code>
         <location>/404_error_page.jsp</location>
     </error-page>
-    
     <error-page>
         <location>/general_error_page.jsp</location>
     </error-page>
-    
     <!-- 404 code -->
     <error-page>
         <error-code>404</error-code>
         <location>/404_error_page.jsp</location>
     </error-page>
-    
     <!-- FILTRI -->
-    
     <filter-mapping>
         <filter-name>RistAmmFilter</filter-name>
         <url-pattern>/SearchNotification</url-pattern>
@@ -52,7 +48,6 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    
     <filter-mapping>
         <filter-name>MainFilter</filter-name>
         <url-pattern>/UserAccountPage</url-pattern>
@@ -117,12 +112,14 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    
-    
     <!-- FINE FILTRI -->
     <servlet>
         <servlet-name>UserAccountPage</servlet-name>
         <servlet-class>servlets.UserAccountPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertReportImageServlet</servlet-name>
+        <servlet-class>servlets.InsertReportImageServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PrepareHome</servlet-name>
@@ -131,6 +128,10 @@
     <servlet>
         <servlet-name>resultsGetCuisine</servlet-name>
         <servlet-class>servlets.resultsGetCuisine</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletePhotoRequest</servlet-name>
+        <servlet-class>servlets.DeletePhotoRequest</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserAccountPage</servlet-name>
@@ -303,13 +304,22 @@
     <servlet-mapping>
         <servlet-name>resultsGetCuisine</servlet-name>
         <url-pattern>/resultsGetCuisine</url-pattern>
-    </servlet-mapping> <servlet>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>NewReview</servlet-name>
         <servlet-class>servlets.NewReview</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>NewReview</servlet-name>
         <url-pattern>/NewReview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePhotoRequest</servlet-name>
+        <url-pattern>/DeletePhotoRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertReportImageServlet</servlet-name>
+        <url-pattern>/InsertReportImageServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

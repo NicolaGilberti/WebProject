@@ -10,6 +10,8 @@ import database.ManagerDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import org.postgresql.util.PSQLException;
 
 /**
  *
@@ -66,6 +68,8 @@ public class InsertReplyDAO {
             value = replies.executeUpdate();
             this.finalize();
             con.close(); 
+        }catch( PSQLException e){
+            return 0;
         }finally{
             replies.close();
         }

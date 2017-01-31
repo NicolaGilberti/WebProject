@@ -5,15 +5,12 @@
  */
 package servlets;
 
-import beans.UserBean;
 import dao.ApplyAdminNotificationDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marco
  */
-@WebServlet(name = "ConfirmRepliesServlet", urlPatterns = {"/ConfirmRepliesServlet"})
-public class ConfirmRepliesServlet extends HttpServlet {
+public class DeletePhotoRequest extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,19 +32,18 @@ public class ConfirmRepliesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
-            String button = null;
-            button = request.getParameter("button");
-            UserBean admin = (UserBean) request.getSession().getAttribute("user");
-            int result = 0;
-            int id = Integer.parseInt(request.getParameter("id"));
-            ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
-            if(button.equals("a")){
-                result = rep.confirmReplies(id,admin.getId());
-            }
-            else{
-               result = rep.deleteReplies(id,admin.getId());
-            }
-           response.sendRedirect("SearchNotification?query_result="+result);
+        int id_photo = Integer.parseInt(request.getParameter("id"));
+        String button = request.getParameter("button");
+        ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
+        int result;
+        if(button.equals("s")){
+            System.out.print("DSADHBBHSADAHSDHASADGVSAJDJSAVDAHDSADDSAMDJS");
+            result = rep.acceptPhotoRequest(id_photo);
+        }
+        else{
+            result = rep.discardPhotoRequest(id_photo);
+        }
+        response.sendRedirect("SearchNotification?query_result="+result);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,7 +61,7 @@ public class ConfirmRepliesServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Throwable ex) {
-            Logger.getLogger(ConfirmRepliesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletePhotoRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -84,7 +79,7 @@ public class ConfirmRepliesServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Throwable ex) {
-            Logger.getLogger(ConfirmRepliesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeletePhotoRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

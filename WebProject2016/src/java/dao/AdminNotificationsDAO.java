@@ -72,7 +72,7 @@ public class AdminNotificationsDAO {
                 
                 
                 //the query to selecting all the delete photo request
-                PreparedStatement dphoto = con.prepareStatement("SELECT t1.accepted AS accepted,t1.id_user AS usrid, t1.id_photo AS idphoto ,t2.name AS resname,t3.name AS photoname,t3.nickname FROM (request_delete_photos AS t1 INNER JOIN photos AS t2 ON (t1.id_photo = t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id);");
+                PreparedStatement dphoto = con.prepareStatement("SELECT t1.accepted AS accepted,t1.id_user AS usrid, t1.id_photo AS idphoto ,t2.name AS photoname,t3.name AS resname,t3.nickname FROM (request_delete_photos AS t1 INNER JOIN photos AS t2 ON (t1.id_photo = t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id);");
                 rs = dphoto.executeQuery();
 
                 while(rs.next()){
