@@ -1,4 +1,4 @@
-﻿-- users
+-- users
 -- type: 2-> administrator 1-> ristoratore 0-> utente normale
 
 INSERT INTO users (name,surname,nickname,email,password,type) VALUES ('Nicola','Gilberti','NicolaG.','nicola.gilberti@studenti.unitn.it','6e1571e0492cf7bb96ad11402430699e1b7629dc11f647f7929d3b7ed6c7483d',2); -- password : sha256(nicolag)
@@ -903,7 +903,7 @@ INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES 
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('prova.jpg','Esterno Dal Pescatore',1,3,'2016-09-24 09:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante.jpg','Interni Uva e Menta',4,4,'2016-09-24 10:00:00');
 INSERT INTO photos(name,description,id_restaurant,id_user,data_creation) VALUES ('ristorante-bar-pizzeria-due-giganti-20110209-132031.jpg','Esterno Due Giganti',8,5,'2016-09-24 11:00:00');
-INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('RISTORANTE 2010 (25).jpg','Animali Dal Pescatore',1,3,'2016-10-08T09:46:48+00:00');
+INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('RISTORANTE2010(25).jpg','Animali Dal Pescatore',1,3,'2016-10-08T09:46:48+00:00');
 INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('DAL PESCATORE (5).jpg','Interni Dal Pescatore',1,2,'2016-10-06T09:46:48+00:00');
 INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('Dal Pescatore 271.jpg','Cantone Dal Pescatore',1,5,'2016-10-02T09:46:48+00:00');
 INSERT INTO photos (name, description, id_restaurant, id_user,data_creation) VALUES ('s1.jpg','Uno dei piatti serviti',12,13,'2016-10-02T09:46:48+00:00');
@@ -952,7 +952,6 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',2,5);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',3,6);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',4,7);
-<<<<<<< HEAD
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',5,8);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',6,9);
 INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',7,10);
@@ -1085,18 +1084,18 @@ INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,de
 
 -- replies confirmed
 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,81,13);
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,82,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,83,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,84,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,85,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,86,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,87,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,88,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,89,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,90,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,91,13); 
-INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,92,13); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,81,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,82,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,83,13,true);
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,84,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,85,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,86,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',1,87,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',2,88,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',3,89,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',4,90,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',5,91,13,true); 
+INSERT INTO replies(description,data_creation,date_validation,id_validator,id_review,id_owner,accepted) VALUES('Sono Contento le sia piaciuto, bella foto!','2016-09-03 22:35:45','2016-09-30 12:00:30',6,92,13,true); 
 
 -- replies tbc
 
@@ -1272,79 +1271,3 @@ INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(51,4);
 INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(52,3);
 INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(53,2);
 INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES(54,1);
-=======
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(5,5,4,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-14 12:00:00',4,8);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(3,4,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-29 12:00:00',4,11);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,5,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',4,3);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',4,2);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(5,5,4,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-14 12:00:00',4,12);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(3,4,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-29 12:00:00',4,10);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,5,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',4,5);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator,id_photo) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',6,3,6);-- 18
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(3,4,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-29 12:00:00',7,10);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,5,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',7,12);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',7,4);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,3,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-19 12:00:00',8,12);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',8,9);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',8,3);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,5,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-02 12:00:00',9,9);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(3,4,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-29 12:00:00',10,10);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,3,3,3,4,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-19 12:00:00',10,12);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,3,4,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-23 12:00:00',11,2);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,7);
-INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) VALUES(4,4,2,5,3,'Buon Cibo','È sempre un piacere andarci a cena! L''atmosfera e'' intima, la cucina e'' ottima, dai primi tipici della tradizione ai secondi di carne, e gli alimenti sono sempre scelti attentamente.','2016-09-09 12:00:00',11,3);
-
--- replies con conferma di admin[1,6]
-
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',1,3,'2016-09-30 12:00:30',1); -- 1,3
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',2,3,'2016-09-30 12:00:30',2); -- 1,3
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',5,2,'2016-09-30 12:00:30',3); -- 2,2
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',7,1,'2016-09-30 12:00:30',4); -- 3,1
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',8,1,'2016-09-30 12:00:30',5); -- 3,1
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',11,4,'2016-09-30 12:00:30',6); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',12,4,'2016-09-30 12:00:30',1); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',13,4,'2016-09-30 12:00:30',2); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',14,4,'2016-09-30 12:00:30',2); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',15,4,'2016-09-30 12:00:30',3); -- 4,4
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',18,6,'2016-09-30 12:00:30',5); -- 6,6
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',22,1,'2016-09-30 12:00:30',5); -- 8,1
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',25,3,'2016-09-30 12:00:30',6); -- 9,3
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',26,2,'2016-09-30 12:00:30',4); -- 10,2
-INSERT INTO replies(description,data_creation,id_review,id_owner,date_validation,id_validator) VALUES('Sono Contento le sia piaciuto','2016-09-03 22:35:45',28,3,'2016-09-30 12:00:30',4); -- 11,3
-
--- replies senza conferma
-
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',3,3);-- 1
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',6,2);-- 2
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',9,1);-- 3
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',10,4);-- 4
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',19,2);-- 7
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',20,2);-- 7
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',21,2);-- 7
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',23,1);-- 8
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',27,2);-- 10
-INSERT INTO replies(description,data_creation,id_review,id_owner) VALUES('Sono Contento le sia piaciuto','2016-10-01 15:30:47',29,3);-- 11
-
--- user_review_likes [0,1] 1 -> +1 / 0 -> -1
-
-INSERT INTO user_review_likes VALUES(10,3,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(8,3,0,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(9,3,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,6,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,7,0,'2016-09-25 13:45:56');
-INSERT INTO user_review_likes VALUES(9,12,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,12,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,15,0,'2016-10-01 21:25:56');
-INSERT INTO user_review_likes VALUES(4,18,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,18,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,18,0,'2016-09-25 13:45:56');
-INSERT INTO user_review_likes VALUES(9,18,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(12,18,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(1,18,0,'2016-10-01 21:25:56');
-INSERT INTO user_review_likes VALUES(9,28,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(5,28,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(3,28,0,'2016-09-25 13:45:56');
-INSERT INTO user_review_likes VALUES(8,28,1,'2016-09-25 12:00:00');
-INSERT INTO user_review_likes VALUES(11,28,1,'2016-10-03 12:00:00');
-INSERT INTO user_review_likes VALUES(7,28,0,'2016-10-01 21:25:56');
->>>>>>> notification

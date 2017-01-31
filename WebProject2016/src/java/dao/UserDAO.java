@@ -273,7 +273,7 @@ public class UserDAO {
                 
                 // imposto tutte le caratteristiche delle review
                 review.setAtmosphere(results.getInt("atmosphere"));
-                review.setData_creation(results.getString("data_creation"));
+                review.setData_creation(results.getTimestamp("data_creation"));
                 review.setDescription(results.getString("description"));
                 review.setFood(results.getInt("food"));
                 review.setGlobal_value(results.getInt("global_value"));

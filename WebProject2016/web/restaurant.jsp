@@ -235,7 +235,14 @@
                                         |
                                         SERVIZIO: <c:out value="${current.service}" />
                                     </div>
+                                    <label style ="color: green">
+                                    mi piace <c:out value="${likes.get(i)}"/></label> 
+                                    |
+                                    <label style="color:red">
+                                    non mi piace <c:out value="${dislikes.get(i)}"/>
+                                    </label>
                                 </small>
+                                        
                                 </div>
                                 
                             </h4>
@@ -244,16 +251,29 @@
                             <c:out value="${current.description}"></c:out>
                         </div>
                             <div class='panel-footer'>
-                                <img src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                                <img id="photo" src="${photoPaths.get(i)}" style="max-height: 50px; max-width: 50px;">
+                                <!-- Modal -->
+                                <div class="modal fade" id="photosModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <span class="close">&times;</span>
+                                            <div class="modal-body" style="align-content: center;">
+                                                <img src="${photoPaths.get(i)}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <c:out value="${replies.get(i)}"/>
                             </div>
-                    </div>
+                        </div>
                     <c:set value="${i+1}" var="i"></c:set>
                 </c:forEach>
                 
                 
                 <!--newReview-->
                 <c:if test="${sessionScope.user!=null}">
-                    <form action="NewReview">
+                    <form action="NewReview" method="post" enctype="multipart/form-data">
                     <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="form-group">
@@ -293,12 +313,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                                        <label class="label-text" for="nome">Carica una foto</label>
+                                        <input accept="image/jpeg,image/gif,image/png" type="file" class="form-control" id="foto" name="foto" multipart>
+                                    </div>
+                                </div>
+                            </div>
                         </div> 
                         <input type='hidden' name="restaurantId" value="${r.id}">
                     </form>
                 </c:if>
             </div>
         
+        <script type="text/javascript" src="js/modalForReviews.js"/>
         <script type="text/javascript" src="js/qrCreator.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJJ6C2_8shojzgg6W6y4hQznpzNg0hc2s&callback=initMap">

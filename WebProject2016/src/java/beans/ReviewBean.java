@@ -5,6 +5,7 @@
  */
 package beans;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -27,7 +28,7 @@ public class ReviewBean implements java.io.Serializable {
     private int id_photo;
     private String photo_name;
     private boolean view;
-    private String data_creation;
+    private Timestamp data_creation;
 
     public int getId_photo() {
         return id_photo;
@@ -100,7 +101,7 @@ public class ReviewBean implements java.io.Serializable {
         this.description = description;
     }
 
-    public void setData_creation(String data_creation) {
+    public void setData_creation(Timestamp data_creation) {
         this.data_creation = data_creation;
     }
 
@@ -152,7 +153,7 @@ public class ReviewBean implements java.io.Serializable {
         return description;
     }
 
-    public String getData_creation() {
+    public Timestamp getData_creation() {
         return data_creation;
     }
 
