@@ -2,11 +2,8 @@ package dao;
 
 import beans.CuisineBean;
 import beans.RestaurantBean;
-import beans.RestaurantBean;
 import beans.ReviewBean;
-import beans.UserReviewLikesBean;
 import comparators.CuisineAlphabeticalComparator;
-import database.ManagerDB;
 import database.ManagerDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +58,7 @@ public class RestaurantDAO {
             
         } catch (SQLException ex) {
             //Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger("Errore inserimento recensione, keys già esistenti, no rows affected.");
             return false;
         }
         
@@ -84,6 +81,9 @@ public class RestaurantDAO {
             restaurant.setLongitude(rs.getDouble("longitude"));
             restaurant.setGlobal_value(rs.getInt("global_value"));
         }
+        
+        st.close();
+        rs.close();
         return restaurant;
 
     }
@@ -107,6 +107,8 @@ public class RestaurantDAO {
                 pn.add("img/restImgs/" + name);
             }
         }
+        rs.close();
+        pd.close();
         return pn;
     }
 
@@ -120,7 +122,8 @@ public class RestaurantDAO {
             tmp.add(rs.getInt(1));
             tmp.add(rs.getInt(2));
         }
-
+        pd.close();
+        rs.close();
         return tmp;
     }
 
@@ -138,6 +141,8 @@ public class RestaurantDAO {
             c.setName(rs.getString(2));
             tmp.add(c);
         }
+        pd.close();
+        rs.close();
         return tmp;
     }
 
@@ -160,6 +165,8 @@ public class RestaurantDAO {
             r.setName(rs.getString("name"));
             tmp.add(r);
         }
+        pd.close();
+        rs.close();
         return tmp;
     }
 
@@ -177,6 +184,9 @@ public class RestaurantDAO {
                 path = rs.getString("default.png");
             }
         }
+        
+        pd.close();
+        rs.close();
         return path;
     }
 
@@ -190,6 +200,9 @@ public class RestaurantDAO {
         while (rs.next()) {
             nReviews = rs.getInt(1);
         }
+        
+        pd.close();
+        rs.close();
         return nReviews;
     }
 
@@ -244,6 +257,9 @@ public class RestaurantDAO {
             //E infine aggiungo il ristorante alla lista
             restaurantsList.add(risto);
         }
+        
+        sqlStatement.close();
+        results.close();
         return restaurantsList;
 
     }
@@ -290,6 +306,9 @@ public class RestaurantDAO {
             //E infine aggiungo il ristorante alla lista
             restaurantsList.add(risto);
         }
+        
+        sqlStatement.close();
+        results.close();
         return restaurantsList;
     }
 
@@ -299,7 +318,12 @@ public class RestaurantDAO {
         pd.setInt(1, userId);
         ResultSet rs = pd.executeQuery();
         rs.next();
-        return rs.getString(1);
+        String res = rs.getString(1);
+        
+        pd.close();
+        rs.close();
+        return res;
+        
     }
 
     public OpeningHours getOpeningHours(int id) throws SQLException {
@@ -318,6 +342,8 @@ public class RestaurantDAO {
             oh.setClosingHour(Time.valueOf(rs.getTime(3).toString()));
         }
 
+        pd.close();
+        rs.close();
         return oh;
     }
 
@@ -362,6 +388,9 @@ public class RestaurantDAO {
             //E infine aggiungo il ristorante alla lista
             restaurantsList.add(risto);
         }
+        
+        sqlStatement.close();
+        results.close();
         return restaurantsList;
     }
 
@@ -377,6 +406,8 @@ public class RestaurantDAO {
             tmp.add(a);
         }
 
+        st.close();
+        rs.close();
         return tmp;
     }
 
@@ -412,7 +443,11 @@ public class RestaurantDAO {
             } else {
                 throw new SQLException("Errore creazione utente, no ID obtained.");
             }
+            ps.close();
+            generatedKeys.close();
+            
         }
+        
         return restID;
     }
 
@@ -429,6 +464,7 @@ public class RestaurantDAO {
         if (affectedRows == 0) {
             throw new SQLException("Errore inserimento tipologia di cucina, no rows affected.");
         }
+        ps.close();
 
     }
 
@@ -444,6 +480,7 @@ public class RestaurantDAO {
         if (affectedRows == 0) {
             throw new SQLException("Errore inserimento tipologia di cucina, no rows affected.");
         }
+        ps.close();
     }
 
     public List<AutoCompleteData> getAutoCompleteData(String[] valoriInseriti) {
@@ -475,10 +512,13 @@ public class RestaurantDAO {
             for (final String country : valori) {
                 result.add(new AutoCompleteData(country, country));
             }
-
+            ps.close();
+            results.close();
         } catch (SQLException ex) {
             Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+       
         return result;
     }
 
@@ -499,6 +539,8 @@ public class RestaurantDAO {
             tmp.add(rs.getInt(3)-rs.getInt(2));
             result.put(rs.getInt(1), tmp);
         }
+        pd.close();
+        rs.close();
        return result;
     }
     public void incrNumVisit(int id_restaurant) throws SQLException{
@@ -511,5 +553,6 @@ public class RestaurantDAO {
         if (rs == 0) {
             throw new SQLException("Errore inserimento tipologia di cucina, no rows affected.");
         }
+        pd.close();
     }
 }

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
@@ -32,9 +33,9 @@ public class ReviewDAO {
     public int insertReview(ReviewBean revBean) throws SQLException {
         
         int affectedRows;
-        
+        int result = 0;
         PreparedStatement ps = con.prepareStatement("INSERT INTO reviews(global_value,food,service,value_for_money,atmosphere,name,description,data_creation,id_restaurant,id_creator) " +
-                            "VALUES (?,?,?,?,?,?,?,?,?,?)");
+                            "VALUES (?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, revBean.getGlobal_value());
         ps.setInt(2, revBean.getFood());
         ps.setInt(3, revBean.getService());
@@ -50,17 +51,14 @@ public class ReviewDAO {
         if (affectedRows == 0) {
             throw new SQLException("Errore inserimento recensione, no rows affected.");
         }
-        else {
-            ps = con.prepareStatement("SELECT id FROM reviews ORDER BY id DESC LIMIT ?");
-            ps.setInt(1,1);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            int id = rs.getInt(1);
-            rs.close();
-            ps.close();
-            return id;
+        try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                result = generatedKeys.getInt(1);
+            } else {
+                throw new SQLException("Errore creazione recensione, no ID obtained.");
+            }
         }
-        
+        return result;
     }
 
     //add the photoID to reviewID
