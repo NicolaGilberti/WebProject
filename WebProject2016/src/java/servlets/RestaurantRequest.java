@@ -105,6 +105,16 @@ public class RestaurantRequest extends HttpServlet {
             replyBean = replyDao.getReplyFromIdReview(current.getId());
             replies.add(replyBean.getDesc());
         }
+        
+        //replies
+        ReplyDAO replyDao = new ReplyDAO();
+        for (ReviewBean current : reviews) {
+            ReplyBean replyBean = replyDao.getReplyFromIdReview(current.getId());
+            if (replyBean != null) {
+                current.setReply(replyBean);
+            }
+        }
+        
         request.setAttribute("reviews", reviews);
         request.setAttribute("userNicknamesOfReviews", userNickamesOfReviews);
         request.setAttribute("photoPaths", photoPaths);
@@ -125,7 +135,6 @@ public class RestaurantRequest extends HttpServlet {
                 dislikes.add(0);
             }
         }
-        
         request.setAttribute("likes", likes);
         request.setAttribute("dislikes", dislikes);
         

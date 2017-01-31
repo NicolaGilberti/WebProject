@@ -78,45 +78,49 @@ public class NewReview extends HttpServlet {
         review.setData_creation(tmp);
         
         
-        // inseriamo review nel database
-        ReviewDAO rDao = new ReviewDAO();
-        int reviewID = rDao.insertReview(review);
-        
-        //salvataggio foto
-        PhotoBean foto = new PhotoBean();
-        foto.setName("rev" + String.valueOf(restID) + ".jpg");
-        foto.setDescription("Foto recensione");
-        foto.setId_restaurant(restID);
-        foto.setId_user(userID);
+            // inseriamo review nel database
+            ReviewDAO rDao = new ReviewDAO();
+            int reviewID = rDao.insertReview(review);
+            
+        if (request.getPart("foto").getSize()!=0) {
+            
+            //salvataggio foto
+            PhotoBean foto = new PhotoBean();
+            foto.setName("rev" + String.valueOf(restID) + String.valueOf(reviewID) + ".jpg");
+            foto.setDescription("Foto recensione");
+            foto.setId_restaurant(restID);
+            foto.setId_user(userID);
 
-        // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
-        Calendar calendar = Calendar.getInstance();
-        foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
+            // (2) create a java timestamp object that represents the current time (i.e., a "current timestamp")
+            Calendar calendar = Calendar.getInstance();
+            foto.setDate(new java.sql.Timestamp(calendar.getTime().getTime()));
 
-        //Inseriamo la foto nel db
-        PhotoDAO photoDao = new PhotoDAO();
-        int photoID = photoDao.addPhoto(foto);
-        
-        //aggiorniamo la review
-        rDao.addPhoto(reviewID, photoID);
-        //Salviamo la foto in locale
-        // gets absolute path of the web application
-        String appPath = request.getServletContext().getRealPath("");
-        // constructs path of the directory to save uploaded file
-        String savePath = appPath + File.separator + SAVE_DIR;
+            //Inseriamo la foto nel db
+            PhotoDAO photoDao = new PhotoDAO();
+            int photoID = photoDao.addPhoto(foto);
 
-        // creates the save directory if it does not exists
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
+            //aggiorniamo la review
+            rDao.addPhoto(reviewID, photoID);
+            //Salviamo la foto in locale
+            // gets absolute path of the web application
+            String appPath = request.getServletContext().getRealPath("");
+            // constructs path of the directory to save uploaded file
+            String savePath = appPath + File.separator + SAVE_DIR;
+
+            // creates the save directory if it does not exists
+            File fileSaveDir = new File(savePath);
+            if (!fileSaveDir.exists()) {
+                fileSaveDir.mkdir();
+            }
+
+            Part part = request.getPart("foto");
+            String fileName = "rev" + String.valueOf(restID) + String.valueOf(reviewID) + ".jpg";
+            // refines the fileName in case it is an absolute path
+            fileName = new File(fileName).getName();
+            part.write(savePath + File.separator + fileName);
+            Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
         }
         
-        Part part = request.getPart("foto");
-        String fileName = "rev" + String.valueOf(restID) + ".jpg";
-        // refines the fileName in case it is an absolute path
-        fileName = new File(fileName).getName();
-        part.write(savePath + File.separator + fileName);
-        Logger.getLogger(NewRestaurant.class.getName()).log(Level.SEVERE, savePath + File.separator + fileName);
         
         RequestDispatcher rd = request.getRequestDispatcher("/RestaurantRequest?id="+restID);
 
