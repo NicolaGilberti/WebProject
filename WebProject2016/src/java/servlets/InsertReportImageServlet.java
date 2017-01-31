@@ -35,12 +35,12 @@ public class InsertReportImageServlet extends HttpServlet {
         int id_user = Integer.parseInt(request.getParameter("id"));
         int id_photo = Integer.parseInt(request.getParameter("id_photo"));
         int retval;
-        
+
         //inserisco la query
         InsertReplyDAO repdao = new InsertReplyDAO();
-        retval =  repdao.InsertPhotoReport(id_user, id_photo);
-        
-        response.sendRedirect("showreview.jsp?insert_reply="+retval);
+        retval = repdao.InsertPhotoReport(id_user, id_photo);
+
+        response.sendRedirect("showreview.jsp?insert_reply=" + retval);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

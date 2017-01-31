@@ -36,19 +36,18 @@ public class ConfirmRepliesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
-            String button = null;
-            button = request.getParameter("button");
-            UserBean admin = (UserBean) request.getSession().getAttribute("user");
-            int result = 0;
-            int id = Integer.parseInt(request.getParameter("id"));
-            ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
-            if(button.equals("a")){
-                result = rep.confirmReplies(id,admin.getId());
-            }
-            else{
-               result = rep.deleteReplies(id,admin.getId());
-            }
-           response.sendRedirect("SearchNotification?query_result="+result);
+        String button = null;
+        button = request.getParameter("button");
+        UserBean admin = (UserBean) request.getSession().getAttribute("user");
+        int result = 0;
+        int id = Integer.parseInt(request.getParameter("id"));
+        ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
+        if (button.equals("a")) {
+            result = rep.confirmReplies(id, admin.getId());
+        } else {
+            result = rep.deleteReplies(id, admin.getId());
+        }
+        response.sendRedirect("SearchNotification?query_result=" + result);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

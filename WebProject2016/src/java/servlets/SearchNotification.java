@@ -27,7 +27,6 @@ import sun.rmi.server.Dispatcher;
  *
  * @author Marco
  */
-
 public class SearchNotification extends HttpServlet {
 
     /**
@@ -43,68 +42,59 @@ public class SearchNotification extends HttpServlet {
             throws ServletException, IOException, SQLException, Throwable {
         //response.setHeader("Cache-Control","no-cache");
         response.setContentType("text/html;charset=UTF-8");
+        // Creo gli oggetti Bean e DAO che necessito nella pagina
         NotificationBean notbean = new NotificationBean();
         RestaurantNotificationBean resbean = null;
         AdminNotificationsDAO notify = new AdminNotificationsDAO();
         RestaurantNotificationDAO resnoty = new RestaurantNotificationDAO();
         UserBean user_type = (UserBean) request.getSession().getAttribute("user");
+        
         String query_result = request.getParameter("query_result");
-        String insert_reply_result =  request.getParameter("insert_reply_result");
+        String insert_reply_result = request.getParameter("insert_reply_result");
         int param;
-        int param_insert=0;
-        
+        int param_insert = 0;
+
         //questi due controlli li uso per settare la visibilità dei panel per la conferma di avvenuta modifica(panel si trovano in notification.jsp)
-        
-        if(query_result == null){
+        if (query_result == null) {
             param = -1;
-        }
-        else{
+        } else {
             param = Integer.parseInt(query_result);
         }
-         
-        
-        if(insert_reply_result == null){
+
+        if (insert_reply_result == null) {
             param_insert = -1;
-        }
-        else{
+        } else {
             param_insert = Integer.parseInt(insert_reply_result);
         }
 
-        
-        
-        
-        
-        
         try {
-            if(user_type.getType()== 2){
+            if (user_type.getType() == 2) {
                 notbean = notify.getAllNotification();
-                request.getSession().setAttribute("noty",notbean);
-                 
+                request.getSession().setAttribute("noty", notbean);
+
             }
             resbean = resnoty.getAllNotification(user_type.getId());
-            request.getSession().setAttribute("resnoty",resbean);
-            
-        }
-        catch(Exception e){
+            request.getSession().setAttribute("resnoty", resbean);
+
+        } catch (Exception e) {
             System.err.print(e);
         }
-        
+
         RequestDispatcher ds;
-        if(request.getParameter("flag")== null){
-            ds = request.getRequestDispatcher("notification.jsp?query_result="+param+"&insert_result="+insert_reply_result);
+        if (request.getParameter("flag") == null) {
+            ds = request.getRequestDispatcher("notification.jsp?query_result=" + param + "&insert_result=" + insert_reply_result);
             ds.forward(request, response);
-        }
-        else{
-            if(user_type.getType()== 2){
+        } else {
+            if (user_type.getType() == 2) {
                 ds = request.getRequestDispatcher("adminNotification.jsp");
-            
-             }
-            else{
+
+            } else {
                 ds = request.getRequestDispatcher("restaurantNotification.jsp");
             }
             ds.forward(request, response);
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -120,7 +110,7 @@ public class SearchNotification extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-           // Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
+            // Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Throwable ex) {
             Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -140,7 +130,7 @@ public class SearchNotification extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-          //  Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
+            //  Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Throwable ex) {
             Logger.getLogger(SearchNotification.class.getName()).log(Level.SEVERE, null, ex);
         }

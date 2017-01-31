@@ -34,15 +34,14 @@ public class UpdateReviewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
         int id_to_update = Integer.parseInt(request.getParameter("id"));
-        System.out.print("updateeeeee"+id_to_update);
         InsertReplyDAO rep = new InsertReplyDAO();
-        try{
+        try {
             rep.UpdateReply(id_to_update);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.err.print("Sql error");
         }
-        
-        response.sendRedirect("showreview.jsp?id="+id_to_update);
+
+        response.sendRedirect("showreview.jsp?id=" + id_to_update);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
