@@ -7,14 +7,14 @@
 
 <%@taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
- <link rel="stylesheet" href="css/notification.css">
+ <link rel="stylesheet" href="css/notifcation.css">
  <link rel="stylesheet" href="css/generic.css">
  
 
 <!DOCTYPE html>
 
         <!-- header -->
-        <div class="col-lg-6 col-sm-12 col-xs-12 col-md-6">
+        <div class=" col-sm-12 col-xs-12">
             <ul class="nav nav-tabs">
                  <li class="active"><a data-toggle="nav nav-tabs" href="#home"><strong class="h3-subtitle">Risposte da confermare</strong></a></li>
                  <li><a data-toggle="tab" href="#menu1"><strong class="h3-subtitle">Richiesta di cambiamento proprietario </strong></h3></a></li>

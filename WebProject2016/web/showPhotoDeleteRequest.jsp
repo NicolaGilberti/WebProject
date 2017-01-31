@@ -17,7 +17,8 @@
         <link rel="stylesheet" href="css/notification.css">
         <link rel="stylesheet" href="css/genericsnotification.css">
         <jsp:include page="header/headerFiles.jsp"/>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>        
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <jsp:include page = "header/header.jsp"/>
