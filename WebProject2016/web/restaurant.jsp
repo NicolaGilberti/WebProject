@@ -241,7 +241,7 @@
                                 <div class='panel-footer'>
 
 
-                                    <div class="panel panel-default">
+                                    <div class="panel panel-default-reply">
 
                                         <div class="panel panel-reply">
                                             <div class="panel-heading">Risposta da: ${current.reply.nameOfIdOwner}</div>
@@ -260,7 +260,7 @@
                         <c:if test="${sessionScope.user!=null}">
                             <form action="NewReview" method="post" enctype="multipart/form-data">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">
+                                    <div class="panel-heading form-panel">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-6 col-sm-8 col-lg-4">
@@ -291,14 +291,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body form-panel">
                                         <div class="row">
                                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                                 <textarea required class="form-control" rows="3"  placeholder="Descrivi la tua esperienza" id="description" name='description'></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="panel-footer">
+                                    <div class="panel-footer form-panel" >
                                         <div class="row">
                                             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                                                 <label class="label-text" for="nome">Carica una foto</label>
