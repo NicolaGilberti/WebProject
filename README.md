@@ -5,6 +5,6 @@ Università di Trento <br />
 
 
 # Database
-Il database utilizzato è PostgreSQL. La creazione del database e la popolazione dello stesso può essere effettuata attraverso i file "insert.sql" e "tabelleDB.sql" che sono collocate nella cartella "sql".
+Come DBMS per il nostro database utilizziamo PostgreSQL (Versione 9.5). La creazione del database e la popolazione dello stesso possono essere effettuate attraverso i file "tabelleDB.sql" e "insert.sql" che sono collocati nella cartella "sql".
 
-La prima riga del file "tabelleDB.sql" contiene, difatti, il comando di creazione del database. L'accesso al database, se le credenziali di accesso sono diverse da <i>postgres</i> - <i>postgres</i>, bisogna dirigersi all'interno del package "database" e successivamente aprire il file "ManagerDB" cambiando le credenziali con quelle opportune.
+La prima riga del file "tabelleDB.sql" contiene, difatti, il comando di creazione del database. L'accesso al database, se le credenziali di accesso sono diverse da <i>postgres</i> - <i>postgres</i>,non può avvenire. Bisogna dunque dirigersi all'interno del package "database" e successivamente aprire il file "ManagerDB" cambiando le credenziali con quelle opportune.
