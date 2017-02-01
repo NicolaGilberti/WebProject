@@ -1,3 +1,7 @@
+/**
+ * Verifica l'uguaglianza tra il campo "password" e "reinserisci password".
+ * @returns {Boolean}
+ */
 function checkNewPwd() {
 	var newpwd = document.getElementById('newPwd');
 	var newpwd2 = document.getElementById('newPwd2');

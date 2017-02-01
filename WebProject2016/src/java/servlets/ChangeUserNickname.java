@@ -57,7 +57,9 @@ public class ChangeUserNickname extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Richieste POST.
+     * Richiama le procedure necessarie della classe UserBean per poter
+     * aggiornare il nickname dell'utente.
      *
      * @param request servlet request
      * @param response servlet response

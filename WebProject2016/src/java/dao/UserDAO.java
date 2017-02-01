@@ -184,9 +184,12 @@ public class UserDAO {
         }
 
     }
-
-    /* Restituisce una lista che contiene i ristoranti appartenenti all'utente
-     * con userId
+    
+    /**
+     * Restituisce una lista che contiene i ristoranti appartenenti all'utente
+     * con id = userId
+     * @param userId
+     * @return ArrayList rest
      */
     public ArrayList<RestaurantBean> getRestaurants(int userId) {
         ArrayList<RestaurantBean> rest = new ArrayList<RestaurantBean>();
@@ -236,6 +239,12 @@ public class UserDAO {
         return null;
     }
 
+    /**
+     * Procedura che trova le ultime 5 (al massimo) recensioni rilasciate
+     * dall'utente con id = userId
+     * @param userId
+     * @return ArrayList rev
+     */
     public ArrayList<ReviewBean> getReviews(int userId) {
         ArrayList<ReviewBean> rev = new ArrayList<ReviewBean>();
 
@@ -309,6 +318,17 @@ public class UserDAO {
         return null;
     }
 
+    /**
+     * Procedura per la modifica della password. 
+     * Controlla la validita della vechcia password (oldPwd), poi verifica che
+     * newPwd e newPwd2 siano uguali e successivamente inserisce newPwd nel
+     * database utilizzando sha256.
+     * @param userId
+     * @param oldPwd
+     * @param newPwd
+     * @param newPwd2
+     * @return AlertBean alert
+     */
     public AlertBean changePassword(int userId, String oldPwd, String newPwd, String newPwd2) {
 
         AlertBean alert = new AlertBean();
@@ -368,8 +388,6 @@ public class UserDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
-            /* request.setAttribute("oldpwd", ex.toString());
-            dispatcher.forward(request, response);*/
         }
 
         return alert;
@@ -388,6 +406,16 @@ public class UserDAO {
         return affected;
     }
 
+    /**
+     * Procedura per la modifica del nickname.
+     * Controlla la validita della password utente, successivamente aggiorna il
+     * nickname con quello fornito in input. Viene passato anche lo UserBean
+     * per poter aggiornare il nickname della variabile "user" in sessione.
+     * @param user
+     * @param newNick
+     * @param password
+     * @return 
+     */
     public AlertBean changeNickname(UserBean user, String newNick, String password) {
 
         String pwd = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);

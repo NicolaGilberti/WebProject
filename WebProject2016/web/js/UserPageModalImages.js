@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-/*
+/**
  * Genera il vero path dell'immagine in questione, correggendo la stringa in
  * modo che possa essere interpretata correttamente.
+ * @param {type} photoname
  */
 function setModalImage(photoname) {
     path = photoname.replace("\r", "\\r");

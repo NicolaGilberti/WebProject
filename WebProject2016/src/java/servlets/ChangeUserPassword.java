@@ -63,7 +63,8 @@ public class ChangeUserPassword extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Procedura POST.
+     * Richiama la procedura per il cambio della password dalla classe UserDAO.
      *
      * @param request servlet request
      * @param response servlet response
