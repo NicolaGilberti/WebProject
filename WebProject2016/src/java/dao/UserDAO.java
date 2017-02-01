@@ -32,11 +32,21 @@ public class UserDAO {
     private ManagerDB db = null;
     private Connection con = null;
 
+    /**
+     *
+     */
     public UserDAO() {
         db = new ManagerDB();
         con = db.getConnection();
     }
     
+    /**
+     *Used to authenticate a user
+     * @param email email inserted by the user
+     * @param password password inserted by the user
+     * @return userBean of the user if login was successful
+     * @throws SQLException
+     */
     public UserBean authenticate(String email, String password) throws SQLException {
         String query = "SELECT * FROM users WHERE email = ? AND password = ? AND type <> -1";
         //Eseguo la query di verifica dei parametri
@@ -74,6 +84,12 @@ public class UserDAO {
 
     }
 
+    /**
+     *Function used to upgrade a user to type 1
+     * @param userId id of the user
+     * @return 1 if success, 0 otherwise
+     * @throws SQLException
+     */
     public int upgradeUser(int userId) throws SQLException {
         // Preparo la query
         String upgradequery = "UPDATE users SET type=1 WHERE id=?";
@@ -86,6 +102,12 @@ public class UserDAO {
         return affectedRows;
     }
 
+    /**
+     *Function used to upgrade a user to type 0
+     * @param id id of the user
+     * @return 1 if success, 0 otherwise
+     * @throws SQLException
+     */
     public int updateUserType(String id) throws SQLException {
         // Preparo la query
         String updateuserquery = "UPDATE users SET type=0 WHERE id=?";
@@ -96,6 +118,16 @@ public class UserDAO {
         return affectedRows;
     }
     
+    /**
+     *
+     * @param name
+     * @param surname
+     * @param nickname
+     * @param email
+     * @param password
+     * @return
+     * @throws SQLException
+     */
     public int setRegistrationParameters(String name, String surname, String nickname, String email, String password) throws SQLException {
         String regquery = "INSERT INTO users(name,surname,nickname,email,password,type) VALUES (?,?,?,?,?,-1)";
         int affectedRows = 0;
@@ -125,6 +157,12 @@ public class UserDAO {
         return userID;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public ResultSet searchUserToRegisterByID(String id) throws SQLException {
 
         String searchbyidquery = "SELECT * FROM users WHERE id=?";
@@ -136,6 +174,14 @@ public class UserDAO {
         return results;
     }
 
+    /**
+     *
+     * @param id
+     * @param md5
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public boolean isValidmd5(String id, String md5) throws SQLException, NoSuchAlgorithmException {
 
         String query = "SELECT * FROM users WHERE id=?";
@@ -393,6 +439,13 @@ public class UserDAO {
         return alert;
     }
 
+    /**
+     *
+     * @param id
+     * @param pass
+     * @return
+     * @throws SQLException
+     */
     public int changePassword(int id, String pass) throws SQLException {
         // Preparo la query
         String changepasswordquery = "UPDATE users SET password=? WHERE id=?";
@@ -469,6 +522,11 @@ public class UserDAO {
         return alert;
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String getName(int id)
     {
         try {
@@ -491,6 +549,26 @@ public class UserDAO {
             return "";
         }
         
+    }
+    
+    /**
+ * 
+ * @param userId
+ * @return the nickname of the user 
+ * @throws SQLException 
+ */
+    public String getUserNickname(int userId) throws SQLException {
+        PreparedStatement pd = con.prepareStatement(
+                "SELECT nickname FROM users WHERE id = ?;");
+        pd.setInt(1, userId);
+        ResultSet rs = pd.executeQuery();
+        rs.next();
+        String res = rs.getString(1);
+
+        pd.close();
+        rs.close();
+        return res;
+
     }
     
 }

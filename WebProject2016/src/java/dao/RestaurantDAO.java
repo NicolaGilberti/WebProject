@@ -44,10 +44,10 @@ public class RestaurantDAO {
     }
 
     /**
-     * for reclame a restaurant
-     * @param restID
-     * @param userID
-     * @return true if it has been reclamed false othrewise
+     * Function used To reclame a restaurant
+     * @param restID restaurant ID
+     * @param userID ID of the user who tried to reclame
+     * @return true if the reclame has succeded, false otherwise
      */
     public boolean reclameRestaurant(int restID, int userID) throws SQLException {
         PreparedStatement ps = null;
@@ -73,8 +73,8 @@ public class RestaurantDAO {
 
     }
 /**
- * look for a restaurant
- * @param id restaurant
+ * Function used to get a restaurant from DB
+ * @param id restaurant ID
  * @return the restaurant (RestaurantBean) 
  * @throws SQLException 
  */
@@ -109,7 +109,7 @@ public class RestaurantDAO {
     }
 /**
  * get photos of a restaurant
- * @param id_restaurant 
+ * @param id_restaurant restaurant ID
  * @return an ArrayList containing the path of the photos og the restaurant passed
  * @throws SQLException 
  */
@@ -176,7 +176,7 @@ public class RestaurantDAO {
         return tmp;
     }
 /**
- * 
+ * Function used to get all reviews of a resturant
  * @param id the id of a restaurant
  * @return an ArrayList containing the reviews (ReviewBean) for the restaurant
  * @throws SQLException 
@@ -251,9 +251,9 @@ public class RestaurantDAO {
         return nReviews;
     }
 /**
- * 
- * @param searchInput
- * @return
+ * Funzione usata per ottenere i ristoranti che contengono informazioni scritte nel campo di ricerca passato come parametro.
+ * @param searchInput The complete string sent by Ajax agent. 
+ * @return an ArrayList RestaurantBean with the restaurants.
  * @throws SQLException 
  */
     public ArrayList<RestaurantBean> getRestaurantsbySearch(String searchInput) throws SQLException {
@@ -367,29 +367,11 @@ public class RestaurantDAO {
         results.close();
         return restaurantsList;
     }
-/**
- * 
- * @param userId
- * @return the nickname of the user 
- * @throws SQLException 
- */
-    public String getUserNickname(int userId) throws SQLException {
-        PreparedStatement pd = con.prepareStatement(
-                "SELECT nickname FROM users WHERE id = ?;");
-        pd.setInt(1, userId);
-        ResultSet rs = pd.executeQuery();
-        rs.next();
-        String res = rs.getString(1);
 
-        pd.close();
-        rs.close();
-        return res;
-
-    }
 /**
- * 
+ * Function to get from DB the opening hours of a specified resturant
  * @param id the restaurant id
- * @return the opening hours (OpeningHours) for the restaurant
+ * @return a opening hours Bean (OpeningHours) for the restaurant
  * @throws SQLException 
  */
     public OpeningHours getOpeningHours(int id) throws SQLException {
@@ -413,7 +395,7 @@ public class RestaurantDAO {
         return oh;
     }
 /**
- * 
+ * Function which returns the most popular restaurants 
  * @return an ArrayList containing the restaurants in order of popularity
  * @throws SQLException 
  */
@@ -464,7 +446,7 @@ public class RestaurantDAO {
         return restaurantsList;
     }
 /**
- * 
+ * Function which returns all the cuisine types
  * @return an ArrayList containing all the types of the cuisines (CousineBean)
  * @throws SQLException 
  */
@@ -485,7 +467,7 @@ public class RestaurantDAO {
         return tmp;
     }
 /**
- * 
+ * Function to add a resturant in the DB
  * @param rest
  * @return the id of the new restaurant or 0 if the restaurant has not been added
  * @throws SQLException 
@@ -530,9 +512,9 @@ public class RestaurantDAO {
         return restID;
     }
 /**
- *  add cuisines in a restaurant
+ *  add cuisines type in a restaurant
  * @param id the restaurant id
- * @param checkedCuisineIds the ids of the cuisines
+ * @param checkedCuisineIds the ids of the cuisines as a string array
  * @throws SQLException 
  */
     public void addRestCuisine(int id, String[] checkedCuisineIds) throws SQLException {
@@ -572,9 +554,9 @@ public class RestaurantDAO {
         ps.close();
     }
 /**
- * 
- * @param valoriInseriti
- * @return 
+ * Funzione usata che ritorna i ristoranti che contengono alcune delle parole chiave passate come parametro
+ * @param valoriInseriti String array that contains all the keywords to search
+ * @return A List of type AutoCompleteData with the suggestions
  */
     public List<AutoCompleteData> getAutoCompleteData(String[] valoriInseriti) {
         List<String> valori = new ArrayList<String>();

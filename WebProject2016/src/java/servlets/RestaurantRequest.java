@@ -90,8 +90,10 @@ public class RestaurantRequest extends HttpServlet {
         //collecting photo of the reviews and name of the user
         PhotoDAO pDao = new PhotoDAO();
         ArrayList<String> photoPaths = new ArrayList<>();
+       UserDAO userdao= new UserDAO();
         for (ReviewBean current : reviews) {
-            String currName = restaurantDao.getUserNickname(current.getId_creator());
+            
+            String currName = userdao.getUserNickname(current.getId_creator());
             //name of the user
             userNickamesOfReviews.add(currName);
             String currPhotoPath = "";

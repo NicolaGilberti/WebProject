@@ -10,6 +10,9 @@ import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -95,14 +98,18 @@ public class ReclameRestaurant extends HttpServlet {
         
         
         if (userID != 0) {
-            RestaurantDAO restDao = new RestaurantDAO();
-            response.setIntHeader("id", restID);
-            if (restDao.reclameRestaurant(restID,userID)) {
-                response.sendRedirect(responsePath);
-            }
-            //se l'utente ha già riclamato il ristorante
-            else {
-                response.sendRedirect(responsePath + "&notReclamed");
+            try {
+                RestaurantDAO restDao = new RestaurantDAO();
+                response.setIntHeader("id", restID);
+                if (restDao.reclameRestaurant(restID,userID)) {
+                    response.sendRedirect(responsePath);
+                }
+                //se l'utente ha già riclamato il ristorante
+                else {
+                    response.sendRedirect(responsePath + "&notReclamed");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ReclameRestaurant.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         //se non si è loggati lo rimandiamo nella home page
