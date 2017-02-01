@@ -8,7 +8,7 @@ package beans;
 import java.sql.Timestamp;
 
 /**
- *
+ * Represent the OpeningHours database table
  * @author RiccardoUni,Mirko
  */
 public class OpeningHoursBean implements java.io.Serializable{

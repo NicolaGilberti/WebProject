@@ -5,71 +5,75 @@
  */
 package utils;
 
-import beans.OpeningHoursBean;
 import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
+ * Classe orari di apertura ristorante. Uo orario di apertura contiene giorno
+ * settimanale e orario di apertura/chiusura
  *
  * @author RiccardoUni
+ *
  */
 public class OpeningHours {
-    private final ArrayList<String> DAYS = new ArrayList<>(Arrays.asList("lunedì", "martedì", "mercoledì","giovedì","venerdì","sabato","domenica"));
-    private ArrayList<Integer> openDays = new ArrayList<Integer>();
-    private ArrayList<Time> openingHour = new ArrayList<Time>();
-    private ArrayList<Time> closingHour = new ArrayList<Time>();
-    
-    
+
+    private final ArrayList<String> DAYS = new ArrayList<>(Arrays.asList("lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato", "domenica"));
+    private ArrayList<Integer> openDays = null;
+    private ArrayList<Time> openingHour = null;
+    private ArrayList<Time> closingHour = null;
+
+    /**
+     * initialize variables
+     */
     public OpeningHours() {
+        openDays = new ArrayList<Integer>();
+        openingHour = new ArrayList<Time>();
+        closingHour = new ArrayList<Time>();
     }
 
+    /**
+     *
+     * @return an ArrayList of Strings containing the opening Hours for this class
+     */
     public ArrayList<String> toArrayListString() {
         String tmp = "";
         ArrayList<String> orari = new ArrayList<String>();
         ArrayList<Integer> temp = new ArrayList<Integer>();
-        for(int i=0;i<openDays.size();i++){
+        for (int i = 0; i < openDays.size(); i++) {
             temp.add(1);
         }
-        int j=0;
-        for (int i=openDays.size()-1; i>=0; i--) {
-            j=i-1;
-            if(j>=0 && (openDays.get(i)==(openDays.get(j)+1)) && (openingHour.get(i).equals(openingHour.get(j))) && (closingHour.get(i).equals(closingHour.get(j)))){
+        int j = 0;
+        for (int i = openDays.size() - 1; i >= 0; i--) {
+            j = i - 1;
+            if (j >= 0 && (openDays.get(i) == (openDays.get(j) + 1)) && (openingHour.get(i).equals(openingHour.get(j))) && (closingHour.get(i).equals(closingHour.get(j)))) {
                 temp.set(j, 0);
             }
         }
-        boolean flag = true,first=true;
-        for(int i=0;i<temp.size();i++){
-            if(flag==true || temp.get(i)==1){
-                if(temp.get(i)==1 && flag){
-                    //tmp = tmp.concat(" / ");
+        boolean flag = true, first = true;
+        for (int i = 0; i < temp.size(); i++) {
+            if (flag == true || temp.get(i) == 1) {
+                if (temp.get(i) == 1 && flag) {
                     orari.add(tmp);
-                    tmp="";
+                    tmp = "";
                 }
-                if(temp.get(i)==1){
-                    flag=true;
-                    tmp = tmp.concat(DAYS.get(openDays.get(i)-1)
-                                    + " : "+ openingHour.get(i).toString().substring(0, 5)
-                                    + " - " + closingHour.get(i).toString().substring(0, 5)
+                if (temp.get(i) == 1) {
+                    flag = true;
+                    tmp = tmp.concat(DAYS.get(openDays.get(i) - 1)
+                            + " : " + openingHour.get(i).toString().substring(0, 5)
+                            + " - " + closingHour.get(i).toString().substring(0, 5)
                     );
                 }
-                if(temp.get(i)==0){
-                    flag=false;
-                    if(first){
-                        first=false;
+                if (temp.get(i) == 0) {
+                    flag = false;
+                    if (first) {
+                        first = false;
                     }
-                    //{
-                        //tmp = tmp.concat(" / ");
-                        orari.add(tmp);
-                        tmp="";
-                    //}
+                    orari.add(tmp);
+                    tmp = "";
                     tmp = tmp.concat(
-                                    DAYS.get(openDays.get(i)-1)
-                                    + " - "
+                            DAYS.get(openDays.get(i) - 1)
+                            + " - "
                     );
                 }
             }
@@ -78,7 +82,7 @@ public class OpeningHours {
         orari.remove(0);
         return orari;
     }
-    
+
     public ArrayList<Integer> getOpenDays() {
         return openDays;
     }

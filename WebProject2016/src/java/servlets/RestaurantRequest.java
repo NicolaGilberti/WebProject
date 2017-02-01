@@ -27,13 +27,14 @@ import javax.servlet.http.HttpServletResponse;
 import utils.OpeningHours;
 
 /**
- *
+ * Manage the Request for a Restaurant.
+ * This class prepare the variables that will be visualized in the restaurant page.
  * @author RiccardoUni
  */
 public class RestaurantRequest extends HttpServlet {
 
     private final String restImagesPath = "/img/restImgs/";
-
+    private final String reviewImagesPath = "img/reviewsImgs/";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -96,7 +97,7 @@ public class RestaurantRequest extends HttpServlet {
             String currPhotoPath = "";
             //if any photo exists
             if (((Integer)current.getId_photo()) != 0) {
-                currPhotoPath = "img/reviewsImgs/"+ pDao.getName(current.getId_photo());
+                currPhotoPath = reviewImagesPath+ pDao.getName(current.getId_photo());
                 photoPaths.add(currPhotoPath);
             }
             else photoPaths.add("");
@@ -138,6 +139,7 @@ public class RestaurantRequest extends HttpServlet {
         request.setAttribute("likes", likes);
         request.setAttribute("dislikes", dislikes);
         
+        //send
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
 
         rd.forward(request, response);

@@ -26,7 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * This class prepare the form for restaurant creation.
+ * It's invoked when a user want to create a new restaurant.
  * @author RiccardoUni,Mirko
  */
 public class PrepareNewRestaurantForm extends HttpServlet {
@@ -34,7 +35,7 @@ public class PrepareNewRestaurantForm extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
-     *
+     * This class collect all the informations for the new restaurant form.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -45,22 +46,26 @@ public class PrepareNewRestaurantForm extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         
+        //collect
+        //States
         StateDAO stateDao = new StateDAO();
         ArrayList<StateBean> states = stateDao.getStates();
         request.setAttribute("states", states);
         
+        //Restaurant types
         RestaurantDAO rtd = new RestaurantDAO();
         ArrayList<CuisineBean> types = rtd.getCuisineTypes();
         request.setAttribute("restaurantTypes",types);
         
+        //Opening Hours
         OpeningHoursDAO oh = new OpeningHoursDAO();
         ArrayList<OpeningHoursBean> ohList = oh.getOpeningHours();
         request.setAttribute("ohList",ohList);
         
+        //Price range
         PriceRangeDAO range=new PriceRangeDAO();
         ArrayList<PriceRangeBean> rangeList = range.getPriceRanges();
         request.setAttribute("rangeList",rangeList);
-        
         
         RequestDispatcher rd = request.getRequestDispatcher("/newRestaurantForm.jsp");
 

@@ -33,7 +33,8 @@ import utils.GeocodeResponse;
 import static java.lang.Integer.parseInt;
 
 /**
- *
+ * This class insert a new restaurant in the system.
+ * It's invoked when an user submit the form for a new restaurant.
  * @author riccardo, Mirko
  */
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB

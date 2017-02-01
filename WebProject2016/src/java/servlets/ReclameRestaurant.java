@@ -10,7 +10,6 @@ import dao.RestaurantDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * This class manage the request for a reclame.
+ * It's invoked when an user request for a reclame of a restaurant.
  * @author RiccardoUni
  */
 @WebServlet(name = "ReclameRestaurant", urlPatterns = {"/ReclameRestaurant"})
@@ -54,7 +54,8 @@ public class ReclameRestaurant extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
-     *
+     * This class send an error message
+     * it'.s not possible to invoke this servlet using GET
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -63,12 +64,12 @@ public class ReclameRestaurant extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendError(404);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
-     *
+     *  
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -92,17 +93,19 @@ public class ReclameRestaurant extends HttpServlet {
         
         String responsePath =  request.getContextPath()+"/RestaurantRequest?id=" + restID;
         
+        
         if (userID != 0) {
             RestaurantDAO restDao = new RestaurantDAO();
-            
             response.setIntHeader("id", restID);
-            if (restDao.reclameRestaurant(userID,restID)) {
+            if (restDao.reclameRestaurant(restID,userID)) {
                 response.sendRedirect(responsePath);
             }
+            //se l'utente ha già riclamato il ristorante
             else {
                 response.sendRedirect(responsePath + "&notReclamed");
             }
         }
+        //se non si è loggati lo rimandiamo nella home page
         else {
             response.sendRedirect("/index.jsp");
         }
