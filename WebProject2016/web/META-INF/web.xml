@@ -134,14 +134,12 @@
         <servlet-class>servlets.DeletePhotoRequest</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>ChangeOwnerRequestServlet</servlet-name>
-        <servlet-class>ChangeOwnerRequestServlet</servlet-class>
+        <servlet-class>servlets.ChangeOwnerRequestServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LikesHandler</servlet-name>
         <servlet-class>servlets.LikesHandler</servlet-class>
-
     </servlet>
     <servlet-mapping>
         <servlet-name>UserAccountPage</servlet-name>
@@ -195,7 +193,7 @@
         <servlet-name>RestaurantRequest</servlet-name>
         <url-pattern>/RestaurantRequest</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <servlet-name>ReclameRestaurant</servlet-name>
         <servlet-class>servlets.ReclameRestaurant</servlet-class>
     </servlet>
@@ -339,12 +337,10 @@
         <servlet-name>InsertReportImageServlet</servlet-name>
         <url-pattern>/InsertReportImageServlet</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>LikesHandler</servlet-name>
         <url-pattern>/LikesHandler</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>InsertReply</servlet-name>
         <servlet-class>servlets.InsertReply</servlet-class>
@@ -360,7 +356,6 @@
     <servlet-mapping>
         <servlet-name>UpdateReviewServlet</servlet-name>
         <url-pattern>/UpdateReviewServlet</url-pattern>
-
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangeOwnerRequestServlet</servlet-name>

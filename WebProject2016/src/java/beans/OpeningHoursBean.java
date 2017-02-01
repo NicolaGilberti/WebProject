@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author RiccardoUni,Mirko
  */
-public class OpeningHoursBean {
+public class OpeningHoursBean implements java.io.Serializable{
 
     private int id;
 

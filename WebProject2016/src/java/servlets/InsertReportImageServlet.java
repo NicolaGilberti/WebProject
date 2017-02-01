@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Servlet che utilizzo per inserire la richiesta da parte di un ristoratore di 
+ * non rendere pubblica una foto
  * @author Marco
  */
 public class InsertReportImageServlet extends HttpServlet {
@@ -36,10 +37,12 @@ public class InsertReportImageServlet extends HttpServlet {
         int id_photo = Integer.parseInt(request.getParameter("id_photo"));
         int retval;
 
-        //inserisco la query
+        //inserisco il report dell'image
         InsertReplyDAO repdao = new InsertReplyDAO();
+        
         retval = repdao.InsertPhotoReport(id_user, id_photo);
 
+        //rimando alla pagina searchnotification per aggiornare il bean e comunico il risultato della query con result.
         response.sendRedirect("showreview.jsp?insert_reply=" + retval);
     }
 

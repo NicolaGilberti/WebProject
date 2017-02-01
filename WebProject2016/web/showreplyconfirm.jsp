@@ -26,26 +26,28 @@
         <div class="container-fluid">
             <c:set var="idrepl" value="${param.id}"></c:set>
 
-            <!--Search that i used to find the reply that was clicked-->
+            <!--Ricerca della notifica in base all'id-->
             <c:forEach var="notbean" items="${noty.replies}">
                 <c:if test="${notbean.idrep == idrepl}">
                     <c:set var="repliestoconfirm" value="${notbean}"></c:set>
                 </c:if>
             </c:forEach>
-
+            <!-- Pannello per mostrare la notifica -->
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3><strong><c:out value="${repliestoconfirm.customer}"></c:out></strong></h3>
                     <c:out value="${repliestoconfirm.reviewdescription}"></c:out>
+                    <!-- Stampo la notifica -->
                     <div style="padding-left:50px">
-                        <h3><strong><c:out value="${repliestoconfirm.ristoratore}"></c:out></strong></h3>
+                            <h3><strong><c:out value="${repliestoconfirm.ristoratore}"></c:out></strong></h3>
                         <c:out value="${repliestoconfirm.replydescription}"></c:out>
                         <div style="text-align:right">
                             <div class="form-group">
-                                <!--Setting get parameter (id of reply) using jstl -->
-                                 <c:url value="ConfirmRepliesServlet" var="repliesURL">
+                                <!--Setto i parametri da spedire alla servlet attraverso i due bottoni -->
+                                <c:url value="ConfirmRepliesServlet" var="repliesURL">
                                     <c:param name="id" value="${param.id}" />
                                 </c:url>
+                                <!-- L'if serve per tenere nascosti i bottoni in caso in cui io acceda alla pagina passando per le "noticiche già accettate -->
                                 <c:if test="${param.sh == true}">
                                     <form action="${repliesURL}" method="POST">
                                         <button type="submit"  name="button" class="btn btn-danger " value='d'>Rifiuta</button>
@@ -56,10 +58,7 @@
                         </div>
                     </div>
                 </div>
-              </div>
-        
-        
-        
+            </div>
         </div>
     </body>
 </html>

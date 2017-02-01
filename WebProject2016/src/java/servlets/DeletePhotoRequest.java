@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Servlet che uso per gestire la richiesta di cancellazione di una foto
  * @author Marco
  */
 public class DeletePhotoRequest extends HttpServlet {
@@ -32,17 +32,21 @@ public class DeletePhotoRequest extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
+        //recupero i parametri dalla request
         int id_photo = Integer.parseInt(request.getParameter("id"));
         String button = request.getParameter("button");
         ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
         int result;
-        if(button.equals("s")){
+        
+        //eseguo accept/discard in base a quale bottone l'admin ha premuto
+        if (button.equals("s")) {
             result = rep.acceptPhotoRequest(id_photo);
-        }
-        else{
+        } else {
             result = rep.discardPhotoRequest(id_photo);
         }
-        response.sendRedirect("SearchNotification?query_result="+result);
+        
+        //rimando alla pagina searchnotification per aggiornare il bean e comunico il risultato della query con result.
+        response.sendRedirect("SearchNotification?query_result=" + result);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

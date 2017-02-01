@@ -16,7 +16,7 @@ import beans.RestaurantNotificationBean;
 import beans.ReviewBean;
 
 /**
- *
+ * Classe che mi serve per prendere tutte le notifiche del ristorante dal database
  * @author Marco
  */
 public class RestaurantNotificationDAO {
@@ -27,15 +27,24 @@ public class RestaurantNotificationDAO {
         db= new ManagerDB();
         con = db.getConnection();
     }
-  
+    /**
+     * Metodo per prendere tutte le notifiche che riguardano i ristoranti di un certo user
+     * dal database
+     * @param userid int, id del ristoratore
+     * @return un RestaurantNotificationBean che contiene tutte le notifiche riguardanti
+     * i ristoranti del ristoratore con l'id cercato
+     * @throws SQLException
+     * @throws Throwable 
+     */
     public RestaurantNotificationBean getAllNotification(int userid) throws SQLException, Throwable{
         RestaurantNotificationBean restaurant_notification = new RestaurantNotificationBean();
-        //notification reviews
+        //Cerco tutte le norifiche relative a un certo ristoratore 
         PreparedStatement replies = con.prepareStatement("SELECT rev.id AS idreview, rev.global_value,rev.food,rev.service,rev.value_for_money,rev.atmosphere,rev.name AS revname,rev.description,res.name AS res_name,res.city, usr.id AS userid,rev.id_photo,rev.view,rev.data_creation AS dcreation,res.id AS resid, usr.nickname FROM (reviews AS rev INNER JOIN restaurants AS res ON (rev.id_restaurant = res.id)) INNER JOIN users AS usr ON rev.id_creator = usr.id WHERE res.id_owner = ?");
         replies.setInt(1, userid);
         ResultSet rs = replies.executeQuery();
         try{
             try{ 
+                    //riempio il bean con tutte le notifiche
                     while(rs.next()){
                         ReviewBean t1 = new ReviewBean();
                         t1.setId(rs.getInt("idreview"));
@@ -67,6 +76,7 @@ public class RestaurantNotificationDAO {
                         t1.setView(rs.getBoolean("view"));
                         t1.setNickname(rs.getString("nickname"));
                         System.out.println(t1);
+                        //aggiungo al NotificationBean che ritorno tutte le notifiche
                         restaurant_notification.addReviewBean(t1);
                     }
              }finally{

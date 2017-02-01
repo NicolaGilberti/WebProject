@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <link rel="stylesheet" href="css/generic.css">
         <link rel="stylesheet" href="css/notifcation.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
@@ -20,19 +20,18 @@
         <script src="js/notificationpagejs.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <title>JSP Page</title>
+        <title>Commento</title>
     </head>
     <body> 
         <jsp:include page = "header/header.jsp"/>
         <div class="container-fluid">
-
-            <!--Search that i used to find the reply that was clicked-->
+            <!--Cerco la notifica che deve essere mostrata-->
             <c:forEach var="notbean" items="${resnoty.review_list}">
                 <c:if test="${notbean.id == param.id}">
                     <c:set var="review" value="${notbean}" scope="session"></c:set>
                 </c:if>
             </c:forEach>
+            <!--Mostro la notifica -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 style="font: bold;"><c:out value="${review.name}"/> 
@@ -64,10 +63,11 @@
                         </div>   
                     </h4>
                 </div>
+                <!-- Inserisco la descrizione -->
                 <div class="panel-body">
                     <c:out value="${review.description}"></c:out>
-                    <br>
-                    <br>
+                        <br>
+                        <br>
                     <c:if test="${review.photo_name != ''}">
                         <div class="row">
                             <div class="col-xs-4">
@@ -78,30 +78,39 @@
                         </div>
                     </c:if>
                 </div>
+            </div>
+            <!--Form per inserire la risposta e/o segnalare la foto -->    
+            <div class="form-group">
+                <c:url value="InsertReportImageServlet" var="reviewURL">
+                    <c:param name="id_photo" value="${review.id_photo}"/>
+                    <c:param name="id" value="${review.id_creator}"/>
+                </c:url>
+                <form action="${reviewURL}" method="POST">
+                    <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
+                    <c:if test="${review.photo_name != ''}">
+                        <button type="submit"  name="button" class="btn btn-success">Segnala foto</button>
+                    </c:if>
+                </form>
+            </div>  
+            <!--
+                Form per inserire la risposta. All'inizio questo form sarà nascosto, 
+                e una volta che il ristoratore clicca sul bottone il form sarà mostrato e sarà quindi possibile inserire una review e
+                inoltrarla all'admin per far si che essa venga accettata e resa disponibile
+            -->
+            <form action="InsertReply" method="POST" id="replytext" style="display:none" >
+                <div class="form-group">
+                    <label for="textarea">Inserisci qui la risposta al commento</label>
+                    <textarea name="descriptionarea" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
-                        <c:url value="InsertReportImageServlet" var="reviewURL">
-                            <c:param name="id_photo" value="${review.id_photo}"/>
-                            <c:param name="id" value="${review.id_creator}"/>
-                        </c:url>
-                    <form action="${reviewURL}" method="POST">
-                        <button type="button"  id="replybutton" name="button" class="btn btn-success">Rispondi</button>
-                        <c:if test="${review.photo_name != ''}">
-                            <button type="submit"  name="button" class="btn btn-success">Segnala foto</button>
-                        </c:if>
-                    </form>
-                </div>  
-                <!--Setting get parameter (id of reply) using jstl -->
-                    <form action="InsertReply" method="POST" id="replytext" style="display:none" >
-                        <div class="form-group">
-                            <label for="textarea">Inserisci qui la risposta al commento</label>
-                            <textarea name="descriptionarea" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit"  name="button" class="btn btn-success" value='a'>Invia</button>
-                        </div>
-                    </form>
+                    <button type="submit"  name="button" class="btn btn-success" value='a'>Invia</button>
                 </div>
+            </form>
+        </div>
+        <!-- 
+            Panel che utilizzo per fornire un feedback al ristoratore quando chiede di reportare una foto
+            Gli verrà notificato se la richiesta è andata a buon fine oppure no.
+        -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

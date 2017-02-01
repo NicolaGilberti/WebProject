@@ -6,7 +6,8 @@
 package beans;
 
 /**
- *
+ * ChangeOwnerNotification è il bean che utilizzo per salvare tutti i dati che prelevo dal database, 
+ * riguardanti alla notifica del cambiamento del propietario.
  * @author Marco
  */
 public class ChangeOwnerNotificationBean implements java.io.Serializable {

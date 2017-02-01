@@ -5,11 +5,13 @@
  */
 package beans;
 
-/**
+/**,
+ * Bean che utilizzo per prelevare dal database i dati riguardanti alla delete photo notification, e che utilizzo
+ * per salvarmi tutti i dati che mi occorrono per la corretta gestione della notifica
  *
  * @author Marco
  */
-public class DeletePhotoNotificationBean {
+public class DeletePhotoNotificationBean implements java.io.Serializable{
     private int usrid;
     private int idphoto;
     private String resname;

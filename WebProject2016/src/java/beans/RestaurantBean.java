@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author RiccardoUni
  */
-public class RestaurantBean {
+public class RestaurantBean implements java.io.Serializable {
     private int id;
     private String name;
     private String description;

@@ -18,8 +18,13 @@
         <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="js/notificationpagejs.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Le notifiche </title>
     </head>
     <body>
+        <!--
+            Pagina esterna dove rimando sia ristoratore sia amministratore quando si loggano.
+            In base al loro user type importo la jsp adminNotification.jsp oppure restaurantNotificationjsp
+        -->
         <jsp:include page = "header/header.jsp"/>
         <div class="container-fluid">
             <div class="panel-body">
@@ -37,7 +42,10 @@
             </div>
             <!--area che verrà aggiornata dallo script-->
         
-        <!-- panel per la conferma dei cambiamenti -->    
+        <!-- 
+            panel per la conferma dei cambiamenti. Ogni volta che eseguo una query mando un feedback all'user
+            in base alla riuscita o pure no della modifica che voleva apportare.
+        -->    
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

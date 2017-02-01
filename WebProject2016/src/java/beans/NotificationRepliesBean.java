@@ -8,7 +8,8 @@ package beans;
 import java.sql.Date;
 import java.sql.Timestamp;
 /**
- *
+ * Bean che utilizzo per salvarmi tutti i dati necessari (prelevati dal DB) per la corretta gestione della notifica delle reply.
+ * 
  * @author Marco
  */
 public class NotificationRepliesBean  implements java.io.Serializable{

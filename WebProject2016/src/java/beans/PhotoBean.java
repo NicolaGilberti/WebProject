@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author Mirko
  */
-public class PhotoBean {
+public class PhotoBean implements java.io.Serializable{
     private String name;
     private String description;
     private int id_restaurant;

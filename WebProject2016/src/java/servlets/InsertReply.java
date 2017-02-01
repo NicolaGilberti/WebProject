@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Servlet che utillizzo per inserire la reply del ristoratore
  * @author Marco
  */
 public class InsertReply extends HttpServlet {
@@ -35,25 +35,24 @@ public class InsertReply extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //recupero la desctizione 
         String description = request.getParameter("descriptionarea");
         ReviewBean rev;
         //aggiungo la reply
         rev = (ReviewBean) request.getSession().getAttribute("review");
-
-        System.out.print("REV" + rev);
+        int result = 0;
+        
+        
         InsertReplyDAO rep = new InsertReplyDAO();
-        boolean result = false;
-        int value = 0;
+
         try {
             result = rep.insertReply(rev, description);
         } catch (Throwable ex) {
             Logger.getLogger(InsertReply.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (result == false) {
-            value = 1;
-        }
-
-        response.sendRedirect("SearchNotification?insert_reply=" + value);
+        
+        //rimando alla pagina searchnotification per aggiornare il bean e comunico il risultato della query con result.
+        response.sendRedirect("SearchNotification?insert_reply="+result);
 
     }
 

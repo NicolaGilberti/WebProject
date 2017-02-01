@@ -9,7 +9,7 @@ package beans;
  *
  * @author Mirko
  */
-public class PriceRangeBean {
+public class PriceRangeBean implements java.io.Serializable{
     private int id;
     private double min_value;
     private double max_value;

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Servlet che mi serve per aggiornare il campo view della notifica del ristoratore 
  * @author Marco
  */
 public class UpdateReviewServlet extends HttpServlet {
@@ -32,14 +32,16 @@ public class UpdateReviewServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
+        //prendo i dati dalla richiesta
         int id_to_update = Integer.parseInt(request.getParameter("id"));
         InsertReplyDAO rep = new InsertReplyDAO();
+        //aggiorno il campo
         try {
             rep.UpdateReply(id_to_update);
         } catch (Exception e) {
             System.err.print("Sql error");
         }
-
+        //faccio la redirect
         response.sendRedirect("showreview.jsp?id=" + id_to_update);
     }
 

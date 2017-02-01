@@ -16,7 +16,8 @@ import beans.DeletePhotoNotificationBean;
 import beans.NotificationRepliesBean;
 
 /**
- *
+ * Questo dao mi permette di raccogliere tutte le notifiche che devono essere mostrate agli amministratori che si loggano.
+ * Il metodo getAllNotification è l'unico metodo presente, ritorna un Notification bean riempito con le notifiche presenti nel database
  * @author Marco
  */
 public class AdminNotificationsDAO {
@@ -29,19 +30,20 @@ public class AdminNotificationsDAO {
     }
     
     /**
-     * 
-     * @return a bean that contains all notification of change owner, delete photos and then confirm replyes
+     * getAllNotification: metodo per accedere a tutte le notifiche dell'admin.
+     * @return NotificationBean: ritorna un bean con all'interno tutte le notifiche che devono essere mostrate all'admin
      * @throws SQLException
      * @throws Throwable 
      */
     public NotificationBean getAllNotification() throws SQLException, Throwable{
         NotificationBean notification = new NotificationBean();
-        //mi creo un array con le replies
+        //creo un preparedstatement e un rs per l'eseuzione della query e per recuperare il risultato della tabella
         PreparedStatement replies = con.prepareStatement("SELECT t1.accepted AS accepted, t1.id AS idrep, t1.data_creation AS datarep,t2.data_creation AS revdata, t1.description AS repdes, t2.description AS rewdes, users.nickname AS customer,t4.nickname AS ristoratore FROM (replies AS t1 INNER JOIN reviews AS t2 ON (t1.id_review = t2.id)) INNER JOIN users ON (t2.id_creator = users.id) JOIN users AS t4 ON ( t1.id_owner = t4.id);");
         ResultSet rs = replies.executeQuery();
         try{
             try{    
                 while(rs.next()){
+                    //recupero le notifiche delle reply
                     NotificationRepliesBean t1 = new NotificationRepliesBean();
                     t1.setIdrep(rs.getInt("idrep"));
                     t1.setCustomer(rs.getString("customer"));
@@ -55,7 +57,7 @@ public class AdminNotificationsDAO {
                 }
                 
                     
-                //the query for seletting all the change owner request
+                //recupero le notifiche del ChangeOwner
                 PreparedStatement cown = con.prepareStatement("SELECT t1.accepted AS accepted,t2.id AS resid,t3.id AS usrid , t2.name AS resname,t3.name AS usrname,t3.surname,t3.nickname, t4.nickname AS owner FROM ((request_changes_owner AS t1 INNER JOIN restaurants AS t2 ON (t1.id_restaurant =t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id)) INNER JOIN users AS t4 ON (t2.id_owner = t4.id)");
                 rs = cown.executeQuery();
                 while(rs.next()){
@@ -72,7 +74,7 @@ public class AdminNotificationsDAO {
                 }
                 
                 
-                //the query to selecting all the delete photo request
+                //recupero le notifiche delle ricchieste di cancellazione delle foto
                 PreparedStatement dphoto = con.prepareStatement("SELECT t1.accepted AS accepted,t1.id_user AS usrid, t1.id_photo AS idphoto ,t2.name AS photoname,t3.name AS resname,t3.nickname FROM (request_delete_photos AS t1 INNER JOIN photos AS t2 ON (t1.id_photo = t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id);");
                 rs = dphoto.executeQuery();
 

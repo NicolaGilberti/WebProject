@@ -1,3 +1,5 @@
+package servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Servlet per gestire la richiesta di ChangeOwnerRequest e aggiornare i database
  * @author Marco
  */
 public class ChangeOwnerRequestServlet extends HttpServlet {
@@ -31,9 +33,12 @@ public class ChangeOwnerRequestServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
+        //recuper dalla richiesta gli id che mi servono e l'esito in base al bottone premuto dall'admin
         int idu = Integer.parseInt(request.getParameter("idu"));
         int idr = Integer.parseInt(request.getParameter("idr"));
         String button = request.getParameter("button");
+        
+        //applico le modifiche al database
         ApplyAdminNotificationDAO owner = new ApplyAdminNotificationDAO();
         int result=0;
         
@@ -44,6 +49,7 @@ public class ChangeOwnerRequestServlet extends HttpServlet {
           result = owner.discardChangeOwnerRequest(idu, idr);
         }
         
+        //rimando a searchnotification per aggiornare i bean e uso RESULT per comunicare l'esito della query
         response.sendRedirect("SearchNotification?query_result="+result);
     }
 

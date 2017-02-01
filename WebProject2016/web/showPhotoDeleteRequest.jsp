@@ -19,42 +19,49 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/notifcation.css" rel="stylesheet">
         <link rel="stylesheet" href="css/generic.css">
-
+        <title>Elimita foto</title>
     </head>
     <body>
-        <!--Search that i used to find the reply that was clicked-->
+        <!--Ricerca della notifica cliccata in base all'id ricevuto-->
         <c:forEach var="notbean" items="${noty.delphotos}">
             <c:if test="${notbean.idphoto == param.id}">
                 <c:set var="deletephoto" value="${notbean}"></c:set>
             </c:if>
         </c:forEach>
+        
         <jsp:include page = "header/header.jsp"/>
+        
+        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
                     <h1>Questa fotografia è opportuna?</h1>
                 </div>
             </div>
             <hr class="style15">
-            <!-- test which kind of user is and so i can show the right notification-->
-            <!--area che verrà aggiornata dallo script-->
+            <!-- 
+                qui mostro la foto con i due bottoni, dove un admin può scegliere se secondo lui l'immagine
+                è opportuna o non può essere mostrata al pubblico
+            -->
             <div class="row" style="text-align:center">
                 <div class="col-lg-12 col-sx-12 col-sm-12 col-md-12" >
-                     <img src="${deletephoto.photoname}">
+                    <img src="${deletephoto.photoname}">
                 </div>
             </div>
             <br>
             <div class="row" style="text-align:center">
                 <h4>Premendo su <strong>SI</strong> la fotografia sarà mostrata al pubblico, premendo su 
-                <strong>NO</strong> la fotograifa non sarà più visibile.</h4> 
-            </div>
-            <!-- panel per la conferma dei cambiamenti -->  
+                    <strong>NO</strong> la fotograifa non sarà più visibile.</h4> 
+            </div>  
             <div class="row" style="text-align:center">
                 <div class="col-lg-12 col-sx-12 col-sm-12 col-md-12" >
                     <c:url value="DeletePhotoRequest" var="deletephotoURL">
                         <c:param name="id" value="${param.id}"/>
                     </c:url>
+                    <!-- 
+                        Form che manda alla servlet che si occuperà di apportare le modifiche nel database
+                        L'if serve per tenere nascosti i bottoni in caso in cui io acceda alla pagina passando per le "noticiche già accettate
+                    -->
                     <form action="${deletephotoURL}" method="POST">
                         <div class="form-group">
                             <c:if test="${param.sh == true}">
@@ -67,5 +74,5 @@
                 </div>
             </div>
         </div>
-</body>
+    </body>
 </html>

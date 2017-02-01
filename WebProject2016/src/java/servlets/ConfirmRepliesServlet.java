@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Servlet che uso per gestire la richiesta della conferma di una reply
  * @author Marco
  */
 public class ConfirmRepliesServlet extends HttpServlet {
@@ -35,17 +35,22 @@ public class ConfirmRepliesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Throwable {
+        //recupero i dati dalla request
         String button = null;
         button = request.getParameter("button");
         UserBean admin = (UserBean) request.getSession().getAttribute("user");
-        int result = 0;
         int id = Integer.parseInt(request.getParameter("id"));
+        //result lo uso per comunicare l'esito della query all'utente
+        int result = 0;
         ApplyAdminNotificationDAO rep = new ApplyAdminNotificationDAO();
+        //eseguo la richiesta
         if (button.equals("a")) {
             result = rep.confirmReplies(id, admin.getId());
         } else {
             result = rep.deleteReplies(id, admin.getId());
         }
+        
+        //rimando alla pagina searchnotification per aggiornare il bean e comunico il risultato della query con result.
         response.sendRedirect("SearchNotification?query_result=" + result);
     }
 

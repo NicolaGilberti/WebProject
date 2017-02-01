@@ -8,22 +8,15 @@ package beans;
 import java.util.ArrayList;
 
 /**
- *
+ * Questo bean lo utilizzo per raccogliere tutte le notifiche dell'amministratore in tre diversi arraylist dei tre diversi tipi di notifica,
+ * e che mi permette di accedere alle notifiche dell'amministratore utilizzando un solo bean
  * @author Marco
  */
 public class NotificationBean implements java.io.Serializable {
    private ArrayList replies = new ArrayList();
    private ArrayList chowner = new ArrayList();;
    private ArrayList delphotos = new ArrayList();
-   
-   
-   
-   public NotificationBean(){
-      // replies = new ArrayList();
-       //chowner = new ArrayList();
-       //delphotos = new ArrayList();
-   }
-   
+
    public void addReplies(NotificationRepliesBean rep){
        replies.add(rep);
    }

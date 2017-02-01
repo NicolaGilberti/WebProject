@@ -9,7 +9,7 @@ package beans;
  *
  * @author Mirko
  */
-public class StateBean {
+public class StateBean implements java.io.Serializable {
     
     private int id;
     private String name;

@@ -8,10 +8,11 @@ package beans;
 import java.util.ArrayList;
 
 /**
- *
+ * Bean dove raccolgo tutte le notifiche che riguardano il ristoratore. 
+ * Utilizzo un arraylist di ReviewBean.
  * @author Marco
  */
-public class RestaurantNotificationBean {
+public class RestaurantNotificationBean implements java.io.Serializable {
     private ArrayList<ReviewBean> review_list = new ArrayList<ReviewBean>();
 
     public ArrayList<ReviewBean> getReview_list() {

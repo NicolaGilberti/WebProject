@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  *
  * @author RiccardoUni
  */
-public class ReplyBean {
+public class ReplyBean implements java.io.Serializable{
     private int id;
     private String desc;
     private Timestamp data_creation;

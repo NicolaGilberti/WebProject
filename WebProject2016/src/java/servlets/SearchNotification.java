@@ -24,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 import sun.rmi.server.Dispatcher;
 
 /**
- *
+ * Servlet principale che utilizzo per prendere dal database tutte le notifiche,
+ * scremandole per notifiche ristoratore e notifiche admin.
  * @author Marco
  */
 public class SearchNotification extends HttpServlet {
@@ -40,7 +41,6 @@ public class SearchNotification extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, Throwable {
-        //response.setHeader("Cache-Control","no-cache");
         response.setContentType("text/html;charset=UTF-8");
         // Creo gli oggetti Bean e DAO che necessito nella pagina
         NotificationBean notbean = new NotificationBean();
@@ -48,7 +48,7 @@ public class SearchNotification extends HttpServlet {
         AdminNotificationsDAO notify = new AdminNotificationsDAO();
         RestaurantNotificationDAO resnoty = new RestaurantNotificationDAO();
         UserBean user_type = (UserBean) request.getSession().getAttribute("user");
-        
+        //parametri che utilizzo per dare il feedback all'utente, dopo che ha applicato una modifica al db
         String query_result = request.getParameter("query_result");
         String insert_reply_result = request.getParameter("insert_reply_result");
         int param;
@@ -66,8 +66,13 @@ public class SearchNotification extends HttpServlet {
         } else {
             param_insert = Integer.parseInt(insert_reply_result);
         }
-
+        
         try {
+            /*
+            prendo sempre le notifiche del ristoratore, dato che un admin può esserlo, e in più, se chi si logga è
+            admin, recupero anche le notifiche dell'administrator.
+            Per fare questo utilizzo il valore del type dell'utente loggato
+            */
             if (user_type.getType() == 2) {
                 notbean = notify.getAllNotification();
                 request.getSession().setAttribute("noty", notbean);
@@ -81,16 +86,24 @@ public class SearchNotification extends HttpServlet {
         }
 
         RequestDispatcher ds;
+        /*
+            il primo controllo mi serve per far si che,essendo la prima volta che passo di qui, riesca a caricare tutta la pagina della servlet
+        */
         if (request.getParameter("flag") == null) {
             ds = request.getRequestDispatcher("notification.jsp?query_result=" + param + "&insert_result=" + insert_reply_result);
             ds.forward(request, response);
         } else {
+            /*
+                qui invece, essendo che sono nella pagina admin e devo aggiornare le notifiche, non mi serve caricare
+                la pagina completa notification, ma vado ad aggiornare direttamente le sotto jsp in base a che tipo di user sono.
+            */
             if (user_type.getType() == 2) {
                 ds = request.getRequestDispatcher("adminNotification.jsp");
 
             } else {
                 ds = request.getRequestDispatcher("restaurantNotification.jsp");
             }
+            //infine faccio il farward della richiesta
             ds.forward(request, response);
         }
     }

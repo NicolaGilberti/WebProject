@@ -9,7 +9,7 @@ package beans;
  *
  * @author RiccardoUni
  */
-public class UserReviewLikesBean {
+public class UserReviewLikesBean implements java.io.Serializable {
     private int idUser;
     private int idReview;
     private boolean likeDislike; /*!!!!! like=1, dislike=0 !!!!!*/
