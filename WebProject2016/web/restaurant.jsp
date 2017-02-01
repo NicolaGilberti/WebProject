@@ -40,10 +40,17 @@
         <!-- header -->
         <jsp:include page="header/header.jsp"></jsp:include>
 
+        <!-- alerts -->
         <c:if test="${param.notReclamed != null}">
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
                 Hai già reclamato questo ristorante!
+            </div>
+        </c:if>
+        <c:if test="${param.reviewNotInsert != null}">
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+                Ci scusiamo, non è stato possibile inserire la review
             </div>
         </c:if>
 

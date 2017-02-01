@@ -15,18 +15,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is used to manage the States database table.
  *
  * @author RiccardoUni,Mirko
  */
 public class StateDAO {
+
     private ManagerDB db = null;
     private Connection con = null;
 
+    /**
+     * connect the DB
+     */
     public StateDAO() {
         db = new ManagerDB();
         con = db.getConnection();
     }
     
+    /**
+     * 
+     * @return an array list containing the states (StateBean) presents in the Database
+     * @throws SQLException 
+     */
     public ArrayList<StateBean> getStates() throws SQLException {
 
         PreparedStatement ps = null;
@@ -34,15 +44,15 @@ public class StateDAO {
         ArrayList<StateBean> res = new ArrayList<>();
 
         ps = con.prepareStatement("SELECT id,name FROM states;");
-   
+
         rs = ps.executeQuery();
-        while(rs.next()) {
-            StateBean state=new StateBean();
+        while (rs.next()) {
+            StateBean state = new StateBean();
             state.setId(rs.getInt(1));
-                state.setName(rs.getString(2));
+            state.setName(rs.getString(2));
             res.add(state);
         }
-        
+
         return res;
     }
 }

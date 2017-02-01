@@ -28,7 +28,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
- *
+ * This class add a review for a restaurant.
+ * It's invoked when a user want to insert a review for a restaurant.
  * @author RiccardoUni
  */
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -67,13 +68,13 @@ public class NewReview extends HttpServlet {
         review.setId_creator(userID);
         review.setId_restaurant(restID);
         
-        //CURRENT DATE
+        //data di inserimento i.e. data al momento della submit della review
         Date data_creation = new Date();
         Timestamp tmp = new Timestamp(data_creation.getTime());
         review.setData_creation(tmp);
         
 
-        // inseriamo review nel database
+        //inseriamo review nel database
         ReviewDAO rDao = new ReviewDAO();
         int reviewID = rDao.insertReview(review);
         if (reviewID != 0) {    

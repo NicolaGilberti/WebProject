@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
+ * This class is used to manage the PriceRange database table and the tables connected to it.
  * @author Mirko
  */
 public class PriceRangeDAO {
@@ -22,11 +22,18 @@ public class PriceRangeDAO {
     private ManagerDB db = null;
     private Connection con = null;
 
+    /**
+     * connect the DB
+     */
     public PriceRangeDAO() {
         db = new ManagerDB();
         con = db.getConnection();
     }
-
+/**
+ * 
+ * @return an arrayList containings all the price ranges
+ * @throws SQLException 
+ */
     public ArrayList<PriceRangeBean> getPriceRanges() throws SQLException {
 
         PreparedStatement ps = null;

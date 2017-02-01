@@ -27,7 +27,7 @@ import utils.OpeningHours;
  * and open the template in the editor.
  */
 /**
- *
+ * This class is used to manage the Restaurant database table and the tables connected to it.
  * @author RiccardoUni, Mirko
  */
 public class RestaurantDAO {
@@ -35,34 +35,49 @@ public class RestaurantDAO {
     private ManagerDB db = null;
     private Connection con = null;
 
+    /**
+     * connect the DB
+     */
     public RestaurantDAO() {
         db = new ManagerDB();
         con = db.getConnection();
     }
-    public boolean reclameRestaurant(int restID, int userID) {
-        
+
+    /**
+     * for reclame a restaurant
+     * @param restID
+     * @param userID
+     * @return true if it has been reclamed false othrewise
+     */
+    public boolean reclameRestaurant(int restID, int userID) throws SQLException {
+        PreparedStatement ps = null;
         try {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES (?,?)");
+            ps = con.prepareStatement("INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userID);
             ps.setInt(2, restID);
             
-            ResultSet rs = ps.executeQuery();
             int affectedRows = ps.executeUpdate();
             ps.close();
-            rs.close();
             if (affectedRows == 0) {
                 Logger.getLogger("Errore inserimento recensione, no rows affected.");
                 return false;
             }
             return true;
-            
+
         } catch (SQLException ex) {
             //Logger.getLogger(RestaurantDAO.class.getName()).log(Level.SEVERE, null, ex);
             Logger.getLogger("Errore inserimento recensione, keys già esistenti, no rows affected.");
+            ps.close();
             return false;
         }
-        
+
     }
+/**
+ * look for a restaurant
+ * @param id restaurant
+ * @return the restaurant (RestaurantBean) 
+ * @throws SQLException 
+ */
     public RestaurantBean searchRestaurant(int id) throws SQLException {
         RestaurantBean restaurant = new RestaurantBean();
         PreparedStatement st = con.prepareStatement("SELECT * FROM restaurants WHERE ? = restaurants.id");
@@ -81,17 +96,23 @@ public class RestaurantDAO {
             restaurant.setLongitude(rs.getDouble("longitude"));
             restaurant.setGlobal_value(rs.getInt("global_value"));
         }
-        
+
         st.close();
         rs.close();
         return restaurant;
 
     }
 
+    //close connection
     public void closeConnection() throws SQLException {
         con.close();
     }
-
+/**
+ * get photos of a restaurant
+ * @param id_restaurant 
+ * @return an ArrayList containing the path of the photos og the restaurant passed
+ * @throws SQLException 
+ */
     public ArrayList<String> getPhotos(int id_restaurant) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
                 "SELECT name FROM photos WHERE id_restaurant = ?;");
@@ -102,8 +123,7 @@ public class RestaurantDAO {
             String name = rs.getString(1);
             if (name.substring(0, 3).equals("rev")) {
                 pn.add("img/reviewsImgs/" + name);
-            }
-            else {
+            } else {
                 pn.add("img/restImgs/" + name);
             }
         }
@@ -111,7 +131,12 @@ public class RestaurantDAO {
         pd.close();
         return pn;
     }
-
+/**
+ * get price ranges for an id of a price range
+ * @param id_price_range 
+ * @return an ArrayList containing the price ranges
+ * @throws SQLException 
+ */
     public ArrayList<Integer> getPriceRange(int id_price_range) throws SQLException {
         ArrayList<Integer> tmp = new ArrayList<Integer>();
         PreparedStatement pd = con.prepareStatement(
@@ -126,7 +151,12 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-
+/**
+ * 
+ * @param id the id of the restaurant
+ * @return an ArrayList containing the Cuisines of the restaurant passed
+ * @throws SQLException 
+ */
     public ArrayList<CuisineBean> getCuisines(int id) throws SQLException {
         ArrayList<CuisineBean> tmp = new ArrayList<CuisineBean>();
         PreparedStatement pd = con.prepareStatement(
@@ -145,7 +175,12 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-
+/**
+ * 
+ * @param id the id of a restaurant
+ * @return an ArrayList containing the reviews (ReviewBean) for the restaurant
+ * @throws SQLException 
+ */
     public ArrayList<ReviewBean> getReviews(int id) throws SQLException {
         ArrayList<ReviewBean> tmp = new ArrayList<ReviewBean>();
         PreparedStatement pd = con.prepareStatement(
@@ -169,7 +204,12 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-
+/**
+ * 
+ * @param id the id og the photo
+ * @return a string containing the name of the photo passed
+ * @throws SQLException 
+ */
     public String getThumbnailPath(int id) throws SQLException {
         String path = "";
         PreparedStatement pd = con.prepareStatement(
@@ -184,12 +224,17 @@ public class RestaurantDAO {
                 path = rs.getString("default.png");
             }
         }
-        
+
         pd.close();
         rs.close();
         return path;
     }
-
+/**
+ * 
+ * @param id the restaurant id
+ * @return an int representing the number of the reviews for the restaurant passed
+ * @throws SQLException 
+ */
     public int getNumOfReviews(int id) throws SQLException {
         int nReviews = 0;
         PreparedStatement pd = con.prepareStatement(
@@ -200,12 +245,17 @@ public class RestaurantDAO {
         while (rs.next()) {
             nReviews = rs.getInt(1);
         }
-        
+
         pd.close();
         rs.close();
         return nReviews;
     }
-
+/**
+ * 
+ * @param searchInput
+ * @return
+ * @throws SQLException 
+ */
     public ArrayList<RestaurantBean> getRestaurantsbySearch(String searchInput) throws SQLException {
 
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
@@ -257,13 +307,19 @@ public class RestaurantDAO {
             //E infine aggiungo il ristorante alla lista
             restaurantsList.add(risto);
         }
-        
+
         sqlStatement.close();
         results.close();
         return restaurantsList;
 
     }
-
+/**
+ * look for restaurants in a area with center latitude and logitude passed
+ * @param lat latitude
+ * @param longi longitude
+ * @return an ArrayList containing the Restaurants (RestaurantBean) found
+ * @throws SQLException 
+ */
     public ArrayList<RestaurantBean> getRestaurantsbyLocation(float lat, float longi) throws SQLException {
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
@@ -306,12 +362,17 @@ public class RestaurantDAO {
             //E infine aggiungo il ristorante alla lista
             restaurantsList.add(risto);
         }
-        
+
         sqlStatement.close();
         results.close();
         return restaurantsList;
     }
-
+/**
+ * 
+ * @param userId
+ * @return the nickname of the user 
+ * @throws SQLException 
+ */
     public String getUserNickname(int userId) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
                 "SELECT nickname FROM users WHERE id = ?;");
@@ -319,13 +380,18 @@ public class RestaurantDAO {
         ResultSet rs = pd.executeQuery();
         rs.next();
         String res = rs.getString(1);
-        
+
         pd.close();
         rs.close();
         return res;
-        
-    }
 
+    }
+/**
+ * 
+ * @param id the restaurant id
+ * @return the opening hours (OpeningHours) for the restaurant
+ * @throws SQLException 
+ */
     public OpeningHours getOpeningHours(int id) throws SQLException {
         OpeningHours oh = new OpeningHours();
         PreparedStatement pd = con.prepareStatement(
@@ -346,7 +412,11 @@ public class RestaurantDAO {
         rs.close();
         return oh;
     }
-
+/**
+ * 
+ * @return an ArrayList containing the restaurants in order of popularity
+ * @throws SQLException 
+ */
     public ArrayList<RestaurantBean> getRestaurantsbyPopularity() throws SQLException {
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
@@ -388,12 +458,16 @@ public class RestaurantDAO {
             //E infine aggiungo il ristorante alla lista
             restaurantsList.add(risto);
         }
-        
+
         sqlStatement.close();
         results.close();
         return restaurantsList;
     }
-
+/**
+ * 
+ * @return an ArrayList containing all the types of the cuisines (CousineBean)
+ * @throws SQLException 
+ */
     public ArrayList<CuisineBean> getCuisineTypes() throws SQLException {
         ArrayList<CuisineBean> tmp = new ArrayList<>();
         PreparedStatement st = con.prepareStatement("SELECT name,id FROM cuisine");
@@ -410,7 +484,12 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-
+/**
+ * 
+ * @param rest
+ * @return the id of the new restaurant or 0 if the restaurant has not been added
+ * @throws SQLException 
+ */
     public int addRestaurant(RestaurantBean rest) throws SQLException {
 
         int affectedRows = 0;
@@ -445,12 +524,17 @@ public class RestaurantDAO {
             }
             ps.close();
             generatedKeys.close();
-            
+
         }
-        
+
         return restID;
     }
-
+/**
+ *  add cuisines in a restaurant
+ * @param id the restaurant id
+ * @param checkedCuisineIds the ids of the cuisines
+ * @throws SQLException 
+ */
     public void addRestCuisine(int id, String[] checkedCuisineIds) throws SQLException {
 
         int affectedRows = 0;
@@ -467,7 +551,12 @@ public class RestaurantDAO {
         ps.close();
 
     }
-
+/**
+ * add opening hours in a restaurant
+ * @param id the opening hours  id
+ * @param checkedOpeningHoursIds  the ids of the cuisines
+ * @throws SQLException 
+ */
     public void addRestOpeningHours(int id, String[] checkedOpeningHoursIds) throws SQLException {
         int affectedRows = 0;
         //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
@@ -482,7 +571,11 @@ public class RestaurantDAO {
         }
         ps.close();
     }
-
+/**
+ * 
+ * @param valoriInseriti
+ * @return 
+ */
     public List<AutoCompleteData> getAutoCompleteData(String[] valoriInseriti) {
         List<String> valori = new ArrayList<String>();
         final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
@@ -517,37 +610,47 @@ public class RestaurantDAO {
         } catch (SQLException ex) {
             Logger.getLogger(SearchRestaurantAutocomplete.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
+
         return result;
     }
-
-    public HashMap<Integer,ArrayList<Integer>> getLikes(int id) throws SQLException {
-        HashMap<Integer,ArrayList<Integer>> result = new HashMap<>();
+/**
+ * 
+ * @param id the id of the restaurant
+ * @return an HashMap containing the id of the reviews as KEY 
+ * associated to an ArrayList of 2 ints containings the numbers of likes and dislikes
+ * @throws SQLException 
+ */
+    public HashMap<Integer, ArrayList<Integer>> getLikes(int id) throws SQLException {
+        HashMap<Integer, ArrayList<Integer>> result = new HashMap<>();
         PreparedStatement pd = con.prepareStatement(
-            "SELECT rev.id, SUM(url.like_type) AS n_like,"
-                    + " COUNT(url.like_type) AS questo_meno_like_implica_dislike"
-                    + " FROM public.reviews rev "
-                    + "FULL OUTER JOIN public.user_review_likes url ON (url.id_review = rev.id) "
-                    + "WHERE rev.id_restaurant = ? GROUP BY rev.id ORDER BY rev.id");
+                "SELECT rev.id, SUM(url.like_type) AS n_like,"
+                + " COUNT(url.like_type) AS questo_meno_like_implica_dislike"
+                + " FROM public.reviews rev "
+                + "FULL OUTER JOIN public.user_review_likes url ON (url.id_review = rev.id) "
+                + "WHERE rev.id_restaurant = ? GROUP BY rev.id ORDER BY rev.id");
         pd.setInt(1, id);
         ResultSet rs = pd.executeQuery();
         while (rs.next()) {
             //arrayList per likes dislikes
             ArrayList<Integer> tmp = new ArrayList();
             tmp.add(rs.getInt(2));
-            tmp.add(rs.getInt(3)-rs.getInt(2));
+            tmp.add(rs.getInt(3) - rs.getInt(2));
             result.put(rs.getInt(1), tmp);
         }
         pd.close();
         rs.close();
-       return result;
+        return result;
     }
-    public void incrNumVisit(int id_restaurant) throws SQLException{
+/**
+ * increment the number of visit to a restaurant
+ * @param id_restaurant the restaurant id
+ * @throws SQLException 
+ */
+    public void incrNumVisit(int id_restaurant) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
-                "UPDATE restaurants" +
-                " SET n_visits=n_visits+1" +
-                " WHERE id=?");
+                "UPDATE restaurants"
+                + " SET n_visits=n_visits+1"
+                + " WHERE id=?");
         pd.setInt(1, id_restaurant);
         int rs = pd.executeUpdate();
         if (rs == 0) {

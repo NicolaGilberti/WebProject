@@ -6,8 +6,8 @@
 package beans;
 
 /**
- *
- * @author RiccardoUni
+ * Represent the UserReviewLikes database table
+ * @author RiccardRoUni
  */
 public class UserReviewLikesBean implements java.io.Serializable {
     private int idUser;

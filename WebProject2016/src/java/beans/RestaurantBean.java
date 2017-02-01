@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Represent the Restaurants database table
  * @author RiccardoUni
  */
 public class RestaurantBean implements java.io.Serializable {
@@ -28,14 +28,6 @@ public class RestaurantBean implements java.io.Serializable {
     private String city;
     private String country;
     private int id_country;
-
-    public int getId_country() {
-        return id_country;
-    }
-
-    public void setId_country(int id_country) {
-        this.id_country = id_country;
-    }
     private String telephone;
     private int score;
     private String imgPath;
@@ -44,6 +36,14 @@ public class RestaurantBean implements java.io.Serializable {
     private int numReviews;
     private int n_visits;
     private List<CuisineBean> cuisineTypes = new ArrayList<>();
+    
+    public int getId_country() {
+        return id_country;
+    }
+
+    public void setId_country(int id_country) {
+        this.id_country = id_country;
+    }
 
     public int getScore() {
         return score;

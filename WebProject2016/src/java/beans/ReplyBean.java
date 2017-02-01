@@ -8,7 +8,7 @@ package beans;
 import java.sql.Timestamp;
 
 /**
- *
+ * Represent the Replies database table
  * @author RiccardoUni
  */
 public class ReplyBean implements java.io.Serializable{
