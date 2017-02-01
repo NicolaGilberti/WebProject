@@ -152,17 +152,16 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!--reclame button-->
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    </div>
+                    <!--reclame button-->
+                        <div class="reclame">
                             <c:if test="${sessionScope.user != null}">
                                 <form action="ReclameRestaurant" method="POST">
                                     <input name="restaurantID" hidden value="${r.id}">
-                                    <button class="btn btn-purple">Reclama Ristorante</button>
+                                    <button class="btn btn-outline-primary">Reclama Ristorante</button>
                                 </form>
                             </c:if>
                         </div>
-                    </div>
                 </div>
 
                 <!--right-->

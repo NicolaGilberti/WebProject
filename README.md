@@ -1,10 +1,10 @@
 # WebProject
-Version 1.0. <br />
-Author: Gilberti Nicola, Grigoletto Riccardo, Marinangeli David, Pani Mirko, Roberti Marco, Schiavon Nicola <br />
-University of Trento <br />
+Versione 1.0. <br />
+Autori: Gilberti Nicola, Grigoletto Riccardo, Marinangeli David, Pani Mirko, Roberti Marco, Schiavon Nicola <br />
+Università di Trento <br />
 
-This is a project for didactic purpose.  <br />
-The project is about develop a restaurant-reviews web software like TripAdvisor. <br />
-project Link (in Italian language): <br />
-https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx3ZWJwcm9nMjAxNnxneDo2MWFiMjQ3Njg5OWI2Nzk1 <br />
 
+# Database
+Il database utilizzato è PostgreSQL. La creazione del database e la popolazione dello stesso può essere effettuata attraverso i file "insert.sql" e "tabelleDB.sql" che sono collocate nella cartella "sql".
+
+La prima riga del file "tabelleDB.sql" contiene, difatti, il comando di creazione del database. L'accesso al database, se le credenziali di accesso sono diverse da <i>postgres</i> - <i>postgres</i>, bisogna dirigersi all'interno del package "database" e successivamente aprire il file "ManagerDB" cambiando le credenziali con quelle opportune.
