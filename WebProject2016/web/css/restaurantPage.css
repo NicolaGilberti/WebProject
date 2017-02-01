@@ -75,6 +75,16 @@ body{
     font-size: medium;
 }
 
+.btn-outline-primary{
+    border-color: #900c3f;
+    color: #900c3f;
+}
+
+.reclame{
+    padding-top: 15px;
+    
+    
+}
 .btn-violet{
     margin: 2px;
     background-color:#900c3f;
