@@ -7,7 +7,7 @@ var data;
 var filter;
 var dataFiltered;
 var cuisineList;
-var redirectRestaurantRelativePath="../WebProject2016/RestaurantRequest?id=";
+var redirectRestaurantRelativePath = "../WebProject2016/RestaurantRequest?id=";
 
 //Funzione di aiuto, usata per ottenere il valore dei parametri nell'url.
 function getParameterByName(name, url) {
@@ -43,6 +43,39 @@ function pricemore35(obj) {
     else
         return false;
 }
+
+
+function initMap() {
+
+    var infowindow = new google.maps.InfoWindow(); /* SINGLE */
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 10,
+        center: new google.maps.LatLng(dataFiltered[0].latitude, dataFiltered[0].longitude)
+    });
+
+    function placeMarker(loc) {
+        var latLng = new google.maps.LatLng(loc[1], loc[2]);
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.close(); // Close previously opened infowindow
+            infowindow.setContent("<div id='infowindow'>" + loc[0] + "</div>");
+            infowindow.open(map, marker);
+        });
+    }
+
+    $.each(dataFiltered, function (arrayID, restaurant) {
+        var array = [restaurant.name, restaurant.latitude, restaurant.longitude];
+        placeMarker(array);
+    });
+
+
+}
+;
+
+
 //Funzione il cui scopo è la generazione del codice html della tabella dei ristoranti
 function visualizzaTabella() {
     $("#row-thumbnail").empty();
@@ -113,7 +146,7 @@ function sortData(val) {
     }
     if (val === "val") {
         dataFiltered.sort(function (a, b) {
-            return  (b.score*b.numReviews)-(a.score*a.numReviews)
+            return  (b.score * b.numReviews) - (a.score * a.numReviews)
         });
     }
     if (val === "name") {
@@ -148,6 +181,8 @@ $(document).ready(function () {
             });
             dataFiltered = data;
             visualizzaTabella();
+             if(dataFiltered.length!=0)
+            initMap();
             //   $("#trovatiLabel").append(data.length);
         }
     });
@@ -244,7 +279,8 @@ $(document).ready(function () {
         //  console.log("Datafiltered dopo filtri prezzo:" + dataFiltered);
 
         visualizzaTabella();
-
+          if(dataFiltered.length!=0)
+        initMap();
     });
 
 
@@ -272,6 +308,8 @@ $(document).ready(function () {
                 });
                 dataFiltered = data;
                 visualizzaTabella();
+                 if(dataFiltered.length!=0)
+                initMap();
                 //      $("#trovatiLabel").append(data.length);
             }
         });

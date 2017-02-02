@@ -1,6 +1,6 @@
 hr.stylish-input-group .input-group-addon {
     background: white !important;
-    
+
 }
 
 .stylish-input-group .form-control {
@@ -26,7 +26,7 @@ body {
     color: #900c3f;
 }
 .bartitle > a{
-     color: #900c3f;
+    color: #900c3f;
 }
 .glyphicon-tag,.glyphicon-globe {
     color: #900c3f;
@@ -42,18 +42,18 @@ hr {
     padding: 0;
 }
 hr.style15 {
-	border-top: 4px double #900c3f;
-	text-align: center;
+    border-top: 4px double #900c3f;
+    text-align: center;
 }
 hr.style15:after {
-	content: '\002666';
-	display: inline-block;
-	position: relative;
-	top: -15px;
-	padding: 0 10px;
-	background: #f0f0f0;
-	color: #900c3f;
-	font-size: 18px;
+    content: '\002666';
+    display: inline-block;
+    position: relative;
+    top: -15px;
+    padding: 0 10px;
+    background: #f0f0f0;
+    color: #900c3f;
+    font-size: 18px;
 }
 
 
@@ -93,7 +93,7 @@ hr.style15:after {
 
 .resultscheckbox {
     padding-top: 15px;
-    
+
 }
 
 .overlay {
@@ -151,7 +151,7 @@ hr.style15:after {
 
 .cuisine-labels {
     padding-bottom: 2rem;
-   
+
 }
 
 .label-info {
@@ -207,4 +207,15 @@ hr.style15:after {
     text-transform: capitalize;
     margin:0px;
     font-weight: normal;
+}
+
+#map-canvas {
+    height: 20em;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 1em;
+}
+
+#infowindow{
+    padding: 10px;
 }

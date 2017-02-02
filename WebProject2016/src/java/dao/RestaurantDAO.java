@@ -27,7 +27,9 @@ import utils.OpeningHours;
  * and open the template in the editor.
  */
 /**
- * This class is used to manage the Restaurant database table and the tables connected to it.
+ * This class is used to manage the Restaurant database table and the tables
+ * connected to it.
+ *
  * @author RiccardoUni, Mirko
  */
 public class RestaurantDAO {
@@ -45,6 +47,7 @@ public class RestaurantDAO {
 
     /**
      * Function used To reclame a restaurant
+     *
      * @param restID restaurant ID
      * @param userID ID of the user who tried to reclame
      * @return true if the reclame has succeded, false otherwise
@@ -55,7 +58,7 @@ public class RestaurantDAO {
             ps = con.prepareStatement("INSERT INTO request_changes_owner(id_user,id_restaurant) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userID);
             ps.setInt(2, restID);
-            
+
             int affectedRows = ps.executeUpdate();
             ps.close();
             if (affectedRows == 0) {
@@ -72,12 +75,14 @@ public class RestaurantDAO {
         }
 
     }
-/**
- * Function used to get a restaurant from DB
- * @param id restaurant ID
- * @return the restaurant (RestaurantBean) 
- * @throws SQLException 
- */
+
+    /**
+     * Function used to get a restaurant from DB
+     *
+     * @param id restaurant ID
+     * @return the restaurant (RestaurantBean)
+     * @throws SQLException
+     */
     public RestaurantBean searchRestaurant(int id) throws SQLException {
         RestaurantBean restaurant = new RestaurantBean();
         PreparedStatement st = con.prepareStatement("SELECT * FROM restaurants WHERE ? = restaurants.id");
@@ -110,12 +115,15 @@ public class RestaurantDAO {
     public void closeConnection() throws SQLException {
         con.close();
     }
-/**
- * get photos of a restaurant
- * @param id_restaurant restaurant ID
- * @return an ArrayList containing the path of the photos og the restaurant passed
- * @throws SQLException 
- */
+
+    /**
+     * get photos of a restaurant
+     *
+     * @param id_restaurant restaurant ID
+     * @return an ArrayList containing the path of the photos og the restaurant
+     * passed
+     * @throws SQLException
+     */
     public ArrayList<String> getPhotos(int id_restaurant) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
                 "SELECT name FROM photos WHERE id_restaurant = ? AND visible = true;");
@@ -134,12 +142,14 @@ public class RestaurantDAO {
         pd.close();
         return pn;
     }
-/**
- * get price ranges for an id of a price range
- * @param id_price_range 
- * @return an ArrayList containing the price ranges
- * @throws SQLException 
- */
+
+    /**
+     * get price ranges for an id of a price range
+     *
+     * @param id_price_range
+     * @return an ArrayList containing the price ranges
+     * @throws SQLException
+     */
     public ArrayList<Integer> getPriceRange(int id_price_range) throws SQLException {
         ArrayList<Integer> tmp = new ArrayList<Integer>();
         PreparedStatement pd = con.prepareStatement(
@@ -154,12 +164,13 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-/**
- * 
- * @param id the id of the restaurant
- * @return an ArrayList containing the Cuisines of the restaurant passed
- * @throws SQLException 
- */
+
+    /**
+     *
+     * @param id the id of the restaurant
+     * @return an ArrayList containing the Cuisines of the restaurant passed
+     * @throws SQLException
+     */
     public ArrayList<CuisineBean> getCuisines(int id) throws SQLException {
         ArrayList<CuisineBean> tmp = new ArrayList<CuisineBean>();
         PreparedStatement pd = con.prepareStatement(
@@ -178,12 +189,15 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-/**
- * Function used to get all reviews of a resturant
- * @param id the id of a restaurant
- * @return an ArrayList containing the reviews (ReviewBean) for the restaurant
- * @throws SQLException 
- */
+
+    /**
+     * Function used to get all reviews of a resturant
+     *
+     * @param id the id of a restaurant
+     * @return an ArrayList containing the reviews (ReviewBean) for the
+     * restaurant
+     * @throws SQLException
+     */
     public ArrayList<ReviewBean> getReviews(int id) throws SQLException {
         ArrayList<ReviewBean> tmp = new ArrayList<ReviewBean>();
         PreparedStatement pd = con.prepareStatement(
@@ -207,12 +221,13 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-/**
- * 
- * @param id the id og the photo
- * @return a string containing the name of the photo passed
- * @throws SQLException 
- */
+
+    /**
+     *
+     * @param id the id og the photo
+     * @return a string containing the name of the photo passed
+     * @throws SQLException
+     */
     public String getThumbnailPath(int id) throws SQLException {
         String path = "";
         PreparedStatement pd = con.prepareStatement(
@@ -232,12 +247,14 @@ public class RestaurantDAO {
         rs.close();
         return path;
     }
-/**
- * 
- * @param id the restaurant id
- * @return an int representing the number of the reviews for the restaurant passed
- * @throws SQLException 
- */
+
+    /**
+     *
+     * @param id the restaurant id
+     * @return an int representing the number of the reviews for the restaurant
+     * passed
+     * @throws SQLException
+     */
     public int getNumOfReviews(int id) throws SQLException {
         int nReviews = 0;
         PreparedStatement pd = con.prepareStatement(
@@ -253,12 +270,15 @@ public class RestaurantDAO {
         rs.close();
         return nReviews;
     }
-/**
- * Funzione usata per ottenere i ristoranti che contengono informazioni scritte nel campo di ricerca passato come parametro.
- * @param searchInput The complete string sent by Ajax agent. 
- * @return an ArrayList RestaurantBean with the restaurants.
- * @throws SQLException 
- */
+
+    /**
+     * Funzione usata per ottenere i ristoranti che contengono informazioni
+     * scritte nel campo di ricerca passato come parametro.
+     *
+     * @param searchInput The complete string sent by Ajax agent.
+     * @return an ArrayList RestaurantBean with the restaurants.
+     * @throws SQLException
+     */
     public ArrayList<RestaurantBean> getRestaurantsbySearch(String searchInput) throws SQLException {
 
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
@@ -267,8 +287,8 @@ public class RestaurantDAO {
         PreparedStatement sqlStatement = null;
         String whereParams = "";
 
-        String sql = "select id,name,description,address,city,global_value,min_value,max_value "
-                + "from (select restaurants.id,name,description,address,city,global_value,min_value,max_value,(name ||' , '|| address ||' , '||city) as t"
+        String sql = "select id,name,description,address,city,global_value,min_value,max_value,latitude,longitude "
+                + "from (select restaurants.id,name,description,address,city,global_value,min_value,max_value,latitude,longitude,(name ||' , '|| address ||' , '||city) as t"
                 + " from restaurants join price_range on restaurants.id_price_range=price_range.id) as a "
                 + "where t @@ ?";
         for (int i = 0; i < valoriInseriti.length; i++) {
@@ -291,6 +311,8 @@ public class RestaurantDAO {
             risto.setScore(results.getInt("global_value"));
             risto.setMinPrice(results.getDouble("min_value"));
             risto.setMaxPrice(results.getDouble("max_value"));
+            risto.setLatitude(results.getDouble("latitude"));
+            risto.setLongitude(results.getDouble("longitude"));
 
             //Ora devo ottenere il numero di recensioni che ha quel ristorante
             int nReviews = this.getNumOfReviews(risto.getId());
@@ -316,19 +338,21 @@ public class RestaurantDAO {
         return restaurantsList;
 
     }
-/**
- * look for restaurants in a area with center latitude and logitude passed
- * @param lat latitude
- * @param longi longitude
- * @return an ArrayList containing the Restaurants (RestaurantBean) found
- * @throws SQLException 
- */
+
+    /**
+     * look for restaurants in a area with center latitude and logitude passed
+     *
+     * @param lat latitude
+     * @param longi longitude
+     * @return an ArrayList containing the Restaurants (RestaurantBean) found
+     * @throws SQLException
+     */
     public ArrayList<RestaurantBean> getRestaurantsbyLocation(float lat, float longi) throws SQLException {
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
         PreparedStatement sqlStatement = null;
 
-        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value from restaurants join price_range on restaurants.id_price_range=price_range.id WHERE abs(latitude- ?)<0.25 AND abs(longitude- ? ) <0.25";
+        String sql = "select restaurants.id,name,description,address,city,global_value,min_value,max_value,latitude,longitude from restaurants join price_range on restaurants.id_price_range=price_range.id WHERE abs(latitude- ?)<0.25 AND abs(longitude- ? ) <0.25";
 
         sqlStatement = con.prepareStatement(sql);
         sqlStatement.setFloat(1, lat);
@@ -346,7 +370,8 @@ public class RestaurantDAO {
             risto.setScore(results.getInt("global_value"));
             risto.setMinPrice(results.getDouble("min_value"));
             risto.setMaxPrice(results.getDouble("max_value"));
-
+            risto.setLatitude(results.getDouble("latitude"));
+            risto.setLongitude(results.getDouble("longitude"));
             //Ora devo ottenere il numero di recensioni che ha quel ristorante
             int nReviews = this.getNumOfReviews(risto.getId());
             risto.setNumReviews(nReviews);
@@ -371,12 +396,13 @@ public class RestaurantDAO {
         return restaurantsList;
     }
 
-/**
- * Function to get from DB the opening hours of a specified resturant
- * @param id the restaurant id
- * @return a opening hours Bean (OpeningHours) for the restaurant
- * @throws SQLException 
- */
+    /**
+     * Function to get from DB the opening hours of a specified resturant
+     *
+     * @param id the restaurant id
+     * @return a opening hours Bean (OpeningHours) for the restaurant
+     * @throws SQLException
+     */
     public OpeningHours getOpeningHours(int id) throws SQLException {
         OpeningHours oh = new OpeningHours();
         PreparedStatement pd = con.prepareStatement(
@@ -397,11 +423,13 @@ public class RestaurantDAO {
         rs.close();
         return oh;
     }
-/**
- * Function which returns the most popular restaurants 
- * @return an ArrayList containing the restaurants in order of popularity
- * @throws SQLException 
- */
+
+    /**
+     * Function which returns the most popular restaurants
+     *
+     * @return an ArrayList containing the restaurants in order of popularity
+     * @throws SQLException
+     */
     public ArrayList<RestaurantBean> getRestaurantsbyPopularity() throws SQLException {
         ArrayList<RestaurantBean> restaurantsList = new ArrayList<RestaurantBean>();
 
@@ -448,11 +476,14 @@ public class RestaurantDAO {
         results.close();
         return restaurantsList;
     }
-/**
- * Function which returns all the cuisine types
- * @return an ArrayList containing all the types of the cuisines (CousineBean)
- * @throws SQLException 
- */
+
+    /**
+     * Function which returns all the cuisine types
+     *
+     * @return an ArrayList containing all the types of the cuisines
+     * (CousineBean)
+     * @throws SQLException
+     */
     public ArrayList<CuisineBean> getCuisineTypes() throws SQLException {
         ArrayList<CuisineBean> tmp = new ArrayList<>();
         PreparedStatement st = con.prepareStatement("SELECT name,id FROM cuisine");
@@ -469,12 +500,15 @@ public class RestaurantDAO {
         rs.close();
         return tmp;
     }
-/**
- * Function to add a resturant in the DB
- * @param rest
- * @return the id of the new restaurant or 0 if the restaurant has not been added
- * @throws SQLException 
- */
+
+    /**
+     * Function to add a resturant in the DB
+     *
+     * @param rest
+     * @return the id of the new restaurant or 0 if the restaurant has not been
+     * added
+     * @throws SQLException
+     */
     public int addRestaurant(RestaurantBean rest) throws SQLException {
 
         int affectedRows = 0;
@@ -495,7 +529,7 @@ public class RestaurantDAO {
         ps.setInt(11, rest.getCap());
         ps.setString(12, rest.getCity());
         ps.setInt(13, rest.getId_country());
-        ps.setInt(14,rest.getN_visits());
+        ps.setInt(14, rest.getN_visits());
         ps.setString(15, rest.getMail());
         affectedRows = ps.executeUpdate();
         if (affectedRows == 0) {
@@ -515,12 +549,14 @@ public class RestaurantDAO {
 
         return restID;
     }
-/**
- *  add cuisines type in a restaurant
- * @param id the restaurant id
- * @param checkedCuisineIds the ids of the cuisines as a string array
- * @throws SQLException 
- */
+
+    /**
+     * add cuisines type in a restaurant
+     *
+     * @param id the restaurant id
+     * @param checkedCuisineIds the ids of the cuisines as a string array
+     * @throws SQLException
+     */
     public void addRestCuisine(int id, String[] checkedCuisineIds) throws SQLException {
 
         int affectedRows = 0;
@@ -537,12 +573,14 @@ public class RestaurantDAO {
         ps.close();
 
     }
-/**
- * add opening hours in a restaurant
- * @param id the opening hours  id
- * @param checkedOpeningHoursIds  the ids of the cuisines
- * @throws SQLException 
- */
+
+    /**
+     * add opening hours in a restaurant
+     *
+     * @param id the opening hours id
+     * @param checkedOpeningHoursIds the ids of the cuisines
+     * @throws SQLException
+     */
     public void addRestOpeningHours(int id, String[] checkedOpeningHoursIds) throws SQLException {
         int affectedRows = 0;
         //Creiamo la query da eseguire. Un insert per ogni tipologia di cucina.
@@ -557,11 +595,15 @@ public class RestaurantDAO {
         }
         ps.close();
     }
-/**
- * Funzione usata che ritorna i ristoranti che contengono alcune delle parole chiave passate come parametro
- * @param valoriInseriti String array that contains all the keywords to search
- * @return A List of type AutoCompleteData with the suggestions
- */
+
+    /**
+     * Funzione usata che ritorna i ristoranti che contengono alcune delle
+     * parole chiave passate come parametro
+     *
+     * @param valoriInseriti String array that contains all the keywords to
+     * search
+     * @return A List of type AutoCompleteData with the suggestions
+     */
     public List<AutoCompleteData> getAutoCompleteData(String[] valoriInseriti) {
         List<String> valori = new ArrayList<String>();
         final List<AutoCompleteData> result = new ArrayList<AutoCompleteData>();
@@ -599,13 +641,14 @@ public class RestaurantDAO {
 
         return result;
     }
-/**
- * 
- * @param id the id of the restaurant
- * @return an HashMap containing the id of the reviews as KEY 
- * associated to an ArrayList of 2 ints containings the numbers of likes and dislikes
- * @throws SQLException 
- */
+
+    /**
+     *
+     * @param id the id of the restaurant
+     * @return an HashMap containing the id of the reviews as KEY associated to
+     * an ArrayList of 2 ints containings the numbers of likes and dislikes
+     * @throws SQLException
+     */
     public HashMap<Integer, ArrayList<Integer>> getLikes(int id) throws SQLException {
         HashMap<Integer, ArrayList<Integer>> result = new HashMap<>();
         PreparedStatement pd = con.prepareStatement(
@@ -627,11 +670,13 @@ public class RestaurantDAO {
         rs.close();
         return result;
     }
-/**
- * increment the number of visit to a restaurant
- * @param id_restaurant the restaurant id
- * @throws SQLException 
- */
+
+    /**
+     * increment the number of visit to a restaurant
+     *
+     * @param id_restaurant the restaurant id
+     * @throws SQLException
+     */
     public void incrNumVisit(int id_restaurant) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
                 "UPDATE restaurants"

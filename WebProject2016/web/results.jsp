@@ -17,6 +17,8 @@
 
         <title>Risultati Ristorante</title>
 
+       
+
     </head>
 
     <body>
@@ -39,7 +41,7 @@
                     <a href="#"><strong class="bartitle"><i class="glyphicon glyphicon-wrench"></i> Strumenti</strong></a>
 
                     <hr>
-
+   <div class="col-md-12" id='map-canvas'></div>
                     <form id="searchForm">
                         <div class="input-group stylish-input-group">
 
@@ -93,9 +95,14 @@
 
 
                 <!--sezione destra -->
+
+             
+                
                 <div class="col-sm-9">
+
                     <strong class="bartitle"> <a href="#" ><i class="glyphicon glyphicon-search"></i> Risultati trovati: <span id="trovatiLabel"></span></a></strong>
                     <hr>
+
                     <div class="row" id="row-thumbnail">
 
                     </div>
@@ -114,6 +121,12 @@
         <script src="js/results.js"></script>
         <script type="text/javascript" src="js/autoComplete.js"></script>
 
-    </body>
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM8Aa2NRfiQZrc73Jj34ssPJV7bXPX7Qs"></script>
+
+</body>
 
 </html>
