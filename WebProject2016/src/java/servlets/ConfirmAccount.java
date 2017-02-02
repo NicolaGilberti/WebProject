@@ -51,7 +51,7 @@ public class ConfirmAccount extends HttpServlet {
                 md.update(email.getBytes());
                 //Se è già stato confermato reindirizziamo TODO
                 if (results.getInt("type") != -1) {
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("");
                 }
             }
 
