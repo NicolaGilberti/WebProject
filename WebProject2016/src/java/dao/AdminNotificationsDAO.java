@@ -75,17 +75,18 @@ public class AdminNotificationsDAO {
                 
                 
                 //recupero le notifiche delle ricchieste di cancellazione delle foto
-                PreparedStatement dphoto = con.prepareStatement("SELECT t1.accepted AS accepted,t1.id_user AS usrid, t1.id_photo AS idphoto ,t2.name AS photoname,t3.name AS resname,t3.nickname FROM (request_delete_photos AS t1 INNER JOIN photos AS t2 ON (t1.id_photo = t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id);");
+                PreparedStatement dphoto = con.prepareStatement("SELECT t1.accepted AS accepted,t1.id_user AS usrid, t1.id_photo AS idphoto ,t2.name AS photoname,t4.name AS resname,t3.nickname AS ristoratore,t5.nickname AS fotografo FROM (((request_delete_photos AS t1 INNER JOIN photos AS t2 ON (t1.id_photo = t2.id)) INNER JOIN users AS t3 ON (t1.id_user = t3.id)) INNER JOIN restaurants AS t4 ON(t2.id_restaurant = t4.id)) INNER JOIN users AS t5 ON (t2.id_user = t5.id );");
                 rs = dphoto.executeQuery();
 
                 while(rs.next()){
                     DeletePhotoNotificationBean t1 = new DeletePhotoNotificationBean();
                     t1.setIdphoto(rs.getInt("idphoto"));
-                    t1.setNickname(rs.getString("nickname"));
+                    t1.setNickname(rs.getString("ristoratore"));
                     t1.setPhotoname(rs.getString("photoname"));
                     t1.setResname(rs.getString("resname"));
                     t1.setUsrid(rs.getInt("usrid"));
                     t1.setAccepted(rs.getBoolean("accepted"));
+                    t1.setPhname(rs.getString("fotografo"));
                     notification.addDelPhotos(t1);
                 } 
              }finally{

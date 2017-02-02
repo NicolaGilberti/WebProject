@@ -115,7 +115,7 @@ public class RestaurantDAO {
  */
     public ArrayList<String> getPhotos(int id_restaurant) throws SQLException {
         PreparedStatement pd = con.prepareStatement(
-                "SELECT name FROM photos WHERE id_restaurant = ?;");
+                "SELECT name FROM photos WHERE id_restaurant = ? AND visible = true;");
         pd.setInt(1, id_restaurant);
         ResultSet rs = pd.executeQuery();
         ArrayList<String> pn = new ArrayList<String>();

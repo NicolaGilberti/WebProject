@@ -101,7 +101,8 @@
                                 <div class="list-group">
                                     <a href="${photoURL}" class="list-group-item">
                                         E'stata segnalata una foto di 
-                                        <strong><c:out value="${notbean.nickname}"/></strong>
+                                        <strong><c:out value="${notbean.phname}"/></strong>
+                                        sul ristorante <strong><c:out value="${notbean.resname}"/></strong>
                                     </a>
                                 </div>
                             </c:if>
@@ -154,14 +155,15 @@
                     <!--Delete Photo Request -->
                     <c:forEach var="notbean" items="${noty.delphotos}">
                         <c:if test="${notbean.accepted == true}">
-                            <c:url value="showPhotoDeleteRequest.jsp" var="photodeleteURL">
+                            <c:url value="showPhotoDeleteRequest.jsp" var="photoURL">
                                 <c:param name="id" value="${notbean.idphoto}" />
-                                <c:param name="sh" value="false"/> 
+                                <c:param name="sh" value="true"/> 
                             </c:url>
                             <div class="list-group">
-                                <a href="${photodeleteURL}" class="list-group-item">
+                                <a href="${photoURL}" class="list-group-item">
                                     E'stata segnalata una foto di 
-                                    <strong><c:out value="${notbean.nickname}"/></strong>
+                                    <strong><c:out value="${notbean.phname}"/></strong>
+                                    sul ristorante <strong><c:out value="${notbean.resname}"/></strong>
                                 </a>
                             </div>
                         </c:if>
