@@ -95,6 +95,8 @@ public class RestaurantDAO {
             restaurant.setLatitude(rs.getDouble("latitude"));
             restaurant.setLongitude(rs.getDouble("longitude"));
             restaurant.setGlobal_value(rs.getInt("global_value"));
+            restaurant.setCity(rs.getString("city"));
+            restaurant.setCountry(rs.getString("country"));
         }
 
         st.close();

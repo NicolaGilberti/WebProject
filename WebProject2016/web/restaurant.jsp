@@ -108,7 +108,7 @@
                     <h1 class="h1-restaurant-title"><c:out value="${r.name}"></c:out></h1>
 
                         <p></p>
-                        <p class="restaurant-specs"> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/></p>
+                        <p class="restaurant-specs"> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/>, <c:out value="${r.city}"/>, <c:out value="${r.country}"/></p>
                     <!-- price range -->
                     <div>
                         <p class="restaurant-specs"><span class=" glyphicon glyphicon-tag"></span>  €<c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out></p>
