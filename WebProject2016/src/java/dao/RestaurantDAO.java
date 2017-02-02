@@ -477,7 +477,7 @@ public class RestaurantDAO {
         int affectedRows = 0;
         int restID = 0;
 
-        String query = "INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO restaurants(name,description,web_site_url,global_value,id_owner,id_creator,id_price_range,latitude,longitude,address,cap,city,country,n_visits) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, rest.getName());
         ps.setString(2, rest.getDescription());
@@ -492,7 +492,7 @@ public class RestaurantDAO {
         ps.setInt(11, rest.getCap());
         ps.setString(12, rest.getCity());
         ps.setInt(13, rest.getId_country());
-
+        ps.setInt(14,rest.getN_visits());
         affectedRows = ps.executeUpdate();
         if (affectedRows == 0) {
             throw new SQLException("Errore inserimento ristorante, no rows affected.");

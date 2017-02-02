@@ -76,6 +76,7 @@ public class NewRestaurant extends HttpServlet {
                 rest.setId_country(Integer.valueOf(request.getParameter("stato")));
                 rest.setId_price_range(Integer.valueOf(request.getParameter("pricerange")));
                 rest.setGlobal_value(0);
+                rest.setN_visits(0);
                 String[] checkedCuisineIds = request.getParameterValues("cuisine");
                 String[] checkedOpeningHoursIds = request.getParameterValues("openinghour");
 
