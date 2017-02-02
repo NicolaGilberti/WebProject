@@ -398,7 +398,7 @@
                                 <div class="panel-footer panel-outer">
                                     <div class="photos-container">
                                         <div class="review-photo">
-                                            <a data-toggle="modal" data-target="#photo-modal" onclick="setModalImage('<c:out value='${r.photo_name}' />')">
+                                            <a data-toggle="modal" data-target="#photo-modal" <%--onclick="setModalImage('<c:out value='${r.photo_name}' />')"--%>>
                                                 <img src="
                                                      <c:out value='${r.photo_name}' />
                                                      " >
