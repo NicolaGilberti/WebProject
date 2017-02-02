@@ -83,9 +83,15 @@ public class NewRestaurant extends HttpServlet {
                 //Dobbiamo ottenere latitudine e longitudine
                 GeoCoder geo = new GeoCoder();
                 GeocodeResponse geoResp = geo.getLocation(rest.getAddress(), rest.getCity(), String.valueOf(rest.getCap()));
+               try{
                 rest.setLatitude(geoResp.getResults().get(0).getGeometry().getLocation().getLat());
                 rest.setLongitude(geoResp.getResults().get(0).getGeometry().getLocation().getLng());
-
+               }
+               //valori non validi
+               catch(Exception e){
+                     RequestDispatcher rd = request.getRequestDispatcher("/general_error_page.jsp");
+            rd.forward(request, response);
+               }
                 //Cerchiamo l'id dell'utente che sta creando il ristorante
                 HttpSession session = request.getSession(false);
                 UserBean userLogged = (UserBean) session.getAttribute("user");
