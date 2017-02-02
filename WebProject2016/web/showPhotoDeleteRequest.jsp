@@ -19,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/notifcation.css" rel="stylesheet">
         <link rel="stylesheet" href="css/generic.css">
-        <title>Elimita foto</title>
+        <title>Elimina foto</title>
     </head>
     <body>
         <!--Ricerca della notifica cliccata in base all'id ricevuto-->
@@ -28,14 +28,12 @@
                 <c:set var="deletephoto" value="${notbean}"></c:set>
             </c:if>
         </c:forEach>
-        
         <jsp:include page = "header/header.jsp"/>
-        
         
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h1>Questa fotografia è opportuna?</h1>
+                    <h2 class='h2-title'>Questa fotografia e' opportuna?</h2>
                 </div>
             </div>
             <hr class="style15">
@@ -50,8 +48,11 @@
             </div>
             <br>
             <div class="row" style="text-align:center">
-                <h4>Premendo su <strong>SI</strong> la fotografia sarà mostrata al pubblico, premendo su 
-                    <strong>NO</strong> la fotograifa non sarà più visibile.</h4> 
+                <h4>Questa è la fotografia del ristorante <strong><c:out value="${deletephoto.resname}"></c:out></strong>
+                    postata da <strong><c:out value="${deletephoto.phname}"></c:out></strong>
+                </h4> 
+                <h4>Premendo su <strong>SI</strong> la fotografia rimarrà visibile, premendo su 
+                    <strong>NO</strong> la fotografia verrà rimossa.</h4> 
             </div>  
             <div class="row" style="text-align:center">
                 <div class="col-lg-12 col-sx-12 col-sm-12 col-md-12" >

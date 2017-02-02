@@ -32,7 +32,7 @@
             </div>
             <hr class="style15">
             <!-- test which kind of user is and so i can show the right notification-->
-            <div id="displayarea">
+            <div id="displayarea" class='container'>
                 <c:if test="${user.type == 1}">
                     <jsp:include page="restaurantNotification.jsp"></jsp:include>
                 </c:if>

@@ -69,7 +69,7 @@ public class PhotoDAO {
  * @throws SQLException 
  */
     public String getName(int id_photo) throws SQLException {
-        String query = "SELECT name FROM photos WHERE id = ?";
+        String query = "SELECT name FROM photos WHERE id = ? AND visible = true";
         PreparedStatement ps = con.prepareStatement(query);
         ps.setInt(1, id_photo);
         ResultSet rs = ps.executeQuery();

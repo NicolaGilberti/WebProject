@@ -17,10 +17,19 @@ public class DeletePhotoNotificationBean implements java.io.Serializable{
     private String resname;
     private String photoname;
     private String nickname;
+    private String phname;
     private boolean accepted;
 
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
+    }
+
+    public String getPhname() {
+        return phname;
+    }
+
+    public void setPhname(String phname) {
+        this.phname = phname;
     }
     
     public void setPhotoname(String photo_name) {
