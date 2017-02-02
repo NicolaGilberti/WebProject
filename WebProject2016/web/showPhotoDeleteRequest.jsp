@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h1>Questa fotografia e' opportuna?</h1>
+                    <h2 class='h2-title'>Questa fotografia e' opportuna?</h2>
                 </div>
             </div>
             <hr class="style15">
