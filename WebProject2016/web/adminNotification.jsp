@@ -135,22 +135,22 @@
                             </div>
                         </c:if>
                     </c:forEach>
-                    <!-- Change owner request -->
-                    <c:forEach var="notbean" items="${noty.chowner}">
-                        <c:if test="${notbean.accepted == true}">
-                            <div class="list-group">
-                                <c:url value="showchangeowner.jsp" var="chownerURL">
-                                    <c:param name="id" value="${notbean.usrid}"/>
-                                    <c:param name="idr" value="${notbean.resid}" />
-                                    <c:param name="sh" value="false"/> 
-                                </c:url>
-                                <a href="${chownerURL}" class="list-group-item">
-                                    <strong><c:out value="${notbean.nickname}"/></strong>
-                                    ha reclamato il ristorante <strong><c:out value="${notbean.resname}"/></strong>.
-                                </a>
-                            </div>
-                        </c:if>
-                    </c:forEach>
+                    <!-- Change owner request --> 
+                        <c:forEach var="notbean" items="${noty.chowner}">
+                            <c:if test="${notbean.accepted == ''}">
+                                <div class="list-group">
+                                    <c:url value="showchangeowner.jsp" var="chownerURL">
+                                        <c:param name="idu" value="${notbean.usrid}" />
+                                        <c:param name="idr" value="${notbean.resid}" />
+                                        <c:param name="sh" value="false"/> 
+                                    </c:url>
+                                    <a href="${chownerURL}" class="list-group-item">
+                                        <strong><c:out value="${notbean.nickname}"/></strong>
+                                        ha reclamato il ristorante <strong><c:out value="${notbean.resname}"/></strong> sul proprio ristorante.
+                                    </a>
+                                </div>
+                            </c:if>
+                        </c:forEach>
                     <!--Delete Photo Request -->
                     <c:forEach var="notbean" items="${noty.delphotos}">
                         <c:if test="${notbean.accepted == true}">
