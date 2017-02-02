@@ -10,7 +10,7 @@
  * @param {type} photoname
  */
 function setModalImage(photoname) {
-    /*path = photoname.replace("\reviewsImgs\\", "\\reviewsImgs");
-    path = path.replace("Imgs", "Imgs\\");*/
+    path = photoname.replace("Imgs", "Imgs\\");
+    path = path.replace("\r", "\\r");
     document.getElementById("photo-modal-img").src = photoname;
 }
