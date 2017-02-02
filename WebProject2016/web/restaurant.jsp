@@ -36,11 +36,11 @@
         <title>${r.name} - TuttoBistro</title>
     </head>
     <body>
-        
+
         <!-- header -->
         <jsp:include page="header/header.jsp"></jsp:include>
 
-        <!-- alerts -->
+            <!-- alerts -->
         <c:if test="${param.notReclamed != null}">
             <div class="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
@@ -109,6 +109,15 @@
 
                         <p></p>
                         <p class="restaurant-specs"> <span class="glyphicon glyphicon-globe"></span> <c:out value="${r.address}"/>, <c:out value="${r.city}"/>, <c:out value="${state.name}"/></p>
+                    <c:if test="${r.e_mail!=null}" >
+                        <c:out value="${r.e_mail}"/> <br>
+                    </c:if>
+                    <c:if test="${r.web_site_url != null}">
+                        <a href="http://${r.web_site_url}" target="_blank" style="color: #333;">
+                            <h5>Sito Web</h5>
+                        </a>
+
+                    </c:if>
                     <!-- price range -->
                     <div>
                         <p class="restaurant-specs"><span class=" glyphicon glyphicon-tag"></span>  €<c:out value="${minPrice}"></c:out> - <c:out value="${maxPrice}"></c:out></p>
@@ -161,14 +170,14 @@
                         </div>
                     </div>
                     <!--reclame button-->
-                        <div class="reclame">
-                            <c:if test="${sessionScope.user != null}">
-                                <form action="ReclameRestaurant" method="POST">
-                                    <input name="restaurantID" hidden value="${r.id}">
-                                    <button class="btn btn-outline-primary">Reclama Ristorante</button>
-                                </form>
-                            </c:if>
-                        </div>
+                    <div class="reclame">
+                        <c:if test="${sessionScope.user != null}">
+                            <form action="ReclameRestaurant" method="POST">
+                                <input name="restaurantID" hidden value="${r.id}">
+                                <button class="btn btn-outline-primary">Reclama Ristorante</button>
+                            </form>
+                        </c:if>
+                    </div>
                 </div>
 
                 <!--right-->

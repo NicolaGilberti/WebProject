@@ -35,6 +35,7 @@ public class RestaurantBean implements java.io.Serializable {
     private double maxPrice;
     private int numReviews;
     private int n_visits;
+    private String e_mail;
     private List<CuisineBean> cuisineTypes = new ArrayList<>();
     
     public int getId_country() {
@@ -108,7 +109,6 @@ public class RestaurantBean implements java.io.Serializable {
     public void setE_mail(String e_mail) {
         this.e_mail = e_mail;
     }
-    private String e_mail;
 
     public String getCity() {
         return city;
