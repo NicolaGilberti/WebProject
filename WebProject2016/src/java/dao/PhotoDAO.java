@@ -7,6 +7,7 @@ package dao;
 
 import beans.PhotoBean;
 import database.ManagerDB;
+import static java.lang.Boolean.parseBoolean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -81,5 +82,24 @@ public class PhotoDAO {
         ps.close();
         return result;
 
+    }
+/**
+ * 
+ * @param id_photo
+ * @return true if the photo is valid, false otherwise
+ * @throws SQLException 
+ */
+    public boolean isValid(int id_photo) throws SQLException {
+        String query = "SELECT visible FROM photos WHERE id = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, id_photo);
+        ResultSet rs = ps.executeQuery();
+        Boolean result = false;
+        if (rs.next()) {
+            result = rs.getBoolean(1);
+        }
+        rs.close();
+        ps.close();
+        return result;
     }
 }

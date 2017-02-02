@@ -52,7 +52,29 @@ public class StateDAO {
             state.setName(rs.getString(2));
             res.add(state);
         }
-
+        
+        ps.close();
+        rs.close();
+        
+        return res;
+    }
+    
+    public StateBean getState(int id) throws SQLException {
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        StateBean res = new StateBean();
+        
+        ps = con.prepareStatement("SELECT name FROM states WHERE id = ?;");
+        ps.setInt(1, id);
+        
+        rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            res.setId(id);
+            res.setName(rs.getString(1));
+        }
+        
         return res;
     }
 }

@@ -6,14 +6,18 @@
 package servlets;
 
 import beans.CuisineBean;
+import beans.PhotoBean;
 import beans.ReplyBean;
 import beans.RestaurantBean;
 import beans.ReviewBean;
+import beans.StateBean;
 import dao.PhotoDAO;
 import dao.ReplyDAO;
 import dao.RestaurantDAO;
+import dao.StateDAO;
 import dao.UserDAO;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +67,11 @@ public class RestaurantRequest extends HttpServlet {
         //retreive restaurant
         restBean = restaurantDao.searchRestaurant(id);
         request.setAttribute("r", restBean);
+        
+        //get state
+        StateDAO stateDAO = new StateDAO();
+        StateBean stateBean = stateDAO.getState(parseInt(restBean.getCountry()));
+        request.setAttribute("state", stateBean);
 
         //get photos
         ArrayList<String> photos = restaurantDao.getPhotos(id);
@@ -86,24 +95,22 @@ public class RestaurantRequest extends HttpServlet {
         //collections for reviews
         ArrayList<ReviewBean> reviews = restaurantDao.getReviews(restBean.getId());
         ArrayList<String> userNickamesOfReviews = new ArrayList<>();
-        ArrayList<String> replies = new ArrayList<>();
         //collecting photo of the reviews and name of the user
         PhotoDAO pDao = new PhotoDAO();
         ArrayList<String> photoPaths = new ArrayList<>();
-       UserDAO userdao= new UserDAO();
+        UserDAO userdao= new UserDAO();
         for (ReviewBean current : reviews) {
-            
             String currName = userdao.getUserNickname(current.getId_creator());
             //name of the user
             userNickamesOfReviews.add(currName);
             String currPhotoPath = "";
+            int idPhoto = current.getId_photo();
             //if any photo exists
-            if (((Integer)current.getId_photo()) != 0) {
-                currPhotoPath = reviewImagesPath+ pDao.getName(current.getId_photo());
+            if (idPhoto != 0 && pDao.isValid(idPhoto)) {
+                currPhotoPath = reviewImagesPath + pDao.getName(idPhoto);
                 photoPaths.add(currPhotoPath);
             }
             else photoPaths.add("");
-          
         }
         
         //replies
