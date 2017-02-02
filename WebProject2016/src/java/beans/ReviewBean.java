@@ -75,7 +75,7 @@ public class ReviewBean implements java.io.Serializable {
         if (photo_name.equals("no")) {
             this.photo_name = "";
         } else {
-            this.photo_name = "img/reviewsImgs/" + photo_name;
+            this.photo_name = "img\\reviewsImgs\\" + photo_name;
         }
     }
 
