@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ChangePassword extends HttpServlet {
 
     /**
-     *
+     * @doGet prende i parametri dalla JSP
      * @param request
      * @param response
      * @throws ServletException

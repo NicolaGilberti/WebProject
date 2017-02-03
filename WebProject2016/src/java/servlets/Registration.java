@@ -28,7 +28,7 @@ public class Registration extends HttpServlet {
     UserDAO userdao = new UserDAO();
 
     /**
-     *
+     * @doPost prende i parametri dalla form, genera l'MD5 gestisce l'invio della mail 
      * @param request
      * @param response
      * @throws ServletException

@@ -31,7 +31,7 @@ public class LoginAttempt extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
-     *
+     * tentativo di login dell'utente. gestisce i parametri dalla form  e tenta l'autenticazione dell'utente
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
