@@ -289,7 +289,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         //   $("#trovatiLabel").empty();
-
+        //Se il campo di testo non e' vuoto..
         if ($('#searchInput').val() != "")
         {
             $("#row-thumbnail").empty();
