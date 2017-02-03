@@ -181,8 +181,8 @@ $(document).ready(function () {
             });
             dataFiltered = data;
             visualizzaTabella();
-             if(dataFiltered.length!=0)
-            initMap();
+            if (dataFiltered.length != 0)
+                initMap();
             //   $("#trovatiLabel").append(data.length);
         }
     });
@@ -279,40 +279,47 @@ $(document).ready(function () {
         //  console.log("Datafiltered dopo filtri prezzo:" + dataFiltered);
 
         visualizzaTabella();
-          if(dataFiltered.length!=0)
-        initMap();
+        if (dataFiltered.length != 0)
+            initMap();
     });
 
 
-
+//Quando si cerca qualcosa dalla textbox della pagina
     $("#searchButton").click(function (event) {
         event.preventDefault();
-        $("#row-thumbnail").empty();
+
         //   $("#trovatiLabel").empty();
 
-        $.ajax({
-            type: 'GET',
-            url: 'SearchRestaurant',
-            data: {
-                searchinput: $('#searchInput').val() || "pizzeria"
-            },
-            success: function (response) {
-                //   var jsonstring= JSON.stringify(response);
-                //   console.log(JSON.stringify(jsonstring));
-                //
-                //now json variable contains data in json format
-                //let's display a few items
-                console.log(response);
-                data = $.map(response, function (el) {
-                    return el
-                });
-                dataFiltered = data;
-                visualizzaTabella();
-                 if(dataFiltered.length!=0)
-                initMap();
-                //      $("#trovatiLabel").append(data.length);
-            }
-        });
+        if ($('#searchInput').val() != "")
+        {
+            $("#row-thumbnail").empty();
+            $.ajax({
+                type: 'GET',
+                url: 'SearchRestaurant',
+                data: {
+                    searchinput: $('#searchInput').val()
+                },
+                success: function (response) {
+                    //   var jsonstring= JSON.stringify(response);
+                    //   console.log(JSON.stringify(jsonstring));
+                    //
+                    //now json variable contains data in json format
+                    //let's display a few items
+                    console.log(response);
+                    data = $.map(response, function (el) {
+                        return el
+                    });
+                    dataFiltered = data;
+                    visualizzaTabella();
+                    if (dataFiltered.length != 0)
+                        initMap();
+                    //      $("#trovatiLabel").append(data.length);
+                }
+            });
+        } else
+        {
+            alert("Inserisci un valore nel campo di ricerca prima!.");
+        }
     });
 
 
