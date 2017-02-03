@@ -75,12 +75,12 @@ public class RestaurantDAO {
         }
 
     }
-
     /**
      * Function used to get a restaurant from DB
      *
      * @param id restaurant ID
-     * @return the restaurant (RestaurantBean)
+     * @return the restaurant (RestaurantBean) if the id corresponds to a restaurant
+     * or null 
      * @throws SQLException
      */
     public RestaurantBean searchRestaurant(int id) throws SQLException {
