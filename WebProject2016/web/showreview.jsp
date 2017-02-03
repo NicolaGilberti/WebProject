@@ -25,12 +25,15 @@
     <body> 
         <jsp:include page = "header/header.jsp"/>
         <div class="container-fluid">
+            
             <!--Cerco la notifica che deve essere mostrata-->
             <c:forEach var="notbean" items="${resnoty.review_list}">
                 <c:if test="${notbean.id == param.id}">
                     <c:set var="review" value="${notbean}" scope="session"></c:set>
                 </c:if>
             </c:forEach>
+            <h2 class="h2-title">Ristorante: <c:out value="${review.restaurant_name}"></c:out></h2>
+            <hr class="style15">
             <!--Mostro la notifica -->
             <div class="panel panel-default">
                 <div class="panel-heading">
