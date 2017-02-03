@@ -33,7 +33,7 @@ public class ChangePasswordSetter extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
-     *
+     * Gestione nuova password: prende la nuova password dal form, controlla l'MD5 e la setta nel database
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
