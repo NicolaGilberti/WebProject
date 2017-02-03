@@ -84,11 +84,12 @@ public class RestaurantDAO {
      * @throws SQLException
      */
     public RestaurantBean searchRestaurant(int id) throws SQLException {
-        RestaurantBean restaurant = new RestaurantBean();
+        RestaurantBean restaurant = null;
         PreparedStatement st = con.prepareStatement("SELECT * FROM restaurants WHERE ? = restaurants.id");
         st.setInt(1, id);
         ResultSet rs = st.executeQuery();
-        while (rs.next()) {
+        if (rs.next()) {
+            restaurant = new RestaurantBean();
             restaurant.setId(rs.getInt("id"));
             restaurant.setAddress(rs.getString("address"));
             restaurant.setName(rs.getString("name"));
