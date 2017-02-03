@@ -33,7 +33,7 @@ public class UserDAO {
     private Connection con = null;
 
     /**
-     *
+     * costruttore dell'utente con connessione al database
      */
     public UserDAO() {
         db = new ManagerDB();
@@ -125,7 +125,7 @@ public class UserDAO {
      * @param nickname
      * @param email
      * @param password
-     * @return
+     * @return ritorna l'utente direttamente dal database
      * @throws SQLException
      */
     public int setRegistrationParameters(String name, String surname, String nickname, String email, String password) throws SQLException {
@@ -178,7 +178,7 @@ public class UserDAO {
      *
      * @param id
      * @param md5
-     * @return
+     * @return un boolean che controlla la validità dell'MD5 preso dalla URL
      * @throws SQLException
      * @throws NoSuchAlgorithmException
      */
